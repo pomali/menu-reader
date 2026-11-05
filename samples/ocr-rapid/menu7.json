@@ -1,0 +1,721 @@
+{
+ "pages": [
+  {
+   "pageId": "p1",
+   "width": 1440,
+   "height": 1800,
+   "blocks": [
+    {
+     "text": "KUNG PAO",
+     "box": {
+      "left": 126,
+      "top": 347,
+      "right": 471,
+      "bottom": 439
+     },
+     "lines": [
+      {
+       "text": "KUNG PAO",
+       "box": {
+        "left": 126,
+        "top": 347,
+        "right": 471,
+        "bottom": 439
+       },
+       "confidence": 0.873
+      }
+     ]
+    },
+    {
+     "text": "TONKATSU",
+     "box": {
+      "left": 706,
+      "top": 352,
+      "right": 1066,
+      "bottom": 444
+     },
+     "lines": [
+      {
+       "text": "TONKATSU",
+       "box": {
+        "left": 706,
+        "top": 352,
+        "right": 1066,
+        "bottom": 444
+       },
+       "confidence": 0.888
+      }
+     ]
+    },
+    {
+     "text": "mäso, zelenina, omáčka, ryža 450g\nS TOFU\nS KURACÍM MÄSOM\nS HOVÄDZÍM MÄSOM",
+     "box": {
+      "left": 106,
+      "top": 449,
+      "right": 547,
+      "bottom": 627
+     },
+     "lines": [
+      {
+       "text": "mäso, zelenina, omáčka, ryža 450g",
+       "box": {
+        "left": 115,
+        "top": 449,
+        "right": 547,
+        "bottom": 490
+       },
+       "confidence": 0.949
+      },
+      {
+       "text": "S TOFU",
+       "box": {
+        "left": 106,
+        "top": 508,
+        "right": 200,
+        "bottom": 546
+       },
+       "confidence": 0.852
+      },
+      {
+       "text": "S KURACÍM MÄSOM",
+       "box": {
+        "left": 109,
+        "top": 550,
+        "right": 348,
+        "bottom": 584
+       },
+       "confidence": 0.937
+      },
+      {
+       "text": "S HOVÄDZÍM MÄSOM",
+       "box": {
+        "left": 109,
+        "top": 594,
+        "right": 363,
+        "bottom": 627
+       },
+       "confidence": 0.937
+      }
+     ]
+    },
+    {
+     "text": "450g",
+     "box": {
+      "left": 1086,
+      "top": 464,
+      "right": 1157,
+      "bottom": 509
+     },
+     "lines": [
+      {
+       "text": "450g",
+       "box": {
+        "left": 1086,
+        "top": 464,
+        "right": 1157,
+        "bottom": 509
+       },
+       "confidence": 0.799
+      }
+     ]
+    },
+    {
+     "text": "9,90 €",
+     "box": {
+      "left": 1188,
+      "top": 468,
+      "right": 1275,
+      "bottom": 506
+     },
+     "lines": [
+      {
+       "text": "9,90 €",
+       "box": {
+        "left": 1188,
+        "top": 468,
+        "right": 1275,
+        "bottom": 506
+       },
+       "confidence": 0.856
+      }
+     ]
+    },
+    {
+     "text": "kuracie alebo bravčové mäso,\nzelenina, omáčka, ryža alebo hranolky",
+     "box": {
+      "left": 690,
+      "top": 470,
+      "right": 1144,
+      "bottom": 549
+     },
+     "lines": [
+      {
+       "text": "kuracie alebo bravčové mäso,",
+       "box": {
+        "left": 692,
+        "top": 470,
+        "right": 1048,
+        "bottom": 503
+       },
+       "confidence": 0.957
+      },
+      {
+       "text": "zelenina, omáčka, ryža alebo hranolky",
+       "box": {
+        "left": 690,
+        "top": 512,
+        "right": 1144,
+        "bottom": 549
+       },
+       "confidence": 0.969
+      }
+     ]
+    },
+    {
+     "text": "7,90 €\n8,90 €\n9,90 €",
+     "box": {
+      "left": 526,
+      "top": 510,
+      "right": 613,
+      "bottom": 630
+     },
+     "lines": [
+      {
+       "text": "7,90 €",
+       "box": {
+        "left": 526,
+        "top": 510,
+        "right": 609,
+        "bottom": 546
+       },
+       "confidence": 0.85
+      },
+      {
+       "text": "8,90 €",
+       "box": {
+        "left": 527,
+        "top": 552,
+        "right": 613,
+        "bottom": 588
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "9,90 €",
+       "box": {
+        "left": 526,
+        "top": 595,
+        "right": 613,
+        "bottom": 630
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "POKE",
+     "box": {
+      "left": 461,
+      "top": 707,
+      "right": 655,
+      "bottom": 806
+     },
+     "lines": [
+      {
+       "text": "POKE",
+       "box": {
+        "left": 461,
+        "top": 707,
+        "right": 655,
+        "bottom": 806
+       },
+       "confidence": 0.8
+      }
+     ]
+    },
+    {
+     "text": "500g",
+     "box": {
+      "left": 668,
+      "top": 772,
+      "right": 741,
+      "bottom": 818
+     },
+     "lines": [
+      {
+       "text": "500g",
+       "box": {
+        "left": 668,
+        "top": 772,
+        "right": 741,
+        "bottom": 818
+       },
+       "confidence": 0.799
+      }
+     ]
+    },
+    {
+     "text": "(ryža, mrkva edamame, avokádo, mango, uhorka,\nwakame, koriander, vajíčko, sladko-pikantná omáčka)",
+     "box": {
+      "left": 454,
+      "top": 831,
+      "right": 1136,
+      "bottom": 910
+     },
+     "lines": [
+      {
+       "text": "(ryža, mrkva edamame, avokádo, mango, uhorka,",
+       "box": {
+        "left": 457,
+        "top": 831,
+        "right": 1073,
+        "bottom": 864
+       },
+       "confidence": 0.967
+      },
+      {
+       "text": "wakame, koriander, vajíčko, sladko-pikantná omáčka)",
+       "box": {
+        "left": 454,
+        "top": 875,
+        "right": 1136,
+        "bottom": 910
+       },
+       "confidence": 0.961
+      }
+     ]
+    },
+    {
+     "text": "S TOFU\nS KURACÍM MÄSOM\nS HOVÄDZÍM MÄSOM\nS KREVETAMI\nS LOSOSOM\nS TUNIAKOM\nS OPEKANYM LSOSOM",
+     "box": {
+      "left": 106,
+      "top": 931,
+      "right": 379,
+      "bottom": 1214
+     },
+     "lines": [
+      {
+       "text": "S TOFU",
+       "box": {
+        "left": 106,
+        "top": 931,
+        "right": 200,
+        "bottom": 965
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "S KURACÍM MÄSOM",
+       "box": {
+        "left": 109,
+        "top": 971,
+        "right": 349,
+        "bottom": 1007
+       },
+       "confidence": 0.937
+      },
+      {
+       "text": "S HOVÄDZÍM MÄSOM",
+       "box": {
+        "left": 109,
+        "top": 1015,
+        "right": 361,
+        "bottom": 1048
+       },
+       "confidence": 0.936
+      },
+      {
+       "text": "S KREVETAMI",
+       "box": {
+        "left": 109,
+        "top": 1060,
+        "right": 274,
+        "bottom": 1090
+       },
+       "confidence": 0.905
+      },
+      {
+       "text": "S LOSOSOM",
+       "box": {
+        "left": 108,
+        "top": 1100,
+        "right": 255,
+        "bottom": 1133
+       },
+       "confidence": 0.898
+      },
+      {
+       "text": "S TUNIAKOM",
+       "box": {
+        "left": 110,
+        "top": 1146,
+        "right": 266,
+        "bottom": 1173
+       },
+       "confidence": 0.906
+      },
+      {
+       "text": "S OPEKANYM LSOSOM",
+       "box": {
+        "left": 110,
+        "top": 1187,
+        "right": 379,
+        "bottom": 1214
+       },
+       "confidence": 0.944
+      }
+     ]
+    },
+    {
+     "text": "8,90 €\n9,90 €\n9,90 €\n10,90 €\n12,90 €\n12,90 €\n12,90 €",
+     "box": {
+      "left": 594,
+      "top": 932,
+      "right": 691,
+      "bottom": 1223
+     },
+     "lines": [
+      {
+       "text": "8,90 €",
+       "box": {
+        "left": 603,
+        "top": 932,
+        "right": 690,
+        "bottom": 968
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "9,90 €",
+       "box": {
+        "left": 603,
+        "top": 974,
+        "right": 690,
+        "bottom": 1009
+       },
+       "confidence": 0.819
+      },
+      {
+       "text": "9,90 €",
+       "box": {
+        "left": 602,
+        "top": 1015,
+        "right": 691,
+        "bottom": 1054
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "10,90 €",
+       "box": {
+        "left": 594,
+        "top": 1061,
+        "right": 689,
+        "bottom": 1093
+       },
+       "confidence": 0.875
+      },
+      {
+       "text": "12,90 €",
+       "box": {
+        "left": 595,
+        "top": 1102,
+        "right": 690,
+        "bottom": 1137
+       },
+       "confidence": 0.875
+      },
+      {
+       "text": "12,90 €",
+       "box": {
+        "left": 595,
+        "top": 1144,
+        "right": 690,
+        "bottom": 1179
+       },
+       "confidence": 0.875
+      },
+      {
+       "text": "12,90 €",
+       "box": {
+        "left": 594,
+        "top": 1184,
+        "right": 690,
+        "bottom": 1223
+       },
+       "confidence": 0.874
+      }
+     ]
+    },
+    {
+     "text": "CURRY",
+     "box": {
+      "left": 453,
+      "top": 1357,
+      "right": 685,
+      "bottom": 1453
+     },
+     "lines": [
+      {
+       "text": "CURRY",
+       "box": {
+        "left": 453,
+        "top": 1357,
+        "right": 685,
+        "bottom": 1453
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "450g",
+     "box": {
+      "left": 697,
+      "top": 1419,
+      "right": 770,
+      "bottom": 1466
+     },
+     "lines": [
+      {
+       "text": "450g",
+       "box": {
+        "left": 697,
+        "top": 1419,
+        "right": 770,
+        "bottom": 1466
+       },
+       "confidence": 0.8
+      }
+     ]
+    },
+    {
+     "text": "500g",
+     "box": {
+      "left": 1150,
+      "top": 1456,
+      "right": 1224,
+      "bottom": 1503
+     },
+     "lines": [
+      {
+       "text": "500g",
+       "box": {
+        "left": 1150,
+        "top": 1456,
+        "right": 1224,
+        "bottom": 1503
+       },
+       "confidence": 0.8
+      }
+     ]
+    },
+    {
+     "text": "s ryžou alebo rezancami",
+     "box": {
+      "left": 449,
+      "top": 1466,
+      "right": 766,
+      "bottom": 1499
+     },
+     "lines": [
+      {
+       "text": "s ryžou alebo rezancami",
+       "box": {
+        "left": 449,
+        "top": 1466,
+        "right": 766,
+        "bottom": 1499
+       },
+       "confidence": 0.949
+      }
+     ]
+    },
+    {
+     "text": "S TOFU\nS KURACIM MASOM\nS KEREVETAMI\nS LOSOSOM",
+     "box": {
+      "left": 116,
+      "top": 1516,
+      "right": 378,
+      "bottom": 1686
+     },
+     "lines": [
+      {
+       "text": "S TOFU",
+       "box": {
+        "left": 116,
+        "top": 1516,
+        "right": 220,
+        "bottom": 1554
+       },
+       "confidence": 0.787
+      },
+      {
+       "text": "S KURACIM MASOM",
+       "box": {
+        "left": 121,
+        "top": 1564,
+        "right": 378,
+        "bottom": 1594
+       },
+       "confidence": 0.905
+      },
+      {
+       "text": "S KEREVETAMI",
+       "box": {
+        "left": 122,
+        "top": 1612,
+        "right": 315,
+        "bottom": 1639
+       },
+       "confidence": 0.917
+      },
+      {
+       "text": "S LOSOSOM",
+       "box": {
+        "left": 121,
+        "top": 1656,
+        "right": 286,
+        "bottom": 1686
+       },
+       "confidence": 0.896
+      }
+     ]
+    },
+    {
+     "text": "12,90 €\n12,90 €\n13,90 €",
+     "box": {
+      "left": 1252,
+      "top": 1517,
+      "right": 1347,
+      "bottom": 1636
+     },
+     "lines": [
+      {
+       "text": "12,90 €",
+       "box": {
+        "left": 1252,
+        "top": 1517,
+        "right": 1347,
+        "bottom": 1555
+       },
+       "confidence": 0.875
+      },
+      {
+       "text": "12,90 €",
+       "box": {
+        "left": 1254,
+        "top": 1562,
+        "right": 1346,
+        "bottom": 1594
+       },
+       "confidence": 0.875
+      },
+      {
+       "text": "13,90 €",
+       "box": {
+        "left": 1253,
+        "top": 1604,
+        "right": 1346,
+        "bottom": 1636
+       },
+       "confidence": 0.875
+      }
+     ]
+    },
+    {
+     "text": "S CHRUMKAVYM KURACIM\nS CHRUMKAVYM BRAVCOVYM\nS CHRUMKAVOU KACICOU",
+     "box": {
+      "left": 813,
+      "top": 1518,
+      "right": 1197,
+      "bottom": 1640
+     },
+     "lines": [
+      {
+       "text": "S CHRUMKAVYM KURACIM",
+       "box": {
+        "left": 816,
+        "top": 1518,
+        "right": 1159,
+        "bottom": 1550
+       },
+       "confidence": 0.936
+      },
+      {
+       "text": "S CHRUMKAVYM BRAVCOVYM",
+       "box": {
+        "left": 816,
+        "top": 1564,
+        "right": 1197,
+        "bottom": 1594
+       },
+       "confidence": 0.955
+      },
+      {
+       "text": "S CHRUMKAVOU KACICOU",
+       "box": {
+        "left": 813,
+        "top": 1610,
+        "right": 1148,
+        "bottom": 1640
+       },
+       "confidence": 0.952
+      }
+     ]
+    },
+    {
+     "text": "7,90 €\n8,90 €\n10,90 €\n10,90 €",
+     "box": {
+      "left": 491,
+      "top": 1519,
+      "right": 587,
+      "bottom": 1680
+     },
+     "lines": [
+      {
+       "text": "7,90 €",
+       "box": {
+        "left": 504,
+        "top": 1519,
+        "right": 587,
+        "bottom": 1554
+       },
+       "confidence": 0.821
+      },
+      {
+       "text": "8,90 €",
+       "box": {
+        "left": 499,
+        "top": 1560,
+        "right": 587,
+        "bottom": 1596
+       },
+       "confidence": 0.856
+      },
+      {
+       "text": "10,90 €",
+       "box": {
+        "left": 491,
+        "top": 1603,
+        "right": 587,
+        "bottom": 1638
+       },
+       "confidence": 0.875
+      },
+      {
+       "text": "10,90 €",
+       "box": {
+        "left": 491,
+        "top": 1645,
+        "right": 586,
+        "bottom": 1680
+       },
+       "confidence": 0.875
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

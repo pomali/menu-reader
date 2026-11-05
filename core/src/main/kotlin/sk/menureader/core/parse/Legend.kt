@@ -25,7 +25,7 @@ object Legend {
         Allergen.MOLLUSCS to listOf("makkys", "mekkys", "mollus"),
     )
 
-    private val entry = Regex("(?<![\\d,.])(1[0-4]|0?[1-9])\\s*[-–—=:.)]?\\s*(\\p{L}[^\\d]*)")
+    private val entry = Regex("(?<![\\d,.])(1[0-9]|20|0?[1-9])\\s*([-–—=:.)]?)\\s*(\\p{L}[^\\d]*)")
 
     fun recognize(name: String): Allergen? {
         val f = Text.fold(name)
@@ -33,19 +33,26 @@ object Legend {
     }
 
     /**
-     * Parses one line. Returns the entries if it looks like a legend line: at least one entry and
-     * every entry names a known allergen. Returns null otherwise.
+     * Parses one line. Returns the recognised entries if it looks like a legend line: at least one
+     * entry names a known allergen and at most half don't (OCR noise, "10 mg/kg", custom codes like
+     * "15. Med"). Returns null otherwise.
      */
     fun parseLine(text: String): Map<Int, Allergen>? {
-        val body = text.replace(Regex("(?i)^\\s*(alerg[eé]ny|alergeny|allergens?)\\s*[:-]?"), " ")
+        val body = text.replace(Regex("(?i)^\\s*(zoznam\\s+|seznam\\s+)?(alerg[eé]n\\w*|alergeny|allergens?)\\s*[:-]?"), " ")
         val found = entry.findAll(body).toList()
         if (found.isEmpty()) return null
         val out = LinkedHashMap<Int, Allergen>()
+        var unknown = 0
         for (m in found) {
-            val a = recognize(m.groupValues[2].take(40)) ?: return null
-            out[m.groupValues[1].toInt()] = a
+            val n = m.groupValues[1].toInt()
+            val a = if (n <= 14) recognize(m.groupValues[3].take(40)) else null
+            when {
+                a != null -> out.putIfAbsent(n, a)
+                m.groupValues[2].isNotEmpty() -> unknown++ // "15. Med": a real entry we don't know
+                // "10 mg/kg": a number inside the text, not an entry
+            }
         }
-        return out
+        return out.takeIf { it.isNotEmpty() && unknown <= out.size }
     }
 
     /** Warnings for legend numbers that differ from the EU 1169/2011 numbering. */

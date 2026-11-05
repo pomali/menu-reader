@@ -14,8 +14,12 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
   screens: History, Menu, Profile, Debug/OCR export. The user approved the screen list. Nobody has
   run it on a device yet.
 - CI: `.github/workflows/build.yml` runs the unit tests and uploads `app-debug.apk` as an artifact.
-- Wikimedia Commons gave almost no real menus (and rate-limits this sandbox), so we're waiting for
-  the user's own photos instead. They offered to upload some.
+- The user uploaded 8 real SK menus (`samples/menu*.jpg`; `menu6.jpg` = Garni, `menu6.webp` = Fontána).
+  Stand-in OCR dumps are in `samples/ocr-rapid/` (see samples/README.md). The parser has been tuned on them:
+  weekly menus (weekday sections), M1-M5 markers, `/1,3,7/` and `(A1,3,9)` codes, two-column pizza lists,
+  uppercase dish + description layouts. Known weak spots: dish header + variants (menu7: KUNG PAO / S TOFU…),
+  soup columns beside dish lists (Fontána) depend on OCR blocks.
+- The user will make the ground-truth test set (`samples/truth/`) later.
 
 ## Local build notes (sandbox)
 - Android SDK at `/opt/android-sdk` (`local.properties` is gitignored; recreate with `sdk.dir=/opt/android-sdk`).

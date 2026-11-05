@@ -1,0 +1,500 @@
+{
+ "pages": [
+  {
+   "pageId": "p1",
+   "width": 1448,
+   "height": 2048,
+   "blocks": [
+    {
+     "text": "hiada",
+     "box": {
+      "left": 596,
+      "top": 107,
+      "right": 1036,
+      "bottom": 197
+     },
+     "lines": [
+      {
+       "text": "hiada",
+       "box": {
+        "left": 596,
+        "top": 107,
+        "right": 1036,
+        "bottom": 197
+       },
+       "confidence": 0.687
+      }
+     ]
+    },
+    {
+     "text": "LAU RACIA",
+     "box": {
+      "left": 684,
+      "top": 200,
+      "right": 822,
+      "bottom": 228
+     },
+     "lines": [
+      {
+       "text": "LAU RACIA",
+       "box": {
+        "left": 684,
+        "top": 200,
+        "right": 822,
+        "bottom": 228
+       },
+       "confidence": 0.718
+      }
+     ]
+    },
+    {
+     "text": "MEN",
+     "box": {
+      "left": 378,
+      "top": 228,
+      "right": 812,
+      "bottom": 483
+     },
+     "lines": [
+      {
+       "text": "MEN",
+       "box": {
+        "left": 378,
+        "top": 228,
+        "right": 812,
+        "bottom": 483
+       },
+       "confidence": 0.735
+      }
+     ]
+    },
+    {
+     "text": "STREDA\n15.7.2026",
+     "box": {
+      "left": 577,
+      "top": 501,
+      "right": 886,
+      "bottom": 635
+     },
+     "lines": [
+      {
+       "text": "STREDA",
+       "box": {
+        "left": 579,
+        "top": 501,
+        "right": 870,
+        "bottom": 558
+       },
+       "confidence": 0.856
+      },
+      {
+       "text": "15.7.2026",
+       "box": {
+        "left": 577,
+        "top": 562,
+        "right": 886,
+        "bottom": 635
+       },
+       "confidence": 0.899
+      }
+     ]
+    },
+    {
+     "text": "POLIEVKY",
+     "box": {
+      "left": 597,
+      "top": 663,
+      "right": 848,
+      "bottom": 703
+     },
+     "lines": [
+      {
+       "text": "POLIEVKY",
+       "box": {
+        "left": 597,
+        "top": 663,
+        "right": 848,
+        "bottom": 703
+       },
+       "confidence": 0.888
+      }
+     ]
+    },
+    {
+     "text": "1. Kelová s klobáskou",
+     "box": {
+      "left": 564,
+      "top": 746,
+      "right": 919,
+      "bottom": 782
+     },
+     "lines": [
+      {
+       "text": "1. Kelová s klobáskou",
+       "box": {
+        "left": 564,
+        "top": 746,
+        "right": 919,
+        "bottom": 782
+       },
+       "confidence": 0.951
+      }
+     ]
+    },
+    {
+     "text": "2.Hovädzí vývar s cestovinou",
+     "box": {
+      "left": 472,
+      "top": 819,
+      "right": 977,
+      "bottom": 857
+     },
+     "lines": [
+      {
+       "text": "2.Hovädzí vývar s cestovinou",
+       "box": {
+        "left": 472,
+        "top": 819,
+        "right": 977,
+        "bottom": 857
+       },
+       "confidence": 0.959
+      }
+     ]
+    },
+    {
+     "text": "HLAVNÉ JEDLÁ",
+     "box": {
+      "left": 546,
+      "top": 926,
+      "right": 927,
+      "bottom": 985
+     },
+     "lines": [
+      {
+       "text": "HLAVNÉ JEDLÁ",
+       "box": {
+        "left": 546,
+        "top": 926,
+        "right": 927,
+        "bottom": 985
+       },
+       "confidence": 0.922
+      }
+     ]
+    },
+    {
+     "text": "7,50€\n7,50€",
+     "box": {
+      "left": 1281,
+      "top": 1049,
+      "right": 1400,
+      "bottom": 1155
+     },
+     "lines": [
+      {
+       "text": "7,50€",
+       "box": {
+        "left": 1281,
+        "top": 1049,
+        "right": 1396,
+        "bottom": 1091
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "7,50€",
+       "box": {
+        "left": 1283,
+        "top": 1112,
+        "right": 1400,
+        "bottom": 1155
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "1. Turecké klopsy, varené zemiaky s vňatkou, čalamáda\n2. Bravčovś plátok na slaninke, ryža, čalamáda\n3.Vyp. plnený kapustný list so syrom, pečené zemiaky, cesnak. dip\n4.Tarhoňový šalát s cícerom a zeleninkou\n5. Kurací steak, krémové gnocchi s bazalkovým pestom, parmezán 7,5O C\n6.Hovädzí stroganov, ½2 hranolky, 1½2 ryža\n7.Tagliatelle so špenátovo syrovou omáčkou a slaninkou",
+     "box": {
+      "left": 105,
+      "top": 1050,
+      "right": 1399,
+      "bottom": 1461
+     },
+     "lines": [
+      {
+       "text": "1. Turecké klopsy, varené zemiaky s vňatkou, čalamáda",
+       "box": {
+        "left": 113,
+        "top": 1050,
+        "right": 1070,
+        "bottom": 1092
+       },
+       "confidence": 0.942
+      },
+      {
+       "text": "2. Bravčovś plátok na slaninke, ryža, čalamáda",
+       "box": {
+        "left": 105,
+        "top": 1107,
+        "right": 915,
+        "bottom": 1152
+       },
+       "confidence": 0.958
+      },
+      {
+       "text": "3.Vyp. plnený kapustný list so syrom, pečené zemiaky, cesnak. dip",
+       "box": {
+        "left": 106,
+        "top": 1169,
+        "right": 1274,
+        "bottom": 1217
+       },
+       "confidence": 0.976
+      },
+      {
+       "text": "4.Tarhoňový šalát s cícerom a zeleninkou",
+       "box": {
+        "left": 106,
+        "top": 1232,
+        "right": 836,
+        "bottom": 1270
+       },
+       "confidence": 0.949
+      },
+      {
+       "text": "5. Kurací steak, krémové gnocchi s bazalkovým pestom, parmezán 7,5O C",
+       "box": {
+        "left": 105,
+        "top": 1292,
+        "right": 1399,
+        "bottom": 1336
+       },
+       "confidence": 0.961
+      },
+      {
+       "text": "6.Hovädzí stroganov, ½2 hranolky, 1½2 ryža",
+       "box": {
+        "left": 105,
+        "top": 1354,
+        "right": 824,
+        "bottom": 1396
+       },
+       "confidence": 0.939
+      },
+      {
+       "text": "7.Tagliatelle so špenátovo syrovou omáčkou a slaninkou",
+       "box": {
+        "left": 108,
+        "top": 1417,
+        "right": 1099,
+        "bottom": 1461
+       },
+       "confidence": 0.976
+      }
+     ]
+    },
+    {
+     "text": "7,50€",
+     "box": {
+      "left": 1255,
+      "top": 1172,
+      "right": 1400,
+      "bottom": 1213
+     },
+     "lines": [
+      {
+       "text": "7,50€",
+       "box": {
+        "left": 1255,
+        "top": 1172,
+        "right": 1400,
+        "bottom": 1213
+       },
+       "confidence": 0.832
+      }
+     ]
+    },
+    {
+     "text": "7,50 €",
+     "box": {
+      "left": 1286,
+      "top": 1231,
+      "right": 1399,
+      "bottom": 1270
+     },
+     "lines": [
+      {
+       "text": "7,50 €",
+       "box": {
+        "left": 1286,
+        "top": 1231,
+        "right": 1399,
+        "bottom": 1270
+       },
+       "confidence": 0.837
+      }
+     ]
+    },
+    {
+     "text": "8,90 €\n6,90 C",
+     "box": {
+      "left": 1279,
+      "top": 1351,
+      "right": 1407,
+      "bottom": 1450
+     },
+     "lines": [
+      {
+       "text": "8,90 €",
+       "box": {
+        "left": 1280,
+        "top": 1351,
+        "right": 1402,
+        "bottom": 1394
+       },
+       "confidence": 0.837
+      },
+      {
+       "text": "6,90 C",
+       "box": {
+        "left": 1279,
+        "top": 1409,
+        "right": 1407,
+        "bottom": 1450
+       },
+       "confidence": 0.782
+      }
+     ]
+    },
+    {
+     "text": "richrada",
+     "box": {
+      "left": 601,
+      "top": 1619,
+      "right": 989,
+      "bottom": 1716
+     },
+     "lines": [
+      {
+       "text": "richrada",
+       "box": {
+        "left": 601,
+        "top": 1619,
+        "right": 989,
+        "bottom": 1716
+       },
+       "confidence": 0.853
+      }
+     ]
+    },
+    {
+     "text": "RFSTALRÁCIA",
+     "box": {
+      "left": 675,
+      "top": 1716,
+      "right": 819,
+      "bottom": 1736
+     },
+     "lines": [
+      {
+       "text": "RFSTALRÁCIA",
+       "box": {
+        "left": 675,
+        "top": 1716,
+        "right": 819,
+        "bottom": 1736
+       },
+       "confidence": 0.853
+      }
+     ]
+    },
+    {
+     "text": "8T 2025",
+     "box": {
+      "left": 729,
+      "top": 1737,
+      "right": 768,
+      "bottom": 1751
+     },
+     "lines": [
+      {
+       "text": "8T 2025",
+       "box": {
+        "left": 729,
+        "top": 1737,
+        "right": 768,
+        "bottom": 1751
+       },
+       "confidence": 0.591
+      }
+     ]
+    },
+    {
+     "text": "Oslavy , Firemné akcie, Kongresy , Cathering , Obedové menu , A la Carte ponuka",
+     "box": {
+      "left": 56,
+      "top": 1802,
+      "right": 1387,
+      "bottom": 1838
+     },
+     "lines": [
+      {
+       "text": "Oslavy , Firemné akcie, Kongresy , Cathering , Obedové menu , A la Carte ponuka",
+       "box": {
+        "left": 56,
+        "top": 1802,
+        "right": 1387,
+        "bottom": 1838
+       },
+       "confidence": 0.971
+      }
+     ]
+    },
+    {
+     "text": "Pizza, Víkendové špeciály, Rezervácie : 0905 723 795",
+     "box": {
+      "left": 278,
+      "top": 1847,
+      "right": 1170,
+      "bottom": 1886
+     },
+     "lines": [
+      {
+       "text": "Pizza, Víkendové špeciály, Rezervácie : 0905 723 795",
+       "box": {
+        "left": 278,
+        "top": 1847,
+        "right": 1170,
+        "bottom": 1886
+       },
+       "confidence": 0.969
+      }
+     ]
+    },
+    {
+     "text": "Rozvoz Obedového Menu",
+     "box": {
+      "left": 455,
+      "top": 1934,
+      "right": 999,
+      "bottom": 1980
+     },
+     "lines": [
+      {
+       "text": "Rozvoz Obedového Menu",
+       "box": {
+        "left": 455,
+        "top": 1934,
+        "right": 999,
+        "bottom": 1980
+       },
+       "confidence": 0.954
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -20,22 +20,30 @@ sealed interface Token {
  */
 object Tokenizer {
     private const val CODE = "(?:1[0-4]|0?[1-9])"
-    private const val CODE_LIST = "$CODE(?:\\s*[,.;/]\\s*$CODE)*"
+    /** Inside parentheses/slashes/after "A:" we also accept 15-20: some menus add their own (e.g. 15 = honey). */
+    private const val CODE_X = "(?:1[0-9]|20|0?[1-9])"
+    private const val CODE_LIST = "$CODE_X(?:\\s*[,.;]\\s*$CODE_X)*"
 
     private val prefixedCodes = Regex(
         "(?i)\\(?\\b(?:(?:alerg[eé]ny|alerg[eé]n|allergens?|alerg\\.?)\\s*:?|(?:al|a)\\s*[:.]|a(?=\\d))\\s*($CODE_LIST)\\b\\)?"
     )
-    private val parenCodes = Regex("\\(\\s*($CODE_LIST)\\s*\\)")
-    private val bareCodes = Regex("(?<![\\d,.])($CODE(?:\\s*,\\s*$CODE)+)(?![\\d]|\\s*(?:€|eur|kč|kc|czk|,-|g\\b|kg|ml|l\\b|dl|ks))", RegexOption.IGNORE_CASE)
+    private val parenCodes = Regex("\\(\\s*($CODE_LIST)\\s*[,.]?\\s*\\)")
+    /** "/1,3,7/" or a trailing "/1,3,7" (common on SK menus). Not "1/2" or "200g/200g". */
+    private val slashCodes = Regex("(?<![\\d/])/\\s*($CODE_LIST)\\s*[,.]?\\s*/?(?![\\d\\p{L}])")
+    /** "1,3,7", also "1.3,7" (OCR reads a comma as a dot); at least one comma, so dates like "2.11." don't match. */
+    private val bareCodes = Regex("(?<![\\d,.])($CODE(?:\\s*[,.]\\s*$CODE)+)(?![\\d]|\\s*(?:€|eur|kč|kc|czk|,-|g\\b|kg|ml|l\\b|dl|ks))", RegexOption.IGNORE_CASE)
 
     private const val CUR = "€|eur|euro|kč|kc|czk|,-|\\.-"
     private val priceAfter = Regex("(?i)(?<![\\d,.])(\\d{1,4}(?:[ .]\\d{3})?)(?:[.,](\\d{2}|-{1,2}))?\\s?($CUR)(?![a-z])")
     private val priceBefore = Regex("(?i)(€|eur|czk)\\s?(\\d{1,4})(?:[.,](\\d{2}))?(?![\\d,])")
-    /** Bare "8,90" at the end of a row; currency printed elsewhere on the menu. */
-    private val priceBareEnd = Regex("(?<![\\d,.])(\\d{1,3})[.,](\\d{2})\\s*$")
+    /** Bare "8,90" at the end of a row (currency printed elsewhere), or OCR misreading "€" as C/c/e. */
+    private val priceBareEnd = Regex("(?<![\\d,.])(\\d{1,3})[.,](\\d{2})\\s*[Cce]?\\s*$")
 
-    private val portion = Regex("(?i)(?<![\\d,.])(\\d+(?:[.,]\\d+)?(?:\\s?/\\s?\\d+)?)\\s?(g|kg|ml|cl|dl|l|ks|pcs|pc)\\b\\.?")
-    private val itemNumber = Regex("^\\s*(?:menu\\s*)?\\d{1,3}\\s*[.)]\\s+", RegexOption.IGNORE_CASE)
+    private const val UNIT = "(?:gr|g|kg|ml|cl|dl|l|ks|pcs|pc)"
+    /** "150 g", "0,33l", "2ks", and meat/side pairs like "200g/200g" or "400g/50g". */
+    private val portion = Regex("(?i)(?<![\\d,.])(?:\\d+(?:[.,]\\d+)?\\s?$UNIT?\\s?/\\s?)?\\d+(?:[.,]\\d+)?\\s?$UNIT\\b\\.?")
+    /** "1. ", "1.Kelová", "12) ", "M1: ", "M1-120g", "Menu 2 ". */
+    private val itemNumber = Regex("^\\s*(?:(?:menu\\s*|m)\\d{1,2}\\s*[.):\\-–]?|\\d{1,3}\\s*[.)])\\s*(?=\\S)", RegexOption.IGNORE_CASE)
 
     fun tokenize(text: String): List<Token> {
         val taken = BooleanArray(text.length)
@@ -52,12 +60,12 @@ object Tokenizer {
             if (!free(m.range)) continue
             parseCodes(m.groupValues[1])?.let { add(Token.Codes(m.range, it, prefixed = true)) }
         }
-        for (m in parenCodes.findAll(text)) {
+        for (re in listOf(parenCodes, slashCodes)) for (m in re.findAll(text)) {
             if (!free(m.range)) continue
             parseCodes(m.groupValues[1])?.let { add(Token.Codes(m.range, it, prefixed = false)) }
         }
         for (m in portion.findAll(text)) {
-            if (free(m.range)) add(Token.Portion(m.range, m.value.trim().trimEnd('.')))
+            if (free(m.range)) add(Token.Portion(m.range, m.value.trim().trimEnd('.').replace(Regex("\\s*/\\s*"), "/")))
         }
         for (m in priceAfter.findAll(text)) {
             if (!free(m.range)) continue
@@ -77,15 +85,15 @@ object Tokenizer {
             }
         }
         for (m in bareCodes.findAll(text)) {
-            if (!free(m.range)) continue
-            parseCodes(m.groupValues[1])?.let { add(Token.Codes(m.range, it, prefixed = false)) }
+            if (!free(m.range) || ',' !in m.value) continue
+            parseCodes(m.groupValues[1])?.takeIf { c -> c.all { it <= 14 } }?.let { add(Token.Codes(m.range, it, prefixed = false)) }
         }
         return out.sortedBy { it.range.first }
     }
 
     private fun parseCodes(s: String): List<Int>? {
         val nums = s.split(Regex("\\s*[,.;/]\\s*")).mapNotNull { it.trim().toIntOrNull() }
-        if (nums.isEmpty() || nums.any { it !in 1..14 }) return null
+        if (nums.isEmpty() || nums.any { it !in 1..20 }) return null
         return nums.distinct().sorted()
     }
 

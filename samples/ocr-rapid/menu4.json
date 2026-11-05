@@ -1,0 +1,1848 @@
+{
+ "pages": [
+  {
+   "pageId": "p1",
+   "width": 1280,
+   "height": 1696,
+   "blocks": [
+    {
+     "text": "Objednávky: 8.30hod - 13:30hod, tel. 0910 888 999. Polievky sú zahust'ované ryžovou\nmúkou (bez lepku). Streda - Štvrtok/do 20:00hod / Piatok - Sobota /do 21:00hod",
+     "box": {
+      "left": 97,
+      "top": 64,
+      "right": 921,
+      "bottom": 111
+     },
+     "lines": [
+      {
+       "text": "Objednávky: 8.30hod - 13:30hod, tel. 0910 888 999. Polievky sú zahust'ované ryžovou",
+       "box": {
+        "left": 99,
+        "top": 64,
+        "right": 921,
+        "bottom": 87
+       },
+       "confidence": 0.978
+      },
+      {
+       "text": "múkou (bez lepku). Streda - Štvrtok/do 20:00hod / Piatok - Sobota /do 21:00hod",
+       "box": {
+        "left": 97,
+        "top": 88,
+        "right": 864,
+        "bottom": 111
+       },
+       "confidence": 0.974
+      }
+     ]
+    },
+    {
+     "text": "MENU",
+     "box": {
+      "left": 95,
+      "top": 150,
+      "right": 540,
+      "bottom": 266
+     },
+     "lines": [
+      {
+       "text": "MENU",
+       "box": {
+        "left": 95,
+        "top": 150,
+        "right": 540,
+        "bottom": 266
+       },
+       "confidence": 0.8
+      }
+     ]
+    },
+    {
+     "text": "tmbrozia",
+     "box": {
+      "left": 979,
+      "top": 179,
+      "right": 1187,
+      "bottom": 221
+     },
+     "lines": [
+      {
+       "text": "tmbrozia",
+       "box": {
+        "left": 979,
+        "top": 179,
+        "right": 1187,
+        "bottom": 221
+       },
+       "confidence": 0.819
+      }
+     ]
+    },
+    {
+     "text": "44/2026",
+     "box": {
+      "left": 548,
+      "top": 208,
+      "right": 735,
+      "bottom": 255
+     },
+     "lines": [
+      {
+       "text": "44/2026",
+       "box": {
+        "left": 548,
+        "top": 208,
+        "right": 735,
+        "bottom": 255
+       },
+       "confidence": 0.874
+      }
+     ]
+    },
+    {
+     "text": "Pizzéria & Reštaurácia",
+     "box": {
+      "left": 990,
+      "top": 219,
+      "right": 1141,
+      "bottom": 240
+     },
+     "lines": [
+      {
+       "text": "Pizzéria & Reštaurácia",
+       "box": {
+        "left": 990,
+        "top": 219,
+        "right": 1141,
+        "bottom": 240
+       },
+       "confidence": 0.953
+      }
+     ]
+    },
+    {
+     "text": "Pondelok /26.10.2026",
+     "box": {
+      "left": 98,
+      "top": 323,
+      "right": 325,
+      "bottom": 347
+     },
+     "lines": [
+      {
+       "text": "Pondelok /26.10.2026",
+       "box": {
+        "left": 98,
+        "top": 323,
+        "right": 325,
+        "bottom": 347
+       },
+       "confidence": 0.947
+      }
+     ]
+    },
+    {
+     "text": "Polievka: Paradajková s cestovinou. Vývar podl'a ponuky /1,3,7",
+     "box": {
+      "left": 389,
+      "top": 325,
+      "right": 1009,
+      "bottom": 348
+     },
+     "lines": [
+      {
+       "text": "Polievka: Paradajková s cestovinou. Vývar podl'a ponuky /1,3,7",
+       "box": {
+        "left": 389,
+        "top": 325,
+        "right": 1009,
+        "bottom": 348
+       },
+       "confidence": 0.978
+      }
+     ]
+    },
+    {
+     "text": "7,90€\n7,90€\n7,90€",
+     "box": {
+      "left": 1102,
+      "top": 345,
+      "right": 1165,
+      "bottom": 455
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1102,
+        "top": 345,
+        "right": 1165,
+        "bottom": 370
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 388,
+        "right": 1164,
+        "bottom": 413
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1102,
+        "top": 430,
+        "right": 1165,
+        "bottom": 455
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "M1. Bojnícka pochútka (bravčový steak s volským okom), 1/2 dusená ryža, 1/2 hranolky, šalát /3",
+     "box": {
+      "left": 99,
+      "top": 346,
+      "right": 1038,
+      "bottom": 369
+     },
+     "lines": [
+      {
+       "text": "M1. Bojnícka pochútka (bravčový steak s volským okom), 1/2 dusená ryža, 1/2 hranolky, šalát /3",
+       "box": {
+        "left": 99,
+        "top": 346,
+        "right": 1038,
+        "bottom": 369
+       },
+       "confidence": 0.981
+      }
+     ]
+    },
+    {
+     "text": "M2. Vyprážaný syr s varenými zemiakmi, tatarka, šalát /1,3,7",
+     "box": {
+      "left": 97,
+      "top": 367,
+      "right": 692,
+      "bottom": 391
+     },
+     "lines": [
+      {
+       "text": "M2. Vyprážaný syr s varenými zemiakmi, tatarka, šalát /1,3,7",
+       "box": {
+        "left": 97,
+        "top": 367,
+        "right": 692,
+        "bottom": 391
+       },
+       "confidence": 0.962
+      }
+     ]
+    },
+    {
+     "text": "7,90€",
+     "box": {
+      "left": 1103,
+      "top": 367,
+      "right": 1164,
+      "bottom": 391
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 367,
+        "right": 1164,
+        "bottom": 391
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "M3. PižzA - Šunková s kuk. alebo šampiño./Klobásová/Salámová s chalapenos/Slaninková /1,7\nM4. Špaghetti AGLIO Oglio s Grana padanou /1,3,7",
+     "box": {
+      "left": 96,
+      "top": 389,
+      "right": 1058,
+      "bottom": 456
+     },
+     "lines": [
+      {
+       "text": "M3. PižzA - Šunková s kuk. alebo šampiño./Klobásová/Salámová s chalapenos/Slaninková /1,7",
+       "box": {
+        "left": 97,
+        "top": 389,
+        "right": 1058,
+        "bottom": 412
+       },
+       "confidence": 0.966
+      },
+      {
+       "text": "M4. Špaghetti AGLIO Oglio s Grana padanou /1,3,7",
+       "box": {
+        "left": 96,
+        "top": 429,
+        "right": 606,
+        "bottom": 456
+       },
+       "confidence": 0.956
+      }
+     ]
+    },
+    {
+     "text": "(bez polievky 7,90€/s polievkou 8,90€)",
+     "box": {
+      "left": 143,
+      "top": 412,
+      "right": 519,
+      "bottom": 432
+     },
+     "lines": [
+      {
+       "text": "(bez polievky 7,90€/s polievkou 8,90€)",
+       "box": {
+        "left": 143,
+        "top": 412,
+        "right": 519,
+        "bottom": 432
+       },
+       "confidence": 0.952
+      }
+     ]
+    },
+    {
+     "text": "M5. Ceasar šalát s grilovaným kuracím mäsom, slaninkový chips, vajíčko, 2ks pizza štangle /1,3,7",
+     "box": {
+      "left": 96,
+      "top": 451,
+      "right": 1055,
+      "bottom": 478
+     },
+     "lines": [
+      {
+       "text": "M5. Ceasar šalát s grilovaným kuracím mäsom, slaninkový chips, vajíčko, 2ks pizza štangle /1,3,7",
+       "box": {
+        "left": 96,
+        "top": 451,
+        "right": 1055,
+        "bottom": 478
+       },
+       "confidence": 0.961
+      }
+     ]
+    },
+    {
+     "text": "7,90€",
+     "box": {
+      "left": 1102,
+      "top": 452,
+      "right": 1164,
+      "bottom": 476
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1102,
+        "top": 452,
+        "right": 1164,
+        "bottom": 476
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "8,90€ - 11,90€",
+     "box": {
+      "left": 1013,
+      "top": 474,
+      "right": 1165,
+      "bottom": 497
+     },
+     "lines": [
+      {
+       "text": "8,90€ - 11,90€",
+       "box": {
+        "left": 1013,
+        "top": 474,
+        "right": 1165,
+        "bottom": 497
+       },
+       "confidence": 0.931
+      }
+     ]
+    },
+    {
+     "text": "Plus 9\" super MENU každý pracovný deň d’al'ších 9 druhov jedla",
+     "box": {
+      "left": 143,
+      "top": 475,
+      "right": 822,
+      "bottom": 498
+     },
+     "lines": [
+      {
+       "text": "Plus 9\" super MENU každý pracovný deň d’al'ších 9 druhov jedla",
+       "box": {
+        "left": 143,
+        "top": 475,
+        "right": 822,
+        "bottom": 498
+       },
+       "confidence": 0.954
+      }
+     ]
+    },
+    {
+     "text": "Polievka: Šošovicová so zeleninou. Vývar podl'a ponuky /1,3",
+     "box": {
+      "left": 349,
+      "top": 515,
+      "right": 926,
+      "bottom": 540
+     },
+     "lines": [
+      {
+       "text": "Polievka: Šošovicová so zeleninou. Vývar podl'a ponuky /1,3",
+       "box": {
+        "left": 349,
+        "top": 515,
+        "right": 926,
+        "bottom": 540
+       },
+       "confidence": 0.975
+      }
+     ]
+    },
+    {
+     "text": "Utorok /27.10.2026",
+     "box": {
+      "left": 101,
+      "top": 517,
+      "right": 297,
+      "bottom": 537
+     },
+     "lines": [
+      {
+       "text": "Utorok /27.10.2026",
+       "box": {
+        "left": 101,
+        "top": 517,
+        "right": 297,
+        "bottom": 537
+       },
+       "confidence": 0.947
+      }
+     ]
+    },
+    {
+     "text": "7,90€\n7,90€\n7,90€",
+     "box": {
+      "left": 1100,
+      "top": 533,
+      "right": 1166,
+      "bottom": 647
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1100,
+        "top": 533,
+        "right": 1166,
+        "bottom": 563
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 580,
+        "right": 1164,
+        "bottom": 605
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 622,
+        "right": 1165,
+        "bottom": 647
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "M1. Pečená bravčová krkovička na pive so štúchanými zemiakmi a kyslou uhorkou /7\nM3. PIzzA - Sunková s kuk. alebo šampiño./Klobásová/Salámová s chalapenos/Slaninková /1,7",
+     "box": {
+      "left": 97,
+      "top": 536,
+      "right": 1058,
+      "bottom": 604
+     },
+     "lines": [
+      {
+       "text": "M1. Pečená bravčová krkovička na pive so štúchanými zemiakmi a kyslou uhorkou /7",
+       "box": {
+        "left": 97,
+        "top": 536,
+        "right": 902,
+        "bottom": 563
+       },
+       "confidence": 0.967
+      },
+      {
+       "text": "M3. PIzzA - Sunková s kuk. alebo šampiño./Klobásová/Salámová s chalapenos/Slaninková /1,7",
+       "box": {
+        "left": 97,
+        "top": 580,
+        "right": 1058,
+        "bottom": 604
+       },
+       "confidence": 0.967
+      }
+     ]
+    },
+    {
+     "text": "7,90€",
+     "box": {
+      "left": 1102,
+      "top": 558,
+      "right": 1164,
+      "bottom": 582
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1102,
+        "top": 558,
+        "right": 1164,
+        "bottom": 582
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "M2. Kurací záyitok plnený oravskou slaninou a bryndzou, dusená ryža, šalát /7",
+     "box": {
+      "left": 97,
+      "top": 559,
+      "right": 834,
+      "bottom": 583
+     },
+     "lines": [
+      {
+       "text": "M2. Kurací záyitok plnený oravskou slaninou a bryndzou, dusená ryža, šalát /7",
+       "box": {
+        "left": 97,
+        "top": 559,
+        "right": 834,
+        "bottom": 583
+       },
+       "confidence": 0.971
+      }
+     ]
+    },
+    {
+     "text": "(bez polievky 7,90€/s polievkou 8,90€)",
+     "box": {
+      "left": 143,
+      "top": 603,
+      "right": 521,
+      "bottom": 626
+     },
+     "lines": [
+      {
+       "text": "(bez polievky 7,90€/s polievkou 8,90€)",
+       "box": {
+        "left": 143,
+        "top": 603,
+        "right": 521,
+        "bottom": 626
+       },
+       "confidence": 0.974
+      }
+     ]
+    },
+    {
+     "text": "M4. Francúzske zemiaky s kyslou uhorkou /3,7",
+     "box": {
+      "left": 98,
+      "top": 624,
+      "right": 540,
+      "bottom": 647
+     },
+     "lines": [
+      {
+       "text": "M4. Francúzske zemiaky s kyslou uhorkou /3,7",
+       "box": {
+        "left": 98,
+        "top": 624,
+        "right": 540,
+        "bottom": 647
+       },
+       "confidence": 0.971
+      }
+     ]
+    },
+    {
+     "text": "M5. Ceasar šalát s grilovaným kuracím mäsom, slaninkový chips, vajčko, 2ks pizza štangle /1,3,7",
+     "box": {
+      "left": 96,
+      "top": 643,
+      "right": 1055,
+      "bottom": 670
+     },
+     "lines": [
+      {
+       "text": "M5. Ceasar šalát s grilovaným kuracím mäsom, slaninkový chips, vajčko, 2ks pizza štangle /1,3,7",
+       "box": {
+        "left": 96,
+        "top": 643,
+        "right": 1055,
+        "bottom": 670
+       },
+       "confidence": 0.974
+      }
+     ]
+    },
+    {
+     "text": "7,90€",
+     "box": {
+      "left": 1103,
+      "top": 644,
+      "right": 1164,
+      "bottom": 668
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 644,
+        "right": 1164,
+        "bottom": 668
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "8,90€ - 11,90€",
+     "box": {
+      "left": 1012,
+      "top": 664,
+      "right": 1164,
+      "bottom": 690
+     },
+     "lines": [
+      {
+       "text": "8,90€ - 11,90€",
+       "box": {
+        "left": 1012,
+        "top": 664,
+        "right": 1164,
+        "bottom": 690
+       },
+       "confidence": 0.915
+      }
+     ]
+    },
+    {
+     "text": "Plus 9\" super MENU každý pracovný deň d’al'ších 9 druhov jedla",
+     "box": {
+      "left": 143,
+      "top": 667,
+      "right": 822,
+      "bottom": 690
+     },
+     "lines": [
+      {
+       "text": "Plus 9\" super MENU každý pracovný deň d’al'ších 9 druhov jedla",
+       "box": {
+        "left": 143,
+        "top": 667,
+        "right": 822,
+        "bottom": 690
+       },
+       "confidence": 0.953
+      }
+     ]
+    },
+    {
+     "text": "Streda/28.10.2026\nM1. Cigánska kuracia/bravčová pečienka s hranolkami a BBQ /1,3,7",
+     "box": {
+      "left": 99,
+      "top": 708,
+      "right": 772,
+      "bottom": 754
+     },
+     "lines": [
+      {
+       "text": "Streda/28.10.2026",
+       "box": {
+        "left": 100,
+        "top": 708,
+        "right": 289,
+        "bottom": 730
+       },
+       "confidence": 0.944
+      },
+      {
+       "text": "M1. Cigánska kuracia/bravčová pečienka s hranolkami a BBQ /1,3,7",
+       "box": {
+        "left": 99,
+        "top": 731,
+        "right": 772,
+        "bottom": 754
+       },
+       "confidence": 0.975
+      }
+     ]
+    },
+    {
+     "text": "Polievka: Kapustová polievka z čerstvej kapusty s párkom. Vývar /1,3,7",
+     "box": {
+      "left": 348,
+      "top": 708,
+      "right": 1052,
+      "bottom": 733
+     },
+     "lines": [
+      {
+       "text": "Polievka: Kapustová polievka z čerstvej kapusty s párkom. Vývar /1,3,7",
+       "box": {
+        "left": 348,
+        "top": 708,
+        "right": 1052,
+        "bottom": 733
+       },
+       "confidence": 0.967
+      }
+     ]
+    },
+    {
+     "text": "7,90€\n8,90€\n7,90€",
+     "box": {
+      "left": 1101,
+      "top": 729,
+      "right": 1165,
+      "bottom": 838
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1102,
+        "top": 729,
+        "right": 1165,
+        "bottom": 754
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "8,90€",
+       "box": {
+        "left": 1101,
+        "top": 772,
+        "right": 1165,
+        "bottom": 797
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 814,
+        "right": 1165,
+        "bottom": 838
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "M2. Domáce zemiakové šúl'ance s prepusteným maslom a opraženou strúhankou /1,3,7",
+     "box": {
+      "left": 96,
+      "top": 749,
+      "right": 1011,
+      "bottom": 776
+     },
+     "lines": [
+      {
+       "text": "M2. Domáce zemiakové šúl'ance s prepusteným maslom a opraženou strúhankou /1,3,7",
+       "box": {
+        "left": 96,
+        "top": 749,
+        "right": 1011,
+        "bottom": 776
+       },
+       "confidence": 0.978
+      }
+     ]
+    },
+    {
+     "text": "7,90€",
+     "box": {
+      "left": 1103,
+      "top": 751,
+      "right": 1164,
+      "bottom": 775
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 751,
+        "right": 1164,
+        "bottom": 775
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "M3. NEAPOLKA Prosciuotto / Prosciuotto cotto / Bufala / Ventricina / Ventricina",
+     "box": {
+      "left": 99,
+      "top": 775,
+      "right": 880,
+      "bottom": 795
+     },
+     "lines": [
+      {
+       "text": "M3. NEAPOLKA Prosciuotto / Prosciuotto cotto / Bufala / Ventricina / Ventricina",
+       "box": {
+        "left": 99,
+        "top": 775,
+        "right": 880,
+        "bottom": 795
+       },
+       "confidence": 0.969
+      }
+     ]
+    },
+    {
+     "text": "(bez polievky 8,90€/s polievkou 9,90€)",
+     "box": {
+      "left": 144,
+      "top": 796,
+      "right": 521,
+      "bottom": 816
+     },
+     "lines": [
+      {
+       "text": "(bez polievky 8,90€/s polievkou 9,90€)",
+       "box": {
+        "left": 144,
+        "top": 796,
+        "right": 521,
+        "bottom": 816
+       },
+       "confidence": 0.973
+      }
+     ]
+    },
+    {
+     "text": "SLADKY DEÑ",
+     "box": {
+      "left": 884,
+      "top": 796,
+      "right": 1085,
+      "bottom": 828
+     },
+     "lines": [
+      {
+       "text": "SLADKY DEÑ",
+       "box": {
+        "left": 884,
+        "top": 796,
+        "right": 1085,
+        "bottom": 828
+       },
+       "confidence": 0.884
+      }
+     ]
+    },
+    {
+     "text": "M4. Bratislavské rizoto so syrom a kyslou uhorkou /1,3,7",
+     "box": {
+      "left": 98,
+      "top": 816,
+      "right": 655,
+      "bottom": 839
+     },
+     "lines": [
+      {
+       "text": "M4. Bratislavské rizoto so syrom a kyslou uhorkou /1,3,7",
+       "box": {
+        "left": 98,
+        "top": 816,
+        "right": 655,
+        "bottom": 839
+       },
+       "confidence": 0.962
+      }
+     ]
+    },
+    {
+     "text": "M5. Ceasar šalát s grilovaným kuracím mäsom, slaninkový chips, vajíčko, 2ks pizza štangle /1,3,7",
+     "box": {
+      "left": 96,
+      "top": 835,
+      "right": 1055,
+      "bottom": 862
+     },
+     "lines": [
+      {
+       "text": "M5. Ceasar šalát s grilovaným kuracím mäsom, slaninkový chips, vajíčko, 2ks pizza štangle /1,3,7",
+       "box": {
+        "left": 96,
+        "top": 835,
+        "right": 1055,
+        "bottom": 862
+       },
+       "confidence": 0.968
+      }
+     ]
+    },
+    {
+     "text": "7,90€",
+     "box": {
+      "left": 1103,
+      "top": 836,
+      "right": 1164,
+      "bottom": 860
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 836,
+        "right": 1164,
+        "bottom": 860
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "Plus 9\" super MENU každý pracovný deň dal'ších 9 druhov jedla",
+     "box": {
+      "left": 143,
+      "top": 859,
+      "right": 823,
+      "bottom": 882
+     },
+     "lines": [
+      {
+       "text": "Plus 9\" super MENU každý pracovný deň dal'ších 9 druhov jedla",
+       "box": {
+        "left": 143,
+        "top": 859,
+        "right": 823,
+        "bottom": 882
+       },
+       "confidence": 0.961
+      }
+     ]
+    },
+    {
+     "text": "8,90€ - 11,90€",
+     "box": {
+      "left": 1013,
+      "top": 859,
+      "right": 1165,
+      "bottom": 882
+     },
+     "lines": [
+      {
+       "text": "8,90€ - 11,90€",
+       "box": {
+        "left": 1013,
+        "top": 859,
+        "right": 1165,
+        "bottom": 882
+       },
+       "confidence": 0.931
+      }
+     ]
+    },
+    {
+     "text": "Štvrtok/29.10.2026\nM1. Hovädzie dusené s kôprovou omáčkou a domácou parenou knedl'ou /1,3,7\nM3. PizzA - Šunková s kuk. alebo šampiño. /Klobásová/Salámová s chalapenos/Slaninková /1,7\nM4. Zemiakové Iokše s trhaným kačacím mäsom a červenou kapustou /1,3,7",
+     "box": {
+      "left": 96,
+      "top": 898,
+      "right": 1059,
+      "bottom": 1031
+     },
+     "lines": [
+      {
+       "text": "Štvrtok/29.10.2026",
+       "box": {
+        "left": 100,
+        "top": 898,
+        "right": 298,
+        "bottom": 923
+       },
+       "confidence": 0.947
+      },
+      {
+       "text": "M1. Hovädzie dusené s kôprovou omáčkou a domácou parenou knedl'ou /1,3,7",
+       "box": {
+        "left": 98,
+        "top": 923,
+        "right": 874,
+        "bottom": 946
+       },
+       "confidence": 0.975
+      },
+      {
+       "text": "M3. PizzA - Šunková s kuk. alebo šampiño. /Klobásová/Salámová s chalapenos/Slaninková /1,7",
+       "box": {
+        "left": 96,
+        "top": 963,
+        "right": 1059,
+        "bottom": 990
+       },
+       "confidence": 0.969
+      },
+      {
+       "text": "M4. Zemiakové Iokše s trhaným kačacím mäsom a červenou kapustou /1,3,7",
+       "box": {
+        "left": 98,
+        "top": 1008,
+        "right": 852,
+        "bottom": 1031
+       },
+       "confidence": 0.969
+      }
+     ]
+    },
+    {
+     "text": "Polievka: Hrstková. Vývar podl'a ponuky /1,3,7",
+     "box": {
+      "left": 358,
+      "top": 901,
+      "right": 817,
+      "bottom": 924
+     },
+     "lines": [
+      {
+       "text": "Polievka: Hrstková. Vývar podl'a ponuky /1,3,7",
+       "box": {
+        "left": 358,
+        "top": 901,
+        "right": 817,
+        "bottom": 924
+       },
+       "confidence": 0.955
+      }
+     ]
+    },
+    {
+     "text": "7,90€\n7,90€\n7,90€",
+     "box": {
+      "left": 1102,
+      "top": 921,
+      "right": 1165,
+      "bottom": 1031
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1102,
+        "top": 921,
+        "right": 1164,
+        "bottom": 946
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 964,
+        "right": 1164,
+        "bottom": 989
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 1006,
+        "right": 1165,
+        "bottom": 1031
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "M2. Špíz s kuracím a bravčovým mäsom s paprikou a cibul'ou, pečené zemiaky",
+     "box": {
+      "left": 97,
+      "top": 942,
+      "right": 873,
+      "bottom": 968
+     },
+     "lines": [
+      {
+       "text": "M2. Špíz s kuracím a bravčovým mäsom s paprikou a cibul'ou, pečené zemiaky",
+       "box": {
+        "left": 97,
+        "top": 942,
+        "right": 873,
+        "bottom": 968
+       },
+       "confidence": 0.973
+      }
+     ]
+    },
+    {
+     "text": "7,90€",
+     "box": {
+      "left": 1103,
+      "top": 943,
+      "right": 1164,
+      "bottom": 967
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 943,
+        "right": 1164,
+        "bottom": 967
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "(bez polievky 7,90€/s polievkou 8,90€)",
+     "box": {
+      "left": 142,
+      "top": 986,
+      "right": 521,
+      "bottom": 1010
+     },
+     "lines": [
+      {
+       "text": "(bez polievky 7,90€/s polievkou 8,90€)",
+       "box": {
+        "left": 142,
+        "top": 986,
+        "right": 521,
+        "bottom": 1010
+       },
+       "confidence": 0.966
+      }
+     ]
+    },
+    {
+     "text": "M5. Ceasar šalát s grilovaným kuracím mäsom, slaninkovś chips, vajíčko, 2ks pizza štangle /1,3,7",
+     "box": {
+      "left": 96,
+      "top": 1027,
+      "right": 1055,
+      "bottom": 1054
+     },
+     "lines": [
+      {
+       "text": "M5. Ceasar šalát s grilovaným kuracím mäsom, slaninkovś chips, vajíčko, 2ks pizza štangle /1,3,7",
+       "box": {
+        "left": 96,
+        "top": 1027,
+        "right": 1055,
+        "bottom": 1054
+       },
+       "confidence": 0.968
+      }
+     ]
+    },
+    {
+     "text": "7,90€",
+     "box": {
+      "left": 1103,
+      "top": 1028,
+      "right": 1164,
+      "bottom": 1052
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 1028,
+        "right": 1164,
+        "bottom": 1052
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "Plus 9\" super MENU každý pracovný deň dal'ších 9 druhov jedla",
+     "box": {
+      "left": 143,
+      "top": 1051,
+      "right": 822,
+      "bottom": 1074
+     },
+     "lines": [
+      {
+       "text": "Plus 9\" super MENU každý pracovný deň dal'ších 9 druhov jedla",
+       "box": {
+        "left": 143,
+        "top": 1051,
+        "right": 822,
+        "bottom": 1074
+       },
+       "confidence": 0.96
+      }
+     ]
+    },
+    {
+     "text": "8,90€ - 11,90€",
+     "box": {
+      "left": 1013,
+      "top": 1051,
+      "right": 1164,
+      "bottom": 1074
+     },
+     "lines": [
+      {
+       "text": "8,90€ - 11,90€",
+       "box": {
+        "left": 1013,
+        "top": 1051,
+        "right": 1164,
+        "bottom": 1074
+       },
+       "confidence": 0.932
+      }
+     ]
+    },
+    {
+     "text": ". Polievka: Moravská cesnačka so šunkou a zemiakmi. Vývar podl'a ponuky /1,3,7",
+     "box": {
+      "left": 337,
+      "top": 1092,
+      "right": 1110,
+      "bottom": 1117
+     },
+     "lines": [
+      {
+       "text": ". Polievka: Moravská cesnačka so šunkou a zemiakmi. Vývar podl'a ponuky /1,3,7",
+       "box": {
+        "left": 337,
+        "top": 1092,
+        "right": 1110,
+        "bottom": 1117
+       },
+       "confidence": 0.966
+      }
+     ]
+    },
+    {
+     "text": "Piatok/30.10.2026\nM1. Bravčová Panenka a la Carbonara + opečené zemiakové gnocchi /1,3,7",
+     "box": {
+      "left": 98,
+      "top": 1094,
+      "right": 854,
+      "bottom": 1138
+     },
+     "lines": [
+      {
+       "text": "Piatok/30.10.2026",
+       "box": {
+        "left": 100,
+        "top": 1094,
+        "right": 291,
+        "bottom": 1114
+       },
+       "confidence": 0.944
+      },
+      {
+       "text": "M1. Bravčová Panenka a la Carbonara + opečené zemiakové gnocchi /1,3,7",
+       "box": {
+        "left": 98,
+        "top": 1114,
+        "right": 854,
+        "bottom": 1138
+       },
+       "confidence": 0.979
+      }
+     ]
+    },
+    {
+     "text": "7,90€\n8,90€\n7,90€",
+     "box": {
+      "left": 1099,
+      "top": 1111,
+      "right": 1165,
+      "bottom": 1223
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 1111,
+        "right": 1164,
+        "bottom": 1139
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "8,90€",
+       "box": {
+        "left": 1099,
+        "top": 1155,
+        "right": 1164,
+        "bottom": 1180
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 1198,
+        "right": 1165,
+        "bottom": 1223
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "M2. Pečené kuracie stehno s dusenou ryžou a kompótom\nM3. NEAPOLKA Prosciuotto / Prosciuotto cotto / Bufala / Ventricina / Ventricina",
+     "box": {
+      "left": 97,
+      "top": 1135,
+      "right": 879,
+      "bottom": 1179
+     },
+     "lines": [
+      {
+       "text": "M2. Pečené kuracie stehno s dusenou ryžou a kompótom",
+       "box": {
+        "left": 97,
+        "top": 1135,
+        "right": 646,
+        "bottom": 1159
+       },
+       "confidence": 0.958
+      },
+      {
+       "text": "M3. NEAPOLKA Prosciuotto / Prosciuotto cotto / Bufala / Ventricina / Ventricina",
+       "box": {
+        "left": 99,
+        "top": 1159,
+        "right": 879,
+        "bottom": 1179
+       },
+       "confidence": 0.971
+      }
+     ]
+    },
+    {
+     "text": "7,90€",
+     "box": {
+      "left": 1103,
+      "top": 1135,
+      "right": 1164,
+      "bottom": 1160
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 1135,
+        "right": 1164,
+        "bottom": 1160
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "(bez polievky 8,90€/s polievkou 9,90€)",
+     "box": {
+      "left": 142,
+      "top": 1179,
+      "right": 522,
+      "bottom": 1202
+     },
+     "lines": [
+      {
+       "text": "(bez polievky 8,90€/s polievkou 9,90€)",
+       "box": {
+        "left": 142,
+        "top": 1179,
+        "right": 522,
+        "bottom": 1202
+       },
+       "confidence": 0.947
+      }
+     ]
+    },
+    {
+     "text": "M4. Vyprážané rybie filé so zemiakovou kašou",
+     "box": {
+      "left": 97,
+      "top": 1199,
+      "right": 552,
+      "bottom": 1224
+     },
+     "lines": [
+      {
+       "text": "M4. Vyprážané rybie filé so zemiakovou kašou",
+       "box": {
+        "left": 97,
+        "top": 1199,
+        "right": 552,
+        "bottom": 1224
+       },
+       "confidence": 0.966
+      }
+     ]
+    },
+    {
+     "text": "M5. Ceasar šalát s grilovaným kuracím mäsom, slaninkový chips, vajíčko, 2ks pizza štangle /1,3,7",
+     "box": {
+      "left": 96,
+      "top": 1219,
+      "right": 1055,
+      "bottom": 1246
+     },
+     "lines": [
+      {
+       "text": "M5. Ceasar šalát s grilovaným kuracím mäsom, slaninkový chips, vajíčko, 2ks pizza štangle /1,3,7",
+       "box": {
+        "left": 96,
+        "top": 1219,
+        "right": 1055,
+        "bottom": 1246
+       },
+       "confidence": 0.97
+      }
+     ]
+    },
+    {
+     "text": "7,90€",
+     "box": {
+      "left": 1103,
+      "top": 1220,
+      "right": 1164,
+      "bottom": 1244
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 1103,
+        "top": 1220,
+        "right": 1164,
+        "bottom": 1244
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "Plus 9\" super MENU každý pracovný deň dal'ších 9 druhov jedla",
+     "box": {
+      "left": 142,
+      "top": 1242,
+      "right": 823,
+      "bottom": 1268
+     },
+     "lines": [
+      {
+       "text": "Plus 9\" super MENU každý pracovný deň dal'ších 9 druhov jedla",
+       "box": {
+        "left": 142,
+        "top": 1242,
+        "right": 823,
+        "bottom": 1268
+       },
+       "confidence": 0.955
+      }
+     ]
+    },
+    {
+     "text": "8,90€ - 11,90€",
+     "box": {
+      "left": 1013,
+      "top": 1243,
+      "right": 1164,
+      "bottom": 1266
+     },
+     "lines": [
+      {
+       "text": "8,90€ - 11,90€",
+       "box": {
+        "left": 1013,
+        "top": 1243,
+        "right": 1164,
+        "bottom": 1266
+       },
+       "confidence": 0.932
+      }
+     ]
+    },
+    {
+     "text": "Zloženie pizze Neapolka:\nNEAPOLKA Prosciuotto (450g) paradajky La Torrente, Prosciuotto cotto, Mozarella Fiordilatte /1,7",
+     "box": {
+      "left": 100,
+      "top": 1297,
+      "right": 955,
+      "bottom": 1339
+     },
+     "lines": [
+      {
+       "text": "Zloženie pizze Neapolka:",
+       "box": {
+        "left": 100,
+        "top": 1297,
+        "right": 331,
+        "bottom": 1317
+       },
+       "confidence": 0.955
+      },
+      {
+       "text": "NEAPOLKA Prosciuotto (450g) paradajky La Torrente, Prosciuotto cotto, Mozarella Fiordilatte /1,7",
+       "box": {
+        "left": 100,
+        "top": 1319,
+        "right": 955,
+        "bottom": 1339
+       },
+       "confidence": 0.98
+      }
+     ]
+    },
+    {
+     "text": "Do balenia 0,60€",
+     "box": {
+      "left": 1018,
+      "top": 1334,
+      "right": 1171,
+      "bottom": 1354
+     },
+     "lines": [
+      {
+       "text": "Do balenia 0,60€",
+       "box": {
+        "left": 1018,
+        "top": 1334,
+        "right": 1171,
+        "bottom": 1354
+       },
+       "confidence": 0.941
+      }
+     ]
+    },
+    {
+     "text": "NEAPOLKA Bufala (450g) paradajky La Torrente, Bufala, Grana, olivový olej, bazalka",
+     "box": {
+      "left": 97,
+      "top": 1338,
+      "right": 837,
+      "bottom": 1362
+     },
+     "lines": [
+      {
+       "text": "NEAPOLKA Bufala (450g) paradajky La Torrente, Bufala, Grana, olivový olej, bazalka",
+       "box": {
+        "left": 97,
+        "top": 1338,
+        "right": 837,
+        "bottom": 1362
+       },
+       "confidence": 0.978
+      }
+     ]
+    },
+    {
+     "text": "NEAPOLKA Ventricina (450g) paradajky La Torrente, Mozarella Fiordilatte, salám Ventricina",
+     "box": {
+      "left": 96,
+      "top": 1359,
+      "right": 894,
+      "bottom": 1383
+     },
+     "lines": [
+      {
+       "text": "NEAPOLKA Ventricina (450g) paradajky La Torrente, Mozarella Fiordilatte, salám Ventricina",
+       "box": {
+        "left": 96,
+        "top": 1359,
+        "right": 894,
+        "bottom": 1383
+       },
+       "confidence": 0.982
+      }
+     ]
+    },
+    {
+     "text": "Dovoz 0,60€",
+     "box": {
+      "left": 1039,
+      "top": 1404,
+      "right": 1153,
+      "bottom": 1427
+     },
+     "lines": [
+      {
+       "text": "Dovoz 0,60€",
+       "box": {
+        "left": 1039,
+        "top": 1404,
+        "right": 1153,
+        "bottom": 1427
+       },
+       "confidence": 0.916
+      }
+     ]
+    },
+    {
+     "text": "www.restauraciaambrozia.sk",
+     "box": {
+      "left": 95,
+      "top": 1426,
+      "right": 509,
+      "bottom": 1452
+     },
+     "lines": [
+      {
+       "text": "www.restauraciaambrozia.sk",
+       "box": {
+        "left": 95,
+        "top": 1426,
+        "right": 509,
+        "bottom": 1452
+       },
+       "confidence": 0.963
+      }
+     ]
+    },
+    {
+     "text": "7,90€",
+     "box": {
+      "left": 543,
+      "top": 1488,
+      "right": 622,
+      "bottom": 1519
+     },
+     "lines": [
+      {
+       "text": "7,90€",
+       "box": {
+        "left": 543,
+        "top": 1488,
+        "right": 622,
+        "bottom": 1519
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "Talianska",
+     "box": {
+      "left": 838,
+      "top": 1488,
+      "right": 1178,
+      "bottom": 1542
+     },
+     "lines": [
+      {
+       "text": "Talianska",
+       "box": {
+        "left": 838,
+        "top": 1488,
+        "right": 1178,
+        "bottom": 1542
+       },
+       "confidence": 0.9
+      }
+     ]
+    },
+    {
+     "text": "Menu M1/M5 v reštaurácii\nMenu M1/M5 s dovozom\nMenu M1/M5 osobný odber",
+     "box": {
+      "left": 135,
+      "top": 1490,
+      "right": 515,
+      "bottom": 1575
+     },
+     "lines": [
+      {
+       "text": "Menu M1/M5 v reštaurácii",
+       "box": {
+        "left": 136,
+        "top": 1490,
+        "right": 489,
+        "bottom": 1516
+       },
+       "confidence": 0.937
+      },
+      {
+       "text": "Menu M1/M5 s dovozom",
+       "box": {
+        "left": 135,
+        "top": 1519,
+        "right": 478,
+        "bottom": 1546
+       },
+       "confidence": 0.95
+      },
+      {
+       "text": "Menu M1/M5 osobný odber",
+       "box": {
+        "left": 136,
+        "top": 1549,
+        "right": 515,
+        "bottom": 1575
+       },
+       "confidence": 0.936
+      }
+     ]
+    },
+    {
+     "text": "8,50€",
+     "box": {
+      "left": 543,
+      "top": 1517,
+      "right": 620,
+      "bottom": 1548
+     },
+     "lines": [
+      {
+       "text": "8,50€",
+       "box": {
+        "left": 543,
+        "top": 1517,
+        "right": 620,
+        "bottom": 1548
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "8,50€",
+     "box": {
+      "left": 543,
+      "top": 1546,
+      "right": 619,
+      "bottom": 1577
+     },
+     "lines": [
+      {
+       "text": "8,50€",
+       "box": {
+        "left": 543,
+        "top": 1546,
+        "right": 619,
+        "bottom": 1577
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "NEAPOLKA",
+     "box": {
+      "left": 781,
+      "top": 1585,
+      "right": 1140,
+      "bottom": 1634
+     },
+     "lines": [
+      {
+       "text": "NEAPOLKA",
+       "box": {
+        "left": 781,
+        "top": 1585,
+        "right": 1140,
+        "bottom": 1634
+       },
+       "confidence": 0.888
+      }
+     ]
+    },
+    {
+     "text": "Od 13:00-13:30hod dopredaj nepredaného, obedového MENU za 4.90€",
+     "box": {
+      "left": 96,
+      "top": 1620,
+      "right": 662,
+      "bottom": 1640
+     },
+     "lines": [
+      {
+       "text": "Od 13:00-13:30hod dopredaj nepredaného, obedového MENU za 4.90€",
+       "box": {
+        "left": 96,
+        "top": 1620,
+        "right": 662,
+        "bottom": 1640
+       },
+       "confidence": 0.977
+      }
+     ]
+    },
+    {
+     "text": "streda-sobota",
+     "box": {
+      "left": 782,
+      "top": 1642,
+      "right": 981,
+      "bottom": 1671
+     },
+     "lines": [
+      {
+       "text": "streda-sobota",
+       "box": {
+        "left": 782,
+        "top": 1642,
+        "right": 981,
+        "bottom": 1671
+       },
+       "confidence": 0.928
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

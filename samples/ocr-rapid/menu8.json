@@ -1,0 +1,406 @@
+{
+ "pages": [
+  {
+   "pageId": "p1",
+   "width": 375,
+   "height": 500,
+   "blocks": [
+    {
+     "text": "MINI MENU",
+     "box": {
+      "left": 61,
+      "top": 101,
+      "right": 161,
+      "bottom": 122
+     },
+     "lines": [
+      {
+       "text": "MINI MENU",
+       "box": {
+        "left": 61,
+        "top": 101,
+        "right": 161,
+        "bottom": 122
+       },
+       "confidence": 0.9
+      }
+     ]
+    },
+    {
+     "text": "NE-STV 11:00 - 19:30",
+     "box": {
+      "left": 61,
+      "top": 120,
+      "right": 141,
+      "bottom": 132
+     },
+     "lines": [
+      {
+       "text": "NE-STV 11:00 - 19:30",
+       "box": {
+        "left": 61,
+        "top": 120,
+        "right": 141,
+        "bottom": 132
+       },
+       "confidence": 0.903
+      }
+     ]
+    },
+    {
+     "text": "PIA-S0 11:00 - 20:30",
+     "box": {
+      "left": 60,
+      "top": 128,
+      "right": 142,
+      "bottom": 141
+     },
+     "lines": [
+      {
+       "text": "PIA-S0 11:00 - 20:30",
+       "box": {
+        "left": 60,
+        "top": 128,
+        "right": 142,
+        "bottom": 141
+       },
+       "confidence": 0.908
+      }
+     ]
+    },
+    {
+     "text": "3.50",
+     "box": {
+      "left": 256,
+      "top": 155,
+      "right": 284,
+      "bottom": 168
+     },
+     "lines": [
+      {
+       "text": "3.50",
+       "box": {
+        "left": 256,
+        "top": 155,
+        "right": 284,
+        "bottom": 168
+       },
+       "confidence": 0.779
+      }
+     ]
+    },
+    {
+     "text": "HRANOLKY",
+     "box": {
+      "left": 63,
+      "top": 161,
+      "right": 116,
+      "bottom": 175
+     },
+     "lines": [
+      {
+       "text": "HRANOLKY",
+       "box": {
+        "left": 63,
+        "top": 161,
+        "right": 116,
+        "bottom": 175
+       },
+       "confidence": 0.889
+      }
+     ]
+    },
+    {
+     "text": "HRANOLKY S KECUPOM ALEBO MAJONÉZOU",
+     "box": {
+      "left": 62,
+      "top": 173,
+      "right": 215,
+      "bottom": 191
+     },
+     "lines": [
+      {
+       "text": "HRANOLKY S KECUPOM ALEBO MAJONÉZOU",
+       "box": {
+        "left": 62,
+        "top": 173,
+        "right": 215,
+        "bottom": 191
+       },
+       "confidence": 0.956
+      }
+     ]
+    },
+    {
+     "text": "/1,3.77\nPIZZA BAMBINI\nDETSKÁ PIZZA S PARADAJKOVYH ZÁKLADOM.",
+     "box": {
+      "left": 63,
+      "top": 189,
+      "right": 228,
+      "bottom": 241
+     },
+     "lines": [
+      {
+       "text": "/1,3.77",
+       "box": {
+        "left": 63,
+        "top": 189,
+        "right": 97,
+        "bottom": 200
+       },
+       "confidence": 0.848
+      },
+      {
+       "text": "PIZZA BAMBINI",
+       "box": {
+        "left": 64,
+        "top": 210,
+        "right": 149,
+        "bottom": 225
+       },
+       "confidence": 0.928
+      },
+      {
+       "text": "DETSKÁ PIZZA S PARADAJKOVYH ZÁKLADOM.",
+       "box": {
+        "left": 63,
+        "top": 225,
+        "right": 228,
+        "bottom": 241
+       },
+       "confidence": 0.936
+      }
+     ]
+    },
+    {
+     "text": "6.99",
+     "box": {
+      "left": 257,
+      "top": 205,
+      "right": 287,
+      "bottom": 220
+     },
+     "lines": [
+      {
+       "text": "6.99",
+       "box": {
+        "left": 257,
+        "top": 205,
+        "right": 287,
+        "bottom": 220
+       },
+       "confidence": 0.721
+      }
+     ]
+    },
+    {
+     "text": "DUSENOU $UNKOU A KUKURICOU /1.7/\nŠPAGETY\nŠPAGETY S PARADAJKDVOU OMÁCKDU A",
+     "box": {
+      "left": 63,
+      "top": 236,
+      "right": 209,
+      "bottom": 294
+     },
+     "lines": [
+      {
+       "text": "DUSENOU $UNKOU A KUKURICOU /1.7/",
+       "box": {
+        "left": 63,
+        "top": 236,
+        "right": 207,
+        "bottom": 252
+       },
+       "confidence": 0.951
+      },
+      {
+       "text": "ŠPAGETY",
+       "box": {
+        "left": 64,
+        "top": 263,
+        "right": 113,
+        "bottom": 276
+       },
+       "confidence": 0.804
+      },
+      {
+       "text": "ŠPAGETY S PARADAJKDVOU OMÁCKDU A",
+       "box": {
+        "left": 65,
+        "top": 279,
+        "right": 209,
+        "bottom": 294
+       },
+       "confidence": 0.928
+      }
+     ]
+    },
+    {
+     "text": "4.90",
+     "box": {
+      "left": 260,
+      "top": 258,
+      "right": 288,
+      "bottom": 271
+     },
+     "lines": [
+      {
+       "text": "4.90",
+       "box": {
+        "left": 260,
+        "top": 258,
+        "right": 288,
+        "bottom": 271
+       },
+       "confidence": 0.74
+      }
+     ]
+    },
+    {
+     "text": "PARMEZANOM /1,3,7/",
+     "box": {
+      "left": 65,
+      "top": 292,
+      "right": 147,
+      "bottom": 303
+     },
+     "lines": [
+      {
+       "text": "PARMEZANOM /1,3,7/",
+       "box": {
+        "left": 65,
+        "top": 292,
+        "right": 147,
+        "bottom": 303
+       },
+       "confidence": 0.912
+      }
+     ]
+    },
+    {
+     "text": "6.50",
+     "box": {
+      "left": 261,
+      "top": 312,
+      "right": 290,
+      "bottom": 325
+     },
+     "lines": [
+      {
+       "text": "6.50",
+       "box": {
+        "left": 261,
+        "top": 312,
+        "right": 290,
+        "bottom": 325
+       },
+       "confidence": 0.793
+      }
+     ]
+    },
+    {
+     "text": "ŠPAGETY S MÄSKOM\nŠPAGETY S PARADAJKOVOU OMÁCKOU,",
+     "box": {
+      "left": 65,
+      "top": 313,
+      "right": 204,
+      "bottom": 346
+     },
+     "lines": [
+      {
+       "text": "ŠPAGETY S MÄSKOM",
+       "box": {
+        "left": 65,
+        "top": 313,
+        "right": 171,
+        "bottom": 330
+       },
+       "confidence": 0.94
+      },
+      {
+       "text": "ŠPAGETY S PARADAJKOVOU OMÁCKOU,",
+       "box": {
+        "left": 65,
+        "top": 331,
+        "right": 204,
+        "bottom": 346
+       },
+       "confidence": 0.939
+      }
+     ]
+    },
+    {
+     "text": "KURACIM MÄSKOM A PARMEZÁNOM /1,3,7/\nMINI REZNE\nKURACIE MINI REZNE S HRANOLKAMI A\nKECUPOM /1,3,7/",
+     "box": {
+      "left": 65,
+      "top": 342,
+      "right": 223,
+      "bottom": 409
+     },
+     "lines": [
+      {
+       "text": "KURACIM MÄSKOM A PARMEZÁNOM /1,3,7/",
+       "box": {
+        "left": 65,
+        "top": 342,
+        "right": 223,
+        "bottom": 356
+       },
+       "confidence": 0.923
+      },
+      {
+       "text": "MINI REZNE",
+       "box": {
+        "left": 66,
+        "top": 368,
+        "right": 133,
+        "bottom": 384
+       },
+       "confidence": 0.909
+      },
+      {
+       "text": "KURACIE MINI REZNE S HRANOLKAMI A",
+       "box": {
+        "left": 66,
+        "top": 386,
+        "right": 217,
+        "bottom": 399
+       },
+       "confidence": 0.966
+      },
+      {
+       "text": "KECUPOM /1,3,7/",
+       "box": {
+        "left": 67,
+        "top": 399,
+        "right": 135,
+        "bottom": 409
+       },
+       "confidence": 0.924
+      }
+     ]
+    },
+    {
+     "text": "6.90",
+     "box": {
+      "left": 263,
+      "top": 365,
+      "right": 292,
+      "bottom": 379
+     },
+     "lines": [
+      {
+       "text": "6.90",
+       "box": {
+        "left": 263,
+        "top": 365,
+        "right": 292,
+        "bottom": 379
+       },
+       "confidence": 0.799
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

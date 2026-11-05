@@ -1,0 +1,1916 @@
+{
+ "pages": [
+  {
+   "pageId": "p1",
+   "width": 1414,
+   "height": 2000,
+   "blocks": [
+    {
+     "text": "De",
+     "box": {
+      "left": 578,
+      "top": 24,
+      "right": 771,
+      "bottom": 192
+     },
+     "lines": [
+      {
+       "text": "De",
+       "box": {
+        "left": 578,
+        "top": 24,
+        "right": 771,
+        "bottom": 192
+       },
+       "confidence": 0.663
+      }
+     ]
+    },
+    {
+     "text": "enné",
+     "box": {
+      "left": 736,
+      "top": 57,
+      "right": 1024,
+      "bottom": 171
+     },
+     "lines": [
+      {
+       "text": "enné",
+       "box": {
+        "left": 736,
+        "top": 57,
+        "right": 1024,
+        "bottom": 171
+       },
+       "confidence": 0.792
+      }
+     ]
+    },
+    {
+     "text": "menu",
+     "box": {
+      "left": 985,
+      "top": 85,
+      "right": 1294,
+      "bottom": 169
+     },
+     "lines": [
+      {
+       "text": "menu",
+       "box": {
+        "left": 985,
+        "top": 85,
+        "right": 1294,
+        "bottom": 169
+       },
+       "confidence": 0.785
+      }
+     ]
+    },
+    {
+     "text": "Galéria",
+     "box": {
+      "left": 209,
+      "top": 95,
+      "right": 476,
+      "bottom": 166
+     },
+     "lines": [
+      {
+       "text": "Galéria",
+       "box": {
+        "left": 209,
+        "top": 95,
+        "right": 476,
+        "bottom": 166
+       },
+       "confidence": 0.874
+      }
+     ]
+    },
+    {
+     "text": "Pizzeria Pub\nJ. Kalinčiaka 40A\nZvolen",
+     "box": {
+      "left": 263,
+      "top": 166,
+      "right": 484,
+      "bottom": 283
+     },
+     "lines": [
+      {
+       "text": "Pizzeria Pub",
+       "box": {
+        "left": 263,
+        "top": 166,
+        "right": 433,
+        "bottom": 193
+       },
+       "confidence": 0.923
+      },
+      {
+       "text": "J. Kalinčiaka 40A",
+       "box": {
+        "left": 266,
+        "top": 209,
+        "right": 484,
+        "bottom": 241
+       },
+       "confidence": 0.942
+      },
+      {
+       "text": "Zvolen",
+       "box": {
+        "left": 263,
+        "top": 245,
+        "right": 362,
+        "bottom": 283
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "ČERSTVO ",
+     "box": {
+      "left": 671,
+      "top": 215,
+      "right": 851,
+      "bottom": 248
+     },
+     "lines": [
+      {
+       "text": "ČERSTVO ",
+       "box": {
+        "left": 671,
+        "top": 215,
+        "right": 851,
+        "bottom": 248
+       },
+       "confidence": 0.799
+      }
+     ]
+    },
+    {
+     "text": "CHUTNE •S LÁSKOU\nObjednávky",
+     "box": {
+      "left": 870,
+      "top": 217,
+      "right": 1206,
+      "bottom": 300
+     },
+     "lines": [
+      {
+       "text": "CHUTNE •S LÁSKOU",
+       "box": {
+        "left": 870,
+        "top": 217,
+        "right": 1206,
+        "bottom": 246
+       },
+       "confidence": 0.894
+      },
+      {
+       "text": "Objednávky",
+       "box": {
+        "left": 872,
+        "top": 261,
+        "right": 1009,
+        "bottom": 300
+       },
+       "confidence": 0.908
+      }
+     ]
+    },
+    {
+     "text": "Obedy podávame",
+     "box": {
+      "left": 498,
+      "top": 278,
+      "right": 692,
+      "bottom": 314
+     },
+     "lines": [
+      {
+       "text": "Obedy podávame",
+       "box": {
+        "left": 498,
+        "top": 278,
+        "right": 692,
+        "bottom": 314
+       },
+       "confidence": 0.933
+      }
+     ]
+    },
+    {
+     "text": "Rozvoz",
+     "box": {
+      "left": 1222,
+      "top": 281,
+      "right": 1311,
+      "bottom": 315
+     },
+     "lines": [
+      {
+       "text": "Rozvoz",
+       "box": {
+        "left": 1222,
+        "top": 281,
+        "right": 1311,
+        "bottom": 315
+       },
+       "confidence": 0.837
+      }
+     ]
+    },
+    {
+     "text": "prijímame\nod 8:00",
+     "box": {
+      "left": 874,
+      "top": 297,
+      "right": 994,
+      "bottom": 360
+     },
+     "lines": [
+      {
+       "text": "prijímame",
+       "box": {
+        "left": 874,
+        "top": 297,
+        "right": 994,
+        "bottom": 328
+       },
+       "confidence": 0.899
+      },
+      {
+       "text": "od 8:00",
+       "box": {
+        "left": 875,
+        "top": 329,
+        "right": 980,
+        "bottom": 360
+       },
+       "confidence": 0.872
+      }
+     ]
+    },
+    {
+     "text": "od 10:30 do 14:30",
+     "box": {
+      "left": 497,
+      "top": 313,
+      "right": 733,
+      "bottom": 349
+     },
+     "lines": [
+      {
+       "text": "od 10:30 do 14:30",
+       "box": {
+        "left": 497,
+        "top": 313,
+        "right": 733,
+        "bottom": 349
+       },
+       "confidence": 0.939
+      }
+     ]
+    },
+    {
+     "text": "od 10:30",
+     "box": {
+      "left": 1223,
+      "top": 314,
+      "right": 1342,
+      "bottom": 349
+     },
+     "lines": [
+      {
+       "text": "od 10:30",
+       "box": {
+        "left": 1223,
+        "top": 314,
+        "right": 1342,
+        "bottom": 349
+       },
+       "confidence": 0.878
+      }
+     ]
+    },
+    {
+     "text": "2.11. - 6.11.2026",
+     "box": {
+      "left": 136,
+      "top": 335,
+      "right": 384,
+      "bottom": 362
+     },
+     "lines": [
+      {
+       "text": "2.11. - 6.11.2026",
+       "box": {
+        "left": 136,
+        "top": 335,
+        "right": 384,
+        "bottom": 362
+       },
+       "confidence": 0.935
+      }
+     ]
+    },
+    {
+     "text": "Polievka A: 0,33l Talianska šošovicová\nPolievka B: 0,33l Vývar s kuracím mäsom, zeleninou a rezancami (A1,3,9)\nM1: 200g/200g Bravčový stroganov, 1⁄2 ryža, ½2 hranolky (A1,7)\n    n    ",
+     "box": {
+      "left": 218,
+      "top": 400,
+      "right": 1381,
+      "bottom": 526
+     },
+     "lines": [
+      {
+       "text": "Polievka A: 0,33l Talianska šošovicová",
+       "box": {
+        "left": 220,
+        "top": 400,
+        "right": 722,
+        "bottom": 429
+       },
+       "confidence": 0.956
+      },
+      {
+       "text": "Polievka B: 0,33l Vývar s kuracím mäsom, zeleninou a rezancami (A1,3,9)",
+       "box": {
+        "left": 220,
+        "top": 430,
+        "right": 1158,
+        "bottom": 464
+       },
+       "confidence": 0.976
+      },
+      {
+       "text": "M1: 200g/200g Bravčový stroganov, 1⁄2 ryža, ½2 hranolky (A1,7)",
+       "box": {
+        "left": 220,
+        "top": 466,
+        "right": 974,
+        "bottom": 495
+       },
+       "confidence": 0.936
+      },
+      {
+       "text": "    n    ",
+       "box": {
+        "left": 218,
+        "top": 495,
+        "right": 1381,
+        "bottom": 526
+       },
+       "confidence": 0.601
+      }
+     ]
+    },
+    {
+     "text": "PONDELOK",
+     "box": {
+      "left": 43,
+      "top": 404,
+      "right": 192,
+      "bottom": 446
+     },
+     "lines": [
+      {
+       "text": "PONDELOK",
+       "box": {
+        "left": 43,
+        "top": 404,
+        "right": 192,
+        "bottom": 446
+       },
+       "confidence": 0.887
+      }
+     ]
+    },
+    {
+     "text": "7,50€",
+     "box": {
+      "left": 1306,
+      "top": 465,
+      "right": 1379,
+      "bottom": 494
+     },
+     "lines": [
+      {
+       "text": "7,50€",
+       "box": {
+        "left": 1306,
+        "top": 465,
+        "right": 1379,
+        "bottom": 494
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "         ",
+     "box": {
+      "left": 218,
+      "top": 525,
+      "right": 1377,
+      "bottom": 556
+     },
+     "lines": [
+      {
+       "text": "         ",
+       "box": {
+        "left": 218,
+        "top": 525,
+        "right": 1377,
+        "bottom": 556
+       },
+       "confidence": 0.698
+      }
+     ]
+    },
+    {
+     "text": "M4: 200g/200g Rezance s tvarohom a so slaninkou (A1,3,7)",
+     "box": {
+      "left": 219,
+      "top": 555,
+      "right": 942,
+      "bottom": 589
+     },
+     "lines": [
+      {
+       "text": "M4: 200g/200g Rezance s tvarohom a so slaninkou (A1,3,7)",
+       "box": {
+        "left": 219,
+        "top": 555,
+        "right": 942,
+        "bottom": 589
+       },
+       "confidence": 0.975
+      }
+     ]
+    },
+    {
+     "text": "7,50€",
+     "box": {
+      "left": 1305,
+      "top": 556,
+      "right": 1380,
+      "bottom": 589
+     },
+     "lines": [
+      {
+       "text": "7,50€",
+       "box": {
+        "left": 1305,
+        "top": 556,
+        "right": 1380,
+        "bottom": 589
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "Polievka A: 0,33l Hríbiková s mrveničkou\nPolievka B: 0,33l Vývar s kuracím mäsom, zeleninou a rezancami (A1,3,9)\n            \nM2: 200g/200g kuracie prsia, pomarančovo-tymiánová omáčka, ½⁄2 ryža 1⁄2 opekané zemiaky 7,50$\n        ",
+     "box": {
+      "left": 220,
+      "top": 631,
+      "right": 1396,
+      "bottom": 791
+     },
+     "lines": [
+      {
+       "text": "Polievka A: 0,33l Hríbiková s mrveničkou",
+       "box": {
+        "left": 221,
+        "top": 631,
+        "right": 747,
+        "bottom": 657
+       },
+       "confidence": 0.958
+      },
+      {
+       "text": "Polievka B: 0,33l Vývar s kuracím mäsom, zeleninou a rezancami (A1,3,9)",
+       "box": {
+        "left": 220,
+        "top": 662,
+        "right": 1156,
+        "bottom": 691
+       },
+       "confidence": 0.967
+      },
+      {
+       "text": "            ",
+       "box": {
+        "left": 222,
+        "top": 694,
+        "right": 1376,
+        "bottom": 723
+       },
+       "confidence": 0.671
+      },
+      {
+       "text": "M2: 200g/200g kuracie prsia, pomarančovo-tymiánová omáčka, ½⁄2 ryža 1⁄2 opekané zemiaky 7,50$",
+       "box": {
+        "left": 223,
+        "top": 728,
+        "right": 1396,
+        "bottom": 757
+       },
+       "confidence": 0.962
+      },
+      {
+       "text": "        ",
+       "box": {
+        "left": 221,
+        "top": 757,
+        "right": 1386,
+        "bottom": 791
+       },
+       "confidence": 0.737
+      }
+     ]
+    },
+    {
+     "text": "UTOROK",
+     "box": {
+      "left": 48,
+      "top": 637,
+      "right": 184,
+      "bottom": 682
+     },
+     "lines": [
+      {
+       "text": "UTOROK",
+       "box": {
+        "left": 48,
+        "top": 637,
+        "right": 184,
+        "bottom": 682
+       },
+       "confidence": 0.853
+      }
+     ]
+    },
+    {
+     "text": "600",
+     "box": {
+      "left": 123,
+      "top": 772,
+      "right": 163,
+      "bottom": 794
+     },
+     "lines": [
+      {
+       "text": "600",
+       "box": {
+        "left": 123,
+        "top": 772,
+        "right": 163,
+        "bottom": 794
+       },
+       "confidence": 0.716
+      }
+     ]
+    },
+    {
+     "text": "M4: 400g",
+     "box": {
+      "left": 220,
+      "top": 787,
+      "right": 342,
+      "bottom": 823
+     },
+     "lines": [
+      {
+       "text": "M4: 400g",
+       "box": {
+        "left": 220,
+        "top": 787,
+        "right": 342,
+        "bottom": 823
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "Domáce Langoše s kečupom a syrom (A1,3,7)",
+     "box": {
+      "left": 409,
+      "top": 789,
+      "right": 970,
+      "bottom": 823
+     },
+     "lines": [
+      {
+       "text": "Domáce Langoše s kečupom a syrom (A1,3,7)",
+       "box": {
+        "left": 409,
+        "top": 789,
+        "right": 970,
+        "bottom": 823
+       },
+       "confidence": 0.969
+      }
+     ]
+    },
+    {
+     "text": "7,50€",
+     "box": {
+      "left": 1310,
+      "top": 791,
+      "right": 1384,
+      "bottom": 821
+     },
+     "lines": [
+      {
+       "text": "7,50€",
+       "box": {
+        "left": 1310,
+        "top": 791,
+        "right": 1384,
+        "bottom": 821
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "Polievka A: 0,33i Hrachová so zeleninou (A1)\nPolievka B: 0,33i Vývar s kuracím mäsom, zeleninou a rezancami (A1,3,9)\nM1: 200g/200g Hovädzie líčka, pučené zemiaky (A1,7)\nM2: 200g/200g Pečené kačacie stehno, červená kapusta, parená kned’a (A1,3,7)\nM3: 400g/50g Domáce halušky so slaninkou (bryndzové, syrokrémové, strapačky) (A1,7) 8,50€\nM4: 400g",
+     "box": {
+      "left": 219,
+      "top": 880,
+      "right": 1388,
+      "bottom": 1076
+     },
+     "lines": [
+      {
+       "text": "Polievka A: 0,33i Hrachová so zeleninou (A1)",
+       "box": {
+        "left": 220,
+        "top": 880,
+        "right": 797,
+        "bottom": 909
+       },
+       "confidence": 0.943
+      },
+      {
+       "text": "Polievka B: 0,33i Vývar s kuracím mäsom, zeleninou a rezancami (A1,3,9)",
+       "box": {
+        "left": 219,
+        "top": 911,
+        "right": 1159,
+        "bottom": 943
+       },
+       "confidence": 0.974
+      },
+      {
+       "text": "M1: 200g/200g Hovädzie líčka, pučené zemiaky (A1,7)",
+       "box": {
+        "left": 223,
+        "top": 946,
+        "right": 883,
+        "bottom": 975
+       },
+       "confidence": 0.976
+      },
+      {
+       "text": "M2: 200g/200g Pečené kačacie stehno, červená kapusta, parená kned’a (A1,3,7)",
+       "box": {
+        "left": 225,
+        "top": 980,
+        "right": 1197,
+        "bottom": 1006
+       },
+       "confidence": 0.98
+      },
+      {
+       "text": "M3: 400g/50g Domáce halušky so slaninkou (bryndzové, syrokrémové, strapačky) (A1,7) 8,50€",
+       "box": {
+        "left": 222,
+        "top": 1006,
+        "right": 1388,
+        "bottom": 1037
+       },
+       "confidence": 0.973
+      },
+      {
+       "text": "M4: 400g",
+       "box": {
+        "left": 223,
+        "top": 1040,
+        "right": 345,
+        "bottom": 1076
+       },
+       "confidence": 0.888
+      }
+     ]
+    },
+    {
+     "text": "STREDA",
+     "box": {
+      "left": 55,
+      "top": 883,
+      "right": 184,
+      "bottom": 928
+     },
+     "lines": [
+      {
+       "text": "STREDA",
+       "box": {
+        "left": 55,
+        "top": 883,
+        "right": 184,
+        "bottom": 928
+       },
+       "confidence": 0.856
+      }
+     ]
+    },
+    {
+     "text": "9,50€\n8,50€",
+     "box": {
+      "left": 1314,
+      "top": 945,
+      "right": 1388,
+      "bottom": 1007
+     },
+     "lines": [
+      {
+       "text": "9,50€",
+       "box": {
+        "left": 1314,
+        "top": 945,
+        "right": 1387,
+        "bottom": 974
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "8,50€",
+       "box": {
+        "left": 1315,
+        "top": 978,
+        "right": 1388,
+        "bottom": 1007
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "7,50€",
+     "box": {
+      "left": 1311,
+      "top": 1040,
+      "right": 1388,
+      "bottom": 1076
+     },
+     "lines": [
+      {
+       "text": "7,50€",
+       "box": {
+        "left": 1311,
+        "top": 1040,
+        "right": 1388,
+        "bottom": 1076
+       },
+       "confidence": 0.795
+      }
+     ]
+    },
+    {
+     "text": "Domáca tvarohovo-jablková žemlovka (A1,3,7)",
+     "box": {
+      "left": 412,
+      "top": 1045,
+      "right": 980,
+      "bottom": 1075
+     },
+     "lines": [
+      {
+       "text": "Domáca tvarohovo-jablková žemlovka (A1,3,7)",
+       "box": {
+        "left": 412,
+        "top": 1045,
+        "right": 980,
+        "bottom": 1075
+       },
+       "confidence": 0.977
+      }
+     ]
+    },
+    {
+     "text": "Polievka A: 0,33l Hlivová krémová (A1,7)\nPolievka B: 0,33l Vývar s kuracím mäsom, zeleninou a rezancami (A1,3,9)\n  n        do \nM2: 200g/200g Teryaki Poké bowl s kuracím mäsom, sviežim ovocím a zeleninou (A6,11) 8,50€\nM3: 400g/50gDomáce halušky so slaninkou (bryndzové, syrokrémové, strapačky) (A1,7) 8,50€",
+     "box": {
+      "left": 219,
+      "top": 1128,
+      "right": 1383,
+      "bottom": 1288
+     },
+     "lines": [
+      {
+       "text": "Polievka A: 0,33l Hlivová krémová (A1,7)",
+       "box": {
+        "left": 219,
+        "top": 1128,
+        "right": 741,
+        "bottom": 1159
+       },
+       "confidence": 0.963
+      },
+      {
+       "text": "Polievka B: 0,33l Vývar s kuracím mäsom, zeleninou a rezancami (A1,3,9)",
+       "box": {
+        "left": 219,
+        "top": 1160,
+        "right": 1160,
+        "bottom": 1192
+       },
+       "confidence": 0.979
+      },
+      {
+       "text": "  n        do ",
+       "box": {
+        "left": 222,
+        "top": 1193,
+        "right": 1383,
+        "bottom": 1223
+       },
+       "confidence": 0.648
+      },
+      {
+       "text": "M2: 200g/200g Teryaki Poké bowl s kuracím mäsom, sviežim ovocím a zeleninou (A6,11) 8,50€",
+       "box": {
+        "left": 223,
+        "top": 1226,
+        "right": 1380,
+        "bottom": 1255
+       },
+       "confidence": 0.984
+      },
+      {
+       "text": "M3: 400g/50gDomáce halušky so slaninkou (bryndzové, syrokrémové, strapačky) (A1,7) 8,50€",
+       "box": {
+        "left": 221,
+        "top": 1257,
+        "right": 1380,
+        "bottom": 1288
+       },
+       "confidence": 0.983
+      }
+     ]
+    },
+    {
+     "text": "ŠTVRTOK",
+     "box": {
+      "left": 47,
+      "top": 1131,
+      "right": 190,
+      "bottom": 1182
+     },
+     "lines": [
+      {
+       "text": "ŠTVRTOK",
+       "box": {
+        "left": 47,
+        "top": 1131,
+        "right": 190,
+        "bottom": 1182
+       },
+       "confidence": 0.858
+      }
+     ]
+    },
+    {
+     "text": "7,50€",
+     "box": {
+      "left": 1306,
+      "top": 1285,
+      "right": 1384,
+      "bottom": 1321
+     },
+     "lines": [
+      {
+       "text": "7,50€",
+       "box": {
+        "left": 1306,
+        "top": 1285,
+        "right": 1384,
+        "bottom": 1321
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "M4: 150g/200g Grilovaný oštiepok, pečené batáty, zeleninový šalát (A7)",
+     "box": {
+      "left": 221,
+      "top": 1287,
+      "right": 1088,
+      "bottom": 1321
+     },
+     "lines": [
+      {
+       "text": "M4: 150g/200g Grilovaný oštiepok, pečené batáty, zeleninový šalát (A7)",
+       "box": {
+        "left": 221,
+        "top": 1287,
+        "right": 1088,
+        "bottom": 1321
+       },
+       "confidence": 0.969
+      }
+     ]
+    },
+    {
+     "text": "Polievka A: 0,33l Struková na kyslo (A1,7)",
+     "box": {
+      "left": 221,
+      "top": 1362,
+      "right": 758,
+      "bottom": 1390
+     },
+     "lines": [
+      {
+       "text": "Polievka A: 0,33l Struková na kyslo (A1,7)",
+       "box": {
+        "left": 221,
+        "top": 1362,
+        "right": 758,
+        "bottom": 1390
+       },
+       "confidence": 0.959
+      }
+     ]
+    },
+    {
+     "text": "PIATOK",
+     "box": {
+      "left": 59,
+      "top": 1372,
+      "right": 179,
+      "bottom": 1421
+     },
+     "lines": [
+      {
+       "text": "PIATOK",
+       "box": {
+        "left": 59,
+        "top": 1372,
+        "right": 179,
+        "bottom": 1421
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "Polievka B: 0,33l Vývar s kuracím mäsom, zeleninou a rezancami (A1,3,9)",
+     "box": {
+      "left": 220,
+      "top": 1388,
+      "right": 1163,
+      "bottom": 1419
+     },
+     "lines": [
+      {
+       "text": "Polievka B: 0,33l Vývar s kuracím mäsom, zeleninou a rezancami (A1,3,9)",
+       "box": {
+        "left": 220,
+        "top": 1388,
+        "right": 1163,
+        "bottom": 1419
+       },
+       "confidence": 0.97
+      }
+     ]
+    },
+    {
+     "text": "7,50€\n7,50€",
+     "box": {
+      "left": 1308,
+      "top": 1417,
+      "right": 1386,
+      "bottom": 1481
+     },
+     "lines": [
+      {
+       "text": "7,50€",
+       "box": {
+        "left": 1309,
+        "top": 1417,
+        "right": 1386,
+        "bottom": 1449
+       },
+       "confidence": 0.833
+      },
+      {
+       "text": "7,50€",
+       "box": {
+        "left": 1308,
+        "top": 1452,
+        "right": 1381,
+        "bottom": 1481
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "M1: 200g/200g Trhané bravčové v zemiakovej lokši, coleslaw šalát (A1,3,7)\nM2: 200g/200g Kuracie prsia, nivová omáčka, 1⁄2 ryža, 1⁄2 hranolky (A1,7)\nM3: 400g/50g Domáce halušky so slaninkou (bryndzové, syrokrémové, strapačky) (A1,7) 8,50€",
+     "box": {
+      "left": 218,
+      "top": 1418,
+      "right": 1382,
+      "bottom": 1516
+     },
+     "lines": [
+      {
+       "text": "M1: 200g/200g Trhané bravčové v zemiakovej lokši, coleslaw šalát (A1,3,7)",
+       "box": {
+        "left": 221,
+        "top": 1418,
+        "right": 1134,
+        "bottom": 1450
+       },
+       "confidence": 0.974
+      },
+      {
+       "text": "M2: 200g/200g Kuracie prsia, nivová omáčka, 1⁄2 ryža, 1⁄2 hranolky (A1,7)",
+       "box": {
+        "left": 218,
+        "top": 1452,
+        "right": 1093,
+        "bottom": 1482
+       },
+       "confidence": 0.96
+      },
+      {
+       "text": "M3: 400g/50g Domáce halušky so slaninkou (bryndzové, syrokrémové, strapačky) (A1,7) 8,50€",
+       "box": {
+        "left": 218,
+        "top": 1485,
+        "right": 1382,
+        "bottom": 1516
+       },
+       "confidence": 0.981
+      }
+     ]
+    },
+    {
+     "text": "M4: 450g",
+     "box": {
+      "left": 216,
+      "top": 1515,
+      "right": 340,
+      "bottom": 1552
+     },
+     "lines": [
+      {
+       "text": "M4: 450g",
+       "box": {
+        "left": 216,
+        "top": 1515,
+        "right": 340,
+        "bottom": 1552
+       },
+       "confidence": 0.889
+      }
+     ]
+    },
+    {
+     "text": "7,50€",
+     "box": {
+      "left": 1307,
+      "top": 1516,
+      "right": 1385,
+      "bottom": 1551
+     },
+     "lines": [
+      {
+       "text": "7,50€",
+       "box": {
+        "left": 1307,
+        "top": 1516,
+        "right": 1385,
+        "bottom": 1551
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "Pečené zemiaky s brokolicou, syrová omáčka (A7)",
+     "box": {
+      "left": 403,
+      "top": 1517,
+      "right": 1020,
+      "bottom": 1550
+     },
+     "lines": [
+      {
+       "text": "Pečené zemiaky s brokolicou, syrová omáčka (A7)",
+       "box": {
+        "left": 403,
+        "top": 1517,
+        "right": 1020,
+        "bottom": 1550
+       },
+       "confidence": 0.968
+      }
+     ]
+    },
+    {
+     "text": "Cena denného menu\nOd 7,50€ do 9,50€\nvrátane polievky, dovozu\nCeny sú uvedené s DPH.",
+     "box": {
+      "left": 265,
+      "top": 1580,
+      "right": 508,
+      "bottom": 1723
+     },
+     "lines": [
+      {
+       "text": "Cena denného menu",
+       "box": {
+        "left": 266,
+        "top": 1580,
+        "right": 443,
+        "bottom": 1606
+       },
+       "confidence": 0.943
+      },
+      {
+       "text": "Od 7,50€ do 9,50€",
+       "box": {
+        "left": 265,
+        "top": 1611,
+        "right": 505,
+        "bottom": 1638
+       },
+       "confidence": 0.944
+      },
+      {
+       "text": "vrátane polievky, dovozu",
+       "box": {
+        "left": 266,
+        "top": 1646,
+        "right": 508,
+        "bottom": 1675
+       },
+       "confidence": 0.959
+      },
+      {
+       "text": "Ceny sú uvedené s DPH.",
+       "box": {
+        "left": 265,
+        "top": 1693,
+        "right": 488,
+        "bottom": 1723
+       },
+       "confidence": 0.954
+      }
+     ]
+    },
+    {
+     "text": "Hmotnost msa",
+     "box": {
+      "left": 1160,
+      "top": 1604,
+      "right": 1320,
+      "bottom": 1631
+     },
+     "lines": [
+      {
+       "text": "Hmotnost msa",
+       "box": {
+        "left": 1160,
+        "top": 1604,
+        "right": 1320,
+        "bottom": 1631
+       },
+       "confidence": 0.921
+      }
+     ]
+    },
+    {
+     "text": "je uvedená",
+     "box": {
+      "left": 1159,
+      "top": 1630,
+      "right": 1269,
+      "bottom": 1661
+     },
+     "lines": [
+      {
+       "text": "je uvedená",
+       "box": {
+        "left": 1159,
+        "top": 1630,
+        "right": 1269,
+        "bottom": 1661
+       },
+       "confidence": 0.909
+      }
+     ]
+    },
+    {
+     "text": "Polievka samostatne\nCeny sú uvedené s DPH.",
+     "box": {
+      "left": 730,
+      "top": 1648,
+      "right": 937,
+      "bottom": 1726
+     },
+     "lines": [
+      {
+       "text": "Polievka samostatne",
+       "box": {
+        "left": 730,
+        "top": 1648,
+        "right": 932,
+        "bottom": 1679
+       },
+       "confidence": 0.95
+      },
+      {
+       "text": "Ceny sú uvedené s DPH.",
+       "box": {
+        "left": 730,
+        "top": 1696,
+        "right": 937,
+        "bottom": 1726
+       },
+       "confidence": 0.941
+      }
+     ]
+    },
+    {
+     "text": "v surovom stave.",
+     "box": {
+      "left": 1159,
+      "top": 1660,
+      "right": 1332,
+      "bottom": 1687
+     },
+     "lines": [
+      {
+       "text": "v surovom stave.",
+       "box": {
+        "left": 1159,
+        "top": 1660,
+        "right": 1332,
+        "bottom": 1687
+       },
+       "confidence": 0.915
+      }
+     ]
+    },
+    {
+     "text": "a balného.",
+     "box": {
+      "left": 267,
+      "top": 1672,
+      "right": 367,
+      "bottom": 1697
+     },
+     "lines": [
+      {
+       "text": "a balného.",
+       "box": {
+        "left": 267,
+        "top": 1672,
+        "right": 367,
+        "bottom": 1697
+       },
+       "confidence": 0.907
+      }
+     ]
+    },
+    {
+     "text": "2,50 €.",
+     "box": {
+      "left": 732,
+      "top": 1674,
+      "right": 805,
+      "bottom": 1700
+     },
+     "lines": [
+      {
+       "text": "2,50 €.",
+       "box": {
+        "left": 732,
+        "top": 1674,
+        "right": 805,
+        "bottom": 1700
+       },
+       "confidence": 0.875
+      }
+     ]
+    },
+    {
+     "text": "VŠETKY PIZZE SÚ V PONUKE",
+     "box": {
+      "left": 1034,
+      "top": 1739,
+      "right": 1326,
+      "bottom": 1774
+     },
+     "lines": [
+      {
+       "text": "VŠETKY PIZZE SÚ V PONUKE",
+       "box": {
+        "left": 1034,
+        "top": 1739,
+        "right": 1326,
+        "bottom": 1774
+       },
+       "confidence": 0.958
+      }
+     ]
+    },
+    {
+     "text": "0905 616 999",
+     "box": {
+      "left": 583,
+      "top": 1755,
+      "right": 865,
+      "bottom": 1795
+     },
+     "lines": [
+      {
+       "text": "0905 616 999",
+       "box": {
+        "left": 583,
+        "top": 1755,
+        "right": 865,
+        "bottom": 1795
+       },
+       "confidence": 0.907
+      }
+     ]
+    },
+    {
+     "text": "OBJEDNÁVKY NA TELEFÓN:",
+     "box": {
+      "left": 248,
+      "top": 1757,
+      "right": 570,
+      "bottom": 1792
+     },
+     "lines": [
+      {
+       "text": "OBJEDNÁVKY NA TELEFÓN:",
+       "box": {
+        "left": 248,
+        "top": 1757,
+        "right": 570,
+        "bottom": 1792
+       },
+       "confidence": 0.955
+      }
+     ]
+    },
+    {
+     "text": "OD 10:30",
+     "box": {
+      "left": 1110,
+      "top": 1781,
+      "right": 1224,
+      "bottom": 1811
+     },
+     "lines": [
+      {
+       "text": "OD 10:30",
+       "box": {
+        "left": 1110,
+        "top": 1781,
+        "right": 1224,
+        "bottom": 1811
+       },
+       "confidence": 0.887
+      }
+     ]
+    },
+    {
+     "text": "Zoznam alergénov:",
+     "box": {
+      "left": 141,
+      "top": 1835,
+      "right": 305,
+      "bottom": 1860
+     },
+     "lines": [
+      {
+       "text": "Zoznam alergénov:",
+       "box": {
+        "left": 141,
+        "top": 1835,
+        "right": 305,
+        "bottom": 1860
+       },
+       "confidence": 0.94
+      }
+     ]
+    },
+    {
+     "text": "Sójové zrná a výrobky z nich.",
+     "box": {
+      "left": 670,
+      "top": 1857,
+      "right": 893,
+      "bottom": 1877
+     },
+     "lines": [
+      {
+       "text": "Sójové zrná a výrobky z nich.",
+       "box": {
+        "left": 670,
+        "top": 1857,
+        "right": 893,
+        "bottom": 1877
+       },
+       "confidence": 0.964
+      }
+     ]
+    },
+    {
+     "text": "i.",
+     "box": {
+      "left": 1001,
+      "top": 1857,
+      "right": 1029,
+      "bottom": 1878
+     },
+     "lines": [
+      {
+       "text": "i.",
+       "box": {
+        "left": 1001,
+        "top": 1857,
+        "right": 1029,
+        "bottom": 1878
+       },
+       "confidence": 0.526
+      }
+     ]
+    },
+    {
+     "text": "Sezamové semenã a vyrobky z nich.\nvy3šich ako 10 mg/kg alebo 10 mg/l.",
+     "box": {
+      "left": 1038,
+      "top": 1857,
+      "right": 1318,
+      "bottom": 1918
+     },
+     "lines": [
+      {
+       "text": "Sezamové semenã a vyrobky z nich.",
+       "box": {
+        "left": 1039,
+        "top": 1857,
+        "right": 1307,
+        "bottom": 1877
+       },
+       "confidence": 0.928
+      },
+      {
+       "text": "vy3šich ako 10 mg/kg alebo 10 mg/l.",
+       "box": {
+        "left": 1038,
+        "top": 1894,
+        "right": 1318,
+        "bottom": 1918
+       },
+       "confidence": 0.952
+      }
+     ]
+    },
+    {
+     "text": "Obilniny obsahujúce lepok (t.j. pšenica, raž, jačmeñ,",
+     "box": {
+      "left": 172,
+      "top": 1858,
+      "right": 531,
+      "bottom": 1878
+     },
+     "lines": [
+      {
+       "text": "Obilniny obsahujúce lepok (t.j. pšenica, raž, jačmeñ,",
+       "box": {
+        "left": 172,
+        "top": 1858,
+        "right": 531,
+        "bottom": 1878
+       },
+       "confidence": 0.962
+      }
+     ]
+    },
+    {
+     "text": "6.",
+     "box": {
+      "left": 633,
+      "top": 1858,
+      "right": 651,
+      "bottom": 1877
+     },
+     "lines": [
+      {
+       "text": "6.",
+       "box": {
+        "left": 633,
+        "top": 1858,
+        "right": 651,
+        "bottom": 1877
+       },
+       "confidence": 0.654
+      }
+     ]
+    },
+    {
+     "text": "Oxid siričity a siričitany v koncentráciách",
+     "box": {
+      "left": 1038,
+      "top": 1874,
+      "right": 1353,
+      "bottom": 1898
+     },
+     "lines": [
+      {
+       "text": "Oxid siričity a siričitany v koncentráciách",
+       "box": {
+        "left": 1038,
+        "top": 1874,
+        "right": 1353,
+        "bottom": 1898
+       },
+       "confidence": 0.958
+      }
+     ]
+    },
+    {
+     "text": "ovos, Špalda, kamut alebo ich hybridné odrody).\nVajcia a vyrobky z nich.",
+     "box": {
+      "left": 172,
+      "top": 1875,
+      "right": 506,
+      "bottom": 1935
+     },
+     "lines": [
+      {
+       "text": "ovos, Špalda, kamut alebo ich hybridné odrody).",
+       "box": {
+        "left": 172,
+        "top": 1875,
+        "right": 506,
+        "bottom": 1900
+       },
+       "confidence": 0.967
+      },
+      {
+       "text": "Vajcia a vyrobky z nich.",
+       "box": {
+        "left": 174,
+        "top": 1915,
+        "right": 341,
+        "bottom": 1935
+       },
+       "confidence": 0.931
+      }
+     ]
+    },
+    {
+     "text": "7.\n9.",
+     "box": {
+      "left": 631,
+      "top": 1875,
+      "right": 653,
+      "bottom": 1938
+     },
+     "lines": [
+      {
+       "text": "7.",
+       "box": {
+        "left": 631,
+        "top": 1875,
+        "right": 652,
+        "bottom": 1898
+       },
+       "confidence": 0.664
+      },
+      {
+       "text": "9.",
+       "box": {
+        "left": 632,
+        "top": 1915,
+        "right": 653,
+        "bottom": 1938
+       },
+       "confidence": 0.529
+      }
+     ]
+    },
+    {
+     "text": "Mlieko a vyrobky z neho.\nZeler a výrobky z neho.",
+     "box": {
+      "left": 668,
+      "top": 1875,
+      "right": 862,
+      "bottom": 1939
+     },
+     "lines": [
+      {
+       "text": "Mlieko a vyrobky z neho.",
+       "box": {
+        "left": 668,
+        "top": 1875,
+        "right": 862,
+        "bottom": 1899
+       },
+       "confidence": 0.953
+      },
+      {
+       "text": "Zeler a výrobky z neho.",
+       "box": {
+        "left": 668,
+        "top": 1913,
+        "right": 849,
+        "bottom": 1939
+       },
+       "confidence": 0.941
+      }
+     ]
+    },
+    {
+     "text": "12.",
+     "box": {
+      "left": 1001,
+      "top": 1875,
+      "right": 1026,
+      "bottom": 1896
+     },
+     "lines": [
+      {
+       "text": "12.",
+       "box": {
+        "left": 1001,
+        "top": 1875,
+        "right": 1026,
+        "bottom": 1896
+       },
+       "confidence": 0.749
+      }
+     ]
+    },
+    {
+     "text": "2.",
+     "box": {
+      "left": 143,
+      "top": 1895,
+      "right": 161,
+      "bottom": 1915
+     },
+     "lines": [
+      {
+       "text": "2.",
+       "box": {
+        "left": 143,
+        "top": 1895,
+        "right": 161,
+        "bottom": 1915
+       },
+       "confidence": 0.664
+      }
+     ]
+    },
+    {
+     "text": "8.",
+     "box": {
+      "left": 631,
+      "top": 1895,
+      "right": 652,
+      "bottom": 1917
+     },
+     "lines": [
+      {
+       "text": "8.",
+       "box": {
+        "left": 631,
+        "top": 1895,
+        "right": 652,
+        "bottom": 1917
+       },
+       "confidence": 0.624
+      }
+     ]
+    },
+    {
+     "text": "Körovce a vjrobky z nich.",
+     "box": {
+      "left": 174,
+      "top": 1896,
+      "right": 358,
+      "bottom": 1916
+     },
+     "lines": [
+      {
+       "text": "Körovce a vjrobky z nich.",
+       "box": {
+        "left": 174,
+        "top": 1896,
+        "right": 358,
+        "bottom": 1916
+       },
+       "confidence": 0.897
+      }
+     ]
+    },
+    {
+     "text": "Orechy.\nHorčica a výrobky z nej.",
+     "box": {
+      "left": 669,
+      "top": 1896,
+      "right": 853,
+      "bottom": 1960
+     },
+     "lines": [
+      {
+       "text": "Orechy.",
+       "box": {
+        "left": 670,
+        "top": 1896,
+        "right": 730,
+        "bottom": 1917
+       },
+       "confidence": 0.874
+      },
+      {
+       "text": "Horčica a výrobky z nej.",
+       "box": {
+        "left": 669,
+        "top": 1936,
+        "right": 853,
+        "bottom": 1960
+       },
+       "confidence": 0.946
+      }
+     ]
+    },
+    {
+     "text": "13.",
+     "box": {
+      "left": 1001,
+      "top": 1916,
+      "right": 1030,
+      "bottom": 1936
+     },
+     "lines": [
+      {
+       "text": "13.",
+       "box": {
+        "left": 1001,
+        "top": 1916,
+        "right": 1030,
+        "bottom": 1936
+       },
+       "confidence": 0.745
+      }
+     ]
+    },
+    {
+     "text": "VIči bób a výrobky z neho.",
+     "box": {
+      "left": 1038,
+      "top": 1917,
+      "right": 1241,
+      "bottom": 1938
+     },
+     "lines": [
+      {
+       "text": "VIči bób a výrobky z neho.",
+       "box": {
+        "left": 1038,
+        "top": 1917,
+        "right": 1241,
+        "bottom": 1938
+       },
+       "confidence": 0.92
+      }
+     ]
+    },
+    {
+     "text": "14. Mkkyše a vyrobky z nich.",
+     "box": {
+      "left": 997,
+      "top": 1933,
+      "right": 1241,
+      "bottom": 1960
+     },
+     "lines": [
+      {
+       "text": "14. Mkkyše a vyrobky z nich.",
+       "box": {
+        "left": 997,
+        "top": 1933,
+        "right": 1241,
+        "bottom": 1960
+       },
+       "confidence": 0.909
+      }
+     ]
+    },
+    {
+     "text": "Ryby a vyrobky z nich.",
+     "box": {
+      "left": 173,
+      "top": 1934,
+      "right": 335,
+      "bottom": 1955
+     },
+     "lines": [
+      {
+       "text": "Ryby a vyrobky z nich.",
+       "box": {
+        "left": 173,
+        "top": 1934,
+        "right": 335,
+        "bottom": 1955
+       },
+       "confidence": 0.949
+      }
+     ]
+    },
+    {
+     "text": "10.",
+     "box": {
+      "left": 633,
+      "top": 1936,
+      "right": 659,
+      "bottom": 1957
+     },
+     "lines": [
+      {
+       "text": "10.",
+       "box": {
+        "left": 633,
+        "top": 1936,
+        "right": 659,
+        "bottom": 1957
+       },
+       "confidence": 0.725
+      }
+     ]
+    },
+    {
+     "text": "5.",
+     "box": {
+      "left": 141,
+      "top": 1950,
+      "right": 173,
+      "bottom": 1973
+     },
+     "lines": [
+      {
+       "text": "5.",
+       "box": {
+        "left": 141,
+        "top": 1950,
+        "right": 173,
+        "bottom": 1973
+       },
+       "confidence": 0.666
+      }
+     ]
+    },
+    {
+     "text": "Arašidy a výrobky z nich.",
+     "box": {
+      "left": 171,
+      "top": 1952,
+      "right": 355,
+      "bottom": 1975
+     },
+     "lines": [
+      {
+       "text": "Arašidy a výrobky z nich.",
+       "box": {
+        "left": 171,
+        "top": 1952,
+        "right": 355,
+        "bottom": 1975
+       },
+       "confidence": 0.942
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

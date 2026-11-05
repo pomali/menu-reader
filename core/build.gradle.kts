@@ -23,5 +23,7 @@ dependencies {
 tasks.test {
     // Phase0ScoreTest reads OCR dumps and hand-labelled truth from samples/.
     systemProperty("samples.dir", rootProject.file("samples").absolutePath)
+    inputs.files(fileTree(rootProject.file("samples")) { include("ocr*/**", "truth/**") }).withPropertyName("samples")
+    providers.gradleProperty("dump").orNull?.let { systemProperty("dump", it.ifEmpty { "true" }) }
     testLogging { showStandardStreams = true }
 }

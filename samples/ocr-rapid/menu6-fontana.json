@@ -1,0 +1,2090 @@
+{
+ "pages": [
+  {
+   "pageId": "p1",
+   "width": 1024,
+   "height": 1536,
+   "blocks": [
+    {
+     "text": "Reštaurácia",
+     "box": {
+      "left": 96,
+      "top": 13,
+      "right": 375,
+      "bottom": 55
+     },
+     "lines": [
+      {
+       "text": "Reštaurácia",
+       "box": {
+        "left": 96,
+        "top": 13,
+        "right": 375,
+        "bottom": 55
+       },
+       "confidence": 0.915
+      }
+     ]
+    },
+    {
+     "text": "enné menu",
+     "box": {
+      "left": 615,
+      "top": 49,
+      "right": 850,
+      "bottom": 121
+     },
+     "lines": [
+      {
+       "text": "enné menu",
+       "box": {
+        "left": 615,
+        "top": 49,
+        "right": 850,
+        "bottom": 121
+       },
+       "confidence": 0.875
+      }
+     ]
+    },
+    {
+     "text": "FONTANA",
+     "box": {
+      "left": 38,
+      "top": 62,
+      "right": 504,
+      "bottom": 135
+     },
+     "lines": [
+      {
+       "text": "FONTANA",
+       "box": {
+        "left": 38,
+        "top": 62,
+        "right": 504,
+        "bottom": 135
+       },
+       "confidence": 0.87
+      }
+     ]
+    },
+    {
+     "text": "02.11. – 06.11.2026",
+     "box": {
+      "left": 634,
+      "top": 131,
+      "right": 838,
+      "bottom": 157
+     },
+     "lines": [
+      {
+       "text": "02.11. – 06.11.2026",
+       "box": {
+        "left": 634,
+        "top": 131,
+        "right": 838,
+        "bottom": 157
+       },
+       "confidence": 0.947
+      }
+     ]
+    },
+    {
+     "text": "K EŽM ARO K",
+     "box": {
+      "left": 193,
+      "top": 137,
+      "right": 395,
+      "bottom": 163
+     },
+     "lines": [
+      {
+       "text": "K EŽM ARO K",
+       "box": {
+        "left": 193,
+        "top": 137,
+        "right": 395,
+        "bottom": 163
+       },
+       "confidence": 0.814
+      }
+     ]
+    },
+    {
+     "text": "Telefonické objednávky na vývoz jedál prijimame od 8:00 do 11:00 hodiny",
+     "box": {
+      "left": 30,
+      "top": 163,
+      "right": 536,
+      "bottom": 188
+     },
+     "lines": [
+      {
+       "text": "Telefonické objednávky na vývoz jedál prijimame od 8:00 do 11:00 hodiny",
+       "box": {
+        "left": 30,
+        "top": 163,
+        "right": 536,
+        "bottom": 188
+       },
+       "confidence": 0.98
+      }
+     ]
+    },
+    {
+     "text": "na telefónnom Čisle +421 944 194 285 alebo +421 915 078 040.",
+     "box": {
+      "left": 30,
+      "top": 186,
+      "right": 471,
+      "bottom": 206
+     },
+     "lines": [
+      {
+       "text": "na telefónnom Čisle +421 944 194 285 alebo +421 915 078 040.",
+       "box": {
+        "left": 30,
+        "top": 186,
+        "right": 471,
+        "bottom": 206
+       },
+       "confidence": 0.977
+      }
+     ]
+    },
+    {
+     "text": "7,10 €\n7,10 €\n7,10 €\n7,10 €\n6,30 €",
+     "box": {
+      "left": 929,
+      "top": 230,
+      "right": 985,
+      "bottom": 349
+     },
+     "lines": [
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 929,
+        "top": 230,
+        "right": 985,
+        "bottom": 255
+       },
+       "confidence": 0.855
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 930,
+        "top": 256,
+        "right": 984,
+        "bottom": 277
+       },
+       "confidence": 0.856
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 929,
+        "top": 279,
+        "right": 985,
+        "bottom": 300
+       },
+       "confidence": 0.856
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 930,
+        "top": 304,
+        "right": 984,
+        "bottom": 326
+       },
+       "confidence": 0.856
+      },
+      {
+       "text": "6,30 €",
+       "box": {
+        "left": 929,
+        "top": 328,
+        "right": 984,
+        "bottom": 349
+       },
+       "confidence": 0.856
+      }
+     ]
+    },
+    {
+     "text": "02.11.2026\nPONDELOK",
+     "box": {
+      "left": 39,
+      "top": 231,
+      "right": 151,
+      "bottom": 286
+     },
+     "lines": [
+      {
+       "text": "02.11.2026",
+       "box": {
+        "left": 40,
+        "top": 231,
+        "right": 148,
+        "bottom": 255
+       },
+       "confidence": 0.909
+      },
+      {
+       "text": "PONDELOK",
+       "box": {
+        "left": 39,
+        "top": 259,
+        "right": 151,
+        "bottom": 286
+       },
+       "confidence": 0.889
+      }
+     ]
+    },
+    {
+     "text": "1. Zapekaný bravčový plátok so syrom, pečené zemiaky, zeleninové obloženie\n2. Kuracie stroganov, ryža, hranolky\n3. Krémové tekvicové rizoto s parmezánom\n4. Pečený bōčik na tmavom pive, červená kapusta, parená knedla",
+     "box": {
+      "left": 423,
+      "top": 235,
+      "right": 896,
+      "bottom": 327
+     },
+     "lines": [
+      {
+       "text": "1. Zapekaný bravčový plátok so syrom, pečené zemiaky, zeleninové obloženie",
+       "box": {
+        "left": 425,
+        "top": 235,
+        "right": 896,
+        "bottom": 255
+       },
+       "confidence": 0.974
+      },
+      {
+       "text": "2. Kuracie stroganov, ryža, hranolky",
+       "box": {
+        "left": 424,
+        "top": 257,
+        "right": 649,
+        "bottom": 279
+       },
+       "confidence": 0.96
+      },
+      {
+       "text": "3. Krémové tekvicové rizoto s parmezánom",
+       "box": {
+        "left": 424,
+        "top": 281,
+        "right": 697,
+        "bottom": 302
+       },
+       "confidence": 0.975
+      },
+      {
+       "text": "4. Pečený bōčik na tmavom pive, červená kapusta, parená knedla",
+       "box": {
+        "left": 423,
+        "top": 303,
+        "right": 829,
+        "bottom": 327
+       },
+       "confidence": 0.961
+      }
+     ]
+    },
+    {
+     "text": "Francúzska",
+     "box": {
+      "left": 304,
+      "top": 243,
+      "right": 400,
+      "bottom": 267
+     },
+     "lines": [
+      {
+       "text": "Francúzska",
+       "box": {
+        "left": 304,
+        "top": 243,
+        "right": 400,
+        "bottom": 267
+       },
+       "confidence": 0.909
+      }
+     ]
+    },
+    {
+     "text": "polievka",
+     "box": {
+      "left": 302,
+      "top": 263,
+      "right": 376,
+      "bottom": 294
+     },
+     "lines": [
+      {
+       "text": "polievka",
+       "box": {
+        "left": 302,
+        "top": 263,
+        "right": 376,
+        "bottom": 294
+       },
+       "confidence": 0.888
+      }
+     ]
+    },
+    {
+     "text": "s mušličkami\n1, 3, 7",
+     "box": {
+      "left": 302,
+      "top": 289,
+      "right": 408,
+      "bottom": 340
+     },
+     "lines": [
+      {
+       "text": "s mušličkami",
+       "box": {
+        "left": 303,
+        "top": 289,
+        "right": 408,
+        "bottom": 312
+       },
+       "confidence": 0.917
+      },
+      {
+       "text": "1, 3, 7",
+       "box": {
+        "left": 302,
+        "top": 318,
+        "right": 351,
+        "bottom": 340
+       },
+       "confidence": 0.824
+      }
+     ]
+    },
+    {
+     "text": "5. Palacinky s tvarohom, hrozienkami a sladkým prelivom",
+     "box": {
+      "left": 422,
+      "top": 326,
+      "right": 785,
+      "bottom": 351
+     },
+     "lines": [
+      {
+       "text": "5. Palacinky s tvarohom, hrozienkami a sladkým prelivom",
+       "box": {
+        "left": 422,
+        "top": 326,
+        "right": 785,
+        "bottom": 351
+       },
+       "confidence": 0.965
+      }
+     ]
+    },
+    {
+     "text": "7,80 €\n7,10 €\n7,10 €\n7,10 €\n6,30 €",
+     "box": {
+      "left": 927,
+      "top": 379,
+      "right": 986,
+      "bottom": 496
+     },
+     "lines": [
+      {
+       "text": "7,80 €",
+       "box": {
+        "left": 927,
+        "top": 379,
+        "right": 986,
+        "bottom": 403
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 929,
+        "top": 404,
+        "right": 985,
+        "bottom": 425
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 930,
+        "top": 427,
+        "right": 985,
+        "bottom": 448
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 928,
+        "top": 448,
+        "right": 984,
+        "bottom": 472
+       },
+       "confidence": 0.792
+      },
+      {
+       "text": "6,30 €",
+       "box": {
+        "left": 930,
+        "top": 474,
+        "right": 984,
+        "bottom": 496
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "03.11.2026\nUTOROK",
+     "box": {
+      "left": 39,
+      "top": 380,
+      "right": 148,
+      "bottom": 435
+     },
+     "lines": [
+      {
+       "text": "03.11.2026",
+       "box": {
+        "left": 39,
+        "top": 380,
+        "right": 148,
+        "bottom": 404
+       },
+       "confidence": 0.909
+      },
+      {
+       "text": "UTOROK",
+       "box": {
+        "left": 40,
+        "top": 408,
+        "right": 139,
+        "bottom": 435
+       },
+       "confidence": 0.856
+      }
+     ]
+    },
+    {
+     "text": "1. Hovädzie ragú so šampiñónmi, parená kneda\n2. Čevapčiči s varenými zemiakmi, cibula horčica\n3. Gnocchi s paradajkovou omáčkou, mozzarellou a bazalkou\n4. Pečený bōčik na tmavom pive, červená kapusta, parená knedla\n5. Palacinky s tvarohom, hrozienkami a sladkým prelivom",
+     "box": {
+      "left": 424,
+      "top": 381,
+      "right": 838,
+      "bottom": 496
+     },
+     "lines": [
+      {
+       "text": "1. Hovädzie ragú so šampiñónmi, parená kneda",
+       "box": {
+        "left": 425,
+        "top": 381,
+        "right": 726,
+        "bottom": 401
+       },
+       "confidence": 0.963
+      },
+      {
+       "text": "2. Čevapčiči s varenými zemiakmi, cibula horčica",
+       "box": {
+        "left": 427,
+        "top": 404,
+        "right": 743,
+        "bottom": 424
+       },
+       "confidence": 0.953
+      },
+      {
+       "text": "3. Gnocchi s paradajkovou omáčkou, mozzarellou a bazalkou",
+       "box": {
+        "left": 425,
+        "top": 428,
+        "right": 815,
+        "bottom": 448
+       },
+       "confidence": 0.966
+      },
+      {
+       "text": "4. Pečený bōčik na tmavom pive, červená kapusta, parená knedla",
+       "box": {
+        "left": 425,
+        "top": 449,
+        "right": 838,
+        "bottom": 473
+       },
+       "confidence": 0.962
+      },
+      {
+       "text": "5. Palacinky s tvarohom, hrozienkami a sladkým prelivom",
+       "box": {
+        "left": 424,
+        "top": 474,
+        "right": 792,
+        "bottom": 496
+       },
+       "confidence": 0.977
+      }
+     ]
+    },
+    {
+     "text": "Hráškový\ns krutónmi\n1, 3, 7",
+     "box": {
+      "left": 301,
+      "top": 390,
+      "right": 403,
+      "bottom": 486
+     },
+     "lines": [
+      {
+       "text": "Hráškový",
+       "box": {
+        "left": 304,
+        "top": 390,
+        "right": 390,
+        "bottom": 414
+       },
+       "confidence": 0.881
+      },
+      {
+       "text": "s krutónmi",
+       "box": {
+        "left": 301,
+        "top": 433,
+        "right": 403,
+        "bottom": 459
+       },
+       "confidence": 0.906
+      },
+      {
+       "text": "1, 3, 7",
+       "box": {
+        "left": 301,
+        "top": 461,
+        "right": 352,
+        "bottom": 486
+       },
+       "confidence": 0.866
+      }
+     ]
+    },
+    {
+     "text": "krém",
+     "box": {
+      "left": 304,
+      "top": 413,
+      "right": 354,
+      "bottom": 435
+     },
+     "lines": [
+      {
+       "text": "krém",
+       "box": {
+        "left": 304,
+        "top": 413,
+        "right": 354,
+        "bottom": 435
+       },
+       "confidence": 0.8
+      }
+     ]
+    },
+    {
+     "text": "04.11.2026\nSTREDA",
+     "box": {
+      "left": 38,
+      "top": 527,
+      "right": 148,
+      "bottom": 583
+     },
+     "lines": [
+      {
+       "text": "04.11.2026",
+       "box": {
+        "left": 40,
+        "top": 527,
+        "right": 148,
+        "bottom": 551
+       },
+       "confidence": 0.909
+      },
+      {
+       "text": "STREDA",
+       "box": {
+        "left": 38,
+        "top": 556,
+        "right": 132,
+        "bottom": 583
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "1. Vyprážaný kurací rezeň v cestíčku, zemiaková kaša, mrkvový šalát\n2. Bravčový perkelt s maslovými haluškami\n3. Zeleninový šalát s grilovanými kuracími krídelkami v medovo-pikantnej",
+     "box": {
+      "left": 423,
+      "top": 527,
+      "right": 898,
+      "bottom": 599
+     },
+     "lines": [
+      {
+       "text": "1. Vyprážaný kurací rezeň v cestíčku, zemiaková kaša, mrkvový šalát",
+       "box": {
+        "left": 424,
+        "top": 527,
+        "right": 865,
+        "bottom": 549
+       },
+       "confidence": 0.937
+      },
+      {
+       "text": "2. Bravčový perkelt s maslovými haluškami",
+       "box": {
+        "left": 425,
+        "top": 552,
+        "right": 707,
+        "bottom": 572
+       },
+       "confidence": 0.963
+      },
+      {
+       "text": "3. Zeleninový šalát s grilovanými kuracími krídelkami v medovo-pikantnej",
+       "box": {
+        "left": 423,
+        "top": 574,
+        "right": 898,
+        "bottom": 599
+       },
+       "confidence": 0.974
+      }
+     ]
+    },
+    {
+     "text": "7,10 €\n7,10 €\n7,10 €\n7,10 €\n6,30 €",
+     "box": {
+      "left": 928,
+      "top": 528,
+      "right": 986,
+      "bottom": 665
+     },
+     "lines": [
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 929,
+        "top": 528,
+        "right": 983,
+        "bottom": 550
+       },
+       "confidence": 0.855
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 929,
+        "top": 554,
+        "right": 984,
+        "bottom": 575
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 928,
+        "top": 581,
+        "right": 985,
+        "bottom": 602
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 928,
+        "top": 619,
+        "right": 986,
+        "bottom": 643
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "6,30 €",
+       "box": {
+        "left": 930,
+        "top": 644,
+        "right": 985,
+        "bottom": 665
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "Žurek",
+     "box": {
+      "left": 302,
+      "top": 559,
+      "right": 371,
+      "bottom": 592
+     },
+     "lines": [
+      {
+       "text": "Žurek",
+       "box": {
+        "left": 302,
+        "top": 559,
+        "right": 371,
+        "bottom": 592
+       },
+       "confidence": 0.82
+      }
+     ]
+    },
+    {
+     "text": "1, 3, 7",
+     "box": {
+      "left": 302,
+      "top": 598,
+      "right": 352,
+      "bottom": 620
+     },
+     "lines": [
+      {
+       "text": "1, 3, 7",
+       "box": {
+        "left": 302,
+        "top": 598,
+        "right": 352,
+        "bottom": 620
+       },
+       "confidence": 0.861
+      }
+     ]
+    },
+    {
+     "text": "omáčke, bagetka s bylinkovým maslom",
+     "box": {
+      "left": 446,
+      "top": 599,
+      "right": 695,
+      "bottom": 619
+     },
+     "lines": [
+      {
+       "text": "omáčke, bagetka s bylinkovým maslom",
+       "box": {
+        "left": 446,
+        "top": 599,
+        "right": 695,
+        "bottom": 619
+       },
+       "confidence": 0.968
+      }
+     ]
+    },
+    {
+     "text": "4. Pečený bōčik na tmavom pive, červená kapusta, parená knedl'a\n5. Palacinky s tvarohom, hrozienkami a sladkým prelivom",
+     "box": {
+      "left": 424,
+      "top": 622,
+      "right": 840,
+      "bottom": 664
+     },
+     "lines": [
+      {
+       "text": "4. Pečený bōčik na tmavom pive, červená kapusta, parená knedl'a",
+       "box": {
+        "left": 426,
+        "top": 622,
+        "right": 840,
+        "bottom": 642
+       },
+       "confidence": 0.953
+      },
+      {
+       "text": "5. Palacinky s tvarohom, hrozienkami a sladkým prelivom",
+       "box": {
+        "left": 424,
+        "top": 644,
+        "right": 793,
+        "bottom": 664
+       },
+       "confidence": 0.976
+      }
+     ]
+    },
+    {
+     "text": "05.11.2026\nŠTVRTOK",
+     "box": {
+      "left": 38,
+      "top": 694,
+      "right": 147,
+      "bottom": 751
+     },
+     "lines": [
+      {
+       "text": "05.11.2026",
+       "box": {
+        "left": 40,
+        "top": 694,
+        "right": 147,
+        "bottom": 718
+       },
+       "confidence": 0.909
+      },
+      {
+       "text": "ŠTVRTOK",
+       "box": {
+        "left": 38,
+        "top": 721,
+        "right": 147,
+        "bottom": 751
+       },
+       "confidence": 0.872
+      }
+     ]
+    },
+    {
+     "text": "7,10 €\n7,50 €\n7,10 €\n7,10 €",
+     "box": {
+      "left": 927,
+      "top": 697,
+      "right": 985,
+      "bottom": 791
+     },
+     "lines": [
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 928,
+        "top": 697,
+        "right": 983,
+        "bottom": 719
+       },
+       "confidence": 0.843
+      },
+      {
+       "text": "7,50 €",
+       "box": {
+        "left": 927,
+        "top": 721,
+        "right": 985,
+        "bottom": 745
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 928,
+        "top": 745,
+        "right": 985,
+        "bottom": 766
+       },
+       "confidence": 0.856
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 929,
+        "top": 769,
+        "right": 984,
+        "bottom": 791
+       },
+       "confidence": 0.855
+      }
+     ]
+    },
+    {
+     "text": "1. Bravčové zapekané s bryndzou, štuchané zemiaky\n2. Morčacie plnené syrom, ryža, hranolky, zeleninové obloženie\n3. Dukátové buchty s vanilkovým krémom\n4. Pečený bōčik na tmavom pive, červená kapusta, parená knedl'a\n5. Palacinky s tvarohom, hrozienkami a sladkým prelivom",
+     "box": {
+      "left": 424,
+      "top": 699,
+      "right": 841,
+      "bottom": 815
+     },
+     "lines": [
+      {
+       "text": "1. Bravčové zapekané s bryndzou, štuchané zemiaky",
+       "box": {
+        "left": 427,
+        "top": 699,
+        "right": 763,
+        "bottom": 719
+       },
+       "confidence": 0.953
+      },
+      {
+       "text": "2. Morčacie plnené syrom, ryža, hranolky, zeleninové obloženie",
+       "box": {
+        "left": 425,
+        "top": 721,
+        "right": 830,
+        "bottom": 745
+       },
+       "confidence": 0.98
+      },
+      {
+       "text": "3. Dukátové buchty s vanilkovým krémom",
+       "box": {
+        "left": 425,
+        "top": 746,
+        "right": 695,
+        "bottom": 767
+       },
+       "confidence": 0.971
+      },
+      {
+       "text": "4. Pečený bōčik na tmavom pive, červená kapusta, parená knedl'a",
+       "box": {
+        "left": 424,
+        "top": 768,
+        "right": 841,
+        "bottom": 792
+       },
+       "confidence": 0.96
+      },
+      {
+       "text": "5. Palacinky s tvarohom, hrozienkami a sladkým prelivom",
+       "box": {
+        "left": 425,
+        "top": 795,
+        "right": 794,
+        "bottom": 815
+       },
+       "confidence": 0.971
+      }
+     ]
+    },
+    {
+     "text": "Šošovicová",
+     "box": {
+      "left": 304,
+      "top": 713,
+      "right": 407,
+      "bottom": 740
+     },
+     "lines": [
+      {
+       "text": "Šošovicová",
+       "box": {
+        "left": 304,
+        "top": 713,
+        "right": 407,
+        "bottom": 740
+       },
+       "confidence": 0.907
+      }
+     ]
+    },
+    {
+     "text": "s klobásou\n1, 3, 7",
+     "box": {
+      "left": 301,
+      "top": 738,
+      "right": 403,
+      "bottom": 793
+     },
+     "lines": [
+      {
+       "text": "s klobásou",
+       "box": {
+        "left": 301,
+        "top": 738,
+        "right": 403,
+        "bottom": 764
+       },
+       "confidence": 0.901
+      },
+      {
+       "text": "1, 3, 7",
+       "box": {
+        "left": 301,
+        "top": 767,
+        "right": 352,
+        "bottom": 793
+       },
+       "confidence": 0.856
+      }
+     ]
+    },
+    {
+     "text": "6,30 €",
+     "box": {
+      "left": 928,
+      "top": 790,
+      "right": 986,
+      "bottom": 817
+     },
+     "lines": [
+      {
+       "text": "6,30 €",
+       "box": {
+        "left": 928,
+        "top": 790,
+        "right": 986,
+        "bottom": 817
+       },
+       "confidence": 0.855
+      }
+     ]
+    },
+    {
+     "text": "06.11.2026\nPIATOK",
+     "box": {
+      "left": 38,
+      "top": 846,
+      "right": 148,
+      "bottom": 902
+     },
+     "lines": [
+      {
+       "text": "06.11.2026",
+       "box": {
+        "left": 39,
+        "top": 846,
+        "right": 148,
+        "bottom": 873
+       },
+       "confidence": 0.906
+      },
+      {
+       "text": "PIATOK",
+       "box": {
+        "left": 38,
+        "top": 878,
+        "right": 129,
+        "bottom": 902
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "1. Pastiersky syr, varené zemiaky, tatárska omáčka\n2. Ražniči, zemiaky parisienky, cesnakový dip\n3. Rezance s tvarohom nasladko\n4. Pečený bōčik na tmavom pive, červená kapusta, parená knedla\n5. Palacinky s tvarohom, hrozienkami a sladkým prelivom",
+     "box": {
+      "left": 424,
+      "top": 847,
+      "right": 841,
+      "bottom": 965
+     },
+     "lines": [
+      {
+       "text": "1. Pastiersky syr, varené zemiaky, tatárska omáčka",
+       "box": {
+        "left": 425,
+        "top": 847,
+        "right": 752,
+        "bottom": 871
+       },
+       "confidence": 0.97
+      },
+      {
+       "text": "2. Ražniči, zemiaky parisienky, cesnakový dip",
+       "box": {
+        "left": 425,
+        "top": 871,
+        "right": 719,
+        "bottom": 895
+       },
+       "confidence": 0.969
+      },
+      {
+       "text": "3. Rezance s tvarohom nasladko",
+       "box": {
+        "left": 426,
+        "top": 898,
+        "right": 637,
+        "bottom": 915
+       },
+       "confidence": 0.952
+      },
+      {
+       "text": "4. Pečený bōčik na tmavom pive, červená kapusta, parená knedla",
+       "box": {
+        "left": 425,
+        "top": 919,
+        "right": 841,
+        "bottom": 942
+       },
+       "confidence": 0.963
+      },
+      {
+       "text": "5. Palacinky s tvarohom, hrozienkami a sladkým prelivom",
+       "box": {
+        "left": 424,
+        "top": 945,
+        "right": 793,
+        "bottom": 965
+       },
+       "confidence": 0.977
+      }
+     ]
+    },
+    {
+     "text": "7,10 €\n7,10 €\n7,10 €\n7,10 €\n6,30 €",
+     "box": {
+      "left": 929,
+      "top": 848,
+      "right": 985,
+      "bottom": 965
+     },
+     "lines": [
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 929,
+        "top": 848,
+        "right": 984,
+        "bottom": 870
+       },
+       "confidence": 0.855
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 929,
+        "top": 872,
+        "right": 984,
+        "bottom": 894
+       },
+       "confidence": 0.85
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 929,
+        "top": 896,
+        "right": 984,
+        "bottom": 918
+       },
+       "confidence": 0.853
+      },
+      {
+       "text": "7,10 €",
+       "box": {
+        "left": 930,
+        "top": 919,
+        "right": 985,
+        "bottom": 941
+       },
+       "confidence": 0.856
+      },
+      {
+       "text": "6,30 €",
+       "box": {
+        "left": 929,
+        "top": 943,
+        "right": 984,
+        "bottom": 965
+       },
+       "confidence": 0.852
+      }
+     ]
+    },
+    {
+     "text": "Kurací νśvar\ns rezancami\n1, 3,7",
+     "box": {
+      "left": 302,
+      "top": 859,
+      "right": 413,
+      "bottom": 946
+     },
+     "lines": [
+      {
+       "text": "Kurací νśvar",
+       "box": {
+        "left": 303,
+        "top": 859,
+        "right": 413,
+        "bottom": 885
+       },
+       "confidence": 0.851
+      },
+      {
+       "text": "s rezancami",
+       "box": {
+        "left": 304,
+        "top": 887,
+        "right": 409,
+        "bottom": 907
+       },
+       "confidence": 0.913
+      },
+      {
+       "text": "1, 3,7",
+       "box": {
+        "left": 302,
+        "top": 924,
+        "right": 349,
+        "bottom": 946
+       },
+       "confidence": 0.827
+      }
+     ]
+    },
+    {
+     "text": "ALTERNATIVY",
+     "box": {
+      "left": 60,
+      "top": 1001,
+      "right": 468,
+      "bottom": 1037
+     },
+     "lines": [
+      {
+       "text": "ALTERNATIVY",
+       "box": {
+        "left": 60,
+        "top": 1001,
+        "right": 468,
+        "bottom": 1037
+       },
+       "confidence": 0.916
+      }
+     ]
+    },
+    {
+     "text": "HMOTNOST MÄSA",
+     "box": {
+      "left": 757,
+      "top": 1008,
+      "right": 912,
+      "bottom": 1033
+     },
+     "lines": [
+      {
+       "text": "HMOTNOST MÄSA",
+       "box": {
+        "left": 757,
+        "top": 1008,
+        "right": 912,
+        "bottom": 1033
+       },
+       "confidence": 0.89
+      }
+     ]
+    },
+    {
+     "text": "V SUROVOM STAVE\nMäso\nZemiaky\nRyža",
+     "box": {
+      "left": 757,
+      "top": 1030,
+      "right": 920,
+      "bottom": 1138
+     },
+     "lines": [
+      {
+       "text": "V SUROVOM STAVE",
+       "box": {
+        "left": 758,
+        "top": 1030,
+        "right": 920,
+        "bottom": 1051
+       },
+       "confidence": 0.937
+      },
+      {
+       "text": "Mäso",
+       "box": {
+        "left": 758,
+        "top": 1057,
+        "right": 804,
+        "bottom": 1079
+       },
+       "confidence": 0.792
+      },
+      {
+       "text": "Zemiaky",
+       "box": {
+        "left": 757,
+        "top": 1083,
+        "right": 826,
+        "bottom": 1109
+       },
+       "confidence": 0.875
+      },
+      {
+       "text": "Ryža",
+       "box": {
+        "left": 758,
+        "top": 1115,
+        "right": 798,
+        "bottom": 1138
+       },
+       "confidence": 0.796
+      }
+     ]
+    },
+    {
+     "text": "120 g",
+     "box": {
+      "left": 933,
+      "top": 1057,
+      "right": 981,
+      "bottom": 1085
+     },
+     "lines": [
+      {
+       "text": "120 g",
+       "box": {
+        "left": 933,
+        "top": 1057,
+        "right": 981,
+        "bottom": 1085
+       },
+       "confidence": 0.833
+      }
+     ]
+    },
+    {
+     "text": "7,50 €\n7,50 €\n7,50 €\n7,50 €\n7,50 €",
+     "box": {
+      "left": 635,
+      "top": 1060,
+      "right": 693,
+      "bottom": 1194
+     },
+     "lines": [
+      {
+       "text": "7,50 €",
+       "box": {
+        "left": 637,
+        "top": 1060,
+        "right": 691,
+        "bottom": 1082
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "7,50 €",
+       "box": {
+        "left": 636,
+        "top": 1086,
+        "right": 691,
+        "bottom": 1108
+       },
+       "confidence": 0.842
+      },
+      {
+       "text": "7,50 €",
+       "box": {
+        "left": 637,
+        "top": 1112,
+        "right": 691,
+        "bottom": 1134
+       },
+       "confidence": 0.856
+      },
+      {
+       "text": "7,50 €",
+       "box": {
+        "left": 635,
+        "top": 1135,
+        "right": 693,
+        "bottom": 1162
+       },
+       "confidence": 0.797
+      },
+      {
+       "text": "7,50 €",
+       "box": {
+        "left": 635,
+        "top": 1170,
+        "right": 693,
+        "bottom": 1194
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "1, 3, 7\n1, 3, 7",
+     "box": {
+      "left": 548,
+      "top": 1061,
+      "right": 594,
+      "bottom": 1110
+     },
+     "lines": [
+      {
+       "text": "1, 3, 7",
+       "box": {
+        "left": 549,
+        "top": 1061,
+        "right": 594,
+        "bottom": 1083
+       },
+       "confidence": 0.81
+      },
+      {
+       "text": "1, 3, 7",
+       "box": {
+        "left": 548,
+        "top": 1085,
+        "right": 594,
+        "bottom": 1110
+       },
+       "confidence": 0.841
+      }
+     ]
+    },
+    {
+     "text": "6. Vyprážaný syr, hranolky, tatárska omáčka\n7. Bravčový Cordon Bleu, americké zemiaky, tatárska omáčka\n8. Kurací plátok s bylinkovým maslom, ryža, zeleninové obloženie\n9. Gazdovský tanier (bryndzové halušky, bryndzové pirohy, strapačky)\n10. Bravčová panenka na hubovej omáčke, americké zemiaky,",
+     "box": {
+      "left": 37,
+      "top": 1062,
+      "right": 512,
+      "bottom": 1187
+     },
+     "lines": [
+      {
+       "text": "6. Vyprážaný syr, hranolky, tatárska omáčka",
+       "box": {
+        "left": 44,
+        "top": 1062,
+        "right": 350,
+        "bottom": 1082
+       },
+       "confidence": 0.952
+      },
+      {
+       "text": "7. Bravčový Cordon Bleu, americké zemiaky, tatárska omáčka",
+       "box": {
+        "left": 44,
+        "top": 1088,
+        "right": 465,
+        "bottom": 1107
+       },
+       "confidence": 0.979
+      },
+      {
+       "text": "8. Kurací plátok s bylinkovým maslom, ryža, zeleninové obloženie",
+       "box": {
+        "left": 44,
+        "top": 1114,
+        "right": 493,
+        "bottom": 1133
+       },
+       "confidence": 0.974
+      },
+      {
+       "text": "9. Gazdovský tanier (bryndzové halušky, bryndzové pirohy, strapačky)",
+       "box": {
+        "left": 44,
+        "top": 1140,
+        "right": 512,
+        "bottom": 1160
+       },
+       "confidence": 0.982
+      },
+      {
+       "text": "10. Bravčová panenka na hubovej omáčke, americké zemiaky,",
+       "box": {
+        "left": 37,
+        "top": 1165,
+        "right": 451,
+        "bottom": 1187
+       },
+       "confidence": 0.974
+      }
+     ]
+    },
+    {
+     "text": "200 g",
+     "box": {
+      "left": 930,
+      "top": 1083,
+      "right": 983,
+      "bottom": 1114
+     },
+     "lines": [
+      {
+       "text": "200 g",
+       "box": {
+        "left": 930,
+        "top": 1083,
+        "right": 983,
+        "bottom": 1114
+       },
+       "confidence": 0.83
+      }
+     ]
+    },
+    {
+     "text": "160 g",
+     "box": {
+      "left": 930,
+      "top": 1112,
+      "right": 982,
+      "bottom": 1143
+     },
+     "lines": [
+      {
+       "text": "160 g",
+       "box": {
+        "left": 930,
+        "top": 1112,
+        "right": 982,
+        "bottom": 1143
+       },
+       "confidence": 0.826
+      }
+     ]
+    },
+    {
+     "text": "1, 3, 7\n1, 7\n1.3,7\n1.3,7\n1,3,7\n1.3, 7",
+     "box": {
+      "left": 548,
+      "top": 1140,
+      "right": 595,
+      "bottom": 1314
+     },
+     "lines": [
+      {
+       "text": "1, 3, 7",
+       "box": {
+        "left": 549,
+        "top": 1140,
+        "right": 594,
+        "bottom": 1162
+       },
+       "confidence": 0.838
+      },
+      {
+       "text": "1, 7",
+       "box": {
+        "left": 548,
+        "top": 1171,
+        "right": 580,
+        "bottom": 1195
+       },
+       "confidence": 0.759
+      },
+      {
+       "text": "1.3,7",
+       "box": {
+        "left": 549,
+        "top": 1213,
+        "right": 594,
+        "bottom": 1234
+       },
+       "confidence": 0.78
+      },
+      {
+       "text": "1.3,7",
+       "box": {
+        "left": 549,
+        "top": 1238,
+        "right": 594,
+        "bottom": 1260
+       },
+       "confidence": 0.764
+      },
+      {
+       "text": "1,3,7",
+       "box": {
+        "left": 548,
+        "top": 1263,
+        "right": 595,
+        "bottom": 1288
+       },
+       "confidence": 0.766
+      },
+      {
+       "text": "1.3, 7",
+       "box": {
+        "left": 549,
+        "top": 1292,
+        "right": 594,
+        "bottom": 1314
+       },
+       "confidence": 0.752
+      }
+     ]
+    },
+    {
+     "text": "160 g",
+     "box": {
+      "left": 930,
+      "top": 1141,
+      "right": 983,
+      "bottom": 1173
+     },
+     "lines": [
+      {
+       "text": "160 g",
+       "box": {
+        "left": 930,
+        "top": 1141,
+        "right": 983,
+        "bottom": 1173
+       },
+       "confidence": 0.831
+      }
+     ]
+    },
+    {
+     "text": "Hranolky\nKnedla\nAlergény:\n2 - körovce a vyrobky z nich\n4 - ryby a výrobky z nich\n6 - sójové zrnà a vyrobky z nich\n8 - orechy a vyrobky z nich\n10 - horčica a vyrobky z nej\n12 - oxid siricitý a siricitany",
+     "box": {
+      "left": 742,
+      "top": 1142,
+      "right": 915,
+      "bottom": 1385
+     },
+     "lines": [
+      {
+       "text": "Hranolky",
+       "box": {
+        "left": 757,
+        "top": 1142,
+        "right": 830,
+        "bottom": 1168
+       },
+       "confidence": 0.889
+      },
+      {
+       "text": "Knedla",
+       "box": {
+        "left": 758,
+        "top": 1171,
+        "right": 815,
+        "bottom": 1195
+       },
+       "confidence": 0.852
+      },
+      {
+       "text": "Alergény:",
+       "box": {
+        "left": 744,
+        "top": 1210,
+        "right": 814,
+        "bottom": 1230
+       },
+       "confidence": 0.899
+      },
+      {
+       "text": "2 - körovce a vyrobky z nich",
+       "box": {
+        "left": 742,
+        "top": 1238,
+        "right": 891,
+        "bottom": 1256
+       },
+       "confidence": 0.924
+      },
+      {
+       "text": "4 - ryby a výrobky z nich",
+       "box": {
+        "left": 743,
+        "top": 1264,
+        "right": 878,
+        "bottom": 1280
+       },
+       "confidence": 0.928
+      },
+      {
+       "text": "6 - sójové zrnà a vyrobky z nich",
+       "box": {
+        "left": 744,
+        "top": 1291,
+        "right": 915,
+        "bottom": 1307
+       },
+       "confidence": 0.922
+      },
+      {
+       "text": "8 - orechy a vyrobky z nich",
+       "box": {
+        "left": 742,
+        "top": 1315,
+        "right": 888,
+        "bottom": 1333
+       },
+       "confidence": 0.939
+      },
+      {
+       "text": "10 - horčica a vyrobky z nej",
+       "box": {
+        "left": 745,
+        "top": 1343,
+        "right": 892,
+        "bottom": 1359
+       },
+       "confidence": 0.916
+      },
+      {
+       "text": "12 - oxid siricitý a siricitany",
+       "box": {
+        "left": 744,
+        "top": 1369,
+        "right": 899,
+        "bottom": 1385
+       },
+       "confidence": 0.933
+      }
+     ]
+    },
+    {
+     "text": "160 g",
+     "box": {
+      "left": 932,
+      "top": 1171,
+      "right": 980,
+      "bottom": 1199
+     },
+     "lines": [
+      {
+       "text": "160 g",
+       "box": {
+        "left": 932,
+        "top": 1171,
+        "right": 980,
+        "bottom": 1199
+       },
+       "confidence": 0.831
+      }
+     ]
+    },
+    {
+     "text": "zeleninové obloženie",
+     "box": {
+      "left": 68,
+      "top": 1186,
+      "right": 209,
+      "bottom": 1206
+     },
+     "lines": [
+      {
+       "text": "zeleninové obloženie",
+       "box": {
+        "left": 68,
+        "top": 1186,
+        "right": 209,
+        "bottom": 1206
+       },
+       "confidence": 0.952
+      }
+     ]
+    },
+    {
+     "text": "7,50 €\n7,50 €\n7,80 €\n7,50 €",
+     "box": {
+      "left": 634,
+      "top": 1212,
+      "right": 692,
+      "bottom": 1314
+     },
+     "lines": [
+      {
+       "text": "7,50 €",
+       "box": {
+        "left": 636,
+        "top": 1212,
+        "right": 691,
+        "bottom": 1233
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "7,50 €",
+       "box": {
+        "left": 637,
+        "top": 1238,
+        "right": 691,
+        "bottom": 1259
+       },
+       "confidence": 0.803
+      },
+      {
+       "text": "7,80 €",
+       "box": {
+        "left": 636,
+        "top": 1264,
+        "right": 690,
+        "bottom": 1286
+       },
+       "confidence": 0.857
+      },
+      {
+       "text": "7,50 €",
+       "box": {
+        "left": 634,
+        "top": 1290,
+        "right": 692,
+        "bottom": 1314
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "11. Zeleninový šalát s grilovaným enciánom, brusnicami a toastom\n12. Ďabalská pochútka z bravčového mäsa, ryža, štyri placky\n13. Kačacie prsia, červená kapusta, lokša/parená knedla\n14. Vyprážaný karfiol, varené zemiaky, tatárska omáčka",
+     "box": {
+      "left": 37,
+      "top": 1213,
+      "right": 487,
+      "bottom": 1312
+     },
+     "lines": [
+      {
+       "text": "11. Zeleninový šalát s grilovaným enciánom, brusnicami a toastom",
+       "box": {
+        "left": 39,
+        "top": 1213,
+        "right": 487,
+        "bottom": 1233
+       },
+       "confidence": 0.977
+      },
+      {
+       "text": "12. Ďabalská pochútka z bravčového mäsa, ryža, štyri placky",
+       "box": {
+        "left": 37,
+        "top": 1236,
+        "right": 453,
+        "bottom": 1261
+       },
+       "confidence": 0.958
+      },
+      {
+       "text": "13. Kačacie prsia, červená kapusta, lokša/parená knedla",
+       "box": {
+        "left": 40,
+        "top": 1264,
+        "right": 415,
+        "bottom": 1284
+       },
+       "confidence": 0.974
+      },
+      {
+       "text": "14. Vyprážaný karfiol, varené zemiaky, tatárska omáčka",
+       "box": {
+        "left": 40,
+        "top": 1292,
+        "right": 415,
+        "bottom": 1312
+       },
+       "confidence": 0.969
+      }
+     ]
+    },
+    {
+     "text": "1 - obilniny obsahujuce lepok\n3 - vajcia a výrobky z nich\n5 - araßidy a vyrobky z nich\n7 - mlieko a výrobky z neho\n9 - zeler a vyrobky z neho\n11 - sezamové semená a vyrobky z nich",
+     "box": {
+      "left": 742,
+      "top": 1226,
+      "right": 955,
+      "bottom": 1372
+     },
+     "lines": [
+      {
+       "text": "1 - obilniny obsahujuce lepok",
+       "box": {
+        "left": 744,
+        "top": 1226,
+        "right": 899,
+        "bottom": 1242
+       },
+       "confidence": 0.944
+      },
+      {
+       "text": "3 - vajcia a výrobky z nich",
+       "box": {
+        "left": 742,
+        "top": 1250,
+        "right": 884,
+        "bottom": 1268
+       },
+       "confidence": 0.932
+      },
+      {
+       "text": "5 - araßidy a vyrobky z nich",
+       "box": {
+        "left": 744,
+        "top": 1278,
+        "right": 893,
+        "bottom": 1294
+       },
+       "confidence": 0.917
+      },
+      {
+       "text": "7 - mlieko a výrobky z neho",
+       "box": {
+        "left": 744,
+        "top": 1304,
+        "right": 896,
+        "bottom": 1320
+       },
+       "confidence": 0.942
+      },
+      {
+       "text": "9 - zeler a vyrobky z neho",
+       "box": {
+        "left": 744,
+        "top": 1330,
+        "right": 886,
+        "bottom": 1346
+       },
+       "confidence": 0.934
+      },
+      {
+       "text": "11 - sezamové semená a vyrobky z nich",
+       "box": {
+        "left": 744,
+        "top": 1354,
+        "right": 955,
+        "bottom": 1372
+       },
+       "confidence": 0.954
+      }
+     ]
+    },
+    {
+     "text": "Prajeme Vám",
+     "box": {
+      "left": 379,
+      "top": 1368,
+      "right": 527,
+      "bottom": 1401
+     },
+     "lines": [
+      {
+       "text": "Prajeme Vám",
+       "box": {
+        "left": 379,
+        "top": 1368,
+        "right": 527,
+        "bottom": 1401
+       },
+       "confidence": 0.878
+      }
+     ]
+    },
+    {
+     "text": "y koncentráciach vy35ich ako 10 mg/kg",
+     "box": {
+      "left": 766,
+      "top": 1380,
+      "right": 962,
+      "bottom": 1399
+     },
+     "lines": [
+      {
+       "text": "y koncentráciach vy35ich ako 10 mg/kg",
+       "box": {
+        "left": 766,
+        "top": 1380,
+        "right": 962,
+        "bottom": 1399
+       },
+       "confidence": 0.909
+      }
+     ]
+    },
+    {
+     "text": "príjemné posedenie a dobrú chut.",
+     "box": {
+      "left": 306,
+      "top": 1394,
+      "right": 635,
+      "bottom": 1434
+     },
+     "lines": [
+      {
+       "text": "príjemné posedenie a dobrú chut.",
+       "box": {
+        "left": 306,
+        "top": 1394,
+        "right": 635,
+        "bottom": 1434
+       },
+       "confidence": 0.942
+      }
+     ]
+    },
+    {
+     "text": "13 - vići bób a vyrobky z neho",
+     "box": {
+      "left": 742,
+      "top": 1396,
+      "right": 906,
+      "bottom": 1414
+     },
+     "lines": [
+      {
+       "text": "13 - vići bób a vyrobky z neho",
+       "box": {
+        "left": 742,
+        "top": 1396,
+        "right": 906,
+        "bottom": 1414
+       },
+       "confidence": 0.925
+      }
+     ]
+    },
+    {
+     "text": "14 - mkkyše a vyrobky z nich",
+     "box": {
+      "left": 744,
+      "top": 1412,
+      "right": 907,
+      "bottom": 1428
+     },
+     "lines": [
+      {
+       "text": "14 - mkkyše a vyrobky z nich",
+       "box": {
+        "left": 744,
+        "top": 1412,
+        "right": 907,
+        "bottom": 1428
+       },
+       "confidence": 0.918
+      }
+     ]
+    },
+    {
+     "text": "Reštaurácia Fontána je v sobotu a nedelu ZATVORENÁ.",
+     "box": {
+      "left": 254,
+      "top": 1471,
+      "right": 684,
+      "bottom": 1494
+     },
+     "lines": [
+      {
+       "text": "Reštaurácia Fontána je v sobotu a nedelu ZATVORENÁ.",
+       "box": {
+        "left": 254,
+        "top": 1471,
+        "right": 684,
+        "bottom": 1494
+       },
+       "confidence": 0.971
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

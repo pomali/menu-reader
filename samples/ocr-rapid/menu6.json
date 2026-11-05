@@ -1,0 +1,441 @@
+{
+ "pages": [
+  {
+   "pageId": "p1",
+   "width": 1200,
+   "height": 1699,
+   "blocks": [
+    {
+     "text": "arni hotel",
+     "box": {
+      "left": 567,
+      "top": 78,
+      "right": 702,
+      "bottom": 110
+     },
+     "lines": [
+      {
+       "text": "arni hotel",
+       "box": {
+        "left": 567,
+        "top": 78,
+        "right": 702,
+        "bottom": 110
+       },
+       "confidence": 0.906
+      }
+     ]
+    },
+    {
+     "text": "Povazska Bystrica",
+     "box": {
+      "left": 561,
+      "top": 107,
+      "right": 670,
+      "bottom": 129
+     },
+     "lines": [
+      {
+       "text": "Povazska Bystrica",
+       "box": {
+        "left": 561,
+        "top": 107,
+        "right": 670,
+        "bottom": 129
+       },
+       "confidence": 0.909
+      }
+     ]
+    },
+    {
+     "text": "KAČACIE HODY",
+     "box": {
+      "left": 238,
+      "top": 400,
+      "right": 910,
+      "bottom": 481
+     },
+     "lines": [
+      {
+       "text": "KAČACIE HODY",
+       "box": {
+        "left": 238,
+        "top": 400,
+        "right": 910,
+        "bottom": 481
+       },
+       "confidence": 0.884
+      }
+     ]
+    },
+    {
+     "text": "VREŠTAURÁCII GARNI",
+     "box": {
+      "left": 319,
+      "top": 526,
+      "right": 831,
+      "bottom": 578
+     },
+     "lines": [
+      {
+       "text": "VREŠTAURÁCII GARNI",
+       "box": {
+        "left": 319,
+        "top": 526,
+        "right": 831,
+        "bottom": 578
+       },
+       "confidence": 0.938
+      }
+     ]
+    },
+    {
+     "text": "21.10. 2024 – 10.11. 2024",
+     "box": {
+      "left": 137,
+      "top": 631,
+      "right": 1012,
+      "bottom": 687
+     },
+     "lines": [
+      {
+       "text": "21.10. 2024 – 10.11. 2024",
+       "box": {
+        "left": 137,
+        "top": 631,
+        "right": 1012,
+        "bottom": 687
+       },
+       "confidence": 0.928
+      }
+     ]
+    },
+    {
+     "text": "APERITIV",
+     "box": {
+      "left": 517,
+      "top": 720,
+      "right": 631,
+      "bottom": 751
+     },
+     "lines": [
+      {
+       "text": "APERITIV",
+       "box": {
+        "left": 517,
+        "top": 720,
+        "right": 631,
+        "bottom": 751
+       },
+       "confidence": 0.882
+      }
+     ]
+    },
+    {
+     "text": "0,02L SLIVOVICA",
+     "box": {
+      "left": 477,
+      "top": 779,
+      "right": 669,
+      "bottom": 809
+     },
+     "lines": [
+      {
+       "text": "0,02L SLIVOVICA",
+       "box": {
+        "left": 477,
+        "top": 779,
+        "right": 669,
+        "bottom": 809
+       },
+       "confidence": 0.934
+      }
+     ]
+    },
+    {
+     "text": "PREDJEDLO",
+     "box": {
+      "left": 507,
+      "top": 840,
+      "right": 640,
+      "bottom": 864
+     },
+     "lines": [
+      {
+       "text": "PREDJEDLO",
+       "box": {
+        "left": 507,
+        "top": 840,
+        "right": 640,
+        "bottom": 864
+       },
+       "confidence": 0.9
+      }
+     ]
+    },
+    {
+     "text": "12OG LAHÔDKOVÁ PEE.„ KAČKINA „S JABLKAMI ZDOBENÁ PÓROM, 1KS LOKŠA",
+     "box": {
+      "left": 124,
+      "top": 895,
+      "right": 1023,
+      "bottom": 921
+     },
+     "lines": [
+      {
+       "text": "12OG LAHÔDKOVÁ PEE.„ KAČKINA „S JABLKAMI ZDOBENÁ PÓROM, 1KS LOKŠA",
+       "box": {
+        "left": 124,
+        "top": 895,
+        "right": 1023,
+        "bottom": 921
+       },
+       "confidence": 0.935
+      }
+     ]
+    },
+    {
+     "text": "POLIEVKA",
+     "box": {
+      "left": 513,
+      "top": 952,
+      "right": 633,
+      "bottom": 979
+     },
+     "lines": [
+      {
+       "text": "POLIEVKA",
+       "box": {
+        "left": 513,
+        "top": 952,
+        "right": 633,
+        "bottom": 979
+       },
+       "confidence": 0.847
+      }
+     ]
+    },
+    {
+     "text": "O,SSL KACACLA POLIEVKA S DOMÁCIMI REZANCAMI A PEČIENKOVYMI HALUŠKAMI",
+     "box": {
+      "left": 116,
+      "top": 1008,
+      "right": 1029,
+      "bottom": 1036
+     },
+     "lines": [
+      {
+       "text": "O,SSL KACACLA POLIEVKA S DOMÁCIMI REZANCAMI A PEČIENKOVYMI HALUŠKAMI",
+       "box": {
+        "left": 116,
+        "top": 1008,
+        "right": 1029,
+        "bottom": 1036
+       },
+       "confidence": 0.951
+      }
+     ]
+    },
+    {
+     "text": "HLAVNÉ JEDLO",
+     "box": {
+      "left": 488,
+      "top": 1065,
+      "right": 658,
+      "bottom": 1092
+     },
+     "lines": [
+      {
+       "text": "HLAVNÉ JEDLO",
+       "box": {
+        "left": 488,
+        "top": 1065,
+        "right": 658,
+        "bottom": 1092
+       },
+       "confidence": 0.914
+      }
+     ]
+    },
+    {
+     "text": "25OG DO ZLATISTA PEČENÉ KAACIE STEHNO SERVIROVANÉ S DUSENOU BIELOU",
+     "box": {
+      "left": 128,
+      "top": 1123,
+      "right": 1018,
+      "bottom": 1149
+     },
+     "lines": [
+      {
+       "text": "25OG DO ZLATISTA PEČENÉ KAACIE STEHNO SERVIROVANÉ S DUSENOU BIELOU",
+       "box": {
+        "left": 128,
+        "top": 1123,
+        "right": 1018,
+        "bottom": 1149
+       },
+       "confidence": 0.963
+      }
+     ]
+    },
+    {
+     "text": "A ¿ERVENOU KAPUSTOU, PODÁVANÉ S DOMÁCOU ZEMIAKOVOU A KYSNUTOU KNEDTOU",
+     "box": {
+      "left": 93,
+      "top": 1159,
+      "right": 1052,
+      "bottom": 1187
+     },
+     "lines": [
+      {
+       "text": "A ¿ERVENOU KAPUSTOU, PODÁVANÉ S DOMÁCOU ZEMIAKOVOU A KYSNUTOU KNEDTOU",
+       "box": {
+        "left": 93,
+        "top": 1159,
+        "right": 1052,
+        "bottom": 1187
+       },
+       "confidence": 0.968
+      }
+     ]
+    },
+    {
+     "text": "DEZERT",
+     "box": {
+      "left": 524,
+      "top": 1215,
+      "right": 620,
+      "bottom": 1245
+     },
+     "lines": [
+      {
+       "text": "DEZERT",
+       "box": {
+        "left": 524,
+        "top": 1215,
+        "right": 620,
+        "bottom": 1245
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "150G DOMÁCA JABLKOVA ŠTRÚDI'A PRELIATA VANILKOVYM KRÉMOM A COKOLÁDOU",
+     "box": {
+      "left": 96,
+      "top": 1270,
+      "right": 1051,
+      "bottom": 1301
+     },
+     "lines": [
+      {
+       "text": "150G DOMÁCA JABLKOVA ŠTRÚDI'A PRELIATA VANILKOVYM KRÉMOM A COKOLÁDOU",
+       "box": {
+        "left": 96,
+        "top": 1270,
+        "right": 1051,
+        "bottom": 1301
+       },
+       "confidence": 0.945
+      }
+     ]
+    },
+    {
+     "text": "19,90€",
+     "box": {
+      "left": 845,
+      "top": 1352,
+      "right": 1076,
+      "bottom": 1418
+     },
+     "lines": [
+      {
+       "text": "19,90€",
+       "box": {
+        "left": 845,
+        "top": 1352,
+        "right": 1076,
+        "bottom": 1418
+       },
+       "confidence": 0.857
+      }
+     ]
+    },
+    {
+     "text": "Pri odbere viac ako 5 porcií Vás Ziadame o telefonickú rezerváciu na tel. isle 0903 622 292,042/ 432 59 33Kačacie\nhody ponúkame denne od 10.00 - 20.30 hod okrem kompletnéno kačacieho menu,",
+     "box": {
+      "left": 72,
+      "top": 1442,
+      "right": 1067,
+      "bottom": 1498
+     },
+     "lines": [
+      {
+       "text": "Pri odbere viac ako 5 porcií Vás Ziadame o telefonickú rezerváciu na tel. isle 0903 622 292,042/ 432 59 33Kačacie",
+       "box": {
+        "left": 82,
+        "top": 1442,
+        "right": 1067,
+        "bottom": 1470
+       },
+       "confidence": 0.97
+      },
+      {
+       "text": "hody ponúkame denne od 10.00 - 20.30 hod okrem kompletnéno kačacieho menu,",
+       "box": {
+        "left": 72,
+        "top": 1470,
+        "right": 760,
+        "bottom": 1498
+       },
+       "confidence": 0.939
+      }
+     ]
+    },
+    {
+     "text": "a kačacej",
+     "box": {
+      "left": 995,
+      "top": 1472,
+      "right": 1079,
+      "bottom": 1500
+     },
+     "lines": [
+      {
+       "text": "a kačacej",
+       "box": {
+        "left": 995,
+        "top": 1472,
+        "right": 1079,
+        "bottom": 1500
+       },
+       "confidence": 0.852
+      }
+     ]
+    },
+    {
+     "text": "misy pre dvoch ktoré podávame denne od 13.00 - do 20.30",
+     "box": {
+      "left": 326,
+      "top": 1495,
+      "right": 823,
+      "bottom": 1526
+     },
+     "lines": [
+      {
+       "text": "misy pre dvoch ktoré podávame denne od 13.00 - do 20.30",
+       "box": {
+        "left": 326,
+        "top": 1495,
+        "right": 823,
+        "bottom": 1526
+       },
+       "confidence": 0.96
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
