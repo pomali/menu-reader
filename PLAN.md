@@ -4,6 +4,17 @@ Take photos of a restaurant menu, turn them into a structured "snapshot" (dishes
 add allergen information to each dish, and let the user filter it ("no gluten, no nuts, under €12").
 Snapshots are saved so the user can come back to them later.
 
+## 0. Decisions so far (2026-11-05)
+- **Web app (PWA) first.** Capture code sits behind an interface so a native shell
+  (Capacitor) can provide better camera control later (see §3.1).
+- **Languages:** Slovak, Czech, English menus, usually with printed EU allergen codes (1–14).
+  Layer A (printed codes) is therefore the main source, and the lexical dictionary needs sk/cs/en.
+- **No translation inside the app.** Dish text can be sent to a translate app through the system
+  share dialog (Web Share API).
+- **API keys:** the user enters their own key in settings. It is stored on the device, and the app
+  calls the AI API directly from the browser. **No proxy server in the MVP.**
+- **Single user:** no accounts and no sync. Export/import as JSON is the backup.
+
 ---
 
 ## 1. Processing pipeline
@@ -69,10 +80,32 @@ Rules:
   Apple Vision or ML Kit, which beat WASM OCR), wrap the same app with **Capacitor**.
   This keeps the option open without paying for it now.
 
+### 3.1 Camera: web vs native
+How well the AI reads a menu depends mostly on photo quality, so this matters.
+
+| | Web: `<input type="file" capture>` | Web: `getUserMedia` live preview | Native (Capacitor plugin) |
+|---|---|---|---|
+| Resolution | Full (uses the system camera app) | Often limited to video resolution (about 1080p–4K) | Full |
+| Focus / torch / exposure | Handled by the system camera | Torch and focus work only partly on Android Chrome; iOS Safari is very limited | Full control |
+| Document scanning (edge detection, flattening curved pages, multi-page) | ❌ | Do it ourselves (OpenCV.js, heavy) | ✅ **ML Kit Document Scanner** (Android) / **VisionKit** (iOS), built into the OS for free |
+| Native on-device OCR | ❌ | ❌ | ✅ ML Kit Text Recognition / Apple Vision. Fast and accurate, which makes offline mode realistic |
+
+Plan: write a `CaptureProvider` interface that returns `Blob[]` of pages.
+- Web MVP: `<input capture>` with `multiple`, which gives the best quality the web allows with
+  the least code, plus picking photos from the gallery.
+- Later: a Capacitor build that uses the native document scanner. App logic, storage, and UI stay
+  the same; only the capture provider (and later the OCR provider) changes.
+
+### 3.2 Translation
+A "Share" button on a dish or section calls `navigator.share({ text })` and the user picks Google
+Translate, DeepL, or another app. Nothing to build inside the app. The AI can still record the
+menu's detected language.
+
 ### Proposed stack
 - **Frontend:** Vite + React + TypeScript, `vite-plugin-pwa`, Dexie (IndexedDB), Zod (shared schema).
-- **Proxy:** Cloudflare Worker (or Vercel/Netlify function). It holds the API key, rate-limits, and
-  validates the response against the Zod schema.
+- **AI calls:** directly from the browser with the user's own API key, stored in IndexedDB on the
+  device and entered in settings. The response is validated against the Zod schema. A proxy
+  (Cloudflare Worker) is needed only if the app ever gets other users.
 - **Extraction model:** Claude vision with structured (JSON-schema) output. Use a cheaper tier by
   default and retry with a stronger model when validation fails or confidence is low.
 - **Search and facets:** a menu has about 20–200 items, so plain in-memory filtering is enough, plus
@@ -119,10 +152,11 @@ main way to check what the AI extracted.
   layouts, some with printed allergen codes). Write an extraction script (proxy logic only) and measure
   how many dishes, prices, and allergen codes come out right. This shows whether the LLM-first approach
   is good enough before building the UI.
-- **Phase 1 (MVP):** PWA with capture, cloud extraction, layers A+B+C, local storage, filters, history.
-- **Phase 2:** offline OCR fallback and an offline queue, translation of dish names, editing.
-- **Phase 3:** optional sync and sharing, a Capacitor wrapper, native OCR, a crowd-sourced restaurant
-  menu cache.
+- **Phase 1 (MVP):** PWA with capture, AI extraction using the user's key, layers A+B+C, local
+  storage, filters, history, share-to-translate.
+- **Phase 2:** a Capacitor build with the native document scanner, an offline queue, and an editor
+  for fixing extracted dishes.
+- **Phase 3:** native on-device OCR as an offline fallback; optional sync if more users are added.
 
 ---
 
