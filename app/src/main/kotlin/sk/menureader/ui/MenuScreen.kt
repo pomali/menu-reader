@@ -145,7 +145,7 @@ class MenuViewModel(
     /** False when AI reading isn't set up (no provider or no key): the UI points to Settings. */
     fun readWithAi(): Boolean {
         val a = app ?: return false
-        if (!a.cloud.anyEnabled()) return false
+        if (a.cloud.reader() == null) return false
         CloudUpgradeWorker.enqueue(a, id)
         return true
     }

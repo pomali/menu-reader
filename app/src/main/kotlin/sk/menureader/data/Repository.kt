@@ -19,9 +19,6 @@ import sk.menureader.core.cloud.CloudMapper
 import sk.menureader.cloud.CloudException
 import sk.menureader.cloud.CloudImage
 import sk.menureader.cloud.CloudSettings
-import sk.menureader.cloud.DecisionsClient
-import sk.menureader.core.cloud.Decisions
-import sk.menureader.core.filter.UserProfile
 import java.io.ByteArrayOutputStream
 import sk.menureader.core.parse.PlainText
 import sk.menureader.ocr.OcrEngine
@@ -101,26 +98,6 @@ class Repository(private val ctx: Context, db: AppDatabase) {
                 snapshotJson = MenuJson.encodeToString(full), basicSnapshotJson = basicJson,
             )
         )
-    }
-
-    /**
-     * Allergen double-check: ask the decisions model about every dish, only for what the profile
-     * avoids, and add "may contain" claims for likely answers. Returns false if nothing to ask.
-     */
-    suspend fun doubleCheck(id: String, client: DecisionsClient, profile: UserProfile): Boolean = withContext(Dispatchers.IO) {
-        val questions = Decisions.questions(profile)
-        if (questions.isEmpty()) return@withContext false
-        val e = dao.get(id) ?: return@withContext false
-        val s = MenuJson.decodeFromString<Snapshot>(e.snapshotJson)
-        val flat = s.sections.flatMap { sec -> sec.dishes.map { sec.name to it } }
-        if (flat.isEmpty()) return@withContext false
-        val answers = client.ask(flat.map { (sec, d) -> Decisions.state(d, sec) }, questions)
-        val byId = flat.map { it.second.id }.zip(answers).toMap()
-        val checked = s.copy(sections = s.sections.map { sec ->
-            sec.copy(dishes = sec.dishes.map { d -> byId[d.id]?.let { Decisions.apply(d, it) } ?: d })
-        })
-        dao.upsert(e.copy(snapshotJson = MenuJson.encodeToString(checked)))
-        true
     }
 
     /** Scale to at most 1568 px on the long edge (enough for menu text, keeps requests small), JPEG 85. */

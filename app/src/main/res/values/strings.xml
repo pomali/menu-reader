@@ -141,7 +141,4 @@
     <string name="ai_privacy">Menu photos and the read text go to %1$s. Your key is encrypted on this phone and your allergy profile never leaves it.</string>
     <string name="ai_auto">Read new menus with AI automatically</string>
     <string name="ai_auto_hint">Right after the offline reading, as soon as you\'re online</string>
-    <string name="decisions_title">Allergen double-check (OpenRouter)</string>
-    <string name="decisions_hint">Asks a decisions model \"does this dish contain…?\" for each thing you avoid, and adds a \"may contain\" hint with the probability. Alpha API, may change.</string>
-    <string name="claim_decision_body">An AI judge thinks it\'s %1$d %% likely this dish contains it. Just a guess, not a promise.</string>
 </resources>

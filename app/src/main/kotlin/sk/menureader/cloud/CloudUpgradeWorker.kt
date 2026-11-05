@@ -22,9 +22,7 @@ class CloudUpgradeWorker(ctx: Context, params: WorkerParameters) : CoroutineWork
         val id = inputData.getString(KEY_ID) ?: return Result.failure()
         val app = applicationContext as MenuReaderApp
         return try {
-            // 1) Re-read the whole menu with the chosen AI (if set up), 2) allergen double-check (if on).
-            if (app.cloud.reader() != null) app.repository.upgradeWithAi(id, app.cloud)
-            app.cloud.decisions()?.let { app.repository.doubleCheck(id, it, app.profiles.profile.value) }
+            app.repository.upgradeWithAi(id, app.cloud)
             Result.success()
         } catch (e: CloudException) {
             if (e.retryable && runAttemptCount < 3) Result.retry()

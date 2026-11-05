@@ -33,7 +33,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import sk.menureader.R
-import sk.menureader.core.cloud.Decisions
 import sk.menureader.core.model.Allergen
 import sk.menureader.core.model.Layer
 import sk.menureader.core.model.Price
@@ -104,10 +103,8 @@ fun ChipSheet(info: ChipInfo, onDismiss: () -> Unit) {
                             stringResource(R.string.claim_printed_body, info.printedCode ?: 0)
                         Layer.LEXICAL -> stringResource(R.string.claim_lexical_title) to
                             stringResource(R.string.claim_lexical_body, info.evidence.ifBlank { "?" })
-                        Layer.INFERRED -> stringResource(R.string.claim_inferred_title) to (
-                            Decisions.percent(info.evidence)?.let { stringResource(R.string.claim_decision_body, it) }
-                                ?: stringResource(R.string.claim_inferred_body, info.evidence.ifBlank { "?" })
-                            )
+                        Layer.INFERRED -> stringResource(R.string.claim_inferred_title) to
+                            stringResource(R.string.claim_inferred_body, info.evidence.ifBlank { "?" })
                     }
                     Text(title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.secondary)
                     Spacer(Modifier.height(8.dp))
