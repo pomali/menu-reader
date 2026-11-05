@@ -49,6 +49,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import sk.menureader.R
+import sk.menureader.core.parse.PlainText
 import sk.menureader.data.Repository
 import sk.menureader.data.SnapshotRow
 import java.text.DateFormat
@@ -58,6 +59,8 @@ sealed interface ImportState {
     data object Idle : ImportState
     data object Busy : ImportState
     data class Failed(val message: String) : ImportState
+    /** The share contained only a link (e.g. Wolt's share button): nothing to read. */
+    data object LinkOnly : ImportState
 }
 
 class HistoryViewModel(private val repo: Repository) : ViewModel() {
@@ -66,9 +69,20 @@ class HistoryViewModel(private val repo: Repository) : ViewModel() {
 
     fun import(uris: List<Uri>, onDone: (String) -> Unit) {
         if (uris.isEmpty()) return
+        run(onDone) { repo.createFromImages(uris) }
+    }
+
+    fun importShare(share: SharedContent, onDone: (String) -> Unit) = when (share) {
+        is SharedContent.Images -> import(share.uris, onDone)
+        is SharedContent.Text ->
+            if (PlainText.isOnlyLinks(share.text)) state.value = ImportState.LinkOnly
+            else run(onDone) { repo.createFromText(share.text, share.subject) }
+    }
+
+    private fun run(onDone: (String) -> Unit, block: suspend () -> String) {
         state.value = ImportState.Busy
         viewModelScope.launch {
-            runCatching { repo.createFromImages(uris) }
+            runCatching { block() }
                 .onSuccess { state.value = ImportState.Idle; onDone(it) }
                 .onFailure { state.value = ImportState.Failed(it.message ?: it.javaClass.simpleName) }
         }
@@ -134,11 +148,19 @@ fun HistoryScreen(vm: HistoryViewModel, openSnapshot: (String) -> Unit, openProf
                     stringResource(R.string.processing_failed, s.message),
                     color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(16.dp),
                 )
+                ImportState.LinkOnly -> Text(
+                    stringResource(R.string.share_link_only),
+                    color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(16.dp),
+                )
                 ImportState.Idle -> {}
             }
             if (rows.isEmpty() && state == ImportState.Idle) {
                 Box(Modifier.fillMaxSize().padding(32.dp), contentAlignment = Alignment.Center) {
-                    Text(stringResource(R.string.history_empty), style = MaterialTheme.typography.bodyLarge)
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(stringResource(R.string.history_empty), style = MaterialTheme.typography.bodyLarge)
+                        Spacer(Modifier.height(12.dp))
+                        Text(stringResource(R.string.share_hint), style = MaterialTheme.typography.bodyMedium)
+                    }
                 }
             }
             LazyColumn(Modifier.fillMaxSize()) {

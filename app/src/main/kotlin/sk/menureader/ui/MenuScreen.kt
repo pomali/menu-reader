@@ -145,7 +145,8 @@ fun MenuScreen(vm: MenuViewModel, back: () -> Unit, openDebug: () -> Unit) {
                         modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 20.dp, bottom = 4.dp),
                     )
                 }
-                items(sec.dishes, key = { it.dish.id }) { rd -> DishCard(rd, u.profile) { sourceOf = rd.dish } }
+                val hasPhotos = u.stored.snapshot.pages.isNotEmpty()
+                items(sec.dishes, key = { it.dish.id }) { rd -> DishCard(rd, u.profile, hasPhotos) { sourceOf = rd.dish } }
             }
             item { Spacer(Modifier.height(32.dp)) }
         }
@@ -224,7 +225,7 @@ private fun parseMinor(t: String): Long? {
 }
 
 @Composable
-private fun DishCard(rd: RankedDish, profile: UserProfile, showSource: () -> Unit) {
+private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, showSource: () -> Unit) {
     val d = rd.dish
     val ctx = LocalContext.current
     Card(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)) {
@@ -256,7 +257,7 @@ private fun DishCard(rd: RankedDish, profile: UserProfile, showSource: () -> Uni
                 Text(stringResource(R.string.low_confidence), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.tertiary)
             }
             Row {
-                if (d.sourceBox != null) TextButton(onClick = showSource) { Text(stringResource(R.string.show_source)) }
+                if (hasPhotos && d.sourceBox != null) TextButton(onClick = showSource) { Text(stringResource(R.string.show_source)) }
                 val shareTitle = stringResource(R.string.share)
                 TextButton(onClick = {
                     val send = Intent(Intent.ACTION_SEND).setType("text/plain")

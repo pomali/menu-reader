@@ -13,6 +13,11 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
 - `:app`: Room (snapshot stored as JSON + raw OCR JSON), ML Kit document scanner + bundled Latin OCR,
   screens: History, Menu, Profile, Debug/OCR export. The user approved the screen list. Nobody has
   run it on a device yet.
+- Share into the app (`ui/Share.kt`, manifest intent filters): screenshots (`image/*`, one or many) go
+  through OCR like scans; text (`text/plain`, e.g. selected on a web page) becomes a fake one-column OCR
+  page via `core/.../parse/PlainText.kt` (`OcrDocument.source = "text"`: name / description / price lines).
+  A share that is only a link (Wolt's share button) shows a hint. Later options discussed with the user:
+  accessibility service to read another app's screen (sideload only, privacy toggle), Wolt's web data (ToS).
 - CI: `.github/workflows/build.yml` runs the unit tests and uploads `app-debug.apk` as an artifact.
 - The user uploaded 8 real SK menus (`samples/menu*.jpg`; `menu6.jpg` = Garni, `menu6.webp` = Fontána).
   Stand-in OCR dumps are in `samples/ocr-rapid/` (see samples/README.md). The parser has been tuned on them:

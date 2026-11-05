@@ -12,6 +12,7 @@ import sk.menureader.core.MenuJson
 import sk.menureader.core.model.OcrDocument
 import sk.menureader.core.model.Page
 import sk.menureader.core.model.Snapshot
+import sk.menureader.core.parse.PlainText
 import sk.menureader.ocr.OcrEngine
 import java.io.File
 import java.util.UUID
@@ -48,6 +49,18 @@ class Repository(private val ctx: Context, db: AppDatabase) {
         val ocrDoc = OcrDocument(pages.map { ocr.recognize(ctx, it.id, Uri.fromFile(pageFile(id, it.id))) })
         val snapshot = extractor.extract(id, ocrDoc, pages, System.currentTimeMillis())
         save(snapshot, restaurantName, MenuJson.encodeToString(ocrDoc))
+        id
+    }
+
+    /**
+     * Text shared from another app (selected on a web page, copied from a delivery app). No photos;
+     * the text goes through the same parser as one fake OCR page.
+     */
+    suspend fun createFromText(text: String, restaurantName: String? = null): String = withContext(Dispatchers.IO) {
+        val id = UUID.randomUUID().toString()
+        val ocrDoc = PlainText.toOcr(text)
+        val snapshot = extractor.extract(id, ocrDoc, emptyList(), System.currentTimeMillis())
+        save(snapshot, restaurantName?.trim()?.take(80)?.ifEmpty { null }, MenuJson.encodeToString(ocrDoc))
         id
     }
 

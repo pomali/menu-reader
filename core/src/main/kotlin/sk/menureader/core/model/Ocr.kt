@@ -7,7 +7,15 @@ import kotlinx.serialization.Serializable
  * debug screen exports it as JSON so the parser can be developed and tested on the JVM.
  */
 @Serializable
-data class OcrDocument(val pages: List<OcrPage>)
+data class OcrDocument(
+    val pages: List<OcrPage>,
+    /** Where the text came from: null = OCR of photos, [SOURCE_TEXT] = text shared from another app. */
+    val source: String? = null,
+) {
+    companion object {
+        const val SOURCE_TEXT = "text"
+    }
+}
 
 @Serializable
 data class OcrPage(val pageId: String, val width: Int, val height: Int, val blocks: List<OcrBlock>) {

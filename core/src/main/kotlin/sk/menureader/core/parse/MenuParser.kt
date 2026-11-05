@@ -29,7 +29,7 @@ class MenuParser {
 
     fun parse(doc: OcrDocument): ParseResult {
         val segments = doc.pages.flatMap { orderedSegments(it) }
-        return classify(segments)
+        return classify(segments, plainText = doc.source == OcrDocument.SOURCE_TEXT)
     }
 
     // ---- Step 1: rows and reading order -------------------------------------------------------
@@ -190,7 +190,7 @@ class MenuParser {
 
     private class SectionDraft(val name: String, val dishes: MutableList<Draft> = mutableListOf())
 
-    private fun classify(segs: List<Segment>): ParseResult {
+    private fun classify(segs: List<Segment>, plainText: Boolean = false): ParseResult {
         val dishHeights = segs.filter { s -> Tokenizer.tokenize(Text.clean(s.text)).any { it is Token.PriceTok } }
             .map { it.lineHeight }.sorted()
         val medianH = dishHeights.getOrNull(dishHeights.size / 2) ?: segs.map { it.lineHeight }.sorted().getOrNull(segs.size / 2) ?: 0
@@ -276,6 +276,7 @@ class MenuParser {
 
             var dishName = name
             var box = s.box
+            var extraDescription = emptyList<String>()
             if (dishName.count { it.isLetter() } < 2) {
                 val d1 = lastDish
                 if (pending.isNotEmpty() && prices.isEmpty() && d1 != null && d1.codes.isEmpty() && d1.prices.isNotEmpty()) {
@@ -286,7 +287,11 @@ class MenuParser {
                     continue
                 }
                 if (pending.isNotEmpty()) {
-                    dishName = pending.joinToString(" ") { Text.clean(it.text) }
+                    // Shared text (Wolt, a web page) is usually "name / description / price", one per line.
+                    // From photos, several lines before a price are more often one name wrapped over lines.
+                    val lines = pending.map { Text.clean(it.text) }
+                    dishName = if (plainText) lines.first() else lines.joinToString(" ")
+                    if (plainText) extraDescription = lines.drop(1)
                     box = pending.map { it.box }.fold(box, BBox::union)
                     pending.clear()
                 } else {
@@ -314,6 +319,7 @@ class MenuParser {
                 explicitCurrency = prices.any { it.explicitCurrency },
                 height = s.lineHeight,
             )
+            draft.description += extraDescription
             sections.last().dishes += draft
             lastDish = draft
         }

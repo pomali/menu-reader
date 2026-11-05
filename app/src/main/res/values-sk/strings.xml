@@ -88,4 +88,7 @@
     <string name="tag_POULTRY">hydina</string>
     <string name="tag_SPICY">pikantné</string>
     <string name="tag_ALCOHOL">alkohol</string>
+    <string name="share_target">Prečítať menu</string>
+    <string name="share_link_only">Zdieľal sa iba odkaz. Zdieľajte snímku obrazovky (dobre funguje dlhá snímka) alebo označte text menu a zdieľajte ten.</string>
+    <string name="share_hint">Tip: z Woltu alebo webovej stránky zdieľajte snímku obrazovky alebo označený text do Menu Reader.</string>
 </resources>
