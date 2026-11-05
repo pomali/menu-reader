@@ -32,7 +32,7 @@ class RealMenuPatternsTest {
         assertEquals("Strapačky s kyslou kapustou", name("M1-120g Strapačky s kyslou kapustou"))
         assertEquals("Kelová s klobáskou", name("1.Kelová s klobáskou"))
         val portion = Tokenizer.tokenize("M3: 400g/50g Domáce halušky").filterIsInstance<Token.Portion>().single()
-        assertEquals("400g/50g", portion.text)
+        assertEquals("400 g / 50 g", portion.text)
     }
 
     @Test fun weekdays() {
@@ -89,5 +89,21 @@ class RealMenuPatternsTest {
         val d = r.sections.single().dishes
         assertEquals(2, d.size)
         assertEquals(listOf(1, 7), d[0].printedCodes)
+    }
+}
+
+class PortionTest {
+    @Test fun pretty() {
+        assertEquals("200 g / 200 g", Tokenizer.prettyPortion("200g/200g"))
+        assertEquals("0,33 l", Tokenizer.prettyPortion("0,33L"))
+        assertEquals("1 ks", Tokenizer.prettyPortion("1KS"))
+        assertEquals("100 g", Tokenizer.prettyPortion("100gr"))
+        assertEquals("0,3 l / 0,5 l", Tokenizer.prettyPortion("0,3/0,5l"))
+    }
+
+    @Test fun portionFromDescription() {
+        val d = MenuParser().parse(simpleDoc("NEAPOLKA Bufala 8,90 €", "(450g) paradajky La Torrente, Bufala")).sections.single().dishes.single()
+        assertEquals("450 g", d.portion)
+        assertEquals("paradajky La Torrente, Bufala", d.description)
     }
 }

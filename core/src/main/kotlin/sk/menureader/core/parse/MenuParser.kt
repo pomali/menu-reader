@@ -183,10 +183,25 @@ class MenuParser {
         var portion: String?,
         var box: BBox,
         val pageId: String,
-        val description: MutableList<String> = mutableListOf(),
+        private val descriptionLines: MutableList<String> = mutableListOf(),
         var explicitCurrency: Boolean,
         val height: Int,
-    )
+    ) {
+        /** Description lines; a weight/volume in them ("(450g)") becomes the portion if the dish has none. */
+        val description = object : AbstractMutableList<String>() {
+            override val size get() = descriptionLines.size
+            override fun get(index: Int) = descriptionLines[index]
+            override fun set(index: Int, element: String) = descriptionLines.set(index, element)
+            override fun removeAt(index: Int) = descriptionLines.removeAt(index)
+            override fun add(index: Int, element: String) {
+                val (portions, rest) = Tokenizer.extractPortions(element)
+                val text = if (portion == null && portions.isNotEmpty()) {
+                    portion = portions.joinToString(", "); rest
+                } else element
+                if (text.isNotBlank()) descriptionLines.add(index, text)
+            }
+        }
+    }
 
     private class SectionDraft(val name: String, val dishes: MutableList<Draft> = mutableListOf())
 

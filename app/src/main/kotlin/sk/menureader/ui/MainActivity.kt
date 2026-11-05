@@ -27,8 +27,9 @@ class MainActivity : ComponentActivity() {
         if (savedInstanceState == null) pendingShare = SharedContent.from(intent)
         val app = application as MenuReaderApp
         setContent {
-            val large by app.display.largeText.collectAsState()
-            MenuTheme(large = large) { AppNav(app, pendingShare) { pendingShare = null } }
+            val large by app.settings.largeText.collectAsState()
+            val dynamic by app.settings.dynamicColor.collectAsState()
+            MenuTheme(large = large, dynamic = dynamic) { AppNav(app, pendingShare) { pendingShare = null } }
         }
     }
 
@@ -50,19 +51,20 @@ private fun AppNav(app: MenuReaderApp, share: SharedContent?, shareHandled: () -
                     vm.importShare(share) { nav.navigate("menu/$it") }
                 }
             }
-            HistoryScreen(vm, app.display, openSnapshot = { nav.navigate("menu/$it") }, openProfile = { nav.navigate("profile") })
+            HistoryScreen(vm, app.profiles, openSnapshot = { nav.navigate("menu/$it") }, openSettings = { nav.navigate("settings") })
         }
         composable("menu/{id}") { entry ->
             val id = entry.arguments?.getString("id") ?: return@composable
             val vm = viewModel { MenuViewModel(app.repository, app.profiles, id) }
-            MenuScreen(vm, back = { nav.popBackStack() }, openDebug = { nav.navigate("debug/$id") })
+            val debugTools by app.settings.debugTools.collectAsState()
+            MenuScreen(vm, app.profiles, debugTools, back = { nav.popBackStack() }, openDebug = { nav.navigate("debug/$id") })
         }
         composable("debug/{id}") { entry ->
             val id = entry.arguments?.getString("id") ?: return@composable
             val vm = viewModel { MenuViewModel(app.repository, app.profiles, id) }
             DebugScreen(vm, app.repository, back = { nav.popBackStack() })
         }
-        composable("profile") { ProfileScreen(app.profiles, app.display, back = { nav.popBackStack() }) }
+        composable("settings") { SettingsScreen(app.settings, app.profiles, back = { nav.popBackStack() }) }
     }
     // A share that arrives while another screen is open: go back to History, which imports it.
     LaunchedEffect(share) {

@@ -9,11 +9,10 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,25 +20,40 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions
@@ -51,7 +65,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import sk.menureader.R
 import sk.menureader.core.parse.PlainText
-import sk.menureader.data.DisplayStore
+import sk.menureader.data.ProfileStore
 import sk.menureader.data.Repository
 import sk.menureader.data.SnapshotRow
 import java.text.DateFormat
@@ -63,6 +77,7 @@ sealed interface ImportState {
     data class Failed(val message: String) : ImportState
     /** The share contained only a link (e.g. Wolt's share button): nothing to read. */
     data object LinkOnly : ImportState
+    data object NoScanner : ImportState
 }
 
 class HistoryViewModel(private val repo: Repository) : ViewModel() {
@@ -92,105 +107,124 @@ class HistoryViewModel(private val repo: Repository) : ViewModel() {
 }
 
 @Composable
-fun HistoryScreen(vm: HistoryViewModel, display: DisplayStore, openSnapshot: (String) -> Unit, openProfile: () -> Unit) {
-    val large by display.largeText.collectAsState()
+fun HistoryScreen(
+    vm: HistoryViewModel,
+    profiles: ProfileStore,
+    openSnapshot: (String) -> Unit,
+    openSettings: () -> Unit,
+) {
     val rows by vm.snapshots.collectAsState()
     val state by vm.state.collectAsState()
     val activity = LocalActivity.current
+    val snackbar = remember { SnackbarHostState() }
+    var showAvoid by remember { mutableStateOf(false) }
+    val ctx = LocalContext.current
 
+    val pickLauncher = rememberLauncherForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(10)) { uris ->
+        vm.import(uris, openSnapshot)
+    }
     val scanLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { res ->
         if (res.resultCode == Activity.RESULT_OK) {
             val pages = GmsDocumentScanningResult.fromActivityResultIntent(res.data)?.pages.orEmpty()
             vm.import(pages.map { it.imageUri }, openSnapshot)
         }
     }
-    val pickLauncher = rememberLauncherForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(10)) { uris ->
-        vm.import(uris, openSnapshot)
-    }
-    val scannerUnavailable = stringResource(R.string.scanner_unavailable)
 
+    /** The ML Kit scanner (camera + gallery import). Without Play services, fall back to the photo picker. */
     fun startScan() {
+        val act = activity ?: return
         val options = GmsDocumentScannerOptions.Builder()
             .setGalleryImportAllowed(true)
             .setPageLimit(10)
             .setResultFormats(GmsDocumentScannerOptions.RESULT_FORMAT_JPEG)
             .setScannerMode(GmsDocumentScannerOptions.SCANNER_MODE_FULL)
             .build()
-        val act = activity ?: return
         GmsDocumentScanning.getClient(options).getStartScanIntent(act)
             .addOnSuccessListener { scanLauncher.launch(IntentSenderRequest.Builder(it).build()) }
-            .addOnFailureListener { vm.state.value = ImportState.Failed(scannerUnavailable) }
+            .addOnFailureListener {
+                vm.state.value = ImportState.NoScanner
+                pickLauncher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+            }
+    }
+
+    LaunchedEffect(state) {
+        val msg = when (val s = state) {
+            is ImportState.Failed -> ctx.getString(R.string.processing_failed, s.message)
+            ImportState.LinkOnly -> ctx.getString(R.string.share_link_only)
+            ImportState.NoScanner -> ctx.getString(R.string.scanner_unavailable)
+            else -> null
+        }
+        if (msg != null) {
+            vm.state.value = ImportState.Idle
+            snackbar.showSnackbar(msg)
+        }
     }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.app_name)) },
+                title = { Text("🍽️ " + stringResource(R.string.app_name)) },
                 actions = {
-                    // Quick switch for big letters + high contrast ("grandpa mode").
-                    TextButton(onClick = { display.setLargeText(!large) }) {
-                        Text(if (large) "aA" else "Aa", fontWeight = FontWeight.Bold)
-                    }
-                    TextButton(onClick = openProfile) { Text(stringResource(R.string.profile)) }
+                    IconButton(onClick = { showAvoid = true }) { Icon(Icons.Filled.Person, stringResource(R.string.avoid_title)) }
+                    IconButton(onClick = openSettings) { Icon(Icons.Filled.Settings, stringResource(R.string.settings)) }
                 },
             )
         },
-        bottomBar = {
-            Row(Modifier.fillMaxWidth().padding(16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Button(onClick = ::startScan, enabled = state != ImportState.Busy, modifier = Modifier.weight(1f)) {
-                    Text(stringResource(R.string.scan))
-                }
-                OutlinedButton(
-                    onClick = { pickLauncher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) },
-                    enabled = state != ImportState.Busy, modifier = Modifier.weight(1f),
-                ) { Text(stringResource(R.string.pick_photos)) }
+        floatingActionButton = {
+            if (state != ImportState.Busy) {
+                ExtendedFloatingActionButton(
+                    onClick = ::startScan,
+                    icon = { Icon(painterResource(R.drawable.ic_camera), null) },
+                    text = { Text(stringResource(R.string.scan)) },
+                )
             }
         },
+        snackbarHost = { SnackbarHost(snackbar) },
     ) { pad ->
         Column(Modifier.padding(pad).fillMaxSize()) {
-            when (val s = state) {
-                ImportState.Busy -> Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-                    CircularProgressIndicator(Modifier.padding(end = 12.dp))
-                    Text(stringResource(R.string.processing))
-                }
-                is ImportState.Failed -> Text(
-                    stringResource(R.string.processing_failed, s.message),
-                    color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(16.dp),
-                )
-                ImportState.LinkOnly -> Text(
-                    stringResource(R.string.share_link_only),
-                    color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(16.dp),
-                )
-                ImportState.Idle -> {}
+            if (state == ImportState.Busy) {
+                LinearProgressIndicator(Modifier.fillMaxWidth())
+                Text(stringResource(R.string.processing), style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(16.dp))
             }
-            if (rows.isEmpty() && state == ImportState.Idle) {
-                Box(Modifier.fillMaxSize().padding(32.dp), contentAlignment = Alignment.Center) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(stringResource(R.string.history_empty), style = MaterialTheme.typography.bodyLarge)
-                        Spacer(Modifier.height(12.dp))
-                        Text(stringResource(R.string.share_hint), style = MaterialTheme.typography.bodyMedium)
-                    }
-                }
-            }
-            LazyColumn(Modifier.fillMaxSize()) {
+            if (rows.isEmpty() && state != ImportState.Busy) EmptyState()
+            LazyColumn(
+                contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 96.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
                 items(rows, key = { it.id }) { row -> HistoryRow(row) { openSnapshot(row.id) } }
             }
+        }
+    }
+    if (showAvoid) AvoidSheet(profiles) { showAvoid = false }
+}
+
+@Composable
+private fun EmptyState() {
+    Box(Modifier.fillMaxSize().padding(32.dp), contentAlignment = Alignment.Center) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("🥟🍝🥗", fontSize = 56.sp)
+            Spacer(Modifier.height(16.dp))
+            Text(stringResource(R.string.empty_title), style = MaterialTheme.typography.headlineMedium)
+            Spacer(Modifier.height(8.dp))
+            Text(stringResource(R.string.empty_body), style = MaterialTheme.typography.bodyLarge, textAlign = TextAlign.Center)
+            Spacer(Modifier.height(24.dp))
+            Text(
+                stringResource(R.string.share_hint), style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center,
+            )
         }
     }
 }
 
 @Composable
 private fun HistoryRow(row: SnapshotRow, onClick: () -> Unit) {
-    Card(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp).clickable(onClick = onClick)) {
-        Column(Modifier.padding(16.dp)) {
-            Text(row.restaurantName ?: stringResource(R.string.unassigned), style = MaterialTheme.typography.titleMedium)
-            Spacer(Modifier.height(4.dp))
-            val date = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(Date(row.capturedAt))
-            val quality = stringResource(if (row.quality == "FULL") R.string.quality_full else R.string.quality_basic)
-            Text(
-                "$date · ${pluralStringResource(R.plurals.dish_count, row.dishCount, row.dishCount)} · $quality",
-                style = MaterialTheme.typography.bodySmall,
-            )
-        }
+    Card(onClick = onClick, colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)) {
+        val date = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(Date(row.capturedAt))
+        ListItem(
+            colors = ListItemDefaults.colors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
+            leadingContent = { Text(if (row.dishCount == 0) "🤷" else "📋", fontSize = 28.sp) },
+            headlineContent = { Text(row.restaurantName ?: stringResource(R.string.unnamed_restaurant)) },
+            supportingContent = { Text("$date · ${pluralStringResource(R.plurals.dish_count, row.dishCount, row.dishCount)}") },
+        )
     }
 }

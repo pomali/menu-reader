@@ -1,40 +1,57 @@
-@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class, ExperimentalFoundationApi::class)
 
 package sk.menureader.ui
 
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -44,13 +61,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
@@ -61,21 +81,23 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import sk.menureader.R
-import sk.menureader.core.allergen.printedMismatches
 import sk.menureader.core.filter.Query
 import sk.menureader.core.filter.RankedDish
 import sk.menureader.core.filter.RankedSection
 import sk.menureader.core.filter.Ranker
-import sk.menureader.core.filter.Reason
 import sk.menureader.core.filter.UserProfile
 import sk.menureader.core.model.Allergen
 import sk.menureader.core.model.DietTag
 import sk.menureader.core.model.Dish
+import sk.menureader.core.model.Layer
 import sk.menureader.core.model.Price
+import sk.menureader.core.model.Quality
 import sk.menureader.data.ProfileStore
 import sk.menureader.data.Repository
 import sk.menureader.data.StoredSnapshot
 import java.io.File
+import java.text.DateFormat
+import java.util.Date
 
 data class MenuUi(
     val stored: StoredSnapshot,
@@ -98,7 +120,7 @@ class MenuViewModel(private val repo: Repository, private val profiles: ProfileS
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
-    /** Toggling an allergen on the menu screen edits the profile, so it stays one source of truth. */
+    /** Chips on the menu screen edit the profile, so it stays one source of truth. */
     fun toggleAvoid(a: Allergen) = profiles.update { it.copy(avoid = if (a in it.avoid) it.avoid - a else it.avoid + a) }
     fun toggleAvoid(t: DietTag) = profiles.update { it.copy(avoidTags = if (t in it.avoidTags) it.avoidTags - t else it.avoidTags + t) }
     fun setRestaurant(name: String) = viewModelScope.launch { repo.setRestaurantName(id, name) }
@@ -108,60 +130,87 @@ class MenuViewModel(private val repo: Repository, private val profiles: ProfileS
 }
 
 @Composable
-fun MenuScreen(vm: MenuViewModel, back: () -> Unit, openDebug: () -> Unit) {
+fun MenuScreen(vm: MenuViewModel, profiles: ProfileStore, debugTools: Boolean, back: () -> Unit, openDebug: () -> Unit) {
     val ui by vm.ui.collectAsState()
     var menuOpen by remember { mutableStateOf(false) }
     var editName by remember { mutableStateOf(false) }
     var confirmDelete by remember { mutableStateOf(false) }
+    var searching by remember { mutableStateOf(false) }
+    var showAvoid by remember { mutableStateOf(false) }
+    var showPrice by remember { mutableStateOf(false) }
+    var chipInfo by remember { mutableStateOf<ChipInfo?>(null) }
     var sourceOf by remember { mutableStateOf<Dish?>(null) }
+    val scroll = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
-    Scaffold(topBar = {
-        TopAppBar(
-            navigationIcon = { TextButton(onClick = back) { Text("←") } },
-            title = {
-                Text(
-                    ui?.stored?.restaurantName ?: stringResource(R.string.unassigned),
-                    maxLines = 1, overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.padding(end = 8.dp),
-                )
-            },
-            actions = {
-                TextButton(onClick = { menuOpen = true }) { Text("⋮") }
-                DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
-                    DropdownMenuItem(text = { Text(stringResource(R.string.restaurant)) }, onClick = { menuOpen = false; editName = true })
-                    DropdownMenuItem(text = { Text(stringResource(R.string.rerun)) }, onClick = { menuOpen = false; vm.rerun() })
-                    DropdownMenuItem(text = { Text(stringResource(R.string.debug)) }, onClick = { menuOpen = false; openDebug() })
-                    DropdownMenuItem(text = { Text(stringResource(R.string.delete)) }, onClick = { menuOpen = false; confirmDelete = true })
-                }
-            },
-        )
-    }) { pad ->
+    Scaffold(
+        modifier = Modifier.nestedScroll(scroll.nestedScrollConnection),
+        topBar = {
+            TopAppBar(
+                scrollBehavior = scroll,
+                navigationIcon = { IconButton(onClick = back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } },
+                title = {
+                    if (searching) {
+                        val q = ui?.query ?: Query()
+                        TextField(
+                            value = q.text, onValueChange = { vm.query.value = q.copy(text = it) },
+                            placeholder = { Text(stringResource(R.string.search)) }, singleLine = true,
+                            colors = TextFieldDefaults.colors(
+                                focusedContainerColor = Color.Transparent, unfocusedContainerColor = Color.Transparent,
+                            ),
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
+                },
+                actions = {
+                    if (searching) {
+                        IconButton(onClick = { searching = false; vm.query.value = vm.query.value.copy(text = "") }) {
+                            Icon(Icons.Filled.Close, stringResource(R.string.close))
+                        }
+                    } else {
+                        IconButton(onClick = { searching = true }) { Icon(Icons.Filled.Search, stringResource(R.string.search)) }
+                    }
+                    Box {
+                        IconButton(onClick = { menuOpen = true }) { Icon(Icons.Filled.MoreVert, stringResource(R.string.more)) }
+                        DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
+                            DropdownMenuItem(text = { Text(stringResource(R.string.rename)) }, onClick = { menuOpen = false; editName = true })
+                            DropdownMenuItem(text = { Text(stringResource(R.string.rerun)) }, onClick = { menuOpen = false; vm.rerun() })
+                            if (debugTools) DropdownMenuItem(text = { Text(stringResource(R.string.debug)) }, onClick = { menuOpen = false; openDebug() })
+                            DropdownMenuItem(text = { Text(stringResource(R.string.delete)) }, onClick = { menuOpen = false; confirmDelete = true })
+                        }
+                    }
+                },
+            )
+        },
+    ) { pad ->
         val u = ui ?: return@Scaffold
-        LazyColumn(Modifier.padding(pad).fillMaxSize()) {
-            item { Disclaimer() }
-            item { Filters(u, vm) }
+        val hasPhotos = u.stored.snapshot.pages.isNotEmpty()
+        LazyColumn(contentPadding = PaddingValues(top = pad.calculateTopPadding(), bottom = 32.dp), modifier = Modifier.fillMaxSize()) {
+            item { Header(u) { editName = true } }
+            item { FilterRow(u, vm, onEditAvoid = { showAvoid = true }, onPrice = { showPrice = true }) }
             if (u.stored.snapshot.dishes.isEmpty()) {
-                item { Text(stringResource(R.string.no_dishes), Modifier.padding(16.dp)) }
+                item { Text(stringResource(R.string.no_dishes), Modifier.padding(24.dp), style = MaterialTheme.typography.bodyLarge) }
             }
             for (sec in u.sections) {
-                item(key = "h-" + sec.section.id) {
-                    Text(
-                        sec.section.name.ifBlank { stringResource(R.string.section_default) },
-                        style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 20.dp, bottom = 4.dp),
-                    )
+                stickyHeader(key = "h-" + sec.section.id) {
+                    Surface(color = MaterialTheme.colorScheme.background, modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            sec.section.name.ifBlank { stringResource(R.string.section_default) },
+                            style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 8.dp),
+                        )
+                    }
                 }
-                val hasPhotos = u.stored.snapshot.pages.isNotEmpty()
-                items(sec.dishes, key = { it.dish.id }) { rd -> DishCard(rd, u.profile, hasPhotos) { sourceOf = rd.dish } }
+                items(sec.dishes, key = { it.dish.id }) { rd ->
+                    DishCard(rd, u.profile, hasPhotos, onChip = { chipInfo = it }, onPhoto = { sourceOf = rd.dish })
+                }
             }
-            item { Spacer(Modifier.height(32.dp)) }
         }
 
         if (editName) {
             var text by remember { mutableStateOf(u.stored.restaurantName.orEmpty()) }
             AlertDialog(
                 onDismissRequest = { editName = false },
-                title = { Text(stringResource(R.string.restaurant)) },
+                title = { Text(stringResource(R.string.rename)) },
                 text = { OutlinedTextField(text, { text = it }, placeholder = { Text(stringResource(R.string.restaurant_hint)) }, singleLine = true) },
                 confirmButton = { TextButton(onClick = { vm.setRestaurant(text); editName = false }) { Text(stringResource(R.string.save)) } },
                 dismissButton = { TextButton(onClick = { editName = false }) { Text(stringResource(R.string.cancel)) } },
@@ -175,156 +224,145 @@ fun MenuScreen(vm: MenuViewModel, back: () -> Unit, openDebug: () -> Unit) {
                 dismissButton = { TextButton(onClick = { confirmDelete = false }) { Text(stringResource(R.string.cancel)) } },
             )
         }
+        if (showAvoid) AvoidSheet(profiles) { showAvoid = false }
+        if (showPrice) {
+            val max = u.stored.snapshot.dishes.flatMap { it.prices }.maxOfOrNull { it.amountMinor } ?: 2000
+            PriceSheet(u.query.maxPriceMinor, max, u.stored.snapshot.currency, onChange = { vm.query.value = vm.query.value.copy(maxPriceMinor = it) }) { showPrice = false }
+        }
+        chipInfo?.let { ChipSheet(it) { chipInfo = null } }
         sourceOf?.let { d -> SourceDialog(d, vm) { sourceOf = null } }
     }
 }
 
+/** Restaurant name (scrolls away; tap to rename), date, and a cheerful summary. */
 @Composable
-private fun Disclaimer() {
-    Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer),
-        modifier = Modifier.fillMaxWidth().padding(16.dp),
-    ) {
-        Text(stringResource(R.string.disclaimer), Modifier.padding(12.dp), style = MaterialTheme.typography.bodyMedium)
-    }
-}
-
-@Composable
-private fun Filters(u: MenuUi, vm: MenuViewModel) {
-    val q = u.query
-    Column(Modifier.padding(horizontal = 16.dp)) {
-        Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            // Avoided allergens first, then the ones that occur on this menu, then the rest.
-            val order = Allergen.entries.sortedWith(compareBy({ it !in u.profile.avoid }, { -(u.counts[it] ?: 0) }, { it.code }))
-            for (a in order) {
-                FilterChip(
-                    selected = a in u.profile.avoid,
-                    onClick = { vm.toggleAvoid(a) },
-                    label = { Text("${label(a)} (${u.counts[a] ?: 0})") },
-                )
-            }
-            // Then other avoided ingredients: the profile's first, then those that occur on this menu.
-            val tags = avoidableTags.sortedWith(compareBy({ it !in u.profile.avoidTags }, { -(u.tagCounts[it] ?: 0) }))
-            for (t in tags) {
-                FilterChip(
-                    selected = t in u.profile.avoidTags,
-                    onClick = { vm.toggleAvoid(t) },
-                    label = { Text("${label(t)} (${u.tagCounts[t] ?: 0})") },
-                )
-            }
-        }
-        val search: @Composable (Modifier) -> Unit = { m ->
-            OutlinedTextField(
-                value = q.text, onValueChange = { vm.query.value = q.copy(text = it) },
-                label = { Text(stringResource(R.string.search)) }, singleLine = true, modifier = m,
+private fun Header(u: MenuUi, onRename: () -> Unit) {
+    val s = u.stored.snapshot
+    Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp)) {
+        Row(Modifier.clickable(onClick = onRename), verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                u.stored.restaurantName ?: stringResource(R.string.unnamed_restaurant),
+                style = MaterialTheme.typography.headlineSmall, maxLines = 2, overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f, fill = false),
             )
+            Spacer(Modifier.width(8.dp))
+            Icon(Icons.Filled.Edit, stringResource(R.string.rename), Modifier.size(18.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
         }
-        var priceText by remember { mutableStateOf(q.maxPriceMinor?.let { Price(it, null).format() } ?: "") }
-        val price: @Composable (Modifier) -> Unit = { m ->
-            OutlinedTextField(
-                value = priceText,
-                onValueChange = { t ->
-                    priceText = t
-                    vm.query.value = q.copy(maxPriceMinor = parseMinor(t))
+        val date = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(Date(s.capturedAt))
+        val quality = stringResource(if (s.quality == Quality.FULL) R.string.quality_full else R.string.quality_basic)
+        Text("$date · $quality", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        val all = u.sections.flatMap { it.dishes }
+        if (all.isNotEmpty() && (u.profile.avoid.isNotEmpty() || u.profile.avoidTags.isNotEmpty())) {
+            val ok = all.count { !it.flagged }
+            val flagged = all.size - ok
+            Spacer(Modifier.height(6.dp))
+            Text(
+                when {
+                    ok == 0 -> stringResource(R.string.summary_none)
+                    flagged == 0 -> stringResource(R.string.summary_all)
+                    else -> pluralStringResource(R.plurals.summary_ok, ok, ok) + "  ·  " + pluralStringResource(R.plurals.summary_flagged, flagged, flagged)
                 },
-                label = { Text(stringResource(R.string.max_price)) }, singleLine = true,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal), modifier = m,
+                style = MaterialTheme.typography.titleSmall,
             )
-        }
-        if (LocalLargeText.current) {
-            search(Modifier.fillMaxWidth())
-            price(Modifier.fillMaxWidth())
-        } else {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                search(Modifier.weight(2f).padding(end = 8.dp))
-                price(Modifier.weight(1f))
-            }
         }
     }
 }
 
-private fun parseMinor(t: String): Long? {
-    val n = t.trim().replace(',', '.').toBigDecimalOrNull() ?: return null
-    return n.movePointRight(2).toLong()
+/**
+ * First chip opens the avoid sheet, second the price sheet; then a quick toggle for every allergen
+ * and ingredient that actually occurs on this menu, in EU number order (ingredients after).
+ */
+@Composable
+private fun FilterRow(u: MenuUi, vm: MenuViewModel, onEditAvoid: () -> Unit, onPrice: () -> Unit) {
+    LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        item {
+            val n = u.profile.avoid.size + u.profile.avoidTags.size
+            AssistChip(
+                onClick = onEditAvoid,
+                label = { Text(if (n == 0) stringResource(R.string.avoid_none) else "${stringResource(R.string.avoid_chip)} · $n") },
+                leadingIcon = { Icon(Icons.Filled.Edit, null, Modifier.size(18.dp)) },
+            )
+        }
+        item {
+            val max = u.query.maxPriceMinor
+            FilterChip(
+                selected = max != null, onClick = onPrice,
+                label = { Text("💸 " + if (max == null) stringResource(R.string.price_any) else stringResource(R.string.price_upto, Price(max, u.stored.snapshot.currency).format())) },
+            )
+        }
+        items(Allergen.entries.filter { (u.counts[it] ?: 0) > 0 }, key = { "a" + it.name }) { a ->
+            FilterChip(selected = a in u.profile.avoid, onClick = { vm.toggleAvoid(a) }, label = { Text("${label(a)}  ${u.counts[a]}") })
+        }
+        items(avoidableTags.filter { (u.tagCounts[it] ?: 0) > 0 }, key = { "t" + it.name }) { t ->
+            FilterChip(selected = t in u.profile.avoidTags, onClick = { vm.toggleAvoid(t) }, label = { Text("${label(t)}  ${u.tagCounts[t]}") })
+        }
+    }
+    Spacer(Modifier.height(4.dp))
 }
 
 @Composable
-private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, showSource: () -> Unit) {
+private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, onChip: (ChipInfo) -> Unit, onPhoto: () -> Unit) {
     val d = rd.dish
     val ctx = LocalContext.current
-    Card(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)) {
-        Column(Modifier.padding(12.dp)) {
+    var menu by remember { mutableStateOf(false) }
+    // Flagged dishes get a red outline; the red chips inside say why.
+    Card(
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
+        border = if (rd.flagged) BorderStroke(2.dp, MaterialTheme.colorScheme.error) else null,
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 5.dp),
+    ) {
+        Column(Modifier.padding(start = 16.dp, top = 12.dp, bottom = 10.dp)) {
             Row(verticalAlignment = Alignment.Top) {
                 Column(Modifier.weight(1f)) {
                     Text(d.name, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
-                    d.portion?.let { Text(it, style = MaterialTheme.typography.bodySmall) }
+                    d.portion?.let { Text("⚖️ $it", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+                    d.description?.let {
+                        Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 2.dp))
+                    }
                 }
-                Column(horizontalAlignment = Alignment.End) {
+                Column(horizontalAlignment = Alignment.End, modifier = Modifier.padding(start = 8.dp)) {
                     for (p in d.prices) {
-                        Text(listOfNotNull(p.variant, p.format()).joinToString("  "), style = MaterialTheme.typography.titleSmall)
+                        Text(p.format(), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                        p.variant?.let { Text(it, style = MaterialTheme.typography.labelSmall) }
+                    }
+                }
+                Box {
+                    IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, stringResource(R.string.more)) }
+                    DropdownMenu(expanded = menu, onDismissRequest = { menu = false }) {
+                        if (hasPhotos && d.sourceBox != null) {
+                            DropdownMenuItem(text = { Text(stringResource(R.string.show_photo)) }, onClick = { menu = false; onPhoto() })
+                        }
+                        val shareTitle = stringResource(R.string.share)
+                        DropdownMenuItem(text = { Text(shareTitle) }, onClick = {
+                            menu = false
+                            val send = Intent(Intent.ACTION_SEND).setType("text/plain")
+                                .putExtra(Intent.EXTRA_TEXT, listOfNotNull(d.name, d.description).joinToString("\n"))
+                            ctx.startActivity(Intent.createChooser(send, shareTitle))
+                        })
                     }
                 }
             }
-            d.description?.let { Text(it, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(top = 2.dp)) }
-            if (d.allergens.isNotEmpty()) {
+            val allergenChips = d.allergens.sortedBy { it.allergen.code }
+            val tagChips = d.tagClaims.filter { it.tag in profile.avoidTags }.distinctBy { it.tag }
+            if (allergenChips.isNotEmpty() || tagChips.isNotEmpty() || d.confidence < 0.6) {
                 Spacer(Modifier.height(8.dp))
-                FlowRow { for (c in d.allergens) AllergenChip(c, c.allergen in profile.avoid) }
-            }
-            // Avoided non-allergen ingredients found in this dish (onion, pineapple…).
-            val avoidedTags = d.tagClaims.filter { it.tag in profile.avoidTags }.distinctBy { it.tag }
-            if (avoidedTags.isNotEmpty()) {
-                if (d.allergens.isEmpty()) Spacer(Modifier.height(8.dp))
-                FlowRow { for (c in avoidedTags) LayerChip(label(c.tag), c.layer, avoided = true) }
-            }
-            Status(rd, profile)
-            for (m in d.printedMismatches().filter { it.allergen in profile.avoid }) {
-                Text(
-                    stringResource(R.string.mismatch, label(m.allergen), m.evidence),
-                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error,
-                )
-            }
-            if (d.confidence < 0.6) {
-                Text(stringResource(R.string.low_confidence), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.tertiary)
-            }
-            Row {
-                if (hasPhotos && d.sourceBox != null) TextButton(onClick = showSource) { Text(stringResource(R.string.show_source)) }
-                val shareTitle = stringResource(R.string.share)
-                TextButton(onClick = {
-                    val send = Intent(Intent.ACTION_SEND).setType("text/plain")
-                        .putExtra(Intent.EXTRA_TEXT, listOfNotNull(d.name, d.description).joinToString("\n"))
-                    ctx.startActivity(Intent.createChooser(send, shareTitle))
-                }) { Text(shareTitle) }
+                FlowRow(Modifier.padding(end = 12.dp)) {
+                    for (c in allergenChips) {
+                        val text = label(c.allergen)
+                        val avoided = c.allergen in profile.avoid
+                        LayerChip(text, c.layer, avoided) {
+                            onChip(ChipInfo.Claim(text, c.layer, c.evidence, c.allergen.code.takeIf { c.layer == Layer.PRINTED }, avoided,
+                                mismatch = d.printedCodes.isNotEmpty() && c.layer != Layer.PRINTED))
+                        }
+                    }
+                    for (c in tagChips) {
+                        val text = label(c.tag)
+                        LayerChip(text, c.layer, avoided = true) { onChip(ChipInfo.Claim(text, c.layer, c.evidence, null, true, false)) }
+                    }
+                    if (d.confidence < 0.6) NoteChip("🤔 " + stringResource(R.string.low_confidence_chip)) { onChip(ChipInfo.LowConfidence) }
+                }
             }
         }
-    }
-}
-
-/** Never says "safe": either the reasons, or what was *not detected* and how it was checked. */
-@Composable
-private fun Status(rd: RankedDish, profile: UserProfile) {
-    Spacer(Modifier.height(4.dp))
-    if (rd.flagged) {
-        val parts = rd.reasons.map { r ->
-            when (r) {
-                is Reason.Contains -> stringResource(R.string.reason_contains, label(r.claim.allergen), label(r.claim.layer), r.claim.evidence)
-                is Reason.Tag -> stringResource(R.string.reason_contains, label(r.claim.tag), label(r.claim.layer), r.claim.evidence)
-                is Reason.MissingTag -> stringResource(R.string.reason_missing_tag, label(r.tag))
-                is Reason.OverPrice -> stringResource(R.string.reason_over_price, Price(r.maxMinor, null).format())
-                Reason.NoTextMatch -> stringResource(R.string.reason_no_match)
-                Reason.OtherSection -> stringResource(R.string.reason_other_section)
-            }
-        }
-        Text("⚠ " + parts.joinToString("; "), color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
-    } else {
-        val avoided = profile.avoid.sortedBy { it.code }.map { label(it) } +
-            avoidableTags.filter { it in profile.avoidTags }.map { label(it) }
-        val layers = profile.strictness.layers.map { label(it) }.joinToString(", ")
-        val head = if (avoided.isEmpty()) stringResource(R.string.not_detected_none) else stringResource(R.string.not_detected, avoided.joinToString(", "))
-        val tail = buildList {
-            add(stringResource(R.string.checked_layers, layers))
-            if (rd.noPrintedCodes) add(stringResource(R.string.no_codes_printed))
-        }.joinToString("; ")
-        Text("$head ($tail)", style = MaterialTheme.typography.bodySmall)
     }
 }
 
@@ -337,13 +375,7 @@ private fun SourceDialog(d: Dish, vm: MenuViewModel, close: () -> Unit) {
     AlertDialog(
         onDismissRequest = close,
         title = { Text(d.name, maxLines = 2, overflow = TextOverflow.Ellipsis) },
-        text = {
-            Column {
-                bmp?.let { Image(it.asImageBitmap(), contentDescription = d.name, modifier = Modifier.fillMaxWidth()) }
-                HorizontalDivider(Modifier.padding(vertical = 8.dp))
-                Text(d.printedCodes.joinToString(", ").ifEmpty { "–" }, style = MaterialTheme.typography.bodySmall)
-            }
-        },
+        text = { bmp?.let { Image(it.asImageBitmap(), contentDescription = d.name, modifier = Modifier.fillMaxWidth()) } ?: Text("📷…", fontSize = 32.sp) },
         confirmButton = { TextButton(onClick = close) { Text(stringResource(R.string.close)) } },
     )
 }
@@ -364,4 +396,3 @@ private fun crop(file: File, b: sk.menureader.core.model.BBox): Bitmap? {
     val btm = ((b.bottom + padY) / sample).coerceIn(t + 1, full.height)
     return Bitmap.createBitmap(full, l, t, r - l, btm - t)
 }
-

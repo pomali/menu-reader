@@ -22,7 +22,7 @@ data class StoredSnapshot(val snapshot: Snapshot, val restaurantName: String?, v
 /** Snapshots in Room, page images in app-private files. Everything stays on the device. */
 class Repository(private val ctx: Context, db: AppDatabase) {
     private val dao = db.snapshots()
-    private val ocr = OcrEngine()
+    private val ocr by lazy { OcrEngine() }
     private val extractor = LocalExtractor()
 
     val snapshots: Flow<List<SnapshotRow>> = dao.observeAll()

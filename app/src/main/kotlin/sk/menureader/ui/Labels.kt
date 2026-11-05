@@ -6,7 +6,6 @@ import androidx.compose.ui.res.stringResource
 import sk.menureader.R
 import sk.menureader.core.model.Allergen
 import sk.menureader.core.model.DietTag
-import sk.menureader.core.model.Layer
 
 @StringRes
 fun Allergen.labelRes(): Int = when (this) {
@@ -46,13 +45,23 @@ fun DietTag.labelRes(): Int = when (this) {
     DietTag.ALCOHOL -> R.string.tag_ALCOHOL
 }
 
-@StringRes
-fun Layer.labelRes(): Int = when (this) {
-    Layer.PRINTED -> R.string.layer_printed
-    Layer.LEXICAL -> R.string.layer_lexical
-    Layer.INFERRED -> R.string.layer_inferred
+/** Everything except the positive diet labels (vegetarian/vegan) can be avoided. */
+val avoidableTags = DietTag.entries - setOf(DietTag.VEGETARIAN, DietTag.VEGAN)
+
+val Allergen.emoji: String get() = when (this) {
+    Allergen.GLUTEN -> "🌾"; Allergen.CRUSTACEANS -> "🦐"; Allergen.EGGS -> "🥚"; Allergen.FISH -> "🐟"
+    Allergen.PEANUTS -> "🥜"; Allergen.SOY -> "🫘"; Allergen.MILK -> "🥛"; Allergen.TREE_NUTS -> "🌰"
+    Allergen.CELERY -> "🥬"; Allergen.MUSTARD -> "🌭"; Allergen.SESAME -> "🥯"; Allergen.SULPHITES -> "🍷"
+    Allergen.LUPIN -> "🌼"; Allergen.MOLLUSCS -> "🦑"
 }
 
-@Composable fun label(a: Allergen) = "${a.code} ${stringResource(a.labelRes())}"
-@Composable fun label(t: DietTag) = stringResource(t.labelRes())
-@Composable fun label(l: Layer) = stringResource(l.labelRes())
+val DietTag.emoji: String get() = when (this) {
+    DietTag.VEGETARIAN -> "🥕"; DietTag.VEGAN -> "🌱"; DietTag.MEAT -> "🥩"; DietTag.PORK -> "🐷"
+    DietTag.BEEF -> "🐮"; DietTag.POULTRY -> "🐔"; DietTag.LAMB -> "🐑"; DietTag.ONION -> "🧅"
+    DietTag.GARLIC -> "🧄"; DietTag.SPICY -> "🌶️"; DietTag.CORIANDER -> "🌿"; DietTag.TURMERIC -> "🟠"
+    DietTag.MUSHROOMS -> "🍄"; DietTag.TOMATO -> "🍅"; DietTag.PINEAPPLE -> "🍍"; DietTag.ALCOHOL -> "🍺"
+}
+
+/** "🥛 7 Milk": emoji, EU number, name. */
+@Composable fun label(a: Allergen) = "${a.emoji} ${a.code} ${stringResource(a.labelRes())}"
+@Composable fun label(t: DietTag) = "${t.emoji} ${stringResource(t.labelRes())}"

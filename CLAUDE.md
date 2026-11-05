@@ -22,7 +22,18 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
   garlic, chilli/spicy, coriander, turmeric, mushrooms, tomato, pineapple, alcohol. `Dish.tagClaims` carry
   layer + evidence like allergens (weak lexicon terms = INFERRED "may contain", e.g. guláš -> onion).
   The user hates pineapple: "Hawai/Havaj" pizza counts as a direct pineapple match.
-- Large text + high contrast ("grandpa mode"): `data/DisplayStore`, `MenuTheme(large)` scales fonts 1.4x
+- UI (user feedback 2026-11-05): Android conventions, upbeat/funny tone with emoji. History: top bar with
+  avoid-sheet (person icon) + Settings, ExtendedFAB "Scan" (scanner has gallery import; photo picker only
+  as fallback). Menu: top bar hides on scroll (search, ⋮ rename/re-run/debug/delete), restaurant name is
+  a list item (tap to rename), summary line, filter LazyRow (avoid sheet, price sheet, then only chips
+  with count > 0 in EU order), sticky section headers, dish card ⋮ (photo, translate/share). No status
+  text under chips: tapping a chip opens `ChipSheet` explaining the layer/evidence. Only avoided things
+  are red; flagged cards get a red outline. Sheets in `ui/Sheets.kt`, settings in `ui/SettingsScreen.kt`
+  + `data/SettingsStore` (large text, wallpaper colours, debug tools).
+- Screenshot tests: `app/src/test/.../ScreenshotTest.kt` (Robolectric native graphics + Roborazzi), PNGs in
+  `app/build/screenshots/`; copies in `docs/screenshots/`. Locally needs `robolectricRepoUrl` (mirror) in
+  `~/.gradle/gradle.properties`. No emulator here (no KVM).
+- Large text + high contrast ("grandpa mode"): `data/SettingsStore`, `MenuTheme(large)` scales fonts 1.4x
   on top of the system setting, bolder weights, fixed black/white (or white/black) schemes instead of
   dynamic colour. Toggle in Profile and the "Aa" button on History. `LocalLargeText` for stacked layouts.
 - CI: `.github/workflows/build.yml` runs the unit tests and uploads `app-debug.apk` as an artifact.
