@@ -14,6 +14,18 @@ Snapshots are saved so the user can come back to them later.
 - **API keys:** the user enters their own key in settings. It is stored on the device, and the app
   calls the AI API directly from the browser. **No proxy server in the MVP.**
 - **Single user:** no accounts and no sync. Export/import as JSON is the backup.
+- **Allergen conflicts:** by default a dish is flagged if *any* layer suggests an excluded allergen,
+  even when the printed codes don't list it. A mismatch between the printed codes and the
+  ingredients is shown explicitly ("menu doesn't list 7, but 'smotana' suggests milk").
+- **Filtering reorders instead of hiding.** Within each section, OK dishes come first and flagged
+  dishes after them, with the reason shown. Nothing is hidden or dimmed.
+- **Snapshot = this menu, on this date, in this restaurant (at this location).** A snapshot is a
+  one-off. Restaurants are their own records, so a restaurant's snapshots can be listed, but there
+  is no merging or tracking of dishes across days.
+- **Location:** the app reads GPS at capture time and suggests nearby restaurants. The restaurant
+  can be left empty and assigned later.
+- **No editing in the MVP.** The extracted result is read-only. The user can re-run extraction or
+  delete the snapshot.
 
 ---
 
@@ -69,6 +81,57 @@ Rules:
 - **Sync and sharing (phase 3, optional):** opt-in. Snapshots are content-addressable, so they can
   be shared ("menu of Bistro X, 2026-11-05") without accounts at first.
 
+### 2.1 Offline modes in detail
+
+The real question is **what happens at each step when there's no network**. There are three steps:
+*capture* (take photos), *process* (photos → dishes + allergens), *view* (browse and filter).
+
+| Mode | Capture offline | Process offline | View offline | Quality offline | Quality online |
+|---|---|---|---|---|---|
+| **Online** (server stores and processes) | ❌ | ❌ | ❌ (or cache only) | – | ★★★ |
+| **Semi-offline** (local storage, processing in the cloud) | ✅ queued | ❌ waits for network | ✅ | Photos only, until online | ★★★ |
+| **Offline-first** (local pass right away, cloud upgrades it later) | ✅ | ✅ basic | ✅ | ★★ (A+B, simpler structure) | ★★★ |
+| **Offline-only** (no cloud at all) | ✅ | ✅ | ✅ | ★★ | ★★ (same) |
+
+**Online.** With one user and their own API key, a server adds hosting, auth and GDPR work for no
+benefit. ❌ Not for us.
+
+**Semi-offline** (the current MVP plan)
+- The simplest design that's still useful. Without network, photos wait in a queue
+  ("3 photos waiting"). Processing starts automatically once online (service worker / `online` event).
+- Weak spot: in a basement restaurant with no signal you get nothing until you're outside. In SK/CZ
+  mobile data or restaurant Wi-Fi is usually available, and EU roaming means no extra cost abroad
+  in the EU.
+- Small fallback: show the photo zoomable while it waits, so the user can still read the codes themselves.
+
+**Offline-first**
+- A local extractor runs right away: OCR → a rule-based parser → layers A+B. The result is a working
+  snapshot marked "basic". Once online, the cloud AI re-extracts it, adds layer C and fixes the
+  structure, and its result *replaces* the basic one. Replacing avoids having to match dishes
+  between the two versions.
+- Our menus make rules work better than usual. SK/CZ menus have regular line patterns:
+  `[weight 150 g | 0,33 l] Name ........ (1,3,7) ........ 8,90 €`. Allergen codes and prices are easy
+  to find with regular expressions, and the dish name is the text between them. Descriptions,
+  multiple columns, and blackboards are where rules break down.
+- OCR engine:
+  - Web/WASM: Tesseract.js (about 2–4 MB per language, slow and weak on photos) or PaddleOCR.js
+    (PP-OCRv5, about 10–20 MB, better on photos, needs a lot of setup).
+  - Native: ML Kit / Apple Vision (free, fast, returns line bounding boxes). **Offline-first only
+    really works well with the native build.**
+- Extra benefit even when online: the local OCR text can be used to check the AI's output. A price
+  that doesn't appear anywhere in the OCR text is a likely hallucination.
+- Cost: a second extractor to build and maintain (parser + tests), plus app size and battery use.
+
+**Offline-only**
+- No AI cost and maximum privacy, but no layer C, and structure quality stays at the rule-based level
+  forever. It doesn't fit with "we can have API keys" unless privacy is the top priority.
+
+**Recommendation:** build **semi-offline** now, behind an `Extractor` interface
+(`extract(pages) → Snapshot`, with a `quality: 'basic'|'full'` flag). Move to **offline-first** in the
+native phase by adding a `LocalExtractor` (ML Kit OCR + SK/CZ rule parser) next to `CloudExtractor`.
+Nothing else needs to change: storage, UI, and allergen layers A+B already run locally and work the
+same on either extractor's output.
+
 ---
 
 ## 3. Platform: PWA first
@@ -117,7 +180,9 @@ menu's detected language.
 ## 4. Data model (draft)
 
 ```ts
-Snapshot   { id, restaurant: { name, address?, geo? }, capturedAt, language, currency,
+Restaurant { id, name, address?, geo?: { lat, lon }, externalRef?: { source: 'osm', id } }
+Snapshot   { id, restaurantId?, capturedAt, capturedGeo?: { lat, lon, accuracy },
+             language, currency,
              pages: Page[], sections: Section[], allergenLegend?: Record<string, AllergenId>,
              extraction: { engine, model?, version } }
 Page       { id, imageBlobRef, width, height }
@@ -134,15 +199,24 @@ main way to check what the AI extracted.
 
 ---
 
+## 4.1 Choosing the restaurant from GPS
+- At capture, read `navigator.geolocation` (or the native plugin later) and store it on the snapshot.
+- Suggestions: (1) restaurants already saved within about 100 m, (2) nearby places from
+  OpenStreetMap via the Overpass API (`amenity=restaurant|cafe|pub|fast_food`, radius about 75 m).
+  OSM is free, needs no key, and covers SK/CZ well.
+- If the AI read a restaurant name from the menu header, use it to rank the suggestions.
+- If nothing matches, the snapshot has no restaurant ("unassigned") and the user can pick or create
+  one later from history.
+
 ## 5. UI flows (MVP)
 1. **Capture:** take or pick 1–N photos and optionally enter the restaurant name. The device's GPS can
    suggest it later.
-2. **Processing:** progress indicator. The user can review and fix the extracted dishes (an inline
-   editor in case the AI made mistakes).
+2. **Processing:** progress indicator. The result is read-only in the MVP, with a "re-run" button.
 3. **Menu view:** sections and dishes. Each dish shows allergen chips with styling by layer
    (solid = printed, outline = lexical, dashed = inferred "may contain").
 4. **Filters/facets:** exclude allergens (pre-filled from the profile), diet tags, price range,
-   section, text search, and a "strictness" toggle. Counts appear next to each facet.
+   section, text search. Filters **reorder** each section (OK dishes first, flagged ones after,
+   with the reason). Counts appear next to each facet.
 5. **History:** list of snapshots, searchable by restaurant and date. Export/import as JSON.
 
 ---
