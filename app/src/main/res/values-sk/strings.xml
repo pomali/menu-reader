@@ -19,7 +19,7 @@
 
     <string name="profile">Alergický profil</string>
     <string name="avoid_allergens">Alergény, ktorým sa vyhýbam</string>
-    <string name="avoid_tags">Označiť aj</string>
+    <string name="avoid_tags">Ďalej sa vyhýbam</string>
     <string name="strictness">Označiť jedlo, keď</string>
     <string name="strictness_printed">menu uvádza kód</string>
     <string name="strictness_lexical">…alebo to naznačuje surovina v názve</string>
@@ -38,7 +38,6 @@
     <string name="layer_lexical">slovník</string>
     <string name="layer_inferred">odhad</string>
     <string name="reason_contains">%1$s (%2$s, %3$s)</string>
-    <string name="reason_tag">%1$s</string>
     <string name="reason_missing_tag">nie je %1$s</string>
     <string name="reason_over_price">nad %1$s</string>
     <string name="reason_no_match">nezodpovedá hľadaniu</string>
@@ -81,17 +80,27 @@
     <string name="allergen_13">Vlčí bôb</string>
     <string name="allergen_14">Mäkkýše</string>
 
-    <string name="tag_VEGETARIAN">vegetariánske</string>
-    <string name="tag_VEGAN">vegánske</string>
-    <string name="tag_PORK">bravčové</string>
-    <string name="tag_BEEF">hovädzie</string>
-    <string name="tag_POULTRY">hydina</string>
-    <string name="tag_SPICY">pikantné</string>
-    <string name="tag_ALCOHOL">alkohol</string>
     <string name="share_target">Prečítať menu</string>
     <string name="share_link_only">Zdieľal sa iba odkaz. Zdieľajte snímku obrazovky (dobre funguje dlhá snímka) alebo označte text menu a zdieľajte ten.</string>
     <string name="share_hint">Tip: z Woltu alebo webovej stránky zdieľajte snímku obrazovky alebo označený text do Menu Reader.</string>
     <string name="display">Zobrazenie</string>
     <string name="large_text">Veľké písmo a vysoký kontrast</string>
     <string name="large_text_hint">Veľké tučné písmo, čierne na bielom. Aj tlačidlo „Aa“ na hlavnej obrazovke.</string>
+    <string name="tag_VEGETARIAN">vegetariánske</string>
+    <string name="tag_VEGAN">vegánske</string>
+    <string name="tag_MEAT">mäso (akékoľvek)</string>
+    <string name="tag_PORK">bravčové</string>
+    <string name="tag_BEEF">hovädzie</string>
+    <string name="tag_POULTRY">hydina</string>
+    <string name="tag_LAMB">jahňacie</string>
+    <string name="tag_ONION">cibuľa</string>
+    <string name="tag_GARLIC">cesnak</string>
+    <string name="tag_SPICY">čili / pálivé</string>
+    <string name="tag_CORIANDER">koriander</string>
+    <string name="tag_TURMERIC">kurkuma</string>
+    <string name="tag_MUSHROOMS">huby</string>
+    <string name="tag_TOMATO">paradajky</string>
+    <string name="tag_PINEAPPLE">ananás</string>
+    <string name="tag_ALCOHOL">alkohol</string>
+    <string name="avoid_ingredients_hint">Nie sú to EÚ alergény, hľadajú sa podľa slov v názve a popise jedla.</string>
 </resources>

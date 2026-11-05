@@ -694,6 +694,154 @@
     }
   },
   "tags": {
+    "VEGETARIAN": {
+      "sk": [
+        "vegetarián*",
+        "bezmäs*"
+      ],
+      "cs": [
+        "vegetarián*",
+        "bezmas*"
+      ],
+      "en": [
+        "vegetarian",
+        "veggie"
+      ]
+    },
+    "VEGAN": {
+      "sk": [
+        "vegán*"
+      ],
+      "cs": [
+        "vegan*"
+      ],
+      "en": [
+        "vegan"
+      ]
+    },
+    "MEAT": {
+      "sk": [
+        "mäso",
+        "mäsa",
+        "mäsom",
+        "mäse",
+        "mäsko",
+        "mäskom",
+        "mäska",
+        "mäsový",
+        "mäsová",
+        "mäsové",
+        "mäsovou",
+        "mäsovej",
+        "mäsovým",
+        "rezeň",
+        "rezne",
+        "rezňa",
+        "rezňom",
+        "fašírk*",
+        "karbonátk*",
+        "sekaná",
+        "sekanou",
+        "sekanej",
+        "čevapčiči",
+        "ražniči",
+        "gyros",
+        "kebab*",
+        "špíz*",
+        "pečienk*",
+        "pečeň",
+        "pečene",
+        "pečeňou",
+        "pečeňov*",
+        "jaternic*",
+        "tlačenk*",
+        "paštét*",
+        "šunk*",
+        "saláma",
+        "salámou",
+        "salám",
+        "klobás*",
+        "párk*",
+        "slanin*",
+        "údenin*",
+        "divin*",
+        "zverin*",
+        "jelení*",
+        "diviak*",
+        "diviačin*",
+        "zajac*",
+        "králik*",
+        "králič*"
+      ],
+      "cs": [
+        "maso",
+        "masa",
+        "masem",
+        "mase",
+        "masový",
+        "masová",
+        "masové",
+        "masovou",
+        "řízek",
+        "řízku",
+        "řízkem",
+        "karbanátek",
+        "karbanátky",
+        "sekaná",
+        "játra",
+        "jater",
+        "játrov*",
+        "jitrnic*",
+        "tlačenk*",
+        "paštik*",
+        "zvěřin*",
+        "jelení",
+        "kanec*",
+        "kančí",
+        "zajíc*",
+        "králík*",
+        "králičí"
+      ],
+      "en": [
+        "meat",
+        "meats",
+        "meatball*",
+        "schnitzel",
+        "steak*",
+        "kebab*",
+        "gyros",
+        "sausage*",
+        "bacon",
+        "ham",
+        "salami",
+        "pepperoni",
+        "liver",
+        "pate",
+        "pâté",
+        "venison",
+        "rabbit"
+      ],
+      "weak": [
+        "lasagn*",
+        "bolognese",
+        "bolonsk*",
+        "boloňsk*",
+        "carbonara",
+        "plnené papriky",
+        "plněné papriky",
+        "kapustnic*",
+        "fazuľov* polievk*",
+        "šošovicov* polievk*",
+        "vývar*",
+        "bujón*",
+        "broth",
+        "guláš*",
+        "perkelt*",
+        "stroganov*",
+        "burger*",
+        "burger*"
+      ]
+    },
     "PORK": {
       "sk": [
         "bravč*",
@@ -802,57 +950,326 @@
         "wings"
       ]
     },
-    "VEGETARIAN": {
+    "LAMB": {
       "sk": [
-        "vegetarián*",
-        "bezmäs*"
+        "jahňa*",
+        "jahňac*",
+        "jahnac*",
+        "baranin*",
+        "baranie mäso",
+        "skopov*"
       ],
       "cs": [
-        "vegetarián*",
-        "bezmas*"
+        "jehně*",
+        "jehněč*",
+        "skopov*"
       ],
       "en": [
-        "vegetarian",
-        "veggie"
+        "lamb",
+        "mutton"
       ]
     },
-    "VEGAN": {
+    "ONION": {
       "sk": [
-        "vegán*"
+        "cibul*",
+        "cibuľ*",
+        "šalotk*"
       ],
       "cs": [
-        "vegan*"
+        "šalotk*"
       ],
       "en": [
-        "vegan"
+        "onion*",
+        "shallot*",
+        "scallion*",
+        "spring onion*"
+      ],
+      "weak": [
+        "pór",
+        "póru",
+        "pórom",
+        "pórek",
+        "pórkem",
+        "leek*",
+        "guláš*",
+        "perkelt*",
+        "stroganov*",
+        "fašírk*",
+        "karbonátk*",
+        "karbanát*",
+        "sekaná",
+        "sekanou",
+        "čevapčiči",
+        "ražniči",
+        "salsa",
+        "čalamád*",
+        "tatársk* omáčk*",
+        "tatarsk* omáčk*",
+        "bryndzové pirohy",
+        "kapustnic*",
+        "segedín*",
+        "francúzske zemiaky",
+        "bolognese",
+        "bolonsk*",
+        "boloňsk*",
+        "omáčk*",
+        "sauce",
+        "gravy"
+      ]
+    },
+    "GARLIC": {
+      "sk": [
+        "cesnak*",
+        "cesnač*"
+      ],
+      "cs": [
+        "česnek*",
+        "česneč*"
+      ],
+      "en": [
+        "garlic*",
+        "aioli",
+        "allioli",
+        "aglio"
+      ],
+      "weak": [
+        "tzatzik*",
+        "pesto",
+        "langoš*",
+        "lángoš*",
+        "gyros",
+        "čevapčiči",
+        "ražniči",
+        "dip",
+        "dresing*",
+        "dressing*",
+        "bylinkov* masl*",
+        "herb butter",
+        "bruschett*",
+        "marinovan*",
+        "marinated"
       ]
     },
     "SPICY": {
       "sk": [
+        "chili",
+        "chilli",
+        "feferón*",
+        "habanero",
+        "harissa",
+        "jalapen*",
+        "jalapeñ*",
         "pikant*",
+        "pálivej",
+        "pálivou",
+        "pálivá",
         "pálivé",
         "pálivý",
-        "pálivá",
-        "chilli",
-        "chili",
-        "jalapeñ*",
-        "jalapen*"
+        "pálivým",
+        "sriracha",
+        "tabasco",
+        "čili",
+        "štipľav*"
       ],
       "cs": [
-        "pálivé",
-        "pálivý",
-        "pálivá",
+        "feferonk*",
+        "ostrá",
         "ostré",
         "ostrý",
-        "ostrá"
+        "pálivou",
+        "pálivá",
+        "pálivé",
+        "pálivý",
+        "pálivým",
+        "čili"
       ],
       "en": [
-        "spicy",
-        "hot sauce",
+        "cayenne",
         "chili",
+        "chilies",
         "chilli",
+        "chillies",
+        "habanero",
+        "harissa",
+        "hot pepper*",
+        "hot sauce",
         "jalapeno*",
-        "sriracha"
+        "spicy",
+        "sriracha",
+        "tabasco"
+      ],
+      "weak": [
+        "diavola",
+        "arrabbiata",
+        "arrabiata",
+        "kimchi",
+        "curry",
+        "kari",
+        "thai",
+        "thajsk*",
+        "sichuan",
+        "kung pao",
+        "mexick*",
+        "mexican",
+        "sladko-pikantn*",
+        "salsa",
+        "buffalo",
+        "peri peri",
+        "piri piri",
+        "vindaloo",
+        "halászlé"
+      ]
+    },
+    "CORIANDER": {
+      "sk": [
+        "koriand*",
+        "cilantro"
+      ],
+      "cs": [
+        "koriandr*"
+      ],
+      "en": [
+        "coriander",
+        "cilantro"
+      ],
+      "weak": [
+        "pho",
+        "phở",
+        "curry",
+        "kari",
+        "salsa",
+        "guacamole",
+        "pad thai",
+        "thai",
+        "thajsk*",
+        "vietnamsk*",
+        "vietnamese",
+        "mexick*",
+        "mexican",
+        "tacos",
+        "taco",
+        "burrito*",
+        "burito*",
+        "poke",
+        "poké",
+        "nachos",
+        "falafel"
+      ]
+    },
+    "TURMERIC": {
+      "sk": [
+        "kurkum*"
+      ],
+      "cs": [],
+      "en": [
+        "turmeric",
+        "curcuma"
+      ],
+      "weak": [
+        "curry",
+        "kari",
+        "dal",
+        "dhal",
+        "tikka",
+        "masala",
+        "korma",
+        "biryani",
+        "indick*",
+        "indian"
+      ]
+    },
+    "MUSHROOMS": {
+      "sk": [
+        "šampiň*",
+        "šampin*",
+        "hrib*",
+        "hríb*",
+        "huby",
+        "húb",
+        "hubami",
+        "hubov*",
+        "hlív*",
+        "hliv*",
+        "kuriatk*",
+        "dubák*",
+        "pečiark*"
+      ],
+      "cs": [
+        "žampion*",
+        "houb*",
+        "hřib*",
+        "lišk*"
+      ],
+      "en": [
+        "mushroom*",
+        "champignon*",
+        "porcini",
+        "shiitake",
+        "portobello",
+        "funghi",
+        "truffle*",
+        "chanterelle*"
+      ],
+      "weak": [
+        "capricciosa",
+        "quattro stagioni",
+        "lesná zmes"
+      ]
+    },
+    "TOMATO": {
+      "sk": [
+        "paradajk*",
+        "rajčin*",
+        "kečup*"
+      ],
+      "cs": [
+        "rajč*",
+        "rajsk*"
+      ],
+      "en": [
+        "tomato*",
+        "ketchup",
+        "pomodoro",
+        "marinara",
+        "bolognese",
+        "arrabbiata",
+        "arrabiata"
+      ],
+      "weak": [
+        "pizza",
+        "pizze",
+        "pizzu",
+        "lasagn*",
+        "bolonsk*",
+        "boloňsk*",
+        "guláš*",
+        "lečo",
+        "shakshuk*",
+        "šakšuk*",
+        "gazpacho",
+        "bruschett*",
+        "salsa",
+        "pečené fazule",
+        "baked beans",
+        "čalamád*",
+        "bbq",
+        "barbecue"
+      ]
+    },
+    "PINEAPPLE": {
+      "sk": [
+        "ananás*",
+        "ananas*",
+        "hawai",
+        "hawaii",
+        "havaj*"
+      ],
+      "cs": [],
+      "en": [
+        "pineapple*",
+        "hawaiian",
+        "piña colada",
+        "pina colada"
       ]
     },
     "ALCOHOL": {

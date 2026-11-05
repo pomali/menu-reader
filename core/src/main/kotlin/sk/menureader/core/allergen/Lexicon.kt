@@ -22,10 +22,12 @@ class Lexicon private constructor(
     private val tagTerms: List<Term<DietTag>>,
 ) {
     private class Term<T>(val target: T, val raw: String, val weak: Boolean) {
+        /** Each word may end in "*" (prefix match), e.g. "fazuľov* polievk*". */
         val regex: Regex = run {
-            val prefix = raw.endsWith("*")
-            val words = fold(raw.removeSuffix("*")).trim().split(Regex("\\s+")).map(Regex::escape)
-            Regex("(?<![\\p{L}\\d])" + words.joinToString("\\s+") + (if (prefix) "\\p{L}*" else "") + "(?![\\p{L}\\d])")
+            val words = fold(raw).trim().split(Regex("\\s+")).map { w ->
+                if (w.endsWith("*")) Regex.escape(w.removeSuffix("*")) + "\\p{L}*" else Regex.escape(w)
+            }
+            Regex("(?<![\\p{L}\\d])" + words.joinToString("\\s+") + "(?![\\p{L}\\d])")
         }
     }
 

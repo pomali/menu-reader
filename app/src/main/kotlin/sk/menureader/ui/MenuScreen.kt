@@ -69,6 +69,7 @@ import sk.menureader.core.filter.Ranker
 import sk.menureader.core.filter.Reason
 import sk.menureader.core.filter.UserProfile
 import sk.menureader.core.model.Allergen
+import sk.menureader.core.model.DietTag
 import sk.menureader.core.model.Dish
 import sk.menureader.core.model.Price
 import sk.menureader.data.ProfileStore
@@ -82,6 +83,7 @@ data class MenuUi(
     val query: Query,
     val sections: List<RankedSection>,
     val counts: Map<Allergen, Int>,
+    val tagCounts: Map<DietTag, Int>,
 )
 
 class MenuViewModel(private val repo: Repository, private val profiles: ProfileStore, val id: String) : ViewModel() {
@@ -89,12 +91,16 @@ class MenuViewModel(private val repo: Repository, private val profiles: ProfileS
 
     val ui = combine(repo.observe(id), profiles.profile, query) { stored, profile, q ->
         stored?.let {
-            MenuUi(it, profile, q, Ranker.rank(it.snapshot, profile, q), Ranker.allergenCounts(it.snapshot, profile.strictness))
+            MenuUi(
+                it, profile, q, Ranker.rank(it.snapshot, profile, q),
+                Ranker.allergenCounts(it.snapshot, profile.strictness), Ranker.tagCounts(it.snapshot, profile.strictness),
+            )
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
     /** Toggling an allergen on the menu screen edits the profile, so it stays one source of truth. */
     fun toggleAvoid(a: Allergen) = profiles.update { it.copy(avoid = if (a in it.avoid) it.avoid - a else it.avoid + a) }
+    fun toggleAvoid(t: DietTag) = profiles.update { it.copy(avoidTags = if (t in it.avoidTags) it.avoidTags - t else it.avoidTags + t) }
     fun setRestaurant(name: String) = viewModelScope.launch { repo.setRestaurantName(id, name) }
     fun rerun() = viewModelScope.launch { repo.rerun(id) }
     fun delete(onDone: () -> Unit) = viewModelScope.launch { repo.delete(id); onDone() }
@@ -197,6 +203,15 @@ private fun Filters(u: MenuUi, vm: MenuViewModel) {
                     label = { Text("${label(a)} (${u.counts[a] ?: 0})") },
                 )
             }
+            // Then other avoided ingredients: the profile's first, then those that occur on this menu.
+            val tags = avoidableTags.sortedWith(compareBy({ it !in u.profile.avoidTags }, { -(u.tagCounts[it] ?: 0) }))
+            for (t in tags) {
+                FilterChip(
+                    selected = t in u.profile.avoidTags,
+                    onClick = { vm.toggleAvoid(t) },
+                    label = { Text("${label(t)} (${u.tagCounts[t] ?: 0})") },
+                )
+            }
         }
         val search: @Composable (Modifier) -> Unit = { m ->
             OutlinedTextField(
@@ -255,6 +270,12 @@ private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, s
                 Spacer(Modifier.height(8.dp))
                 FlowRow { for (c in d.allergens) AllergenChip(c, c.allergen in profile.avoid) }
             }
+            // Avoided non-allergen ingredients found in this dish (onion, pineapple…).
+            val avoidedTags = d.tagClaims.filter { it.tag in profile.avoidTags }.distinctBy { it.tag }
+            if (avoidedTags.isNotEmpty()) {
+                if (d.allergens.isEmpty()) Spacer(Modifier.height(8.dp))
+                FlowRow { for (c in avoidedTags) LayerChip(label(c.tag), c.layer, avoided = true) }
+            }
             Status(rd, profile)
             for (m in d.printedMismatches().filter { it.allergen in profile.avoid }) {
                 Text(
@@ -286,7 +307,7 @@ private fun Status(rd: RankedDish, profile: UserProfile) {
         val parts = rd.reasons.map { r ->
             when (r) {
                 is Reason.Contains -> stringResource(R.string.reason_contains, label(r.claim.allergen), label(r.claim.layer), r.claim.evidence)
-                is Reason.Tag -> stringResource(R.string.reason_tag, label(r.tag))
+                is Reason.Tag -> stringResource(R.string.reason_contains, label(r.claim.tag), label(r.claim.layer), r.claim.evidence)
                 is Reason.MissingTag -> stringResource(R.string.reason_missing_tag, label(r.tag))
                 is Reason.OverPrice -> stringResource(R.string.reason_over_price, Price(r.maxMinor, null).format())
                 Reason.NoTextMatch -> stringResource(R.string.reason_no_match)
@@ -295,7 +316,8 @@ private fun Status(rd: RankedDish, profile: UserProfile) {
         }
         Text("⚠ " + parts.joinToString("; "), color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
     } else {
-        val avoided = profile.avoid.sortedBy { it.code }.map { label(it) }
+        val avoided = profile.avoid.sortedBy { it.code }.map { label(it) } +
+            avoidableTags.filter { it in profile.avoidTags }.map { label(it) }
         val layers = profile.strictness.layers.map { label(it) }.joinToString(", ")
         val head = if (avoided.isEmpty()) stringResource(R.string.not_detected_none) else stringResource(R.string.not_detected, avoided.joinToString(", "))
         val tail = buildList {

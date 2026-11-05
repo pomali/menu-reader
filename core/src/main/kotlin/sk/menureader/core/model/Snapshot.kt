@@ -43,6 +43,10 @@ data class AllergenClaim(
     val evidence: String,
 )
 
+/** A dietary tag / avoided ingredient found in the dish text, with the word that matched. */
+@Serializable
+data class TagClaim(val tag: DietTag, val layer: Layer, val evidence: String)
+
 @Serializable
 data class Dish(
     val id: String,
@@ -53,7 +57,9 @@ data class Dish(
     /** Raw allergen numbers as printed on the menu, before mapping. */
     val printedCodes: List<Int> = emptyList(),
     val allergens: List<AllergenClaim> = emptyList(),
+    /** All tags from [tagClaims], any layer. */
     val tags: Set<DietTag> = emptySet(),
+    val tagClaims: List<TagClaim> = emptyList(),
     val sourceBox: SourceBox? = null,
     /** Parser confidence that this really is a dish, 0..1. */
     val confidence: Double = 1.0,

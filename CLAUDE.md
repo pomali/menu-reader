@@ -18,6 +18,10 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
   page via `core/.../parse/PlainText.kt` (`OcrDocument.source = "text"`: name / description / price lines).
   A share that is only a link (Wolt's share button) shows a hint. Later options discussed with the user:
   accessibility service to read another app's screen (sideload only, privacy toggle), Wolt's web data (ToS).
+- Avoided non-allergen ingredients (`DietTag`): meat (derived from pork/beef/poultry/lamb), lamb, onion,
+  garlic, chilli/spicy, coriander, turmeric, mushrooms, tomato, pineapple, alcohol. `Dish.tagClaims` carry
+  layer + evidence like allergens (weak lexicon terms = INFERRED "may contain", e.g. guláš -> onion).
+  The user hates pineapple: "Hawai/Havaj" pizza counts as a direct pineapple match.
 - Large text + high contrast ("grandpa mode"): `data/DisplayStore`, `MenuTheme(large)` scales fonts 1.4x
   on top of the system setting, bolder weights, fixed black/white (or white/black) schemes instead of
   dynamic colour. Toggle in Profile and the "Aa" button on History. `LocalLargeText` for stacked layouts.

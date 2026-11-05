@@ -32,7 +32,8 @@ import sk.menureader.core.model.DietTag
 import sk.menureader.data.DisplayStore
 import sk.menureader.data.ProfileStore
 
-private val avoidableTags = listOf(DietTag.PORK, DietTag.BEEF, DietTag.POULTRY, DietTag.ALCOHOL, DietTag.SPICY)
+/** Everything except the positive diet labels (vegetarian/vegan) can be avoided. */
+val avoidableTags = DietTag.entries - setOf(DietTag.VEGETARIAN, DietTag.VEGAN)
 
 @Composable
 fun ProfileScreen(store: ProfileStore, display: DisplayStore, back: () -> Unit) {
@@ -62,7 +63,13 @@ fun ProfileScreen(store: ProfileStore, display: DisplayStore, back: () -> Unit) 
             items(Allergen.entries) { a ->
                 CheckRow(label(a), a in p.avoid) { on -> store.update { it.copy(avoid = if (on) it.avoid + a else it.avoid - a) } }
             }
-            item { Header(stringResource(R.string.avoid_tags)) }
+            item {
+                Header(stringResource(R.string.avoid_tags))
+                Text(
+                    stringResource(R.string.avoid_ingredients_hint), style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                )
+            }
             items(avoidableTags) { t ->
                 CheckRow(label(t), t in p.avoidTags) { on -> store.update { it.copy(avoidTags = if (on) it.avoidTags + t else it.avoidTags - t) } }
             }

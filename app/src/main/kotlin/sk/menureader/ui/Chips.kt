@@ -23,12 +23,16 @@ import sk.menureader.core.model.Layer
  * dashed + "?" = inferred "may contain". Avoided allergens use the error colour.
  */
 @Composable
-fun AllergenChip(claim: AllergenClaim, avoided: Boolean) {
+fun AllergenChip(claim: AllergenClaim, avoided: Boolean) = LayerChip(label(claim.allergen), claim.layer, avoided)
+
+/** A chip styled by the layer the claim comes from; also used for avoided ingredients like onion. */
+@Composable
+fun LayerChip(label: String, layer: Layer, avoided: Boolean) {
     val accent = if (avoided) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
     val shape = RoundedCornerShape(8.dp)
-    val text = label(claim.allergen) + if (claim.layer == Layer.INFERRED) "?" else ""
+    val text = label + if (layer == Layer.INFERRED) "?" else ""
     val base = Modifier.padding(end = 6.dp, bottom = 6.dp).clip(shape)
-    when (claim.layer) {
+    when (layer) {
         Layer.PRINTED -> Text(
             text, color = if (avoided) MaterialTheme.colorScheme.onError else MaterialTheme.colorScheme.onPrimary,
             style = MaterialTheme.typography.labelMedium,

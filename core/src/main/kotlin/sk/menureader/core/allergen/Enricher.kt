@@ -5,6 +5,7 @@ import sk.menureader.core.model.AllergenClaim
 import sk.menureader.core.model.DietTag
 import sk.menureader.core.model.Dish
 import sk.menureader.core.model.Layer
+import sk.menureader.core.model.TagClaim
 
 /**
  * Adds allergen claims to dishes: layer A from printed codes (mapped through the menu's own
@@ -16,6 +17,7 @@ import sk.menureader.core.model.Layer
  * Deterministic, so it can be re-run on stored snapshots when the dictionary improves.
  */
 class Enricher(private val lexicon: Lexicon = Lexicon.default) {
+    private val meats = setOf(DietTag.PORK, DietTag.BEEF, DietTag.POULTRY, DietTag.LAMB)
 
     fun enrich(dish: Dish, legend: Map<Int, Allergen>? = null): Dish {
         val printed = dish.printedCodes.mapNotNull { code ->
@@ -32,11 +34,17 @@ class Enricher(private val lexicon: Lexicon = Lexicon.default) {
                 else AllergenClaim(it.target, Layer.LEXICAL, 0.6, "'${it.matched}'")
             }
 
-        val tags = lexicon.tags(text).map { it.target }.toMutableSet()
-        if (DietTag.VEGAN in tags) tags += DietTag.VEGETARIAN
+        val tagClaims = lexicon.tags(text).map {
+            TagClaim(it.target, if (it.weak) Layer.INFERRED else Layer.LEXICAL, "'${it.matched}'")
+        }.toMutableList()
+        // Any kind of meat also counts as MEAT, with the same evidence.
+        if (tagClaims.none { it.tag == DietTag.MEAT }) {
+            tagClaims.filter { it.tag in meats }.minByOrNull { it.layer }?.let { tagClaims += it.copy(tag = DietTag.MEAT) }
+        }
+        tagClaims.firstOrNull { it.tag == DietTag.VEGAN }?.let { if (tagClaims.none { c -> c.tag == DietTag.VEGETARIAN }) tagClaims += it.copy(tag = DietTag.VEGETARIAN) }
 
         // Claims are computed from scratch; the Phase 2 cloud pass adds its own layer C afterwards.
-        return dish.copy(allergens = printed + lexical, tags = tags)
+        return dish.copy(allergens = printed + lexical, tags = tagClaims.map { it.tag }.toSet(), tagClaims = tagClaims)
     }
 }
 

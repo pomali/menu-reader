@@ -8,6 +8,7 @@ import sk.menureader.core.model.Dish
 import sk.menureader.core.model.Layer
 import sk.menureader.core.model.Section
 import sk.menureader.core.model.Snapshot
+import sk.menureader.core.model.TagClaim
 import sk.menureader.core.parse.Text
 
 /** Which layers count when deciding whether to flag a dish. Default: any layer (PLAN §0). */
@@ -34,7 +35,7 @@ data class Query(
 
 sealed interface Reason {
     data class Contains(val claim: AllergenClaim) : Reason
-    data class Tag(val tag: DietTag) : Reason
+    data class Tag(val claim: TagClaim) : Reason
     data class MissingTag(val tag: DietTag) : Reason
     data class OverPrice(val maxMinor: Long) : Reason
     data object NoTextMatch : Reason
@@ -59,7 +60,11 @@ object Ranker {
             .sortedBy { it.layer }
             .distinctBy { it.allergen }
             .forEach { add(Reason.Contains(it)) }
-        (dish.tags intersect profile.avoidTags).forEach { add(Reason.Tag(it)) }
+        dish.tagClaims
+            .filter { it.tag in profile.avoidTags && it.layer in profile.strictness.layers }
+            .sortedBy { it.layer }
+            .distinctBy { it.tag }
+            .forEach { add(Reason.Tag(it)) }
         (query.requireTags - dish.tags).forEach { add(Reason.MissingTag(it)) }
         val max = query.maxPriceMinor
         if (max != null) {
@@ -85,6 +90,7 @@ object Ranker {
         snapshot.dishes.flatMap { d -> d.allergens.filter { it.layer in strictness.layers }.map { it.allergen }.distinct() }
             .groupingBy { it }.eachCount()
 
-    fun tagCounts(snapshot: Snapshot): Map<DietTag, Int> =
-        snapshot.dishes.flatMap { it.tags }.groupingBy { it }.eachCount()
+    fun tagCounts(snapshot: Snapshot, strictness: Strictness): Map<DietTag, Int> =
+        snapshot.dishes.flatMap { d -> d.tagClaims.filter { it.layer in strictness.layers }.map { it.tag }.distinct() }
+            .groupingBy { it }.eachCount()
 }

@@ -30,10 +30,19 @@ fun Allergen.labelRes(): Int = when (this) {
 fun DietTag.labelRes(): Int = when (this) {
     DietTag.VEGETARIAN -> R.string.tag_VEGETARIAN
     DietTag.VEGAN -> R.string.tag_VEGAN
+    DietTag.MEAT -> R.string.tag_MEAT
     DietTag.PORK -> R.string.tag_PORK
     DietTag.BEEF -> R.string.tag_BEEF
     DietTag.POULTRY -> R.string.tag_POULTRY
+    DietTag.LAMB -> R.string.tag_LAMB
+    DietTag.ONION -> R.string.tag_ONION
+    DietTag.GARLIC -> R.string.tag_GARLIC
     DietTag.SPICY -> R.string.tag_SPICY
+    DietTag.CORIANDER -> R.string.tag_CORIANDER
+    DietTag.TURMERIC -> R.string.tag_TURMERIC
+    DietTag.MUSHROOMS -> R.string.tag_MUSHROOMS
+    DietTag.TOMATO -> R.string.tag_TOMATO
+    DietTag.PINEAPPLE -> R.string.tag_PINEAPPLE
     DietTag.ALCOHOL -> R.string.tag_ALCOHOL
 }
 

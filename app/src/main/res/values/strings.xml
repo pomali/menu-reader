@@ -17,7 +17,7 @@
 
     <string name="profile">Allergy profile</string>
     <string name="avoid_allergens">Allergens I avoid</string>
-    <string name="avoid_tags">Also flag</string>
+    <string name="avoid_tags">Other things I avoid</string>
     <string name="strictness">Flag a dish when</string>
     <string name="strictness_printed">the menu prints the code</string>
     <string name="strictness_lexical">…or an ingredient word suggests it</string>
@@ -36,7 +36,6 @@
     <string name="layer_lexical">lexical</string>
     <string name="layer_inferred">inferred</string>
     <string name="reason_contains">%1$s (%2$s, %3$s)</string>
-    <string name="reason_tag">%1$s</string>
     <string name="reason_missing_tag">not %1$s</string>
     <string name="reason_over_price">over %1$s</string>
     <string name="reason_no_match">doesn\'t match search</string>
@@ -79,17 +78,27 @@
     <string name="allergen_13">Lupin</string>
     <string name="allergen_14">Molluscs</string>
 
-    <string name="tag_VEGETARIAN">vegetarian</string>
-    <string name="tag_VEGAN">vegan</string>
-    <string name="tag_PORK">pork</string>
-    <string name="tag_BEEF">beef</string>
-    <string name="tag_POULTRY">poultry</string>
-    <string name="tag_SPICY">spicy</string>
-    <string name="tag_ALCOHOL">alcohol</string>
     <string name="share_target">Read menu</string>
     <string name="share_link_only">Only a link was shared. Share a screenshot (a long screenshot works well) or select the menu text and share that.</string>
     <string name="share_hint">Tip: from Wolt or a web page, share a screenshot or selected text to Menu Reader.</string>
     <string name="display">Display</string>
     <string name="large_text">Large text and high contrast</string>
     <string name="large_text_hint">Big letters, bold, black on white. Also the “Aa” button on the main screen.</string>
+    <string name="tag_VEGETARIAN">vegetarian</string>
+    <string name="tag_VEGAN">vegan</string>
+    <string name="tag_MEAT">meat (any)</string>
+    <string name="tag_PORK">pork</string>
+    <string name="tag_BEEF">beef</string>
+    <string name="tag_POULTRY">poultry</string>
+    <string name="tag_LAMB">lamb</string>
+    <string name="tag_ONION">onion</string>
+    <string name="tag_GARLIC">garlic</string>
+    <string name="tag_SPICY">chilli / spicy</string>
+    <string name="tag_CORIANDER">coriander / cilantro</string>
+    <string name="tag_TURMERIC">turmeric</string>
+    <string name="tag_MUSHROOMS">mushrooms</string>
+    <string name="tag_TOMATO">tomato</string>
+    <string name="tag_PINEAPPLE">pineapple</string>
+    <string name="tag_ALCOHOL">alcohol</string>
+    <string name="avoid_ingredients_hint">Not EU allergens, found from words in the dish name and description.</string>
 </resources>

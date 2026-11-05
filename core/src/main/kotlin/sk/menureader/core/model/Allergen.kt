@@ -29,9 +29,17 @@ enum class Allergen(val code: Int, val en: String, val sk: String) {
     }
 }
 
-/** Dietary tags, kept separate from allergens. */
+/**
+ * Dietary tags and commonly avoided ingredients that are not EU allergens (onion, garlic, meat…).
+ * Kept separate from [Allergen]. MEAT is also derived from PORK/BEEF/POULTRY/LAMB.
+ */
 @Serializable
-enum class DietTag { VEGETARIAN, VEGAN, PORK, BEEF, POULTRY, SPICY, ALCOHOL }
+enum class DietTag {
+    VEGETARIAN, VEGAN,
+    MEAT, PORK, BEEF, POULTRY, LAMB,
+    ONION, GARLIC, SPICY, CORIANDER, TURMERIC, MUSHROOMS, TOMATO, PINEAPPLE,
+    ALCOHOL,
+}
 
 /** Where an allergen claim comes from. Ordered from most to least trusted. */
 @Serializable
