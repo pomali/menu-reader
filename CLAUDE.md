@@ -12,7 +12,7 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
   `LocalExtractor`. Run `./gradlew :core:test`.
 - `:app`: Room (snapshot stored as JSON + raw OCR JSON), ML Kit document scanner + bundled Latin OCR,
   screens: History, Menu, Settings, Debug/OCR export (+ bottom sheets, see UI below). Runs on the
-  user's phone; app version 0.2.0 (versionCode 2).
+  user's phone; app version 0.3.0 (versionCode 3).
 - Share into the app (`ui/Share.kt`, manifest intent filters): screenshots (`image/*`, one or many) go
   through OCR like scans; text (`text/plain`, e.g. selected on a web page) becomes a fake one-column OCR
   page via `core/.../parse/PlainText.kt` (`OcrDocument.source = "text"`: name / description / price lines).

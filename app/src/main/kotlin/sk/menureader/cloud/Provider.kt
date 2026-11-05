@@ -42,7 +42,7 @@ enum class Provider(
 /** A page photo ready to send: JPEG bytes, base64. */
 class CloudImage(val base64Jpeg: String)
 
-class CloudException(message: String, val retryable: Boolean = false) : Exception(message)
+class CloudException(message: String) : Exception(message)
 
 /** Sends photos (+ OCR text) to one provider and returns the raw JSON text of its answer. */
 interface CloudReader {

@@ -74,9 +74,9 @@ class AnthropicReader(
         } catch (e: UnauthorizedException) {
             throw CloudException("The Claude API key was rejected")
         } catch (e: RateLimitException) {
-            throw CloudException("Claude is busy (rate limit), try again later", retryable = true)
+            throw CloudException("Claude is busy (rate limit), try again later")
         } catch (e: AnthropicServiceException) {
-            throw CloudException("Claude error ${e.statusCode()}", retryable = e.statusCode() >= 500)
+            throw CloudException("Claude error ${e.statusCode()}")
         } finally {
             client.close()
         }

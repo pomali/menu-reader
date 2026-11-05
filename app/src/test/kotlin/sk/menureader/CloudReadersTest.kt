@@ -101,7 +101,7 @@ class CloudReadersTest {
         try {
             OpenAiReader("bad", "m", server.url("").toString().trimEnd('/')).read(listOf(img), null); fail()
         } catch (e: CloudException) {
-            assertTrue(e.message!!.contains("rejected")); assertFalse(e.retryable)
+            assertTrue(e.message!!.contains("rejected"))
         }
     }
 

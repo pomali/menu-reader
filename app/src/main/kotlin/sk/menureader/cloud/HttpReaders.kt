@@ -36,15 +36,22 @@ private fun post(url: String, headers: Map<String, String>, body: JsonObject, wh
             val text = res.body?.string().orEmpty()
             when {
                 res.code == 401 || res.code == 403 -> throw CloudException("The $who API key was rejected")
-                res.code == 429 -> throw CloudException("$who is busy (rate limit), try again later", retryable = true)
-                !res.isSuccessful -> throw CloudException("$who error ${res.code}", retryable = res.code >= 500)
+                res.code == 429 -> throw CloudException("$who is busy (rate limit), try again later")
+                !res.isSuccessful -> throw CloudException(
+                    "$who error ${res.code}" + (errorMessage(text)?.let { ": $it" } ?: "")
+                )
             }
             return Json.parseToJsonElement(text).jsonObject
         }
     } catch (e: IOException) {
-        throw CloudException("No connection to $who", retryable = true)
+        throw CloudException("No connection to $who")
     }
 }
+
+/** The provider's own explanation from an error body (`{"error": {"message": …}}` for OpenAI and Gemini). */
+internal fun errorMessage(body: String): String? = runCatching {
+    Json.parseToJsonElement(body).jsonObject["error"]?.jsonObject?.get("message")?.jsonPrimitive?.contentOrNull
+}.getOrNull()?.take(300) ?: body.take(300).ifBlank { null }
 
 /** OpenAI Responses API: image input + strict JSON schema output. */
 class OpenAiReader(
