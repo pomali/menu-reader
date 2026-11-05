@@ -130,4 +130,24 @@ class CloudReadersTest {
         assertFalse(b.containsKey("response_format"))
         assertTrue(b["system_instruction"]!!.jsonPrimitive.content.contains("JSON Schema"))
     }
+
+    @Test fun openRouterDecisions() = runBlocking {
+        server.enqueue(MockResponse().setBody("""{"id":"gen-dec-1","model":"typesafe/jev-1.13","provider":"TypeSafe",
+            "answers":{"a7":{"type":"noul","noul":0.93},"t_ONION":{"type":"refusal"}},"usage":{"input_tokens":5,"output_tokens":2,"cost":0.0001}}"""))
+        val qs = sk.menureader.core.cloud.Decisions.questions(
+            sk.menureader.core.filter.UserProfile(avoid = setOf(sk.menureader.core.model.Allergen.MILK), avoidTags = setOf(sk.menureader.core.model.DietTag.ONION))
+        )
+        val out = sk.menureader.cloud.DecisionsClient("or-key", "typesafe/jev-1.13", server.url("").toString().trimEnd('/'))
+            .ask(listOf(mapOf("dish" to "Segedínsky guláš")), qs).single()
+        assertEquals(0.93, out["a7"]!!, 1e-9)
+        assertEquals(null, out["t_ONION"])
+        val req = server.takeRequest()
+        assertEquals("/api/alpha/decisions", req.path)
+        assertEquals("Bearer or-key", req.getHeader("Authorization"))
+        val b = Json.parseToJsonElement(req.body.readUtf8()).jsonObject
+        assertEquals("Segedínsky guláš", b["state"]!!.jsonObject["dish"]!!.jsonPrimitive.content)
+        val q = b["questions"]!!.jsonObject["a7"]!!.jsonObject
+        assertEquals("noul", q["type"]!!.jsonPrimitive.content)
+        assertTrue(q["criteria"]!!.jsonObject.keys.containsAll(listOf("true", "false")))
+    }
 }

@@ -39,16 +39,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import sk.menureader.R
+import sk.menureader.cloud.CloudConfig
 import sk.menureader.cloud.CloudSettings
+import sk.menureader.cloud.KeyKind
 import sk.menureader.cloud.Provider
 
-/** "✨ AI reading" settings: provider, model, the user's own API key, auto-upgrade. */
+/**
+ * "✨ AI reading" settings: menu reader (provider, model, the user's own API key), the OpenRouter
+ * allergen double-check, and auto-upgrade.
+ */
 @Composable
 fun AiSettings(cloud: CloudSettings) {
     val c by cloud.config.collectAsState()
-    val keysVersion by cloud.keysVersion.collectAsState()
-    val ctx = LocalContext.current
-
     Column {
         Text(
             stringResource(R.string.ai_intro), style = MaterialTheme.typography.bodyMedium,
@@ -67,51 +69,8 @@ fun AiSettings(cloud: CloudSettings) {
                 modifier = Modifier.clickable { cloud.update { it.copy(provider = p) } },
             )
         }
-        val p = c.provider ?: return@Column
-
-        Column(Modifier.padding(horizontal = 16.dp)) {
-            Spacer(Modifier.height(8.dp))
-            var model by remember(p) { mutableStateOf(c.model(p)) }
-            OutlinedTextField(
-                value = model,
-                onValueChange = { model = it; cloud.update { cfg -> cfg.copy(models = cfg.models + (p to it.trim())) } },
-                label = { Text(stringResource(R.string.ai_model)) }, singleLine = true, modifier = Modifier.fillMaxWidth(),
-            )
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                for (m in p.models) {
-                    FilterChip(
-                        selected = model == m,
-                        onClick = { model = m; cloud.update { cfg -> cfg.copy(models = cfg.models + (p to m)) } },
-                        label = { Text(m) },
-                    )
-                }
-            }
-            Spacer(Modifier.height(12.dp))
-
-            val hasKey = remember(p, keysVersion) { cloud.vault.has(p.key) }
-            var key by remember(p) { mutableStateOf("") }
-            OutlinedTextField(
-                value = key, onValueChange = { key = it },
-                label = { Text(stringResource(R.string.ai_key)) },
-                placeholder = { Text(if (hasKey) stringResource(R.string.ai_key_saved) else stringResource(R.string.ai_key_hint)) },
-                singleLine = true, visualTransformation = PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                modifier = Modifier.fillMaxWidth(),
-            )
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Button(onClick = { cloud.setKey(p.key, key); key = "" }, enabled = key.isNotBlank()) { Text(stringResource(R.string.save)) }
-                Spacer(Modifier.width(8.dp))
-                if (hasKey) TextButton(onClick = { cloud.setKey(p.key, null) }) { Text(stringResource(R.string.ai_key_remove)) }
-                Spacer(Modifier.weight(1f))
-                TextButton(onClick = { ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(p.keyUrl))) }) {
-                    Text(stringResource(R.string.ai_get_key))
-                }
-            }
-            Text(
-                (if (hasKey) "🔐 " else "🔑 ") + stringResource(R.string.ai_privacy, p.title),
-                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
+        c.provider?.let { ProviderDetails(cloud, c, it) }
+        DecisionsSettings(cloud, c)
         ListItem(
             headlineContent = { Text(stringResource(R.string.ai_auto)) },
             supportingContent = { Text(stringResource(R.string.ai_auto_hint)) },
@@ -119,4 +78,76 @@ fun AiSettings(cloud: CloudSettings) {
             modifier = Modifier.clickable { cloud.update { it.copy(auto = !it.auto) } },
         )
     }
+}
+
+@Composable
+private fun ProviderDetails(cloud: CloudSettings, c: CloudConfig, p: Provider) {
+    Column(Modifier.padding(horizontal = 16.dp)) {
+        Spacer(Modifier.height(8.dp))
+        var model by remember(p) { mutableStateOf(c.model(p)) }
+        OutlinedTextField(
+            value = model,
+            onValueChange = { model = it; cloud.update { cfg -> cfg.copy(models = cfg.models + (p to it.trim())) } },
+            label = { Text(stringResource(R.string.ai_model)) }, singleLine = true, modifier = Modifier.fillMaxWidth(),
+        )
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            for (m in p.models) {
+                FilterChip(
+                    selected = model == m,
+                    onClick = { model = m; cloud.update { cfg -> cfg.copy(models = cfg.models + (p to m)) } },
+                    label = { Text(m) },
+                )
+            }
+        }
+        Spacer(Modifier.height(12.dp))
+        KeyField(cloud, p.key, p.keyUrl, p.title)
+    }
+}
+
+/** OpenRouter Decisions API: a yes/no-with-probability double-check for what the user avoids. */
+@Composable
+private fun DecisionsSettings(cloud: CloudSettings, c: CloudConfig) {
+    ListItem(
+        headlineContent = { Text("🧑‍⚖️ " + stringResource(R.string.decisions_title)) },
+        supportingContent = { Text(stringResource(R.string.decisions_hint)) },
+        trailingContent = { Switch(checked = c.decisions, onCheckedChange = { on -> cloud.update { it.copy(decisions = on) } }) },
+        modifier = Modifier.clickable { cloud.update { it.copy(decisions = !it.decisions) } },
+    )
+    if (!c.decisions) return
+    Column(Modifier.padding(horizontal = 16.dp)) {
+        var model by remember { mutableStateOf(c.decisionsModel) }
+        OutlinedTextField(
+            value = model, onValueChange = { model = it; cloud.update { cfg -> cfg.copy(decisionsModel = it.trim()) } },
+            label = { Text(stringResource(R.string.ai_model)) }, singleLine = true, modifier = Modifier.fillMaxWidth(),
+        )
+        Spacer(Modifier.height(8.dp))
+        KeyField(cloud, KeyKind.OPENROUTER, "https://openrouter.ai/settings/keys", "OpenRouter")
+    }
+}
+
+@Composable
+private fun KeyField(cloud: CloudSettings, kind: KeyKind, keyUrl: String, who: String) {
+    val ctx = LocalContext.current
+    val keysVersion by cloud.keysVersion.collectAsState()
+    val hasKey = remember(kind, keysVersion) { cloud.vault.has(kind) }
+    var key by remember(kind) { mutableStateOf("") }
+    OutlinedTextField(
+        value = key, onValueChange = { key = it },
+        label = { Text(stringResource(R.string.ai_key)) },
+        placeholder = { Text(if (hasKey) stringResource(R.string.ai_key_saved) else stringResource(R.string.ai_key_hint)) },
+        singleLine = true, visualTransformation = PasswordVisualTransformation(),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        modifier = Modifier.fillMaxWidth(),
+    )
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Button(onClick = { cloud.setKey(kind, key); key = "" }, enabled = key.isNotBlank()) { Text(stringResource(R.string.save)) }
+        Spacer(Modifier.width(8.dp))
+        if (hasKey) TextButton(onClick = { cloud.setKey(kind, null) }) { Text(stringResource(R.string.ai_key_remove)) }
+        Spacer(Modifier.weight(1f))
+        TextButton(onClick = { ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(keyUrl))) }) { Text(stringResource(R.string.ai_get_key)) }
+    }
+    Text(
+        (if (hasKey) "🔐 " else "🔑 ") + stringResource(R.string.ai_privacy, who),
+        style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
 }

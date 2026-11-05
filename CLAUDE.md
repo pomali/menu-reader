@@ -41,6 +41,11 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
   `CloudUpgradeWorker` (WorkManager, CONNECTED) runs after each new menu if "auto" is on, or from menu ⋮ "Read with AI";
   the basic snapshot is kept in `basicSnapshotJson` (Room v2 migration). Request shapes are tested against
   MockWebServer (`CloudReadersTest`); no live API call has been made yet (no keys in the sandbox).
+- Optional allergen double-check via OpenRouter Decisions API (alpha, `POST /api/alpha/decisions`, default model
+  `typesafe/jev-1.13`): one yes/no (`noul`) question per avoided allergen/ingredient per dish, p >= 0.5 becomes a
+  layer C claim with evidence "p=0.93" (`core/.../cloud/Decisions.kt`, `cloud/DecisionsClient.kt`). Off by default;
+  runs in `CloudUpgradeWorker` after the AI re-read. Only adds claims. Open decision with the user: maybe drop it in
+  favour of richer reasoning in the main AI reading (avoided ingredients, ingredients/diet; profile stays local).
 - Screenshot tests: `app/src/test/.../ScreenshotTest.kt` (Robolectric native graphics + Roborazzi), PNGs in
   `app/build/screenshots/`; copies in `docs/screenshots/`. Locally needs `robolectricRepoUrl` (mirror) in
   `~/.gradle/gradle.properties`. No emulator here (no KVM).

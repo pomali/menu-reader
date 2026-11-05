@@ -1,7 +1,7 @@
 package sk.menureader.cloud
 
 /** Which API key a provider uses. Nano Banana runs on the Gemini API, so it shares the Gemini key. */
-enum class KeyKind { ANTHROPIC, OPENAI, GEMINI }
+enum class KeyKind { ANTHROPIC, OPENAI, GEMINI, OPENROUTER }
 
 /**
  * Cloud readers the user can pick. Models are suggestions; the user can type any model id.

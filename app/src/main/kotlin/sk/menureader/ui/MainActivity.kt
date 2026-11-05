@@ -49,7 +49,7 @@ private fun AppNav(app: MenuReaderApp, share: SharedContent?, shareHandled: () -
                 HistoryViewModel(app.repository) { id ->
                     // Offline result first; the AI upgrade follows when online (if the user set it up).
                     val c = app.cloud.config.value
-                    if (c.auto && app.cloud.reader() != null) CloudUpgradeWorker.enqueue(app, id)
+                    if (c.auto && app.cloud.anyEnabled()) CloudUpgradeWorker.enqueue(app, id)
                 }
             }
             LaunchedEffect(share) {

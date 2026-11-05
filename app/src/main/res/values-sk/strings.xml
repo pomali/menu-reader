@@ -147,4 +147,7 @@
     <string name="ai_privacy">Fotky menu a prečítaný text idú do %1$s. Tvoj kľúč je zašifrovaný v telefóne a tvoj alergický profil ho nikdy neopustí.</string>
     <string name="ai_auto">Nové menu automaticky prečítať s AI</string>
     <string name="ai_auto_hint">Hneď po offline čítaní, keď budeš online</string>
+    <string name="decisions_title">Kontrola alergénov (OpenRouter)</string>
+    <string name="decisions_hint">Opýta sa rozhodovacieho modelu \"obsahuje toto jedlo…?\" pre každú vec, ktorej sa vyhýbaš, a pridá tip \"môže obsahovať\" s pravdepodobnosťou. Alfa API, môže sa meniť.</string>
+    <string name="claim_decision_body">AI sudca si myslí, že na %1$d %% to toto jedlo obsahuje. Len odhad, nie záruka.</string>
 </resources>

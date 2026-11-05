@@ -27,7 +27,7 @@ private val http by lazy {
 private val jsonType = "application/json".toMediaType()
 private val schema: JsonObject by lazy { Json.parseToJsonElement(CloudPrompt.SCHEMA).jsonObject }
 
-private fun post(url: String, headers: Map<String, String>, body: JsonObject, who: String): JsonObject {
+internal fun post(url: String, headers: Map<String, String>, body: JsonObject, who: String): JsonObject {
     val req = Request.Builder().url(url).post(body.toString().toRequestBody(jsonType)).apply {
         headers.forEach { (k, v) -> header(k, v) }
     }.build()
@@ -36,6 +36,7 @@ private fun post(url: String, headers: Map<String, String>, body: JsonObject, wh
             val text = res.body?.string().orEmpty()
             when {
                 res.code == 401 || res.code == 403 -> throw CloudException("The $who API key was rejected")
+                res.code == 402 -> throw CloudException("No credits left on your $who account")
                 res.code == 429 -> throw CloudException("$who is busy (rate limit), try again later", retryable = true)
                 !res.isSuccessful -> throw CloudException("$who error ${res.code}", retryable = res.code >= 500)
             }
