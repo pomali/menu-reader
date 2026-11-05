@@ -4,6 +4,8 @@ import kotlinx.serialization.Serializable
 import sk.menureader.core.MenuJson
 import sk.menureader.core.allergen.Enricher
 import sk.menureader.core.model.Allergen
+import sk.menureader.core.model.DietTag
+import sk.menureader.core.model.TagClaim
 import sk.menureader.core.model.AllergenClaim
 import sk.menureader.core.model.Dish
 import sk.menureader.core.model.Extraction
@@ -29,6 +31,7 @@ data class CloudMenu(
 @Serializable data class CloudSection(val name: String = "", val dishes: List<CloudDish> = emptyList())
 @Serializable data class CloudPrice(val amount: Double, val variant: String = "")
 @Serializable data class CloudMayContain(val allergen: Int, val reason: String = "")
+@Serializable data class CloudFlag(val flag: String, val reason: String = "", val explicit: Boolean = false)
 
 @Serializable
 data class CloudDish(
@@ -38,12 +41,18 @@ data class CloudDish(
     val prices: List<CloudPrice> = emptyList(),
     val printedCodes: List<Int> = emptyList(),
     val mayContain: List<CloudMayContain> = emptyList(),
+    val ingredients: List<String> = emptyList(),
+    val ingredientFlags: List<CloudFlag> = emptyList(),
+    val vegetarian: Boolean = false,
+    val vegan: Boolean = false,
 )
 
 /**
  * Turns a cloud answer into a FULL snapshot that replaces the basic one (PLAN §3.3).
- * Allergen layers A+B are recomputed locally with the same [Enricher] as offline; the model's
- * "may contain" hints become layer C. Prices that don't appear anywhere in the phone's OCR text
+ * Allergen layers A+B are recomputed locally with the same [Enricher] as offline (over the name,
+ * description and the model's ingredient list); the model's "may contain" hints become layer C.
+ * Ingredient flags (onion, pineapple…) become tag claims: LEXICAL when the menu says so, else
+ * INFERRED. Vegetarian/vegan are only kept as a "may be" hint and never next to a meat claim. Prices that don't appear anywhere in the phone's OCR text
  * lower the dish confidence (likely misread or hallucinated).
  */
 object CloudMapper {
@@ -75,15 +84,16 @@ object CloudMapper {
                         portion = d.portion.trim().ifBlank { null },
                         prices = prices,
                         printedCodes = d.printedCodes.filter { it in 1..20 }.distinct().sorted(),
+                        ingredients = d.ingredients.map { it.trim() }.filter { it.isNotEmpty() }.distinct().take(12),
                         confidence = if (unseen) 0.5 else 0.9,
                     )
                     val enriched = enricher.enrich(dish, legend)
                     val have = enriched.allergens.map { it.allergen }.toSet()
                     val inferred = d.mayContain.mapNotNull { m ->
                         val a = Allergen.fromCode(m.allergen) ?: return@mapNotNull null
-                        if (a in have) null else AllergenClaim(a, Layer.INFERRED, 0.4, "'${m.reason.trim().ifBlank { "AI" }}'")
+                        if (a in have) null else AllergenClaim(a, Layer.INFERRED, 0.4, quote(m.reason))
                     }.distinctBy { it.allergen }
-                    enriched.copy(allergens = enriched.allergens + inferred)
+                    enriched.copy(allergens = enriched.allergens + inferred).withFlags(d)
                 },
             )
         }
@@ -95,6 +105,28 @@ object CloudMapper {
             warnings = emptyList(),
             extraction = Extraction(engine = engine, version = "1", model = model),
         )
+    }
+
+    private fun quote(reason: String) = "'${reason.trim().ifBlank { "AI" }}'"
+
+    private val meats = setOf(DietTag.MEAT, DietTag.PORK, DietTag.BEEF, DietTag.POULTRY, DietTag.LAMB)
+
+    private fun Dish.withFlags(d: CloudDish): Dish {
+        val have = tagClaims.associateBy { it.tag }
+        val fromAi = d.ingredientFlags.mapNotNull { f ->
+            val tag = runCatching { DietTag.valueOf(f.flag.trim().uppercase()) }.getOrNull() ?: return@mapNotNull null
+            val layer = if (f.explicit) Layer.LEXICAL else Layer.INFERRED
+            val old = have[tag]
+            if (old != null && old.layer <= layer) null else TagClaim(tag, layer, quote(f.reason))
+        }.distinctBy { it.tag }
+        var claims = tagClaims.filter { c -> fromAi.none { it.tag == c.tag } } + fromAi
+        // Any specific meat also counts as "meat".
+        if (claims.none { it.tag == DietTag.MEAT }) claims.filter { it.tag in meats }.minByOrNull { it.layer }?.let { claims = claims + it.copy(tag = DietTag.MEAT) }
+        val hasMeat = claims.any { it.tag in meats }
+        if (!hasMeat && d.vegan && claims.none { it.tag == DietTag.VEGAN }) claims = claims + TagClaim(DietTag.VEGAN, Layer.INFERRED, "'AI'")
+        if (!hasMeat && (d.vegetarian || d.vegan) && claims.none { it.tag == DietTag.VEGETARIAN }) claims = claims + TagClaim(DietTag.VEGETARIAN, Layer.INFERRED, "'AI'")
+        if (hasMeat) claims = claims.filter { it.tag != DietTag.VEGETARIAN && it.tag != DietTag.VEGAN }
+        return copy(tagClaims = claims, tags = claims.map { it.tag }.toSet())
     }
 
     /** All price-like amounts in the OCR text, in minor units (8,90 -> 890; 189,- -> 18900). */

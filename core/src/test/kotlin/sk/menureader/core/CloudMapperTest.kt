@@ -3,6 +3,7 @@ package sk.menureader.core
 import sk.menureader.core.cloud.CloudMapper
 import sk.menureader.core.cloud.CloudPrompt
 import sk.menureader.core.model.Allergen
+import sk.menureader.core.model.DietTag
 import sk.menureader.core.model.Layer
 import sk.menureader.core.model.Quality
 import kotlin.test.Test
@@ -17,9 +18,13 @@ class CloudMapperTest {
         ```json
         {"restaurantName":"Bistro","currency":"EUR","legend":[],"sections":[{"name":"Hlavné jedlá","dishes":[
           {"name":"Hovädzí guláš","description":"","portion":"300 g","prices":[{"amount":7.5,"variant":""}],"printedCodes":[],
-           "mayContain":[{"allergen":1,"reason":"zahustený múkou"},{"allergen":9,"reason":"zelenina"}]},
+           "mayContain":[{"allergen":1,"reason":"zahustený múkou"},{"allergen":9,"reason":"zelenina"}],
+           "ingredients":["hovädzie mäso","cibuľa","paprika","rasca"],
+           "ingredientFlags":[{"flag":"ONION","reason":"základ guláša","explicit":false},{"flag":"BEEF","reason":"hovädzí","explicit":true}],
+           "vegetarian":true,"vegan":false},
           {"name":"Vyprážaný syr","description":"hranolky, tatárska omáčka","portion":"","prices":[{"amount":9.9,"variant":""}],
-           "printedCodes":[1,3,7],"mayContain":[]}
+           "printedCodes":[1,3,7],"mayContain":[],"ingredients":["eidam","strúhanka","vajce","múka"],"ingredientFlags":[],
+           "vegetarian":true,"vegan":false}
         ]}]}
         ```
     """.trimIndent()
@@ -37,6 +42,26 @@ class CloudMapperTest {
         assertEquals("'zahustený múkou'", gluten.evidence)
         val syr = s.dishes[1]
         assertEquals(setOf(Allergen.GLUTEN, Allergen.EGGS, Allergen.MILK), syr.allergens.filter { it.layer == Layer.PRINTED }.map { it.allergen }.toSet())
+    }
+
+    @Test fun ingredientsAndFlags() {
+        val s = CloudMapper.toSnapshot(CloudMapper.parse(answer), basic, ocr, "anthropic", "m")
+        val gulas = s.dishes[0]
+        assertEquals(listOf("hovädzie mäso", "cibuľa", "paprika", "rasca"), gulas.ingredients)
+        // Onion only comes from the AI (its flag, its ingredient list): a "may contain", never "spotted".
+        assertEquals(Layer.INFERRED, gulas.tagClaims.single { it.tag == DietTag.ONION }.layer)
+        assertTrue(DietTag.BEEF in gulas.tags && DietTag.MEAT in gulas.tags)
+        // The model wrongly said vegetarian; a meat claim wins.
+        assertTrue(DietTag.VEGETARIAN !in gulas.tags)
+        // Ingredient words feed the local dictionary too: "eidam" -> milk is already printed, "vajce" -> eggs printed.
+        val syr = s.dishes[1]
+        assertTrue(DietTag.VEGETARIAN in syr.tags)
+        assertEquals(Layer.INFERRED, syr.tagClaims.single { it.tag == DietTag.VEGETARIAN }.layer)
+    }
+
+    @Test fun schemaListsTheFlags() {
+        assertTrue(CloudPrompt.SCHEMA.contains("\"PINEAPPLE\""))
+        assertTrue(!CloudPrompt.SCHEMA.contains("\"VEGETARIAN\""))
     }
 
     @Test fun priceNotInOcrLowersConfidence() {

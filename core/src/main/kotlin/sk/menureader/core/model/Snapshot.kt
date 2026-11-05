@@ -53,6 +53,8 @@ data class Dish(
     val name: String,
     val description: String? = null,
     val portion: String? = null,
+    /** Likely main ingredients (from the AI reading), most important first. */
+    val ingredients: List<String> = emptyList(),
     val prices: List<Price> = emptyList(),
     /** Raw allergen numbers as printed on the menu, before mapping. */
     val printedCodes: List<Int> = emptyList(),

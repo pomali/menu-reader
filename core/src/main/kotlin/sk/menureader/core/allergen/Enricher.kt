@@ -27,16 +27,26 @@ class Enricher(private val lexicon: Lexicon = Lexicon.default) {
         val printedSet = printed.map { it.allergen }.toSet()
 
         val text = listOfNotNull(dish.name, dish.description).joinToString(" ")
+        // The ingredient list is the AI's guess, not menu text: matches there are only "may contain".
+        val guessed = dish.ingredients.joinToString(", ")
         val lexical = lexicon.allergens(text)
             .filter { it.target !in printedSet }
             .map {
                 if (it.weak) AllergenClaim(it.target, Layer.INFERRED, 0.3, "'${it.matched}'")
                 else AllergenClaim(it.target, Layer.LEXICAL, 0.6, "'${it.matched}'")
             }
+            .let { found ->
+                val have = printedSet + found.map { it.allergen }
+                found + lexicon.allergens(guessed).filter { !it.weak && it.target !in have }
+                    .map { AllergenClaim(it.target, Layer.INFERRED, 0.35, "'${it.matched}'") }
+            }
 
         val tagClaims = lexicon.tags(text).map {
             TagClaim(it.target, if (it.weak) Layer.INFERRED else Layer.LEXICAL, "'${it.matched}'")
         }.toMutableList()
+        val tagsHave = tagClaims.map { it.tag }.toSet()
+        lexicon.tags(guessed).filter { !it.weak && it.target !in tagsHave }
+            .forEach { tagClaims += TagClaim(it.target, Layer.INFERRED, "'${it.matched}'") }
         // Any kind of meat also counts as MEAT, with the same evidence.
         if (tagClaims.none { it.tag == DietTag.MEAT }) {
             tagClaims.filter { it.tag in meats }.minByOrNull { it.layer }?.let { tagClaims += it.copy(tag = DietTag.MEAT) }

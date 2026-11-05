@@ -66,6 +66,24 @@ class ScreenshotTest {
     }
 
     @Test fun menu() = menuScreen(large = false, name = "menu")
+
+    @Test fun menuAi() {
+        val id = runBlocking { app.repository.createFromText("Hovädzí guláš 7,50 €\nZeleninové rizoto 6,90 €", null) }
+        val answer = """{"restaurantName":"Bistro Pod Lipou","currency":"EUR","legend":[],"sections":[{"name":"Hlavné jedlá","dishes":[
+          {"name":"Hovädzí guláš","description":"chlieb","portion":"300 g","prices":[{"amount":7.5,"variant":""}],"printedCodes":[],
+           "mayContain":[{"allergen":1,"reason":"zahustený múkou"}],"ingredients":["hovädzie mäso","cibuľa","paprika","rasca"],
+           "ingredientFlags":[{"flag":"ONION","reason":"základ guláša","explicit":false}],"vegetarian":false,"vegan":false},
+          {"name":"Zeleninové rizoto","description":"","portion":"","prices":[{"amount":6.9,"variant":""}],"printedCodes":[],
+           "mayContain":[{"allergen":7,"reason":"maslo a parmezán"}],"ingredients":["ryža arborio","cuketa","mrkva","parmezán","maslo"],
+           "ingredientFlags":[],"vegetarian":true,"vegan":false}]}]}"""
+        runBlocking { app.repository.applyCloudAnswer(id, answer, "anthropic", "claude-opus-5-5") }
+        app.profiles.update { it.copy(avoid = setOf(Allergen.GLUTEN), avoidTags = setOf(DietTag.ONION)) }
+        val vm = MenuViewModel(app.repository, app.profiles, id)
+        compose.setContent { MenuTheme { MenuScreen(vm, app.profiles, debugTools = true, back = {}, openDebug = {}) } }
+        compose.waitUntil(10_000) { ShadowLooper.idleMainLooper(); Thread.sleep(20); vm.ui.value?.stored?.snapshot?.quality == sk.menureader.core.model.Quality.FULL }
+        compose.waitForIdle()
+        compose.onRoot().captureRoboImage("build/screenshots/menu-ai.png")
+    }
     @Test fun menuLarge() = menuScreen(large = true, name = "menu-large")
 
     @Test fun historyEmpty() = shot("history-empty") {

@@ -38,6 +38,10 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
   Claude via the official Anthropic Java SDK (`AnthropicReader`, default `claude-opus-5-5`, effort medium,
   structured output, server-side fallbacks "default"; SDK 3.x sends the key as `Authorization: Bearer`).
   OpenAI Responses API and Gemini Interactions API (`Api-Revision: 2026-05-20`) over OkHttp (`HttpReaders.kt`).
+  The AI also reasons per dish (user decision 2026-11-05, option A; profile stays on the phone): `ingredients`
+  (likely, shown as "🧾 Probably: …"), `ingredientFlags` for the avoidable non-allergens (explicit -> LEXICAL,
+  typical recipe -> INFERRED, with reason), `vegetarian`/`vegan` (a "?" hint, dropped if any meat claim). Word-list
+  hits inside the AI's ingredient list count as INFERRED, never LEXICAL. OpenRouter Decisions was tried and dropped.
   `CloudUpgradeWorker` (WorkManager, CONNECTED) runs after each new menu if "auto" is on, or from menu ⋮ "Read with AI";
   the basic snapshot is kept in `basicSnapshotJson` (Room v2 migration). Request shapes are tested against
   MockWebServer (`CloudReadersTest`); no live API call has been made yet (no keys in the sandbox).

@@ -88,6 +88,8 @@ sealed interface ChipInfo {
         val mismatch: Boolean,
     ) : ChipInfo
     data object LowConfidence : ChipInfo
+    /** "Vegetarian?" / "vegan?" hint from the AI reading. */
+    data class Diet(val label: String) : ChipInfo
 }
 
 @Composable
@@ -117,6 +119,11 @@ fun ChipSheet(info: ChipInfo, onDismiss: () -> Unit) {
                         Spacer(Modifier.height(8.dp))
                         Text("🙅 " + stringResource(R.string.you_avoid), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.error)
                     }
+                }
+                is ChipInfo.Diet -> {
+                    Text(info.label + " ?", style = MaterialTheme.typography.headlineSmall)
+                    Spacer(Modifier.height(8.dp))
+                    Text(stringResource(R.string.diet_body), style = MaterialTheme.typography.bodyLarge)
                 }
                 ChipInfo.LowConfidence -> {
                     Text(stringResource(R.string.low_confidence_title), style = MaterialTheme.typography.headlineSmall)

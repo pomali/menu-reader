@@ -141,4 +141,6 @@
     <string name="ai_privacy">Menu photos and the read text go to %1$s. Your key is encrypted on this phone and your allergy profile never leaves it.</string>
     <string name="ai_auto">Read new menus with AI automatically</string>
     <string name="ai_auto_hint">Right after the offline reading, as soon as you\'re online</string>
+    <string name="ingredients_likely">Probably: %1$s</string>
+    <string name="diet_body">The AI thinks this dish is usually made without meat (or, for vegan, without any animal products). Kitchens differ, so ask if it matters 🌱</string>
 </resources>

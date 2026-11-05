@@ -147,4 +147,6 @@
     <string name="ai_privacy">Fotky menu a prečítaný text idú do %1$s. Tvoj kľúč je zašifrovaný v telefóne a tvoj alergický profil ho nikdy neopustí.</string>
     <string name="ai_auto">Nové menu automaticky prečítať s AI</string>
     <string name="ai_auto_hint">Hneď po offline čítaní, keď budeš online</string>
+    <string name="ingredients_likely">Asi: %1$s</string>
+    <string name="diet_body">AI si myslí, že sa toto jedlo zvyčajne robí bez mäsa (pri vegánskom bez živočíšnych produktov). Každá kuchyňa je iná, tak sa opýtaj, ak na tom záleží 🌱</string>
 </resources>

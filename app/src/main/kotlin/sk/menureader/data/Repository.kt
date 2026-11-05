@@ -88,9 +88,18 @@ class Repository(private val ctx: Context, db: AppDatabase) {
         if (images.isEmpty() && ocrText.isNullOrBlank()) throw CloudException("Nothing to read")
 
         val answer = reader.read(images, ocrText)
+        applyCloudAnswer(id, answer, provider.name.lowercase(), cloud.config.value.model(provider))
+    }
+
+    /** Map a cloud answer (JSON text) onto the stored snapshot. Split out so it can be tested offline. */
+    suspend fun applyCloudAnswer(id: String, answer: String, engine: String, model: String) = withContext(Dispatchers.IO) {
+        val e = dao.get(id) ?: return@withContext
+        val current = MenuJson.decodeFromString<Snapshot>(e.snapshotJson)
+        val basicJson = e.basicSnapshotJson ?: e.snapshotJson.takeIf { current.quality == Quality.BASIC }
+        val basic = basicJson?.let { MenuJson.decodeFromString<Snapshot>(it) } ?: current
+        val ocrDoc = runCatching { MenuJson.decodeFromString<OcrDocument>(e.ocrJson) }.getOrNull()
         val menu = runCatching { CloudMapper.parse(answer) }.getOrElse { throw CloudException("The AI answer wasn't valid JSON") }
-        val model = cloud.config.value.model(provider)
-        val full = CloudMapper.toSnapshot(menu, basic, ocrDoc, provider.name.lowercase(), model)
+        val full = CloudMapper.toSnapshot(menu, basic, ocrDoc, engine, model)
         val name = e.restaurantName ?: menu.restaurantName.trim().ifBlank { null }
         dao.upsert(
             e.copy(

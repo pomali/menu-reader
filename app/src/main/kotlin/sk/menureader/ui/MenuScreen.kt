@@ -406,6 +406,13 @@ private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, o
                     d.description?.let {
                         Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 2.dp))
                     }
+                    if (d.ingredients.isNotEmpty()) {
+                        Text(
+                            "🧾 " + stringResource(R.string.ingredients_likely, d.ingredients.joinToString(", ")),
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(top = 2.dp),
+                        )
+                    }
                 }
                 Column(horizontalAlignment = Alignment.End, modifier = Modifier.padding(start = 8.dp)) {
                     for (p in d.prices) {
@@ -431,7 +438,9 @@ private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, o
             }
             val allergenChips = d.allergens.sortedBy { it.allergen.code }
             val tagChips = d.tagClaims.filter { it.tag in profile.avoidTags }.distinctBy { it.tag }
-            if (allergenChips.isNotEmpty() || tagChips.isNotEmpty() || d.confidence < 0.6) {
+            // Diet hints from the AI (never a promise): one chip, vegan wins over vegetarian.
+            val diet = d.tagClaims.firstOrNull { it.tag == DietTag.VEGAN } ?: d.tagClaims.firstOrNull { it.tag == DietTag.VEGETARIAN }
+            if (allergenChips.isNotEmpty() || tagChips.isNotEmpty() || diet != null || d.confidence < 0.6) {
                 Spacer(Modifier.height(8.dp))
                 FlowRow(Modifier.padding(end = 12.dp)) {
                     for (c in allergenChips) {
@@ -445,6 +454,10 @@ private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, o
                     for (c in tagChips) {
                         val text = label(c.tag)
                         LayerChip(text, c.layer, avoided = true) { onChip(ChipInfo.Claim(text, c.layer, c.evidence, null, true, false)) }
+                    }
+                    if (diet != null) {
+                        val text = label(diet.tag)
+                        LayerChip(text, diet.layer, avoided = false) { onChip(ChipInfo.Diet(text)) }
                     }
                     if (d.confidence < 0.6) NoteChip("🤔 " + stringResource(R.string.low_confidence_chip)) { onChip(ChipInfo.LowConfidence) }
                 }
