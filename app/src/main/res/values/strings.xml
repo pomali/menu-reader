@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Menu Reader</string>
+    <string name="scan">Scan menu</string>
+    <string name="pick_photos">From photos</string>
+    <string name="processing">Reading the menu…</string>
+    <string name="processing_failed">Couldn\'t read the menu: %1$s</string>
+    <string name="scanner_unavailable">Document scanner unavailable (needs Google Play services). Use “From photos”.</string>
+    <string name="history_empty">No menus yet. Scan one to start.</string>
+    <string name="unassigned">Unassigned restaurant</string>
+    <plurals name="dish_count">
+        <item quantity="one">%d dish</item>
+        <item quantity="other">%d dishes</item>
+    </plurals>
+    <string name="quality_basic">basic (offline)</string>
+    <string name="quality_full">full</string>
+
+    <string name="profile">Allergy profile</string>
+    <string name="avoid_allergens">Allergens I avoid</string>
+    <string name="avoid_tags">Also flag</string>
+    <string name="strictness">Flag a dish when</string>
+    <string name="strictness_printed">the menu prints the code</string>
+    <string name="strictness_lexical">…or an ingredient word suggests it</string>
+    <string name="strictness_inferred">…or it may contain it (typical recipe)</string>
+
+    <string name="disclaimer">Automatic reading can be wrong. A dish is never “allergen-free” here: always confirm with the staff.</string>
+    <string name="search">Search dishes</string>
+    <string name="max_price">Max price</string>
+    <string name="section_default">Menu</string>
+    <string name="no_dishes">No dishes were recognised. Check the OCR text in Debug, or re-scan with better light.</string>
+    <string name="not_detected">Not detected: %1$s</string>
+    <string name="not_detected_none">No avoided allergen detected</string>
+    <string name="no_codes_printed">no allergen codes printed for this dish</string>
+    <string name="checked_layers">checked: %1$s</string>
+    <string name="layer_printed">printed</string>
+    <string name="layer_lexical">lexical</string>
+    <string name="layer_inferred">inferred</string>
+    <string name="reason_contains">%1$s (%2$s, %3$s)</string>
+    <string name="reason_tag">%1$s</string>
+    <string name="reason_missing_tag">not %1$s</string>
+    <string name="reason_over_price">over %1$s</string>
+    <string name="reason_no_match">doesn\'t match search</string>
+    <string name="reason_other_section">other section</string>
+    <string name="mismatch">Menu doesn\'t list %1$s, but %2$s suggests it</string>
+    <string name="low_confidence">Low confidence: check the photo</string>
+    <string name="show_source">Photo</string>
+    <string name="share">Translate / share</string>
+
+    <string name="restaurant">Restaurant</string>
+    <string name="restaurant_hint">Restaurant name</string>
+    <string name="rerun">Re-run extraction</string>
+    <string name="delete">Delete</string>
+    <string name="delete_confirm">Delete this snapshot and its photos?</string>
+    <string name="debug">Debug / OCR</string>
+    <string name="export_ocr">Export OCR JSON</string>
+    <string name="export_snapshot">Export snapshot JSON</string>
+    <string name="legend">Legend on the menu</string>
+    <string name="warnings">Parser notes</string>
+    <string name="ocr_text">OCR text (%1$d lines)</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="back">Back</string>
+    <string name="more">More</string>
+    <string name="saved">Saved</string>
+
+    <string name="allergen_1">Gluten</string>
+    <string name="allergen_2">Crustaceans</string>
+    <string name="allergen_3">Eggs</string>
+    <string name="allergen_4">Fish</string>
+    <string name="allergen_5">Peanuts</string>
+    <string name="allergen_6">Soy</string>
+    <string name="allergen_7">Milk</string>
+    <string name="allergen_8">Tree nuts</string>
+    <string name="allergen_9">Celery</string>
+    <string name="allergen_10">Mustard</string>
+    <string name="allergen_11">Sesame</string>
+    <string name="allergen_12">Sulphites</string>
+    <string name="allergen_13">Lupin</string>
+    <string name="allergen_14">Molluscs</string>
+
+    <string name="tag_VEGETARIAN">vegetarian</string>
+    <string name="tag_VEGAN">vegan</string>
+    <string name="tag_PORK">pork</string>
+    <string name="tag_BEEF">beef</string>
+    <string name="tag_POULTRY">poultry</string>
+    <string name="tag_SPICY">spicy</string>
+    <string name="tag_ALCOHOL">alcohol</string>
+</resources>

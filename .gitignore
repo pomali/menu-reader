@@ -1,3 +1,10 @@
 samples/images/
 node_modules/
 dist/
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+.kotlin/
+captures/

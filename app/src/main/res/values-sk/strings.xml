@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Menu Reader</string>
+    <string name="scan">Naskenovať menu</string>
+    <string name="pick_photos">Z fotiek</string>
+    <string name="processing">Čítam menu…</string>
+    <string name="processing_failed">Menu sa nepodarilo prečítať: %1$s</string>
+    <string name="scanner_unavailable">Skener dokumentov nie je dostupný (potrebuje Google Play služby). Použite „Z fotiek“.</string>
+    <string name="history_empty">Zatiaľ žiadne menu. Začnite naskenovaním.</string>
+    <string name="unassigned">Nepriradená reštaurácia</string>
+    <plurals name="dish_count">
+        <item quantity="one">%d jedlo</item>
+        <item quantity="few">%d jedlá</item>
+        <item quantity="many">%d jedla</item>
+        <item quantity="other">%d jedál</item>
+    </plurals>
+    <string name="quality_basic">základné (offline)</string>
+    <string name="quality_full">úplné</string>
+
+    <string name="profile">Alergický profil</string>
+    <string name="avoid_allergens">Alergény, ktorým sa vyhýbam</string>
+    <string name="avoid_tags">Označiť aj</string>
+    <string name="strictness">Označiť jedlo, keď</string>
+    <string name="strictness_printed">menu uvádza kód</string>
+    <string name="strictness_lexical">…alebo to naznačuje surovina v názve</string>
+    <string name="strictness_inferred">…alebo ho môže obsahovať (bežný recept)</string>
+
+    <string name="disclaimer">Automatické čítanie sa môže mýliť. Žiadne jedlo tu nie je označené ako „bez alergénov“: vždy si to overte u obsluhy.</string>
+    <string name="search">Hľadať jedlo</string>
+    <string name="max_price">Max. cena</string>
+    <string name="section_default">Menu</string>
+    <string name="no_dishes">Nenašli sa žiadne jedlá. Pozrite si OCR text v Debug, alebo skenujte pri lepšom svetle.</string>
+    <string name="not_detected">Nezistené: %1$s</string>
+    <string name="not_detected_none">Nezistený žiadny sledovaný alergén</string>
+    <string name="no_codes_printed">menu pri tomto jedle neuvádza kódy alergénov</string>
+    <string name="checked_layers">overené: %1$s</string>
+    <string name="layer_printed">tlačené</string>
+    <string name="layer_lexical">slovník</string>
+    <string name="layer_inferred">odhad</string>
+    <string name="reason_contains">%1$s (%2$s, %3$s)</string>
+    <string name="reason_tag">%1$s</string>
+    <string name="reason_missing_tag">nie je %1$s</string>
+    <string name="reason_over_price">nad %1$s</string>
+    <string name="reason_no_match">nezodpovedá hľadaniu</string>
+    <string name="reason_other_section">iná sekcia</string>
+    <string name="mismatch">Menu neuvádza %1$s, ale %2$s to naznačuje</string>
+    <string name="low_confidence">Nízka istota: pozrite si fotku</string>
+    <string name="show_source">Fotka</string>
+    <string name="share">Preložiť / zdieľať</string>
+
+    <string name="restaurant">Reštaurácia</string>
+    <string name="restaurant_hint">Názov reštaurácie</string>
+    <string name="rerun">Spustiť extrakciu znova</string>
+    <string name="delete">Vymazať</string>
+    <string name="delete_confirm">Vymazať tento záznam aj s fotkami?</string>
+    <string name="debug">Debug / OCR</string>
+    <string name="export_ocr">Exportovať OCR JSON</string>
+    <string name="export_snapshot">Exportovať snapshot JSON</string>
+    <string name="legend">Legenda v menu</string>
+    <string name="warnings">Poznámky parsera</string>
+    <string name="ocr_text">OCR text (%1$d riadkov)</string>
+    <string name="save">Uložiť</string>
+    <string name="cancel">Zrušiť</string>
+    <string name="close">Zavrieť</string>
+    <string name="back">Späť</string>
+    <string name="more">Viac</string>
+    <string name="saved">Uložené</string>
+
+    <string name="allergen_1">Lepok</string>
+    <string name="allergen_2">Kôrovce</string>
+    <string name="allergen_3">Vajcia</string>
+    <string name="allergen_4">Ryby</string>
+    <string name="allergen_5">Arašidy</string>
+    <string name="allergen_6">Sója</string>
+    <string name="allergen_7">Mlieko</string>
+    <string name="allergen_8">Orechy</string>
+    <string name="allergen_9">Zeler</string>
+    <string name="allergen_10">Horčica</string>
+    <string name="allergen_11">Sezam</string>
+    <string name="allergen_12">Siričitany</string>
+    <string name="allergen_13">Vlčí bôb</string>
+    <string name="allergen_14">Mäkkýše</string>
+
+    <string name="tag_VEGETARIAN">vegetariánske</string>
+    <string name="tag_VEGAN">vegánske</string>
+    <string name="tag_PORK">bravčové</string>
+    <string name="tag_BEEF">hovädzie</string>
+    <string name="tag_POULTRY">hydina</string>
+    <string name="tag_SPICY">pikantné</string>
+    <string name="tag_ALCOHOL">alkohol</string>
+</resources>

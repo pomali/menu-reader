@@ -1,0 +1,900 @@
+{
+  "_doc": "Layer B dictionary. Terms are folded (lowercase, no diacritics) at load time. A trailing * means prefix match (Slovak/Czech inflection). 'weak' terms give a low-confidence hint. Keep false positives low: use exact word forms where a stem would also match unrelated words. Folding makes Czech 'sýrový' (cheese) and 'syrový' (raw) identical, so only phrases are listed for those.",
+  "allergens": {
+    "GLUTEN": {
+      "sk": [
+        "múk*",
+        "pšeni*",
+        "chlieb",
+        "chleba",
+        "chlebom",
+        "chlebík*",
+        "pečiv*",
+        "rožok",
+        "rožky",
+        "rožk*",
+        "žeml*",
+        "knedl*",
+        "halušk*",
+        "cestovin*",
+        "špaget*",
+        "rezanc*",
+        "slíž*",
+        "krupic*",
+        "jačm*",
+        "raž*",
+        "ovsen*",
+        "ovos",
+        "strúhank*",
+        "obaľ*",
+        "trojobal*",
+        "rezeň",
+        "rezne",
+        "rezňa",
+        "rezňom",
+        "vyprážaný syr",
+        "vyprážaného syra",
+        "krutón*",
+        "lievan*",
+        "palacink*",
+        "langoš*",
+        "pirohy",
+        "pirohov",
+        "buchty",
+        "buchtičk*",
+        "koláč*",
+        "torta",
+        "torty",
+        "tortou",
+        "pivo",
+        "piva",
+        "pivom",
+        "pivn*",
+        "pagáč*",
+        "toast*",
+        "bageta",
+        "bagetou",
+        "croissant*",
+        "lasagn*",
+        "gnocchi",
+        "tortill*",
+        "kuskus*",
+        "bulgur*",
+        "bryndzové halušky",
+        "pizza",
+        "pizze",
+        "pizzu",
+        "wrap"
+      ],
+      "cs": [
+        "mouk*",
+        "chléb",
+        "chleb*",
+        "rohlík*",
+        "housk*",
+        "knedlík*",
+        "těstovin*",
+        "nudl*",
+        "ječm*",
+        "žit*",
+        "ovesn*",
+        "strouhank*",
+        "obalovan*",
+        "smažený sýr",
+        "smaženého sýru",
+        "řízek",
+        "řízku",
+        "řízkem",
+        "krutony",
+        "palačink*",
+        "lívan*",
+        "bramborák*",
+        "dort",
+        "dortu",
+        "dorty",
+        "pivní*",
+        "chlebíček*"
+      ],
+      "en": [
+        "wheat*",
+        "flour",
+        "bread",
+        "breads",
+        "breaded",
+        "breadcrumb*",
+        "pasta",
+        "spaghetti",
+        "noodle*",
+        "barley",
+        "rye",
+        "oat",
+        "oats",
+        "oatmeal",
+        "semolina",
+        "couscous",
+        "crouton*",
+        "dumpling*",
+        "bun",
+        "buns",
+        "pastry",
+        "pastries",
+        "cake",
+        "cakes",
+        "pancake*",
+        "beer",
+        "beers",
+        "seitan",
+        "spelt",
+        "ravioli",
+        "tagliatelle",
+        "penne",
+        "panko",
+        "batter",
+        "schnitzel",
+        "baguette",
+        "sandwich*",
+        "burger*",
+        "waffle*",
+        "brioche"
+      ],
+      "weak": [
+        "vyprážan*",
+        "smažen*",
+        "omáčk*",
+        "gratin*",
+        "zapečen*",
+        "fried",
+        "sauce",
+        "gravy"
+      ]
+    },
+    "CRUSTACEANS": {
+      "sk": [
+        "krevet*",
+        "krab*",
+        "homár*",
+        "langust*",
+        "raky",
+        "rakov",
+        "plody mora"
+      ],
+      "cs": [
+        "humr*",
+        "raci",
+        "raků",
+        "plody moře"
+      ],
+      "en": [
+        "shrimp*",
+        "prawn*",
+        "crab",
+        "crabs",
+        "lobster*",
+        "crayfish",
+        "langoustine*",
+        "seafood",
+        "frutti di mare"
+      ]
+    },
+    "EGGS": {
+      "sk": [
+        "vajc*",
+        "vajec",
+        "vajíč*",
+        "omelet*",
+        "majonéz*",
+        "tatársk*",
+        "rezeň",
+        "rezne",
+        "rezňa",
+        "rezňom",
+        "trojobal*",
+        "vyprážaný syr",
+        "vyprážaného syra",
+        "carbonara",
+        "hollandaise",
+        "bezé",
+        "palacink*",
+        "lievan*",
+        "rezanc*",
+        "halušk*",
+        "slíž*"
+      ],
+      "cs": [
+        "vejce",
+        "vejci",
+        "vejcem",
+        "vaječn*",
+        "vajíč*",
+        "majonéz*",
+        "tatarsk*",
+        "řízek",
+        "řízku",
+        "řízkem",
+        "smažený sýr",
+        "smaženého sýru",
+        "palačink*",
+        "lívan*"
+      ],
+      "en": [
+        "egg",
+        "eggs",
+        "omelet*",
+        "omelette*",
+        "mayonnaise",
+        "mayo",
+        "meringue",
+        "aioli",
+        "tartar sauce",
+        "tartare sauce",
+        "schnitzel",
+        "pancake*",
+        "custard",
+        "brioche"
+      ],
+      "weak": [
+        "cestovin*",
+        "těstovin*",
+        "pasta",
+        "knedl*",
+        "noodle*",
+        "dezert*",
+        "zákusk*",
+        "dessert*"
+      ]
+    },
+    "FISH": {
+      "sk": [
+        "ryb*",
+        "losos*",
+        "tuniak*",
+        "tresk*",
+        "pstruh*",
+        "kapor",
+        "kapra",
+        "kaprom",
+        "kapr*",
+        "ančov*",
+        "sardin*",
+        "sleď*",
+        "makrel*",
+        "šťuk*",
+        "zubáč*",
+        "tilapi*",
+        "morský vlk",
+        "pangas*",
+        "rybací*"
+      ],
+      "cs": [
+        "tuňák*",
+        "štik*",
+        "candát*",
+        "sled",
+        "sledě",
+        "ančovič*",
+        "pangas*"
+      ],
+      "en": [
+        "fish",
+        "salmon",
+        "tuna",
+        "cod",
+        "trout",
+        "carp",
+        "anchov*",
+        "sardine*",
+        "herring*",
+        "mackerel",
+        "hake",
+        "pike",
+        "zander",
+        "tilapia",
+        "sea bass",
+        "fish sauce",
+        "worcestershire",
+        "caesar"
+      ]
+    },
+    "PEANUTS": {
+      "sk": [
+        "arašid*"
+      ],
+      "cs": [
+        "arašíd*",
+        "burák*",
+        "podzemnic*"
+      ],
+      "en": [
+        "peanut*",
+        "groundnut*",
+        "satay"
+      ]
+    },
+    "SOY": {
+      "sk": [
+        "sój*",
+        "sójov*",
+        "tofu",
+        "edamame",
+        "miso",
+        "tempeh"
+      ],
+      "cs": [
+        "sója",
+        "sóji",
+        "sójov*"
+      ],
+      "en": [
+        "soy",
+        "soya",
+        "soybean*",
+        "soy sauce",
+        "tofu",
+        "edamame",
+        "miso",
+        "tempeh",
+        "teriyaki"
+      ]
+    },
+    "MILK": {
+      "sk": [
+        "mliek*",
+        "mlieč*",
+        "mlieko",
+        "smotan*",
+        "maslo",
+        "masla",
+        "maslom",
+        "maslov*",
+        "syr",
+        "syra",
+        "syrom",
+        "syre",
+        "syry",
+        "syrov",
+        "syrmi",
+        "syrová omáčka",
+        "syrovou omáčkou",
+        "syrovej omáčke",
+        "syrový tanier",
+        "syrová misa",
+        "syrová pizza",
+        "bryndz*",
+        "tvaroh*",
+        "jogurt*",
+        "kefír*",
+        "mozzarell*",
+        "parmez*",
+        "eidam*",
+        "niva",
+        "nivou",
+        "nivy",
+        "encián*",
+        "oštiep*",
+        "korbáčik*",
+        "šľahačk*",
+        "bešamel*",
+        "zmrzlin*",
+        "puding*",
+        "parenic*",
+        "údený syr",
+        "camembert*",
+        "hermelín*",
+        "gorgonzol*",
+        "mascarpone",
+        "ricott*",
+        "feta",
+        "fetou",
+        "cheddar*",
+        "kakao s mliekom",
+        "latte",
+        "cappuccino",
+        "kapučín*",
+        "zmrzlinov*",
+        "gratinovan*"
+      ],
+      "cs": [
+        "mléko",
+        "mléka",
+        "mlékem",
+        "mléč*",
+        "mlék*",
+        "smetan*",
+        "máslo",
+        "másla",
+        "máslem",
+        "máslov*",
+        "sýr",
+        "sýra",
+        "sýru",
+        "sýrem",
+        "sýry",
+        "sýrová omáčka",
+        "sýrovou omáčkou",
+        "sýrové omáčce",
+        "sýrový talíř",
+        "sýrová pizza",
+        "tvaroh*",
+        "tvarůž*",
+        "olomouck*",
+        "hermelín*",
+        "šlehačk*",
+        "bešamel*",
+        "zmrzlin*",
+        "pudink*",
+        "kapučín*"
+      ],
+      "en": [
+        "milk*",
+        "cream",
+        "creamy",
+        "cream sauce",
+        "sour cream",
+        "ice cream",
+        "butter",
+        "buttered",
+        "buttermilk",
+        "cheese*",
+        "yogurt*",
+        "yoghurt*",
+        "mozzarella",
+        "parmesan",
+        "cheddar",
+        "feta",
+        "ricotta",
+        "mascarpone",
+        "gorgonzola",
+        "brie",
+        "camembert",
+        "halloumi",
+        "bechamel",
+        "béchamel",
+        "latte",
+        "cappuccino",
+        "ghee",
+        "curd",
+        "whey",
+        "lactose",
+        "creme fraiche",
+        "crème fraîche",
+        "alfredo",
+        "milkshake*",
+        "tzatziki",
+        "paneer",
+        "custard",
+        "pesto",
+        "carbonara",
+        "quattro formaggi"
+      ],
+      "weak": [
+        "omáčk*",
+        "krémov*",
+        "krémová",
+        "dezert*",
+        "zákusk*",
+        "dessert*",
+        "gratin*",
+        "zapečen*",
+        "pyré",
+        "kaše",
+        "kaša",
+        "zemiakové pyré",
+        "bramborová kaše",
+        "mashed potato*"
+      ]
+    },
+    "TREE_NUTS": {
+      "sk": [
+        "orech*",
+        "oriešk*",
+        "orieš*",
+        "mandl*",
+        "lieskov*",
+        "vlašsk*",
+        "kešu",
+        "pekan*",
+        "pistác*",
+        "makadam*",
+        "marcipán*",
+        "nugát*",
+        "pesto",
+        "pralin*"
+      ],
+      "cs": [
+        "ořech*",
+        "oříšk*",
+        "oříš*",
+        "lískov*",
+        "pistáci*"
+      ],
+      "en": [
+        "almond*",
+        "hazelnut*",
+        "walnut*",
+        "cashew*",
+        "pecan*",
+        "pistachio*",
+        "macadamia",
+        "brazil nut*",
+        "praline*",
+        "marzipan",
+        "nutella",
+        "pesto",
+        "nuts",
+        "nut"
+      ]
+    },
+    "CELERY": {
+      "sk": [
+        "zeler*"
+      ],
+      "cs": [
+        "celer*"
+      ],
+      "en": [
+        "celery",
+        "celeriac"
+      ],
+      "weak": [
+        "vývar*",
+        "bujón*",
+        "polievk*",
+        "polévk*",
+        "broth",
+        "bouillon",
+        "soup*",
+        "omáčk*",
+        "guláš*",
+        "gulas*",
+        "kapustnic*",
+        "sviečkov*",
+        "svíčkov*"
+      ]
+    },
+    "MUSTARD": {
+      "sk": [
+        "horčic*",
+        "dijon*"
+      ],
+      "cs": [
+        "hořčic*"
+      ],
+      "en": [
+        "mustard",
+        "dijon"
+      ],
+      "weak": [
+        "tatársk*",
+        "tatarsk*",
+        "tartar sauce",
+        "majonéz*",
+        "dressing*",
+        "dresing*",
+        "honey mustard",
+        "klobás*",
+        "párk*",
+        "hot dog*"
+      ]
+    },
+    "SESAME": {
+      "sk": [
+        "sezam*",
+        "tahini",
+        "hummus",
+        "humus"
+      ],
+      "cs": [
+        "sezam*"
+      ],
+      "en": [
+        "sesame",
+        "tahini",
+        "hummus",
+        "gomasio"
+      ]
+    },
+    "SULPHITES": {
+      "sk": [
+        "víno",
+        "vína",
+        "vínom",
+        "víne",
+        "vínny",
+        "vínna",
+        "vínne",
+        "vínová",
+        "vínový",
+        "vínovej",
+        "sekt",
+        "šampan*",
+        "prosecco",
+        "cider",
+        "sušené ovocie",
+        "hrozienk*"
+      ],
+      "cs": [
+        "vínem",
+        "šampaňsk*",
+        "rozink*"
+      ],
+      "en": [
+        "wine",
+        "wines",
+        "champagne",
+        "prosecco",
+        "cider",
+        "dried fruit*",
+        "raisin*"
+      ],
+      "weak": [
+        "ocot",
+        "octom",
+        "ocet",
+        "octem",
+        "vinegar",
+        "balzam*",
+        "balsamic",
+        "pivo",
+        "piva",
+        "beer",
+        "kyslá kapusta",
+        "kyselé zelí",
+        "sauerkraut"
+      ]
+    },
+    "LUPIN": {
+      "sk": [
+        "vlčí bôb",
+        "vlčieho bôbu",
+        "lupín*",
+        "lupin*"
+      ],
+      "cs": [
+        "vlčí bob",
+        "vlčího bobu"
+      ],
+      "en": [
+        "lupin*",
+        "lupine*"
+      ]
+    },
+    "MOLLUSCS": {
+      "sk": [
+        "mušl*",
+        "slávk*",
+        "ustric*",
+        "kalamár*",
+        "chobotnic*",
+        "sépi*",
+        "hrebenatk*",
+        "slimák*",
+        "plody mora"
+      ],
+      "cs": [
+        "ústřic*",
+        "hřebenatk*",
+        "šnek*",
+        "hlemýžď*",
+        "plody moře"
+      ],
+      "en": [
+        "mussel*",
+        "clam",
+        "clams",
+        "oyster*",
+        "squid",
+        "calamari",
+        "octopus",
+        "scallop*",
+        "snail*",
+        "escargot*",
+        "seafood",
+        "frutti di mare"
+      ]
+    }
+  },
+  "tags": {
+    "PORK": {
+      "sk": [
+        "bravč*",
+        "slanin*",
+        "šunk*",
+        "klobás*",
+        "párk*",
+        "údenin*",
+        "údené mäso",
+        "údeným mäsom",
+        "pečienk*",
+        "kare",
+        "krkovic*",
+        "rebierk*",
+        "kolen*",
+        "škvark*",
+        "salám*",
+        "prosciutto",
+        "pancett*",
+        "chorizo"
+      ],
+      "cs": [
+        "vepř*",
+        "slanin*",
+        "šunk*",
+        "klobás*",
+        "párk*",
+        "uzen*",
+        "krkovic*",
+        "žebírk*",
+        "kolen*",
+        "škvark*",
+        "salám*",
+        "vepřo"
+      ],
+      "en": [
+        "pork",
+        "bacon",
+        "ham",
+        "prosciutto",
+        "salami",
+        "pancetta",
+        "chorizo",
+        "sausage*",
+        "ribs",
+        "pepperoni"
+      ]
+    },
+    "BEEF": {
+      "sk": [
+        "hovädz*",
+        "hovädzin*",
+        "teľac*",
+        "sviečkov*",
+        "roštenk*",
+        "steak*",
+        "biftek*"
+      ],
+      "cs": [
+        "hověz*",
+        "telec*",
+        "svíčkov*",
+        "roštěn*",
+        "steak*",
+        "biftek*"
+      ],
+      "en": [
+        "beef",
+        "veal",
+        "steak*",
+        "sirloin",
+        "ribeye",
+        "burger*",
+        "brisket"
+      ]
+    },
+    "POULTRY": {
+      "sk": [
+        "kurac*",
+        "kura",
+        "kuraťa",
+        "kuraťom",
+        "kurčat*",
+        "morč*",
+        "kačac*",
+        "kačic*",
+        "kačk*",
+        "husac*",
+        "husa",
+        "husi"
+      ],
+      "cs": [
+        "kuř*",
+        "krůt*",
+        "kachn*",
+        "kachní",
+        "husí",
+        "husa"
+      ],
+      "en": [
+        "chicken",
+        "turkey",
+        "duck",
+        "goose",
+        "poultry",
+        "wings"
+      ]
+    },
+    "VEGETARIAN": {
+      "sk": [
+        "vegetarián*",
+        "bezmäs*"
+      ],
+      "cs": [
+        "vegetarián*",
+        "bezmas*"
+      ],
+      "en": [
+        "vegetarian",
+        "veggie"
+      ]
+    },
+    "VEGAN": {
+      "sk": [
+        "vegán*"
+      ],
+      "cs": [
+        "vegan*"
+      ],
+      "en": [
+        "vegan"
+      ]
+    },
+    "SPICY": {
+      "sk": [
+        "pikant*",
+        "pálivé",
+        "pálivý",
+        "pálivá",
+        "chilli",
+        "chili",
+        "jalapeñ*",
+        "jalapen*"
+      ],
+      "cs": [
+        "pálivé",
+        "pálivý",
+        "pálivá",
+        "ostré",
+        "ostrý",
+        "ostrá"
+      ],
+      "en": [
+        "spicy",
+        "hot sauce",
+        "chili",
+        "chilli",
+        "jalapeno*",
+        "sriracha"
+      ]
+    },
+    "ALCOHOL": {
+      "sk": [
+        "pivo",
+        "piva",
+        "víno",
+        "vína",
+        "rum",
+        "vodka",
+        "whisky",
+        "gin",
+        "borovičk*",
+        "slivovic*",
+        "hruškovic*",
+        "likér*",
+        "aperol",
+        "prosecco",
+        "sekt",
+        "fernet",
+        "becherovk*",
+        "radler"
+      ],
+      "cs": [
+        "slivovice",
+        "hruškovice",
+        "likér*"
+      ],
+      "en": [
+        "beer",
+        "wine",
+        "rum",
+        "vodka",
+        "whisky",
+        "whiskey",
+        "gin",
+        "liqueur",
+        "cocktail*",
+        "spritz",
+        "lager",
+        "cider"
+      ]
+    }
+  }
+}
