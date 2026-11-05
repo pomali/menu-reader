@@ -5,14 +5,16 @@ add allergen information to each dish, and let the user filter it ("no gluten, n
 Snapshots are saved so the user can come back to them later.
 
 ## 0. Decisions so far (2026-11-05)
-- **Web app (PWA) first.** Capture code sits behind an interface so a native shell
-  (Capacitor) can provide better camera control later (see §3.1).
+- **Native Android app, offline-first** (changed from "PWA first"). The phone produces a
+  "basic" snapshot with no network (document scanner → ML Kit OCR → rule parser → allergen layers
+  A+B). When online, a cloud AI pass replaces it with a "full" snapshot (better structure + layer C).
+  See §2.1 and §3.
 - **Languages:** Slovak, Czech, English menus, usually with printed EU allergen codes (1–14).
   Layer A (printed codes) is therefore the main source, and the lexical dictionary needs sk/cs/en.
 - **No translation inside the app.** Dish text can be sent to a translate app through the system
-  share dialog (Web Share API).
+  share dialog (Android `ACTION_SEND` intent).
 - **API keys:** the user enters their own key in settings. It is stored on the device, and the app
-  calls the AI API directly from the browser. **No proxy server in the MVP.**
+  calls the AI API directly from the app. **No proxy server in the MVP.**
 - **Single user:** no accounts and no sync. Export/import as JSON is the backup.
 - **Allergen conflicts:** by default a dish is flagged if *any* layer suggests an excluded allergen,
   even when the printed codes don't list it. A mismatch between the printed codes and the
@@ -69,7 +71,7 @@ Rules:
 | Sharing / multiple devices | ❌ | Can be added later (export a file or link, optional sync) | ✅ built in |
 | App size | Large (OCR models 10–40 MB, an LLM even more) | Small | Small |
 
-### Recommendation: semi-local, local-first
+### Recommendation (original, before the Android decision): semi-local, local-first
 - **Data is local-first.** Snapshots, photos, and the user's allergy profile live in IndexedDB/OPFS on
   the device. Filtering is instant and works offline. There is no account in the MVP.
 - **Extraction runs in the cloud.** A stateless proxy (Cloudflare Worker or similar) sends the
@@ -126,7 +128,7 @@ benefit. ❌ Not for us.
 - No AI cost and maximum privacy, but no layer C, and structure quality stays at the rule-based level
   forever. It doesn't fit with "we can have API keys" unless privacy is the top priority.
 
-**Recommendation:** build **semi-offline** now, behind an `Extractor` interface
+**Decision: offline-first on native Android** (see §3). The original recommendation was to build **semi-offline** now, behind an `Extractor` interface
 (`extract(pages) → Snapshot`, with a `quality: 'basic'|'full'` flag). Move to **offline-first** in the
 native phase by adding a `LocalExtractor` (ML Kit OCR + SK/CZ rule parser) next to `CloudExtractor`.
 Nothing else needs to change: storage, UI, and allergen layers A+B already run locally and work the
@@ -134,48 +136,53 @@ same on either extractor's output.
 
 ---
 
-## 3. Platform: PWA first
+## 3. Platform: native Android (Kotlin)
 
-- A **PWA** (installable web app) gets camera access (`<input capture>` / `getUserMedia`), offline
-  support (service worker), and storage (IndexedDB) on both Android and iOS from one codebase, with
-  no app-store review.
-- If we later need native features (better camera control, native on-device OCR such as
-  Apple Vision or ML Kit, which beat WASM OCR), wrap the same app with **Capacitor**.
-  This keeps the option open without paying for it now.
+Since the target is Android only and offline-first depends on on-device ML, we use plain native
+Kotlin instead of a cross-platform layer. Flutter / React Native would only make sense if iOS
+came back into scope.
 
-### 3.1 Camera: web vs native
-How well the AI reads a menu depends mostly on photo quality, so this matters.
+### 3.1 On-device building blocks (all free, all offline after first install)
+| Need | Component | Notes |
+|---|---|---|
+| Capture | **ML Kit Document Scanner** (`play-services-mlkit-document-scanner`) | System UI: edge detection, perspective and curve correction, multi-page, gallery import. No camera permission needed. Requires Google Play services |
+| Fallback capture | CameraX | Only if the scanner's UI turns out to be bad for blackboards or very large menus |
+| OCR | **ML Kit Text Recognition v2, Latin** (bundled model, about 4 MB) | Handles sk/cs diacritics. Returns blocks → lines → elements with bounding boxes, which the parser and the "show source" crop use |
+| Parsing | Our own Kotlin rule parser (§3.2) | Pure Kotlin, so unit tests run on the JVM without a device |
+| Allergen layers A+B | Our own Kotlin + bundled dictionary JSON (sk/cs/en) | Same code runs on both basic and full snapshots |
+| Optional on-device layer C | ML Kit GenAI **Prompt API** (Gemini Nano via AICore) | Only on recent flagships (Pixel 10, Galaxy S26, …). Detect at runtime and use if present; never required |
+| Storage | Room (SQLite) + photos in app-private files | FTS4/FTS5 table for diacritics-insensitive search |
+| Location | Fused Location Provider + OSM Overpass (online) | Restaurant suggestions only when online. Otherwise the GPS point is stored and matched later |
+| Background upgrade | WorkManager with a `CONNECTED` network constraint | Runs the cloud extraction automatically when back online |
+| UI | Jetpack Compose + Material 3 | |
+| Translation | `Intent.ACTION_SEND` text → user picks Google Translate / DeepL | |
 
-| | Web: `<input type="file" capture>` | Web: `getUserMedia` live preview | Native (Capacitor plugin) |
-|---|---|---|---|
-| Resolution | Full (uses the system camera app) | Often limited to video resolution (about 1080p–4K) | Full |
-| Focus / torch / exposure | Handled by the system camera | Torch and focus work only partly on Android Chrome; iOS Safari is very limited | Full control |
-| Document scanning (edge detection, flattening curved pages, multi-page) | ❌ | Do it ourselves (OpenCV.js, heavy) | ✅ **ML Kit Document Scanner** (Android) / **VisionKit** (iOS), built into the OS for free |
-| Native on-device OCR | ❌ | ❌ | ✅ ML Kit Text Recognition / Apple Vision. Fast and accurate, which makes offline mode realistic |
+### 3.2 Rule parser for SK/CZ/EN menus (basic quality)
+Input: OCR lines with bounding boxes. Steps:
+1. **Merge into rows.** Group lines by vertical overlap so a name on the left and its price on the
+   right become one row, even across columns.
+2. **Find tokens with regular expressions:**
+   - price `\d{1,3}([.,]\d{2})?\s?(€|EUR|Kč|CZK|,-)`
+   - allergen codes `\(?\b(1[0-4]|[1-9])(\s?[,.]\s?(1[0-4]|[1-9]))*\b\)?`, also with prefixes such as `A:` / `Alergény:` / `Alergeny:`
+   - portion `\d+\s?(g|kg|ml|l|dl|ks)`
+   - soup/menu markers (`Polievka`, `Polévka`, `Menu 1`, `1.`)
+3. **Classify rows:** a dish row has a price and/or allergen codes; a section header has larger
+   font height, no price, and often uppercase; a description is an indented or smaller line below
+   a dish with no price.
+4. **Allergen legend:** if the page has a legend ("1 – obilniny obsahujúce lepok …"), parse it and
+   check that the numbers match EU numbering.
+5. Each dish gets `quality: basic` and a confidence score. Dishes with low confidence are shown
+   with their photo crop, so the user can read the original.
 
-Plan: write a `CaptureProvider` interface that returns `Blob[]` of pages.
-- Web MVP: `<input capture>` with `multiple`, which gives the best quality the web allows with
-  the least code, plus picking photos from the gallery.
-- Later: a Capacitor build that uses the native document scanner. App logic, storage, and UI stay
-  the same; only the capture provider (and later the OCR provider) changes.
+Phase 0 measures how good this is on real photos. The cloud pass covers the cases it can't handle.
 
-### 3.2 Translation
-A "Share" button on a dish or section calls `navigator.share({ text })` and the user picks Google
-Translate, DeepL, or another app. Nothing to build inside the app. The AI can still record the
-menu's detected language.
-
-### Proposed stack
-- **Frontend:** Vite + React + TypeScript, `vite-plugin-pwa`, Dexie (IndexedDB), Zod (shared schema).
-- **AI calls:** directly from the browser with the user's own API key, stored in IndexedDB on the
-  device and entered in settings. The response is validated against the Zod schema. A proxy
-  (Cloudflare Worker) is needed only if the app ever gets other users.
-- **Extraction model:** Claude vision with structured (JSON-schema) output. Use a cheaper tier by
-  default and retry with a stronger model when validation fails or confidence is low.
-- **Search and facets:** a menu has about 20–200 items, so plain in-memory filtering is enough, plus
-  MiniSearch for fuzzy text search (diacritics-insensitive).
-- **Offline OCR (phase 2):** PaddleOCR.js (PP-OCRv5, ONNX/WASM) or Tesseract.js.
-
----
+### 3.3 Cloud upgrade (full quality)
+- WorkManager job sends page images + OCR text to Claude vision with a JSON schema (and the user's
+  own API key, stored with the Android Keystore).
+- Including the OCR text helps the model with small print and lets us check the result: prices or
+  codes that don't appear anywhere in the OCR text are flagged as likely hallucinations.
+- The full result **replaces** the basic one (no merging of dish IDs). The basic one is kept for
+  debugging and comparison.
 
 ## 4. Data model (draft)
 
@@ -222,15 +229,14 @@ main way to check what the AI extracted.
 ---
 
 ## 6. Phases
-- **Phase 0 (spike, about 2–3 days):** collect about 20 real menu photos (different languages and
-  layouts, some with printed allergen codes). Write an extraction script (proxy logic only) and measure
-  how many dishes, prices, and allergen codes come out right. This shows whether the LLM-first approach
-  is good enough before building the UI.
-- **Phase 1 (MVP):** PWA with capture, AI extraction using the user's key, layers A+B+C, local
-  storage, filters, history, share-to-translate.
-- **Phase 2:** a Capacitor build with the native document scanner, an offline queue, and an editor
-  for fixing extracted dishes.
-- **Phase 3:** native on-device OCR as an offline fallback; optional sync if more users are added.
+- **Phase 0 (parser + extraction test):** about 20 real SK/CZ menu photos. Run ML Kit OCR on them once
+  (a tiny debug screen in the app dumps OCR JSON). Then develop the rule parser and the cloud prompt
+  on the JVM against those dumps and score them against hand-made ground truth.
+- **Phase 1 (MVP app):** document scanner → OCR → rule parser → layers A+B → Room. Menu screen with
+  reordering, allergen profile, facets, history, GPS capture. Works fully offline.
+- **Phase 2:** cloud upgrade via WorkManager (layer C, better structure), OSM restaurant
+  suggestions, share-to-translate.
+- **Phase 3:** optional Gemini Nano layer C on supported devices, editing, export/import.
 
 ---
 
