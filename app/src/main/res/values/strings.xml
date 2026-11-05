@@ -65,14 +65,10 @@
     <string name="settings_about">About</string>
     <string name="about_text">I read menus with a robot brain 🤖 and sometimes I misread. I never say a dish is free of something, only that I didn\'t spot it. If it really matters, ask the staff.</string>
     <string name="claim_printed_title">Printed on the menu</string>
-    <string name="claim_printed_body">The menu lists number %1$d for this dish. That\'s the most reliable source.</string>
     <string name="claim_lexical_title">Spotted in the name</string>
-    <string name="claim_lexical_body">The dish mentions %1$s, so it most likely contains it.</string>
     <string name="claim_inferred_title">Just a hunch 🤔</string>
-    <string name="claim_inferred_body">Dishes like %1$s usually contain it. That\'s a guess from typical recipes.</string>
     <string name="claim_mismatch">Heads up: the menu doesn\'t list this one, but the name suggests it.</string>
     <string name="claim_footer">Not spotted ≠ not there. When in doubt, ask the staff 🙏</string>
-    <string name="you_avoid">You avoid this</string>
     <string name="low_confidence_chip">blurry?</string>
     <string name="low_confidence_title">I squinted at this one</string>
     <string name="low_confidence_body">I\'m not sure I read this dish right. Check it in the photo.</string>
@@ -142,5 +138,8 @@
     <string name="ai_auto">Read new menus with AI automatically</string>
     <string name="ai_auto_hint">Right after the offline reading, as soon as you\'re online</string>
     <string name="ingredients_likely">Probably: %1$s</string>
-    <string name="diet_body">The AI thinks this dish is usually made without meat (or, for vegan, without any animal products). Kitchens differ, so ask if it matters 🌱</string>
+    <string name="ingredients_title">Probably made with</string>
+    <string name="diet_short">the AI thinks it\'s usually made this way, ask to be sure</string>
+    <string name="filter_title">Filter</string>
+    <string name="detail_printed_hint">Numbers printed on the menu: the most reliable source.</string>
 </resources>

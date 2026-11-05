@@ -65,14 +65,10 @@
     <string name="settings_about">O aplikácii</string>
     <string name="about_text">Menu čítam robotím mozgom 🤖 a občas sa pomýlim. Nikdy netvrdím, že jedlo niečo neobsahuje, len že som to nenašiel. Keď na tom záleží, opýtaj sa obsluhy.</string>
     <string name="claim_printed_title">Napísané v menu</string>
-    <string name="claim_printed_body">Menu pri tomto jedle uvádza číslo %1$d. To je najspoľahlivejší zdroj.</string>
     <string name="claim_lexical_title">Našiel som v názve</string>
-    <string name="claim_lexical_body">V jedle sa spomína %1$s, takže to asi obsahuje.</string>
     <string name="claim_inferred_title">Len tuším 🤔</string>
-    <string name="claim_inferred_body">Jedlá ako %1$s to zvyčajne obsahujú. Je to tip podľa bežných receptov.</string>
     <string name="claim_mismatch">Pozor: menu to neuvádza, ale názov to naznačuje.</string>
     <string name="claim_footer">Nenašiel som ≠ nie je tam. Keď si nie si istý, opýtaj sa obsluhy 🙏</string>
-    <string name="you_avoid">Tomuto sa vyhýbaš</string>
     <string name="low_confidence_chip">rozmazané?</string>
     <string name="low_confidence_title">Na toto som žmúril</string>
     <string name="low_confidence_body">Nie som si istý, či som to jedlo prečítal dobre. Pozri sa na fotku.</string>
@@ -148,5 +144,8 @@
     <string name="ai_auto">Nové menu automaticky prečítať s AI</string>
     <string name="ai_auto_hint">Hneď po offline čítaní, keď budeš online</string>
     <string name="ingredients_likely">Asi: %1$s</string>
-    <string name="diet_body">AI si myslí, že sa toto jedlo zvyčajne robí bez mäsa (pri vegánskom bez živočíšnych produktov). Každá kuchyňa je iná, tak sa opýtaj, ak na tom záleží 🌱</string>
+    <string name="ingredients_title">Asi obsahuje</string>
+    <string name="diet_short">AI si myslí, že sa zvyčajne robí takto, pre istotu sa opýtaj</string>
+    <string name="filter_title">Filter</string>
+    <string name="detail_printed_hint">Čísla napísané v menu: najspoľahlivejší zdroj.</string>
 </resources>

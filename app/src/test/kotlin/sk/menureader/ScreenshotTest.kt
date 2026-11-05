@@ -2,7 +2,9 @@ package sk.menureader
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.performClick
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.github.takahirom.roborazzi.captureRoboImage
@@ -83,6 +85,9 @@ class ScreenshotTest {
         compose.waitUntil(10_000) { ShadowLooper.idleMainLooper(); Thread.sleep(20); vm.ui.value?.stored?.snapshot?.quality == sk.menureader.core.model.Quality.FULL }
         compose.waitForIdle()
         compose.onRoot().captureRoboImage("build/screenshots/menu-ai.png")
+        compose.onNodeWithText("Zeleninové rizoto").performClick()
+        compose.waitForIdle()
+        compose.onRoot().captureRoboImage("build/screenshots/dish-sheet.png")
     }
     @Test fun menuLarge() = menuScreen(large = true, name = "menu-large")
 

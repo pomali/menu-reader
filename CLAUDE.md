@@ -25,10 +25,12 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
 - UI (user feedback 2026-11-05): Android conventions, upbeat/funny tone with emoji. History: top bar with
   avoid-sheet (person icon) + Settings, ExtendedFAB "Scan" (scanner has gallery import; photo picker only
   as fallback). Menu: top bar hides on scroll (search, ⋮ rename/re-run/debug/delete), restaurant name is
-  a list item (tap to rename), summary line, filter LazyRow (avoid sheet, price sheet, then only chips
-  with count > 0 in EU order), sticky section headers, dish card ⋮ (photo, translate/share). No status
-  text under chips: tapping a chip opens `ChipSheet` explaining the layer/evidence. Only avoided things
-  are red; flagged cards get a red outline. Sheets in `ui/Sheets.kt`, settings in `ui/SettingsScreen.kt`
+  a list item (tap to rename), summary line, filter row = filter icon + only the active filters (avoided
+  items with counts, max price) wrapping; the icon opens one sheet (`AvoidSheet` with counts + price slider).
+  Sticky section headers. Dish card shows every chip, display only (filled = printed, outlined = word on
+  the menu, dotted = guess; no "?" text); tapping the card opens `DishSheet` (each chip with its reason,
+  likely ingredients, diet hint, low-confidence note, photo, translate/share); card ⋮ has photo + share.
+  Only avoided things are red; flagged cards get a red outline. Settings in `ui/SettingsScreen.kt`
   + `data/SettingsStore` (large text, wallpaper colours, debug tools).
 - AI reading (Phase 2 cloud upgrade): Settings → "✨ AI reading" picks Off / Claude / OpenAI / Gemini / Nano Banana
   (Gemini image model, shares the Gemini key, schema only in the prompt), a model (suggestions + free text) and the
@@ -50,7 +52,7 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
   `~/.gradle/gradle.properties`. No emulator here (no KVM).
 - Large text + high contrast ("grandpa mode"): `data/SettingsStore`, `MenuTheme(large)` scales fonts 1.4x
   on top of the system setting, bolder weights, fixed black/white (or white/black) schemes instead of
-  dynamic colour. Toggle in Profile and the "Aa" button on History. `LocalLargeText` for stacked layouts.
+  dynamic colour. Toggle in Settings → Display. `LocalLargeText` for stacked layouts.
 - CI: `.github/workflows/build.yml` runs the unit tests and uploads `app-debug.apk` as an artifact.
 - The user uploaded 8 real SK menus (`samples/menu*.jpg`; `menu6.jpg` = Garni, `menu6.webp` = Fontána).
   Stand-in OCR dumps are in `samples/ocr-rapid/` (see samples/README.md). The parser has been tuned on them:

@@ -88,12 +88,14 @@ object CloudMapper {
                         confidence = if (unseen) 0.5 else 0.9,
                     )
                     val enriched = enricher.enrich(dish, legend)
-                    val have = enriched.allergens.map { it.allergen }.toSet()
+                    // The AI's own reason beats a bare word match in its ingredient list (both are guesses).
+                    val solid = enriched.allergens.filter { it.layer != Layer.INFERRED }.map { it.allergen }.toSet()
                     val inferred = d.mayContain.mapNotNull { m ->
                         val a = Allergen.fromCode(m.allergen) ?: return@mapNotNull null
-                        if (a in have) null else AllergenClaim(a, Layer.INFERRED, 0.4, quote(m.reason))
+                        if (a in solid) null else AllergenClaim(a, Layer.INFERRED, 0.4, quote(m.reason))
                     }.distinctBy { it.allergen }
-                    enriched.copy(allergens = enriched.allergens + inferred).withFlags(d)
+                    val kept = enriched.allergens.filter { c -> inferred.none { it.allergen == c.allergen } }
+                    enriched.copy(allergens = (kept + inferred).sortedBy { it.allergen.code }).withFlags(d)
                 },
             )
         }

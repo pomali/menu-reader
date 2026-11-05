@@ -56,6 +56,8 @@ class CloudMapperTest {
         // Ingredient words feed the local dictionary too: "eidam" -> milk is already printed, "vajce" -> eggs printed.
         val syr = s.dishes[1]
         assertTrue(DietTag.VEGETARIAN in syr.tags)
+        // Gluten on the guláš: the AI's reason wins over nothing else; celery likewise.
+        assertEquals("'zahustený múkou'", gulas.allergens.single { it.allergen == Allergen.GLUTEN }.evidence)
         assertEquals(Layer.INFERRED, syr.tagClaims.single { it.tag == DietTag.VEGETARIAN }.layer)
     }
 

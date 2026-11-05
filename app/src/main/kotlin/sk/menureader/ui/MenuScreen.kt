@@ -24,7 +24,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -44,6 +43,13 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.res.painterResource
+import androidx.compose.material3.FilledTonalIconButton
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -184,10 +190,9 @@ fun MenuScreen(
     var editName by remember { mutableStateOf(false) }
     var confirmDelete by remember { mutableStateOf(false) }
     var searching by remember { mutableStateOf(false) }
-    var showAvoid by remember { mutableStateOf(false) }
-    var showPrice by remember { mutableStateOf(false) }
-    var chipInfo by remember { mutableStateOf<ChipInfo?>(null) }
+    var showFilter by remember { mutableStateOf(false) }
     var sourceOf by remember { mutableStateOf<Dish?>(null) }
+    var openDish by remember { mutableStateOf<Dish?>(null) }
     val scroll = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
@@ -239,7 +244,7 @@ fun MenuScreen(
         LazyColumn(contentPadding = PaddingValues(top = pad.calculateTopPadding(), bottom = 32.dp), modifier = Modifier.fillMaxSize()) {
             item { Header(u) { editName = true } }
             if (ai != AiState.Idle) item { AiStatus(ai) { if (!vm.readWithAi()) askSetup = true } }
-            item { FilterRow(u, vm, onEditAvoid = { showAvoid = true }, onPrice = { showPrice = true }) }
+            item { FilterRow(u) { showFilter = true } }
             if (u.stored.snapshot.dishes.isEmpty()) {
                 item { Text(stringResource(R.string.no_dishes), Modifier.padding(24.dp), style = MaterialTheme.typography.bodyLarge) }
             }
@@ -254,7 +259,7 @@ fun MenuScreen(
                     }
                 }
                 items(sec.dishes, key = { it.dish.id }) { rd ->
-                    DishCard(rd, u.profile, hasPhotos, onChip = { chipInfo = it }, onPhoto = { sourceOf = rd.dish })
+                    DishCard(rd, u.profile, hasPhotos, onPhoto = { sourceOf = rd.dish }, onOpen = { openDish = rd.dish })
                 }
             }
         }
@@ -286,12 +291,14 @@ fun MenuScreen(
                 dismissButton = { TextButton(onClick = { askSetup = false }) { Text(stringResource(R.string.cancel)) } },
             )
         }
-        if (showAvoid) AvoidSheet(profiles) { showAvoid = false }
-        if (showPrice) {
+        if (showFilter) {
             val max = u.stored.snapshot.dishes.flatMap { it.prices }.maxOfOrNull { it.amountMinor } ?: 2000
-            PriceSheet(u.query.maxPriceMinor, max, u.stored.snapshot.currency, onChange = { vm.query.value = vm.query.value.copy(maxPriceMinor = it) }) { showPrice = false }
+            AvoidSheet(
+                profiles, counts = u.counts, tagCounts = u.tagCounts,
+                price = PriceFilter(u.query.maxPriceMinor, max, u.stored.snapshot.currency) { vm.query.value = vm.query.value.copy(maxPriceMinor = it) },
+            ) { showFilter = false }
         }
-        chipInfo?.let { ChipSheet(it) { chipInfo = null } }
+        openDish?.let { d -> DishSheet(d, u.profile, hasPhotos, onPhoto = { sourceOf = d }) { openDish = null } }
         sourceOf?.let { d -> SourceDialog(d, vm) { sourceOf = null } }
     }
 }
@@ -356,44 +363,49 @@ private fun Header(u: MenuUi, onRename: () -> Unit) {
 }
 
 /**
- * First chip opens the avoid sheet, second the price sheet; then a quick toggle for every allergen
- * and ingredient that actually occurs on this menu, in EU number order (ingredients after).
+ * Filter icon + only the active filters (what you avoid, max price), wrapping instead of a long
+ * scrolling row. Everything is edited in the filter sheet.
  */
 @Composable
-private fun FilterRow(u: MenuUi, vm: MenuViewModel, onEditAvoid: () -> Unit, onPrice: () -> Unit) {
-    LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        item {
-            val n = u.profile.avoid.size + u.profile.avoidTags.size
-            AssistChip(
-                onClick = onEditAvoid,
-                label = { Text(if (n == 0) stringResource(R.string.avoid_none) else "${stringResource(R.string.avoid_chip)} · $n") },
-                leadingIcon = { Icon(Icons.Filled.Edit, null, Modifier.size(18.dp)) },
-            )
-        }
-        item {
-            val max = u.query.maxPriceMinor
-            FilterChip(
-                selected = max != null, onClick = onPrice,
-                label = { Text("💸 " + if (max == null) stringResource(R.string.price_any) else stringResource(R.string.price_upto, Price(max, u.stored.snapshot.currency).format())) },
-            )
-        }
-        items(Allergen.entries.filter { (u.counts[it] ?: 0) > 0 }, key = { "a" + it.name }) { a ->
-            FilterChip(selected = a in u.profile.avoid, onClick = { vm.toggleAvoid(a) }, label = { Text("${label(a)}  ${u.counts[a]}") })
-        }
-        items(avoidableTags.filter { (u.tagCounts[it] ?: 0) > 0 }, key = { "t" + it.name }) { t ->
-            FilterChip(selected = t in u.profile.avoidTags, onClick = { vm.toggleAvoid(t) }, label = { Text("${label(t)}  ${u.tagCounts[t]}") })
+private fun FilterRow(u: MenuUi, openFilter: () -> Unit) {
+    Row(Modifier.fillMaxWidth().padding(start = 12.dp, end = 16.dp), verticalAlignment = Alignment.Top) {
+        FilledTonalIconButton(onClick = openFilter) { Icon(painterResource(R.drawable.ic_filter), stringResource(R.string.filter_title)) }
+        Spacer(Modifier.width(4.dp))
+        FlowRow(Modifier.weight(1f).padding(top = 4.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            val active = Allergen.entries.filter { it in u.profile.avoid }.map { label(it) + count(u.counts[it]) } +
+                avoidableTags.filter { it in u.profile.avoidTags }.map { label(it) + count(u.tagCounts[it]) } +
+                listOfNotNull(u.query.maxPriceMinor?.let { "💸 " + stringResource(R.string.price_upto, Price(it, u.stored.snapshot.currency).format()) })
+            if (active.isEmpty()) {
+                AssistChip(onClick = openFilter, label = { Text(stringResource(R.string.avoid_none)) })
+            }
+            for (a in active) FilterChip(selected = true, onClick = openFilter, label = { Text(a) })
         }
     }
     Spacer(Modifier.height(4.dp))
 }
 
+private fun count(n: Int?) = if (n != null && n > 0) "  $n" else ""
+
+/** Shares the dish text through the system share sheet (translate apps pick it up). */
+fun shareDish(ctx: android.content.Context, d: Dish, title: String) {
+    val send = Intent(Intent.ACTION_SEND).setType("text/plain")
+        .putExtra(Intent.EXTRA_TEXT, listOfNotNull(d.name, d.description).joinToString("\n"))
+    ctx.startActivity(Intent.createChooser(send, title))
+}
+
+/**
+ * List card: name, portion, description, price and every chip (printed = filled, word on the
+ * menu = outlined, guess = dotted). Chips are display only; tapping the card opens [DishSheet],
+ * which says why each one is there.
+ */
 @Composable
-private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, onChip: (ChipInfo) -> Unit, onPhoto: () -> Unit) {
+private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, onPhoto: () -> Unit, onOpen: () -> Unit) {
     val d = rd.dish
     val ctx = LocalContext.current
     var menu by remember { mutableStateOf(false) }
     // Flagged dishes get a red outline; the red chips inside say why.
     Card(
+        onClick = onOpen,
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
         border = if (rd.flagged) BorderStroke(2.dp, MaterialTheme.colorScheme.error) else null,
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 5.dp),
@@ -405,13 +417,6 @@ private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, o
                     d.portion?.let { Text("⚖️ $it", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant) }
                     d.description?.let {
                         Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 2.dp))
-                    }
-                    if (d.ingredients.isNotEmpty()) {
-                        Text(
-                            "🧾 " + stringResource(R.string.ingredients_likely, d.ingredients.joinToString(", ")),
-                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.padding(top = 2.dp),
-                        )
                     }
                 }
                 Column(horizontalAlignment = Alignment.End, modifier = Modifier.padding(start = 8.dp)) {
@@ -427,42 +432,103 @@ private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, o
                             DropdownMenuItem(text = { Text(stringResource(R.string.show_photo)) }, onClick = { menu = false; onPhoto() })
                         }
                         val shareTitle = stringResource(R.string.share)
-                        DropdownMenuItem(text = { Text(shareTitle) }, onClick = {
-                            menu = false
-                            val send = Intent(Intent.ACTION_SEND).setType("text/plain")
-                                .putExtra(Intent.EXTRA_TEXT, listOfNotNull(d.name, d.description).joinToString("\n"))
-                            ctx.startActivity(Intent.createChooser(send, shareTitle))
-                        })
+                        DropdownMenuItem(text = { Text(shareTitle) }, onClick = { menu = false; shareDish(ctx, d, shareTitle) })
                     }
                 }
             }
-            val allergenChips = d.allergens.sortedBy { it.allergen.code }
-            val tagChips = d.tagClaims.filter { it.tag in profile.avoidTags }.distinctBy { it.tag }
-            // Diet hints from the AI (never a promise): one chip, vegan wins over vegetarian.
-            val diet = d.tagClaims.firstOrNull { it.tag == DietTag.VEGAN } ?: d.tagClaims.firstOrNull { it.tag == DietTag.VEGETARIAN }
-            if (allergenChips.isNotEmpty() || tagChips.isNotEmpty() || diet != null || d.confidence < 0.6) {
+            val chips = d.allergens.sortedBy { it.allergen.code }
+            val tags = d.tagClaims.filter { it.tag in profile.avoidTags }.distinctBy { it.tag }
+            val diet = dietOf(d)
+            if (chips.isNotEmpty() || tags.isNotEmpty() || diet != null || d.confidence < 0.6) {
                 Spacer(Modifier.height(8.dp))
                 FlowRow(Modifier.padding(end = 12.dp)) {
-                    for (c in allergenChips) {
-                        val text = label(c.allergen)
-                        val avoided = c.allergen in profile.avoid
-                        LayerChip(text, c.layer, avoided) {
-                            onChip(ChipInfo.Claim(text, c.layer, c.evidence, c.allergen.code.takeIf { c.layer == Layer.PRINTED }, avoided,
-                                mismatch = d.printedCodes.isNotEmpty() && c.layer != Layer.PRINTED))
-                        }
-                    }
-                    for (c in tagChips) {
-                        val text = label(c.tag)
-                        LayerChip(text, c.layer, avoided = true) { onChip(ChipInfo.Claim(text, c.layer, c.evidence, null, true, false)) }
-                    }
-                    if (diet != null) {
-                        val text = label(diet.tag)
-                        LayerChip(text, diet.layer, avoided = false) { onChip(ChipInfo.Diet(text)) }
-                    }
-                    if (d.confidence < 0.6) NoteChip("🤔 " + stringResource(R.string.low_confidence_chip)) { onChip(ChipInfo.LowConfidence) }
+                    for (c in chips) LayerChip(label(c.allergen), c.layer, c.allergen in profile.avoid)
+                    for (c in tags) LayerChip(label(c.tag), c.layer, avoided = true)
+                    if (diet != null) LayerChip(label(diet.tag), Layer.INFERRED, avoided = false)
+                    if (d.confidence < 0.6) NoteChip("🤔 " + stringResource(R.string.low_confidence_chip))
                 }
             }
         }
+    }
+}
+
+/** Vegan/vegetarian hint (one; vegan wins). */
+private fun dietOf(d: Dish) = d.tagClaims.firstOrNull { it.tag == DietTag.VEGAN } ?: d.tagClaims.firstOrNull { it.tag == DietTag.VEGETARIAN }
+
+/** Everything about one dish, including the hunches and their reasons. */
+@Composable
+private fun DishSheet(d: Dish, profile: UserProfile, hasPhotos: Boolean, onPhoto: () -> Unit, onDismiss: () -> Unit) {
+    val ctx = LocalContext.current
+    ModalBottomSheet(onDismissRequest = onDismiss) {
+        Column(Modifier.padding(horizontal = 24.dp).verticalScroll(rememberScrollState()).navigationBarsPadding()) {
+            Row(verticalAlignment = Alignment.Top) {
+                Text(d.name, style = MaterialTheme.typography.headlineSmall, modifier = Modifier.weight(1f))
+                Column(horizontalAlignment = Alignment.End) {
+                    for (p in d.prices) Text(listOfNotNull(p.variant, p.format()).joinToString("  "), style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+                }
+            }
+            d.portion?.let { Text("⚖️ $it", style = MaterialTheme.typography.titleSmall) }
+            d.description?.let { Text(it, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(top = 4.dp)) }
+
+            val printed = d.allergens.filter { it.layer == Layer.PRINTED }.sortedBy { it.allergen.code }
+            val spotted = d.allergens.filter { it.layer == Layer.LEXICAL }.sortedBy { it.allergen.code }
+            val spottedTags = d.tagClaims.filter { it.layer == Layer.LEXICAL && it.tag in avoidableTags }
+            if (printed.isNotEmpty()) {
+                DetailLabel("📋 " + stringResource(R.string.claim_printed_title))
+                FlowRow { for (c in printed) LayerChip(label(c.allergen), c.layer, c.allergen in profile.avoid) }
+                Text(stringResource(R.string.detail_printed_hint), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            if (spotted.isNotEmpty() || spottedTags.isNotEmpty()) {
+                DetailLabel("🔎 " + stringResource(R.string.claim_lexical_title))
+                for (c in spotted) ReasonRow(label(c.allergen), c.layer, c.allergen in profile.avoid, c.evidence)
+                for (c in spottedTags) ReasonRow(label(c.tag), c.layer, c.tag in profile.avoidTags, c.evidence)
+            }
+            val hunchA = d.allergens.filter { it.layer == Layer.INFERRED }.sortedBy { it.allergen.code }
+            val hunchT = d.tagClaims.filter { it.layer == Layer.INFERRED && it.tag in avoidableTags }
+            if (hunchA.isNotEmpty() || hunchT.isNotEmpty()) {
+                DetailLabel(stringResource(R.string.claim_inferred_title))
+                if (printed.isNotEmpty() && hunchA.isNotEmpty()) {
+                    Text(stringResource(R.string.claim_mismatch), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(bottom = 6.dp))
+                }
+                for (c in hunchA) ReasonRow(label(c.allergen), c.layer, c.allergen in profile.avoid, c.evidence)
+                for (c in hunchT) ReasonRow(label(c.tag), c.layer, c.tag in profile.avoidTags, c.evidence)
+            }
+            val diet = dietOf(d)
+            if (diet != null) {
+                Spacer(Modifier.height(8.dp))
+                ReasonRow(label(diet.tag), Layer.INFERRED, false, stringResource(R.string.diet_short))
+            }
+            if (d.confidence < 0.6) {
+                DetailLabel("🤔 " + stringResource(R.string.low_confidence_title))
+                Text(stringResource(R.string.low_confidence_body), style = MaterialTheme.typography.bodyMedium)
+            }
+            if (d.ingredients.isNotEmpty()) {
+                DetailLabel("🧾 " + stringResource(R.string.ingredients_title))
+                Text(d.ingredients.joinToString(", "), style = MaterialTheme.typography.bodyLarge)
+            }
+            Spacer(Modifier.height(16.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                if (hasPhotos && d.sourceBox != null) OutlinedButton(onClick = onPhoto) { Text(stringResource(R.string.show_photo)) }
+                val shareTitle = stringResource(R.string.share)
+                OutlinedButton(onClick = { shareDish(ctx, d, shareTitle) }) { Text(shareTitle) }
+            }
+            Spacer(Modifier.height(12.dp))
+            Text(stringResource(R.string.claim_footer), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Spacer(Modifier.height(24.dp))
+        }
+    }
+}
+
+@Composable
+private fun DetailLabel(text: String) =
+    Text(text, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.secondary, modifier = Modifier.padding(top = 16.dp, bottom = 6.dp))
+
+/** A chip with its reason next to it: "🥛 7 Milk ?  maslo a parmezán". */
+@Composable
+private fun ReasonRow(label: String, layer: Layer, avoided: Boolean, evidence: String) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 2.dp)) {
+        LayerChip(label, layer, avoided)
+        Text(evidence.trim('\''), style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(start = 4.dp, bottom = 6.dp))
     }
 }
 
