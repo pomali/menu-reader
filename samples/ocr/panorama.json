@@ -1,0 +1,1331 @@
+{
+ "pages": [
+  {
+   "pageId": "p1",
+   "width": 2896,
+   "height": 3312,
+   "blocks": [
+    {
+     "text": "4",
+     "box": {
+      "left": 252,
+      "top": 3081,
+      "right": 272,
+      "bottom": 3106
+     },
+     "lines": [
+      {
+       "text": "4",
+       "box": {
+        "left": 252,
+        "top": 3081,
+        "right": 272,
+        "bottom": 3106
+       },
+       "confidence": 0.52734375
+      }
+     ]
+    },
+    {
+     "text": "PONDELOK",
+     "box": {
+      "left": 455,
+      "top": 787,
+      "right": 860,
+      "bottom": 840
+     },
+     "lines": [
+      {
+       "text": "PONDELOK",
+       "box": {
+        "left": 455,
+        "top": 787,
+        "right": 860,
+        "bottom": 840
+       },
+       "confidence": 0.7783203
+      }
+     ]
+    },
+    {
+     "text": "1S0g 200g1008\n150g 200S\nSSOS\n150g 200s 50g",
+     "box": {
+      "left": 387,
+      "top": 944,
+      "right": 691,
+      "bottom": 1139
+     },
+     "lines": [
+      {
+       "text": "1S0g 200g1008",
+       "box": {
+        "left": 406,
+        "top": 952,
+        "right": 691,
+        "bottom": 998
+       },
+       "confidence": 0.48665366
+      },
+      {
+       "text": "150g 200S",
+       "box": {
+        "left": 393,
+        "top": 992,
+        "right": 586,
+        "bottom": 1037
+       },
+       "confidence": 0.41552734
+      },
+      {
+       "text": "SSOS",
+       "box": {
+        "left": 389,
+        "top": 1039,
+        "right": 479,
+        "bottom": 1083
+       },
+       "confidence": 0.328125
+      },
+      {
+       "text": "150g 200s 50g",
+       "box": {
+        "left": 392,
+        "top": 1082,
+        "right": 669,
+        "bottom": 1132
+       },
+       "confidence": 0.42080966
+      }
+     ]
+    },
+    {
+     "text": "UTOROK",
+     "box": {
+      "left": 454,
+      "top": 1292,
+      "right": 757,
+      "bottom": 1340
+     },
+     "lines": [
+      {
+       "text": "UTOROK",
+       "box": {
+        "left": 454,
+        "top": 1292,
+        "right": 757,
+        "bottom": 1340
+       },
+       "confidence": 0.79622394
+      }
+     ]
+    },
+    {
+     "text": "230g 200g",
+     "box": {
+      "left": 402,
+      "top": 1442,
+      "right": 585,
+      "bottom": 1488
+     },
+     "lines": [
+      {
+       "text": "230g 200g",
+       "box": {
+        "left": 402,
+        "top": 1442,
+        "right": 585,
+        "bottom": 1488
+       },
+       "confidence": 0.70410156
+      }
+     ]
+    },
+    {
+     "text": "150g 200g",
+     "box": {
+      "left": 400,
+      "top": 1483,
+      "right": 583,
+      "bottom": 1529
+     },
+     "lines": [
+      {
+       "text": "150g 200g",
+       "box": {
+        "left": 400,
+        "top": 1483,
+        "right": 583,
+        "bottom": 1529
+       },
+       "confidence": 0.6777344
+      }
+     ]
+    },
+    {
+     "text": "350g\n150g 20Og/50g",
+     "box": {
+      "left": 390,
+      "top": 1533,
+      "right": 667,
+      "bottom": 1613
+     },
+     "lines": [
+      {
+       "text": "350g",
+       "box": {
+        "left": 390,
+        "top": 1533,
+        "right": 475,
+        "bottom": 1567
+       },
+       "confidence": 0.6308594
+      },
+      {
+       "text": "150g 20Og/50g",
+       "box": {
+        "left": 398,
+        "top": 1569,
+        "right": 667,
+        "bottom": 1613
+       },
+       "confidence": 0.6230469
+      }
+     ]
+    },
+    {
+     "text": "SSTREDA",
+     "box": {
+      "left": 216,
+      "top": 1778,
+      "right": 741,
+      "bottom": 1894
+     },
+     "lines": [
+      {
+       "text": "SSTREDA",
+       "box": {
+        "left": 216,
+        "top": 1778,
+        "right": 741,
+        "bottom": 1894
+       },
+       "confidence": 0.73102677
+      }
+     ]
+    },
+    {
+     "text": "O331",
+     "box": {
+      "left": 388,
+      "top": 1921,
+      "right": 472,
+      "bottom": 1953
+     },
+     "lines": [
+      {
+       "text": "O331",
+       "box": {
+        "left": 388,
+        "top": 1921,
+        "right": 472,
+        "bottom": 1953
+       },
+       "confidence": 0.61328125
+      }
+     ]
+    },
+    {
+     "text": "150g/200g/100g\n150g/20og/\n350g\n150g/20og/50g",
+     "box": {
+      "left": 388,
+      "top": 1965,
+      "right": 686,
+      "bottom": 2127
+     },
+     "lines": [
+      {
+       "text": "150g/200g/100g",
+       "box": {
+        "left": 392,
+        "top": 1965,
+        "right": 686,
+        "bottom": 2003
+       },
+       "confidence": 0.7561384
+      },
+      {
+       "text": "150g/20og/",
+       "box": {
+        "left": 391,
+        "top": 2007,
+        "right": 600,
+        "bottom": 2045
+       },
+       "confidence": 0.6855469
+      },
+      {
+       "text": "350g",
+       "box": {
+        "left": 388,
+        "top": 2044,
+        "right": 475,
+        "bottom": 2081
+       },
+       "confidence": 0.7753906
+      },
+      {
+       "text": "150g/20og/50g",
+       "box": {
+        "left": 391,
+        "top": 2084,
+        "right": 665,
+        "bottom": 2127
+       },
+       "confidence": 0.7457933
+      }
+     ]
+    },
+    {
+     "text": "ŠTVRTOK",
+     "box": {
+      "left": 451,
+      "top": 2325,
+      "right": 771,
+      "bottom": 2385
+     },
+     "lines": [
+      {
+       "text": "ŠTVRTOK",
+       "box": {
+        "left": 451,
+        "top": 2325,
+        "right": 771,
+        "bottom": 2385
+       },
+       "confidence": 0.7254464
+      }
+     ]
+    },
+    {
+     "text": "0331",
+     "box": {
+      "left": 386,
+      "top": 2433,
+      "right": 471,
+      "bottom": 2465
+     },
+     "lines": [
+      {
+       "text": "0331",
+       "box": {
+        "left": 386,
+        "top": 2433,
+        "right": 471,
+        "bottom": 2465
+       },
+       "confidence": 0.3642578
+      }
+     ]
+    },
+    {
+     "text": "150g/200g/i00g\n350g",
+     "box": {
+      "left": 390,
+      "top": 2474,
+      "right": 684,
+      "bottom": 2550
+     },
+     "lines": [
+      {
+       "text": "150g/200g/i00g",
+       "box": {
+        "left": 390,
+        "top": 2474,
+        "right": 684,
+        "bottom": 2516
+       },
+       "confidence": 0.47265625
+      },
+      {
+       "text": "350g",
+       "box": {
+        "left": 390,
+        "top": 2511,
+        "right": 471,
+        "bottom": 2550
+       },
+       "confidence": 0.4326172
+      }
+     ]
+    },
+    {
+     "text": "150g/200g/50g",
+     "box": {
+      "left": 388,
+      "top": 2584,
+      "right": 662,
+      "bottom": 2638
+     },
+     "lines": [
+      {
+       "text": "150g/200g/50g",
+       "box": {
+        "left": 388,
+        "top": 2584,
+        "right": 662,
+        "bottom": 2638
+       },
+       "confidence": 0.5363582
+      }
+     ]
+    },
+    {
+     "text": "PIATOK",
+     "box": {
+      "left": 458,
+      "top": 2823,
+      "right": 732,
+      "bottom": 2870
+     },
+     "lines": [
+      {
+       "text": "PIATOK",
+       "box": {
+        "left": 458,
+        "top": 2823,
+        "right": 732,
+        "bottom": 2870
+       },
+       "confidence": 0.7467448
+      }
+     ]
+    },
+    {
+     "text": "150g/20g\n1502/20g\n1500/200g\n150g/20og/50g",
+     "box": {
+      "left": 389,
+      "top": 2948,
+      "right": 669,
+      "bottom": 3116
+     },
+     "lines": [
+      {
+       "text": "150g/20g",
+       "box": {
+        "left": 394,
+        "top": 2948,
+        "right": 579,
+        "bottom": 2994
+       },
+       "confidence": 0.41796875
+      },
+      {
+       "text": "1502/20g",
+       "box": {
+        "left": 392,
+        "top": 2989,
+        "right": 576,
+        "bottom": 3033
+       },
+       "confidence": 0.48095703
+      },
+      {
+       "text": "1500/200g",
+       "box": {
+        "left": 396,
+        "top": 3026,
+        "right": 579,
+        "bottom": 3071
+       },
+       "confidence": 0.4466146
+      },
+      {
+       "text": "150g/20og/50g",
+       "box": {
+        "left": 392,
+        "top": 3066,
+        "right": 664,
+        "bottom": 3112
+       },
+       "confidence": 0.4468149
+      }
+     ]
+    },
+    {
+     "text": "PANORAMA",
+     "box": {
+      "left": 1039,
+      "top": 136,
+      "right": 1968,
+      "bottom": 261
+     },
+     "lines": [
+      {
+       "text": "PANORAMA",
+       "box": {
+        "left": 1039,
+        "top": 136,
+        "right": 1968,
+        "bottom": 261
+       },
+       "confidence": 0.76171875
+      }
+     ]
+    },
+    {
+     "text": "DENNÉ OBEDOVÉ MENU",
+     "box": {
+      "left": 838,
+      "top": 403,
+      "right": 2151,
+      "bottom": 515
+     },
+     "lines": [
+      {
+       "text": "DENNÉ OBEDOVÉ MENU",
+       "box": {
+        "left": 838,
+        "top": 403,
+        "right": 2151,
+        "bottom": 515
+       },
+       "confidence": 0.78564453
+      }
+     ]
+    },
+    {
+     "text": "est eura nt &Ioun ge",
+     "box": {
+      "left": 1145,
+      "top": 283,
+      "right": 1888,
+      "bottom": 325
+     },
+     "lines": [
+      {
+       "text": "est eura nt &Ioun ge",
+       "box": {
+        "left": 1145,
+        "top": 283,
+        "right": 1888,
+        "bottom": 325
+       },
+       "confidence": 0.42041016
+      }
+     ]
+    },
+    {
+     "text": "od 02.11.2026 do 06.11.2026",
+     "box": {
+      "left": 1122,
+      "top": 580,
+      "right": 1939,
+      "bottom": 626
+     },
+     "lines": [
+      {
+       "text": "od 02.11.2026 do 06.11.2026",
+       "box": {
+        "left": 1122,
+        "top": 580,
+        "right": 1939,
+        "bottom": 626
+       },
+       "confidence": 0.8647461
+      }
+     ]
+    },
+    {
+     "text": "bjedhavky na rozvoz od 8:00 do 10.30, Rozvoz od 10:30 do 1330",
+     "box": {
+      "left": 868,
+      "top": 668,
+      "right": 2253,
+      "bottom": 718
+     },
+     "lines": [
+      {
+       "text": "bjedhavky na rozvoz od 8:00 do 10.30, Rozvoz od 10:30 do 1330",
+       "box": {
+        "left": 868,
+        "top": 668,
+        "right": 2253,
+        "bottom": 718
+       },
+       "confidence": 0.7228906
+      }
+     ]
+    },
+    {
+     "text": "Karfiolovå krémová s pečenými perličkami 37",
+     "box": {
+      "left": 929,
+      "top": 890,
+      "right": 1843,
+      "bottom": 944
+     },
+     "lines": [
+      {
+       "text": "Karfiolovå krémová s pečenými perličkami 37",
+       "box": {
+        "left": 929,
+        "top": 890,
+        "right": 1843,
+        "bottom": 944
+       },
+       "confidence": 0.7188528
+      }
+     ]
+    },
+    {
+     "text": "Brnensky Bravčový rezeň, varené zemiaky s petrlenovou vňatou, miečany šalát\nKuratie na prirodno s hubovou omáčkou, dusenáryła",
+     "box": {
+      "left": 914,
+      "top": 941,
+      "right": 2386,
+      "bottom": 1036
+     },
+     "lines": [
+      {
+       "text": "Brnensky Bravčový rezeň, varené zemiaky s petrlenovou vňatou, miečany šalát",
+       "box": {
+        "left": 916,
+        "top": 941,
+        "right": 2386,
+        "bottom": 992
+       },
+       "confidence": 0.7105232
+      },
+      {
+       "text": "Kuratie na prirodno s hubovou omáčkou, dusenáryła",
+       "box": {
+        "left": 914,
+        "top": 989,
+        "right": 1970,
+        "bottom": 1036
+       },
+       "confidence": 0.74445856
+      }
+     ]
+    },
+    {
+     "text": "Francúzska s mušličkami 139",
+     "box": {
+      "left": 907,
+      "top": 1393,
+      "right": 1481,
+      "bottom": 1443
+     },
+     "lines": [
+      {
+       "text": "Francúzska s mušličkami 139",
+       "box": {
+        "left": 907,
+        "top": 1393,
+        "right": 1481,
+        "bottom": 1443
+       },
+       "confidence": 0.74527997
+      }
+     ]
+    },
+    {
+     "text": "Pórová",
+     "box": {
+      "left": 904,
+      "top": 1909,
+      "right": 1039,
+      "bottom": 1942
+     },
+     "lines": [
+      {
+       "text": "Pórová",
+       "box": {
+        "left": 904,
+        "top": 1909,
+        "right": 1039,
+        "bottom": 1942
+       },
+       "confidence": 0.7890625
+      }
+     ]
+    },
+    {
+     "text": "Fit šalåt/pekinská Kapusta paradajka, paprika, uhorka/s kuracimi kúskami, tzatik\nyprataný kuraci ezeň, hranolky, tatárska omáčka 137",
+     "box": {
+      "left": 912,
+      "top": 1030,
+      "right": 2556,
+      "bottom": 1137
+     },
+     "lines": [
+      {
+       "text": "Fit šalåt/pekinská Kapusta paradajka, paprika, uhorka/s kuracimi kúskami, tzatik",
+       "box": {
+        "left": 915,
+        "top": 1038,
+        "right": 2557,
+        "bottom": 1086
+       },
+       "confidence": 0.7611762
+      },
+      {
+       "text": "yprataný kuraci ezeň, hranolky, tatárska omáčka 137",
+       "box": {
+        "left": 912,
+        "top": 1079,
+        "right": 2001,
+        "bottom": 1137
+       },
+       "confidence": 0.71571183
+      }
+     ]
+    },
+    {
+     "text": "Pečené kačacie stehno, dusená červená kapusta, parená knedľa 1\nMletý rezeň so syrom, zemiaková kaša, paradajkovo -cibuľový šaláti37\nHrachový prívarok s úüdenou krkovičkou, pečená cabuľa, chlieb 12\nVyprážaný kuraci rezeň, hranolky, tatảrska omáčka 137",
+     "box": {
+      "left": 906,
+      "top": 1438,
+      "right": 2299,
+      "bottom": 1640
+     },
+     "lines": [
+      {
+       "text": "Pečené kačacie stehno, dusená červená kapusta, parená knedľa 1",
+       "box": {
+        "left": 908,
+        "top": 1442,
+        "right": 2226,
+        "bottom": 1494
+       },
+       "confidence": 0.76721644
+      },
+      {
+       "text": "Mletý rezeň so syrom, zemiaková kaša, paradajkovo -cibuľový šaláti37",
+       "box": {
+        "left": 906,
+        "top": 1490,
+        "right": 2300,
+        "bottom": 1544
+       },
+       "confidence": 0.7150391
+      },
+      {
+       "text": "Hrachový prívarok s úüdenou krkovičkou, pečená cabuľa, chlieb 12",
+       "box": {
+        "left": 930,
+        "top": 1537,
+        "right": 2227,
+        "bottom": 1591
+       },
+       "confidence": 0.754255
+      },
+      {
+       "text": "Vyprážaný kuraci rezeň, hranolky, tatảrska omáčka 137",
+       "box": {
+        "left": 913,
+        "top": 1584,
+        "right": 1986,
+        "bottom": 1640
+       },
+       "confidence": 0.73238033
+      }
+     ]
+    },
+    {
+     "text": "Cordon blue, opekané zemiaky, kapustovỷ šalát s kukuricou\nBravčové azu, dusená ryža",
+     "box": {
+      "left": 903,
+      "top": 1951,
+      "right": 2057,
+      "bottom": 2045
+     },
+     "lines": [
+      {
+       "text": "Cordon blue, opekané zemiaky, kapustovỷ šalát s kukuricou",
+       "box": {
+        "left": 903,
+        "top": 1951,
+        "right": 2057,
+        "bottom": 2000
+       },
+       "confidence": 0.84085935
+      },
+      {
+       "text": "Bravčové azu, dusená ryža",
+       "box": {
+        "left": 903,
+        "top": 1998,
+        "right": 1416,
+        "bottom": 2045
+       },
+       "confidence": 0.8510298
+      }
+     ]
+    },
+    {
+     "text": "Domáce šišky s džemom 1 s7",
+     "box": {
+      "left": 927,
+      "top": 2041,
+      "right": 1456,
+      "bottom": 2093
+     },
+     "lines": [
+      {
+       "text": "Domáce šišky s džemom 1 s7",
+       "box": {
+        "left": 927,
+        "top": 2041,
+        "right": 1456,
+        "bottom": 2093
+       },
+       "confidence": 0.74665177
+      }
+     ]
+    },
+    {
+     "text": "137",
+     "box": {
+      "left": 1974,
+      "top": 980,
+      "right": 2065,
+      "bottom": 1009
+     },
+     "lines": [
+      {
+       "text": "137",
+       "box": {
+        "left": 1974,
+        "top": 980,
+        "right": 2065,
+        "bottom": 1009
+       },
+       "confidence": 0.6041667
+      }
+     ]
+    },
+    {
+     "text": "Vypráżaný kurac rezeň, hranolky, tatárska omáčka 37",
+     "box": {
+      "left": 914,
+      "top": 2082,
+      "right": 1973,
+      "bottom": 2140
+     },
+     "lines": [
+      {
+       "text": "Vypráżaný kurac rezeň, hranolky, tatárska omáčka 37",
+       "box": {
+        "left": 914,
+        "top": 2082,
+        "right": 1973,
+        "bottom": 2140
+       },
+       "confidence": 0.7934896
+      }
+     ]
+    },
+    {
+     "text": "Hovadzi vývar so širokými rezancami 39",
+     "box": {
+      "left": 900,
+      "top": 2408,
+      "right": 1704,
+      "bottom": 2454
+     },
+     "lines": [
+      {
+       "text": "Hovadzi vývar so širokými rezancami 39",
+       "box": {
+        "left": 900,
+        "top": 2408,
+        "right": 1704,
+        "bottom": 2454
+       },
+       "confidence": 0.75710225
+      }
+     ]
+    },
+    {
+     "text": "Chrumkavý morčaci rezeň v panko strühanke, hrášková ryža, uhorkový šalát 72",
+     "box": {
+      "left": 899,
+      "top": 2451,
+      "right": 2453,
+      "bottom": 2496
+     },
+     "lines": [
+      {
+       "text": "Chrumkavý morčaci rezeň v panko strühanke, hrášková ryža, uhorkový šalát 72",
+       "box": {
+        "left": 899,
+        "top": 2451,
+        "right": 2453,
+        "bottom": 2496
+       },
+       "confidence": 0.71442306
+      }
+     ]
+    },
+    {
+     "text": "Zemiaková placka plnená kuracimi pečienkami posypana ủdeným syram\n13\nKapustové liacky (na slano alebo na sladko hubovỷ(výber)\nVyprátaný kuraci rezen, hrano iky, tatárska om áčka 1$7",
+     "box": {
+      "left": 898,
+      "top": 2502,
+      "right": 2291,
+      "bottom": 2637
+     },
+     "lines": [
+      {
+       "text": "Zemiaková placka plnená kuracimi pečienkami posypana ủdeným syram",
+       "box": {
+        "left": 900,
+        "top": 2502,
+        "right": 2291,
+        "bottom": 2546
+       },
+       "confidence": 0.74360186
+      },
+      {
+       "text": "13",
+       "box": {
+        "left": 2046,
+        "top": 2541,
+        "right": 2084,
+        "bottom": 2562
+       },
+       "confidence": 0.73046875
+      },
+      {
+       "text": "Kapustové liacky (na slano alebo na sladko hubovỷ(výber)",
+       "box": {
+        "left": 899,
+        "top": 2547,
+        "right": 2028,
+        "bottom": 2592
+       },
+       "confidence": 0.7737564
+      },
+      {
+       "text": "Vyprátaný kuraci rezen, hrano iky, tatárska om áčka 1$7",
+       "box": {
+        "left": 898,
+        "top": 2585,
+        "right": 1963,
+        "bottom": 2637
+       },
+       "confidence": 0.6937334
+      }
+     ]
+    },
+    {
+     "text": "Iradicuý ruský borst, chlieb A7",
+     "box": {
+      "left": 897,
+      "top": 2902,
+      "right": 1483,
+      "bottom": 2958
+     },
+     "lines": [
+      {
+       "text": "Iradicuý ruský borst, chlieb A7",
+       "box": {
+        "left": 897,
+        "top": 2902,
+        "right": 1483,
+        "bottom": 2958
+       },
+       "confidence": 0.51576966
+      }
+     ]
+    },
+    {
+     "text": "letz lososa s holandskou omáckou, varené zemiaky\nMexický braveový glás, dusená ryza",
+     "box": {
+      "left": 895,
+      "top": 2954,
+      "right": 1904,
+      "bottom": 3045
+     },
+     "lines": [
+      {
+       "text": "letz lososa s holandskou omáckou, varené zemiaky",
+       "box": {
+        "left": 896,
+        "top": 2954,
+        "right": 1904,
+        "bottom": 2998
+       },
+       "confidence": 0.6297433
+      },
+      {
+       "text": "Mexický braveový glás, dusená ryza",
+       "box": {
+        "left": 895,
+        "top": 2999,
+        "right": 1596,
+        "bottom": 3045
+       },
+       "confidence": 0.5955729
+      }
+     ]
+    },
+    {
+     "text": "Vypazaý kartiol opekané zeLLaky, tatárska oacka2 a",
+     "box": {
+      "left": 905,
+      "top": 3037,
+      "right": 2043,
+      "bottom": 3094
+     },
+     "lines": [
+      {
+       "text": "Vypazaý kartiol opekané zeLLaky, tatárska oacka2 a",
+       "box": {
+        "left": 905,
+        "top": 3037,
+        "right": 2043,
+        "bottom": 3094
+       },
+       "confidence": 0.41379616
+      }
+     ]
+    },
+    {
+     "text": "Vyprazaý kur aci rezen, branolky, tatárska om aka",
+     "box": {
+      "left": 895,
+      "top": 3089,
+      "right": 1867,
+      "bottom": 3134
+     },
+     "lines": [
+      {
+       "text": "Vyprazaý kur aci rezen, branolky, tatárska om aka",
+       "box": {
+        "left": 895,
+        "top": 3089,
+        "right": 1867,
+        "bottom": 3134
+       },
+       "confidence": 0.45210195
+      }
+     ]
+    },
+    {
+     "text": "Chutné jedlo\nkaždý",
+     "box": {
+      "left": 2401,
+      "top": -36,
+      "right": 2932,
+      "bottom": 347
+     },
+     "lines": [
+      {
+       "text": "Chutné jedlo",
+       "box": {
+        "left": 2405,
+        "top": -24,
+        "right": 2895,
+        "bottom": 196
+       },
+       "confidence": 0.5081676
+      },
+      {
+       "text": "každý",
+       "box": {
+        "left": 2429,
+        "top": 120,
+        "right": 2736,
+        "bottom": 346
+       },
+       "confidence": 0.30078125
+      }
+     ]
+    },
+    {
+     "text": "132",
+     "box": {
+      "left": 2304,
+      "top": 2495,
+      "right": 2375,
+      "bottom": 2518
+     },
+     "lines": [
+      {
+       "text": "132",
+       "box": {
+        "left": 2304,
+        "top": 2495,
+        "right": 2375,
+        "bottom": 2518
+       },
+       "confidence": 0.5546875
+      }
+     ]
+    },
+    {
+     "text": "1.00€\n7.30€\n6.90€",
+     "box": {
+      "left": 2688,
+      "top": 933,
+      "right": 2807,
+      "bottom": 1055
+     },
+     "lines": [
+      {
+       "text": "1.00€",
+       "box": {
+        "left": 2698,
+        "top": 933,
+        "right": 2806,
+        "bottom": 974
+       },
+       "confidence": 0.5859375
+      },
+      {
+       "text": "7.30€",
+       "box": {
+        "left": 2696,
+        "top": 983,
+        "right": 2805,
+        "bottom": 1013
+       },
+       "confidence": 0.68828124
+      },
+      {
+       "text": "6.90€",
+       "box": {
+        "left": 2691,
+        "top": 1024,
+        "right": 2799,
+        "bottom": 1054
+       },
+       "confidence": 0.6296875
+      }
+     ]
+    },
+    {
+     "text": "dei",
+     "box": {
+      "left": 2733,
+      "top": 78,
+      "right": 2897,
+      "bottom": 203
+     },
+     "lines": [
+      {
+       "text": "dei",
+       "box": {
+        "left": 2733,
+        "top": 78,
+        "right": 2897,
+        "bottom": 203
+       },
+       "confidence": 0.60807294
+      }
+     ]
+    },
+    {
+     "text": "6.80€",
+     "box": {
+      "left": 2691,
+      "top": 1068,
+      "right": 2802,
+      "bottom": 1099
+     },
+     "lines": [
+      {
+       "text": "6.80€",
+       "box": {
+        "left": 2691,
+        "top": 1068,
+        "right": 2802,
+        "bottom": 1099
+       },
+       "confidence": 0.51171875
+      }
+     ]
+    },
+    {
+     "text": "L.00€\n9,90€",
+     "box": {
+      "left": 2678,
+      "top": 1399,
+      "right": 2786,
+      "bottom": 1475
+     },
+     "lines": [
+      {
+       "text": "L.00€",
+       "box": {
+        "left": 2682,
+        "top": 1399,
+        "right": 2786,
+        "bottom": 1432
+       },
+       "confidence": 0.521875
+      },
+      {
+       "text": "9,90€",
+       "box": {
+        "left": 2677,
+        "top": 1443,
+        "right": 2785,
+        "bottom": 1475
+       },
+       "confidence": 0.475
+      }
+     ]
+    },
+    {
+     "text": "630€",
+     "box": {
+      "left": 2675,
+      "top": 1487,
+      "right": 2784,
+      "bottom": 1516
+     },
+     "lines": [
+      {
+       "text": "630€",
+       "box": {
+        "left": 2675,
+        "top": 1487,
+        "right": 2784,
+        "bottom": 1516
+       },
+       "confidence": 0.5058594
+      }
+     ]
+    },
+    {
+     "text": "680€",
+     "box": {
+      "left": 2673,
+      "top": 1526,
+      "right": 2781,
+      "bottom": 1560
+     },
+     "lines": [
+      {
+       "text": "680€",
+       "box": {
+        "left": 2673,
+        "top": 1526,
+        "right": 2781,
+        "bottom": 1560
+       },
+       "confidence": 0.42285156
+      }
+     ]
+    },
+    {
+     "text": "L.00€\n7.30€",
+     "box": {
+      "left": 2661,
+      "top": 1907,
+      "right": 2768,
+      "bottom": 1978
+     },
+     "lines": [
+      {
+       "text": "L.00€",
+       "box": {
+        "left": 2665,
+        "top": 1907,
+        "right": 2768,
+        "bottom": 1938
+       },
+       "confidence": 0.54375
+      },
+      {
+       "text": "7.30€",
+       "box": {
+        "left": 2661,
+        "top": 1948,
+        "right": 2768,
+        "bottom": 1978
+       },
+       "confidence": 0.59765625
+      }
+     ]
+    },
+    {
+     "text": "L00 €\n7 30€",
+     "box": {
+      "left": 2646,
+      "top": 2410,
+      "right": 2750,
+      "bottom": 2485
+     },
+     "lines": [
+      {
+       "text": "L00 €",
+       "box": {
+        "left": 2646,
+        "top": 2410,
+        "right": 2750,
+        "bottom": 2441
+       },
+       "confidence": 0.53027344
+      },
+      {
+       "text": "7 30€",
+       "box": {
+        "left": 2660,
+        "top": 2446,
+        "right": 2747,
+        "bottom": 2485
+       },
+       "confidence": 0.58203125
+      }
+     ]
+    },
+    {
+     "text": "L00€",
+     "box": {
+      "left": 2622,
+      "top": 2904,
+      "right": 2721,
+      "bottom": 2941
+     },
+     "lines": [
+      {
+       "text": "L00€",
+       "box": {
+        "left": 2622,
+        "top": 2904,
+        "right": 2721,
+        "bottom": 2941
+       },
+       "confidence": 0.34179688
+      }
+     ]
+    },
+    {
+     "text": "990 €",
+     "box": {
+      "left": 2617,
+      "top": 2944,
+      "right": 2722,
+      "bottom": 2974
+     },
+     "lines": [
+      {
+       "text": "990 €",
+       "box": {
+        "left": 2617,
+        "top": 2944,
+        "right": 2722,
+        "bottom": 2974
+       },
+       "confidence": 0.54785156
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

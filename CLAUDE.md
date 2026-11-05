@@ -11,8 +11,8 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
   lexicon `resources/sk/menureader/core/lexicon.json` + enricher (`allergen/`), ranker (`filter/`),
   `LocalExtractor`. Run `./gradlew :core:test`.
 - `:app`: Room (snapshot stored as JSON + raw OCR JSON), ML Kit document scanner + bundled Latin OCR,
-  screens: History, Menu, Profile, Debug/OCR export. The user approved the screen list. Nobody has
-  run it on a device yet.
+  screens: History, Menu, Profile, Debug/OCR export. The user approved the screen list. Runs on the
+  user's phone; app version 0.2.0 (versionCode 2).
 - Share into the app (`ui/Share.kt`, manifest intent filters): screenshots (`image/*`, one or many) go
   through OCR like scans; text (`text/plain`, e.g. selected on a web page) becomes a fake one-column OCR
   page via `core/.../parse/PlainText.kt` (`OcrDocument.source = "text"`: name / description / price lines).
@@ -31,6 +31,10 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
   weekly menus (weekday sections), M1-M5 markers, `/1,3,7/` and `(A1,3,9)` codes, two-column pizza lists,
   uppercase dish + description layouts. Known weak spots: dish header + variants (menu7: KUNG PAO / S TOFU…),
   soup columns beside dish lists (Fontána) depend on OCR blocks.
+- First real ML Kit dumps from the phone: `samples/ocr/panorama.json` + `living.json` (photos of a screen,
+  `samples/panorama.jpg`, `living.jpg`). Panorama (weekly menu, 4 dishes/day, weights in a left column,
+  superscript codes) parses badly: 8 of 25 dishes, merged lines, garbled prices. Pulled from the debug
+  build's Room DB via `adb exec-out run-as sk.menureader cat databases/menu-reader.db`.
 - The user will make the ground-truth test set (`samples/truth/`) later.
 
 ## Local build notes (sandbox)
@@ -46,7 +50,6 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
 3. Phase 2: cloud upgrade (WorkManager + Claude vision, user's own key), OSM suggestions.
 
 ## Open questions for the user
-- Test device / Android version (planned minSdk 26)?
 - Can they provide their own photos of real SK/CZ menus (best test data)?
 
 ## Conventions

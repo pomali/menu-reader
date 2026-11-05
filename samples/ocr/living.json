@@ -1,0 +1,1004 @@
+{
+ "pages": [
+  {
+   "pageId": "p1",
+   "width": 2680,
+   "height": 3180,
+   "blocks": [
+    {
+     "text": "LIVING RESTAURANT MENU",
+     "box": {
+      "left": 208,
+      "top": 88,
+      "right": 2130,
+      "bottom": 220
+     },
+     "lines": [
+      {
+       "text": "LIVING RESTAURANT MENU",
+       "box": {
+        "left": 208,
+        "top": 88,
+        "right": 2130,
+        "bottom": 220
+       },
+       "confidence": 0.81757814
+      }
+     ]
+    },
+    {
+     "text": "02.11-6.1M.2026",
+     "box": {
+      "left": 266,
+      "top": 251,
+      "right": 818,
+      "bottom": 325
+     },
+     "lines": [
+      {
+       "text": "02.11-6.1M.2026",
+       "box": {
+        "left": 266,
+        "top": 251,
+        "right": 818,
+        "bottom": 325
+       },
+       "confidence": 0.58203125
+      }
+     ]
+    },
+    {
+     "text": "Pečené kačacie prsia\nmarinovanė v bylinkách na\nomáčke z výpekus\nbatatovými hranolkami a\npikantným coleslaw šalátom",
+     "box": {
+      "left": 178,
+      "top": 387,
+      "right": 898,
+      "bottom": 699
+     },
+     "lines": [
+      {
+       "text": "Pečené kačacie prsia",
+       "box": {
+        "left": 269,
+        "top": 388,
+        "right": 797,
+        "bottom": 450
+       },
+       "confidence": 0.8174913
+      },
+      {
+       "text": "marinovanė v bylinkách na",
+       "box": {
+        "left": 191,
+        "top": 457,
+        "right": 878,
+        "bottom": 511
+       },
+       "confidence": 0.7931463
+      },
+      {
+       "text": "omáčke z výpekus",
+       "box": {
+        "left": 292,
+        "top": 514,
+        "right": 792,
+        "bottom": 578
+       },
+       "confidence": 0.7938058
+      },
+      {
+       "text": "batatovými hranolkami a",
+       "box": {
+        "left": 227,
+        "top": 573,
+        "right": 852,
+        "bottom": 638
+       },
+       "confidence": 0.8160342
+      },
+      {
+       "text": "pikantným coleslaw šalátom",
+       "box": {
+        "left": 179,
+        "top": 641,
+        "right": 897,
+        "bottom": 694
+       },
+       "confidence": 0.8331706
+      }
+     ]
+    },
+    {
+     "text": "9,80C (1,7,9) 200/2009",
+     "box": {
+      "left": 339,
+      "top": 711,
+      "right": 751,
+      "bottom": 757
+     },
+     "lines": [
+      {
+       "text": "9,80C (1,7,9) 200/2009",
+       "box": {
+        "left": 339,
+        "top": 711,
+        "right": 751,
+        "bottom": 757
+       },
+       "confidence": 0.7054688
+      }
+     ]
+    },
+    {
+     "text": "Grilovaný tuniak žltoplutvý\nna varených baby zemiakoch\nS prepusteným bylinkovým\nmaslom, holandskou\nespumou a microgeens\n9,50C (4,3,7) 150/2009",
+     "box": {
+      "left": 980,
+      "top": 404,
+      "right": 1726,
+      "bottom": 759
+     },
+     "lines": [
+      {
+       "text": "Grilovaný tuniak žltoplutvý",
+       "box": {
+        "left": 1008,
+        "top": 406,
+        "right": 1702,
+        "bottom": 463
+       },
+       "confidence": 0.8439062
+      },
+      {
+       "text": "na varených baby zemiakoch",
+       "box": {
+        "left": 981,
+        "top": 473,
+        "right": 1727,
+        "bottom": 522
+       },
+       "confidence": 0.8464674
+      },
+      {
+       "text": "S prepusteným bylinkovým",
+       "box": {
+        "left": 1029,
+        "top": 534,
+        "right": 1695,
+        "bottom": 587
+       },
+       "confidence": 0.8197798
+      },
+      {
+       "text": "maslom, holandskou",
+       "box": {
+        "left": 1090,
+        "top": 594,
+        "right": 1615,
+        "bottom": 644
+       },
+       "confidence": 0.8952206
+      },
+      {
+       "text": "espumou a microgeens",
+       "box": {
+        "left": 1055,
+        "top": 661,
+        "right": 1649,
+        "bottom": 706
+       },
+       "confidence": 0.7363281
+      },
+      {
+       "text": "9,50C (4,3,7) 150/2009",
+       "box": {
+        "left": 1142,
+        "top": 714,
+        "right": 1555,
+        "bottom": 759
+       },
+       "confidence": 0.63808596
+      }
+     ]
+    },
+    {
+     "text": "PONDELOx Karfiolový krem so zemiakmi, pečenym cesnakom a bylinkami k menu c1,30/1,70C (1,)",
+     "box": {
+      "left": 215,
+      "top": 815,
+      "right": 2528,
+      "bottom": 883
+     },
+     "lines": [
+      {
+       "text": "PONDELOx Karfiolový krem so zemiakmi, pečenym cesnakom a bylinkami k menu c1,30/1,70C (1,)",
+       "box": {
+        "left": 215,
+        "top": 815,
+        "right": 2528,
+        "bottom": 883
+       },
+       "confidence": 0.7389323
+      }
+     ]
+    },
+    {
+     "text": "1. Pomaly pečené bravčové pliecko v rozmarinovo-pivnej marinádes karamelizovanou červenou kapustou,\nsušenymi slivkami a parenou knedfou\n840C0]12) 150/2009",
+     "box": {
+      "left": 190,
+      "top": 904,
+      "right": 2552,
+      "bottom": 1095
+     },
+     "lines": [
+      {
+       "text": "1. Pomaly pečené bravčové pliecko v rozmarinovo-pivnej marinádes karamelizovanou červenou kapustou,",
+       "box": {
+        "left": 192,
+        "top": 913,
+        "right": 2552,
+        "bottom": 982
+       },
+       "confidence": 0.82018083
+      },
+      {
+       "text": "sušenymi slivkami a parenou knedfou",
+       "box": {
+        "left": 941,
+        "top": 974,
+        "right": 1780,
+        "bottom": 1028
+       },
+       "confidence": 0.7406754
+      },
+      {
+       "text": "840C0]12) 150/2009",
+       "box": {
+        "left": 1118,
+        "top": 1036,
+        "right": 1629,
+        "bottom": 1082
+       },
+       "confidence": 0.5390625
+      }
+     ]
+    },
+    {
+     "text": "STREDA",
+     "box": {
+      "left": 290,
+      "top": 1758,
+      "right": 465,
+      "bottom": 1811
+     },
+     "lines": [
+      {
+       "text": "STREDA",
+       "box": {
+        "left": 290,
+        "top": 1758,
+        "right": 465,
+        "bottom": 1811
+       },
+       "confidence": 0.77994794
+      }
+     ]
+    },
+    {
+     "text": "2. Grilovaná tilapia s pučenymi batátmi, šarlotkou baby špenátom na masle a pomarančovou omáčkou\n8100|C4,6.7T1)150/200g\n3. Krémové rizotos restovanou cuketou, šampiñónmi olivami, bazalkovým pestom, syrom pecorino a kešu\nz400Z 82)13009",
+     "box": {
+      "left": 188,
+      "top": 1064,
+      "right": 2551,
+      "bottom": 1303
+     },
+     "lines": [
+      {
+       "text": "2. Grilovaná tilapia s pučenymi batátmi, šarlotkou baby špenátom na masle a pomarančovou omáčkou",
+       "box": {
+        "left": 216,
+        "top": 1073,
+        "right": 2513,
+        "bottom": 1145
+       },
+       "confidence": 0.8020049
+      },
+      {
+       "text": "8100|C4,6.7T1)150/200g",
+       "box": {
+        "left": 1112,
+        "top": 1144,
+        "right": 1619,
+        "bottom": 1189
+       },
+       "confidence": 0.50550425
+      },
+      {
+       "text": "3. Krémové rizotos restovanou cuketou, šampiñónmi olivami, bazalkovým pestom, syrom pecorino a kešu",
+       "box": {
+        "left": 188,
+        "top": 1179,
+        "right": 2549,
+        "bottom": 1254
+       },
+       "confidence": 0.808055
+      },
+      {
+       "text": "z400Z 82)13009",
+       "box": {
+        "left": 1189,
+        "top": 1244,
+        "right": 1539,
+        "bottom": 1288
+       },
+       "confidence": 0.37199518
+      }
+     ]
+    },
+    {
+     "text": "11:00-13:30",
+     "box": {
+      "left": 1730,
+      "top": 261,
+      "right": 2149,
+      "bottom": 334
+     },
+     "lines": [
+      {
+       "text": "11:00-13:30",
+       "box": {
+        "left": 1730,
+        "top": 261,
+        "right": 2149,
+        "bottom": 334
+       },
+       "confidence": 0.70383525
+      }
+     ]
+    },
+    {
+     "text": "UTOROK Rybaci vývar v kurkumovo-zeleninovom základe s pažitkou k menu c1,30/1L,70C (1.43,12)\n1. Kung pao z vykostených kuracich stehiens arašidmi, zázvorom, chilli, cibukOu,\nčervenou paprikou, dusenou citrónovou ryžou a koriandrom",
+     "box": {
+      "left": 262,
+      "top": 1270,
+      "right": 2491,
+      "bottom": 1506
+     },
+     "lines": [
+      {
+       "text": "UTOROK Rybaci vývar v kurkumovo-zeleninovom základe s pažitkou k menu c1,30/1L,70C (1.43,12)",
+       "box": {
+        "left": 264,
+        "top": 1288,
+        "right": 2492,
+        "bottom": 1356
+       },
+       "confidence": 0.67486495
+      },
+      {
+       "text": "1. Kung pao z vykostených kuracich stehiens arašidmi, zázvorom, chilli, cibukOu,",
+       "box": {
+        "left": 469,
+        "top": 1388,
+        "right": 2258,
+        "bottom": 1454
+       },
+       "confidence": 0.80340403
+      },
+      {
+       "text": "červenou paprikou, dusenou citrónovou ryžou a koriandrom",
+       "box": {
+        "left": 696,
+        "top": 1440,
+        "right": 2016,
+        "bottom": 1503
+       },
+       "confidence": 0.805625
+      }
+     ]
+    },
+    {
+     "text": "840C(1,5,6)1114) 150/2009",
+     "box": {
+      "left": 1107,
+      "top": 1509,
+      "right": 1614,
+      "bottom": 1552
+     },
+     "lines": [
+      {
+       "text": "840C(1,5,6)1114) 150/2009",
+       "box": {
+        "left": 1107,
+        "top": 1509,
+        "right": 1614,
+        "bottom": 1552
+       },
+       "confidence": 0.6253255
+      }
+     ]
+    },
+    {
+     "text": "LIVING",
+     "box": {
+      "left": 2246,
+      "top": 191,
+      "right": 2487,
+      "bottom": 265
+     },
+     "lines": [
+      {
+       "text": "LIVING",
+       "box": {
+        "left": 2246,
+        "top": 191,
+        "right": 2487,
+        "bottom": 265
+       },
+       "confidence": 0.8098958
+      }
+     ]
+    },
+    {
+     "text": "2. Vyprážané šampiňóny v bylinkovej panko strúhanke s varenými zemiakmi a domácou remuládou\n8,10C(13,7,10,12)",
+     "box": {
+      "left": 279,
+      "top": 1535,
+      "right": 2448,
+      "bottom": 1667
+     },
+     "lines": [
+      {
+       "text": "2. Vyprážané šampiňóny v bylinkovej panko strúhanke s varenými zemiakmi a domácou remuládou",
+       "box": {
+        "left": 280,
+        "top": 1540,
+        "right": 2448,
+        "bottom": 1614
+       },
+       "confidence": 0.8223398
+      },
+      {
+       "text": "8,10C(13,7,10,12)",
+       "box": {
+        "left": 1100,
+        "top": 1612,
+        "right": 1457,
+        "bottom": 1653
+       },
+       "confidence": 0.5939798
+      }
+     ]
+    },
+    {
+     "text": "SVRTOK",
+     "box": {
+      "left": 239,
+      "top": 2200,
+      "right": 491,
+      "bottom": 2276
+     },
+     "lines": [
+      {
+       "text": "SVRTOK",
+       "box": {
+        "left": 239,
+        "top": 2200,
+        "right": 491,
+        "bottom": 2276
+       },
+       "confidence": 0.47721353
+      }
+     ]
+    },
+    {
+     "text": "RESTAURANT\nBhaliyan",
+     "box": {
+      "left": 2242,
+      "top": 270,
+      "right": 2483,
+      "bottom": 382
+     },
+     "lines": [
+      {
+       "text": "RESTAURANT",
+       "box": {
+        "left": 2243,
+        "top": 270,
+        "right": 2483,
+        "bottom": 319
+       },
+       "confidence": 0.70585936
+      },
+      {
+       "text": "Bhaliyan",
+       "box": {
+        "left": 2268,
+        "top": 329,
+        "right": 2452,
+        "bottom": 381
+       },
+       "confidence": 0.32958984
+      }
+     ]
+    },
+    {
+     "text": "SO200",
+     "box": {
+      "left": 1476,
+      "top": 1611,
+      "right": 1617,
+      "bottom": 1662
+     },
+     "lines": [
+      {
+       "text": "SO200",
+       "box": {
+        "left": 1476,
+        "top": 1611,
+        "right": 1617,
+        "bottom": 1662
+       },
+       "confidence": 0.5914062
+      }
+     ]
+    },
+    {
+     "text": "3. Banánová žemfovka zapečená so sladkým tvarohom a vanilkovým krémom, preliata belgickou čokoládou\n740C (13.7) 3009",
+     "box": {
+      "left": 184,
+      "top": 1626,
+      "right": 2531,
+      "bottom": 1778
+     },
+     "lines": [
+      {
+       "text": "3. Banánová žemfovka zapečená so sladkým tvarohom a vanilkovým krémom, preliata belgickou čokoládou",
+       "box": {
+        "left": 186,
+        "top": 1642,
+        "right": 2531,
+        "bottom": 1719
+       },
+       "confidence": 0.80661815
+      },
+      {
+       "text": "740C (13.7) 3009",
+       "box": {
+        "left": 1201,
+        "top": 1705,
+        "right": 1520,
+        "bottom": 1758
+       },
+       "confidence": 0.44112724
+      }
+     ]
+    },
+    {
+     "text": "Udon rezance s údeným tofu,\nwok zeleninou, kokosovou\nkari omáčkou, sójovými\nklíčkami a koriandrom\n8,90C (1,6,7, 11) 300g",
+     "box": {
+      "left": 1819,
+      "top": 468,
+      "right": 2580,
+      "bottom": 773
+     },
+     "lines": [
+      {
+       "text": "Udon rezance s údeným tofu,",
+       "box": {
+        "left": 1823,
+        "top": 476,
+        "right": 2580,
+        "bottom": 532
+       },
+       "confidence": 0.8386549
+      },
+      {
+       "text": "wok zeleninou, kokosovou",
+       "box": {
+        "left": 1862,
+        "top": 539,
+        "right": 2542,
+        "bottom": 592
+       },
+       "confidence": 0.87215906
+      },
+      {
+       "text": "kari omáčkou, sójovými",
+       "box": {
+        "left": 1911,
+        "top": 590,
+        "right": 2508,
+        "bottom": 661
+       },
+       "confidence": 0.80566406
+      },
+      {
+       "text": "klíčkami a koriandrom",
+       "box": {
+        "left": 1937,
+        "top": 655,
+        "right": 2483,
+        "bottom": 717
+       },
+       "confidence": 0.8460115
+      },
+      {
+       "text": "8,90C (1,6,7, 11) 300g",
+       "box": {
+        "left": 2000,
+        "top": 717,
+        "right": 2390,
+        "bottom": 771
+       },
+       "confidence": 0.7687089
+      }
+     ]
+    },
+    {
+     "text": "B40C (7,10) 150/2009",
+     "box": {
+      "left": 1148,
+      "top": 1966,
+      "right": 1565,
+      "bottom": 2009
+     },
+     "lines": [
+      {
+       "text": "B40C (7,10) 150/2009",
+       "box": {
+        "left": 1148,
+        "top": 1966,
+        "right": 1565,
+        "bottom": 2009
+       },
+       "confidence": 0.62456596
+      }
+     ]
+    },
+    {
+     "text": "Tefaci vývar s pečeñovými haluškami a zeleninou k menu c1,30/1,70C (1,3.7,9)",
+     "box": {
+      "left": 579,
+      "top": 1752,
+      "right": 2265,
+      "bottom": 1823
+     },
+     "lines": [
+      {
+       "text": "Tefaci vývar s pečeñovými haluškami a zeleninou k menu c1,30/1,70C (1,3.7,9)",
+       "box": {
+        "left": 579,
+        "top": 1752,
+        "right": 2265,
+        "bottom": 1823
+       },
+       "confidence": 0.73828125
+      }
+     ]
+    },
+    {
+     "text": "1. Grilovaný steak z bravčového karé s krémovou hluzovkov-parmezánovou omačkou,\ndomácimi americkými zemlakmi a pečeným kukuričným klasom",
+     "box": {
+      "left": 410,
+      "top": 1848,
+      "right": 2298,
+      "bottom": 1970
+     },
+     "lines": [
+      {
+       "text": "1. Grilovaný steak z bravčového karé s krémovou hluzovkov-parmezánovou omačkou,",
+       "box": {
+        "left": 411,
+        "top": 1848,
+        "right": 2298,
+        "bottom": 1916
+       },
+       "confidence": 0.7763951
+      },
+      {
+       "text": "domácimi americkými zemlakmi a pečeným kukuričným klasom",
+       "box": {
+        "left": 658,
+        "top": 1903,
+        "right": 2046,
+        "bottom": 1966
+       },
+       "confidence": 0.80890626
+      }
+     ]
+    },
+    {
+     "text": "PLATOK GRILUIEME I",
+     "box": {
+      "left": 303,
+      "top": 2654,
+      "right": 744,
+      "bottom": 2714
+     },
+     "lines": [
+      {
+       "text": "PLATOK GRILUIEME I",
+       "box": {
+        "left": 303,
+        "top": 2654,
+        "right": 744,
+        "bottom": 2714
+       },
+       "confidence": 0.53759766
+      }
+     ]
+    },
+    {
+     "text": "2. Pečerný hoki na masle s dusenou ryžou) paradajkovo-bylinkovou omáčkou, čerstvou rukolou a limetkou\n8,10CC4,7) 20Q/2009",
+     "box": {
+      "left": 207,
+      "top": 1977,
+      "right": 2499,
+      "bottom": 2137
+     },
+     "lines": [
+      {
+       "text": "2. Pečerný hoki na masle s dusenou ryžou) paradajkovo-bylinkovou omáčkou, čerstvou rukolou a limetkou",
+       "box": {
+        "left": 209,
+        "top": 1997,
+        "right": 2499,
+        "bottom": 2076
+       },
+       "confidence": 0.8186257
+      },
+      {
+       "text": "8,10CC4,7) 20Q/2009",
+       "box": {
+        "left": 1171,
+        "top": 2065,
+        "right": 1560,
+        "bottom": 2116
+       },
+       "confidence": 0.57096356
+      }
+     ]
+    },
+    {
+     "text": "3. Penne v jemnom syrovom kréme s chilli, kukuricou, hráškom, bylinkami a sušenými paradajkami\n7,40C (1,3,7,12) 3009",
+     "box": {
+      "left": 277,
+      "top": 2084,
+      "right": 2429,
+      "bottom": 2231
+     },
+     "lines": [
+      {
+       "text": "3. Penne v jemnom syrovom kréme s chilli, kukuricou, hráškom, bylinkami a sušenými paradajkami",
+       "box": {
+        "left": 279,
+        "top": 2100,
+        "right": 2429,
+        "bottom": 2174
+       },
+       "confidence": 0.8211806
+      },
+      {
+       "text": "7,40C (1,3,7,12) 3009",
+       "box": {
+        "left": 1160,
+        "top": 2160,
+        "right": 1532,
+        "bottom": 2211
+       },
+       "confidence": 0.61369246
+      }
+     ]
+    },
+    {
+     "text": "Gibufová s maslom, Vínom, zeleninou a cestovinou k menu c1,30/1,70c (1,3,7,12)",
+     "box": {
+      "left": 631,
+      "top": 2206,
+      "right": 2314,
+      "bottom": 2286
+     },
+     "lines": [
+      {
+       "text": "Gibufová s maslom, Vínom, zeleninou a cestovinou k menu c1,30/1,70c (1,3,7,12)",
+       "box": {
+        "left": 631,
+        "top": 2206,
+        "right": 2314,
+        "bottom": 2286
+       },
+       "confidence": 0.7080078
+      }
+     ]
+    },
+    {
+     "text": "1. Lasagne bolgnese z mletého hovädzieho māsa s paradajkami, bešamelom, bazalkou a parmezánom\n8,40C (13.7.9) 3009",
+     "box": {
+      "left": 275,
+      "top": 2280,
+      "right": 2451,
+      "bottom": 2435
+     },
+     "lines": [
+      {
+       "text": "1. Lasagne bolgnese z mletého hovädzieho māsa s paradajkami, bešamelom, bazalkou a parmezánom",
+       "box": {
+        "left": 276,
+        "top": 2301,
+        "right": 2450,
+        "bottom": 2379
+       },
+       "confidence": 0.83608216
+      },
+      {
+       "text": "8,40C (13.7.9) 3009",
+       "box": {
+        "left": 1168,
+        "top": 2365,
+        "right": 1523,
+        "bottom": 2413
+       },
+       "confidence": 0.5124081
+      }
+     ]
+    },
+    {
+     "text": "bdsvf",
+     "box": {
+      "left": 1010,
+      "top": 2885,
+      "right": 1172,
+      "bottom": 2939
+     },
+     "lines": [
+      {
+       "text": "bdsvf",
+       "box": {
+        "left": 1010,
+        "top": 2885,
+        "right": 1172,
+        "bottom": 2939
+       },
+       "confidence": 0.8109375
+      }
+     ]
+    },
+    {
+     "text": "2. Grilovaný filet zo zubáčas citrónovo-maslovou omáčkou, gratinovanými zemiakmi a pečenou zeleninou\n8,10€ (LA) 150/2009",
+     "box": {
+      "left": 217,
+      "top": 2384,
+      "right": 2484,
+      "bottom": 2529
+     },
+     "lines": [
+      {
+       "text": "2. Grilovaný filet zo zubáčas citrónovo-maslovou omáčkou, gratinovanými zemiakmi a pečenou zeleninou",
+       "box": {
+        "left": 218,
+        "top": 2391,
+        "right": 2484,
+        "bottom": 2476
+       },
+       "confidence": 0.81245613
+      },
+      {
+       "text": "8,10€ (LA) 150/2009",
+       "box": {
+        "left": 1155,
+        "top": 2464,
+        "right": 1551,
+        "bottom": 2511
+       },
+       "confidence": 0.5893842
+      }
+     ]
+    },
+    {
+     "text": "Fazutová na kyslo so zemiakmi a slaninou k",
+     "box": {
+      "left": 904,
+      "top": 2671,
+      "right": 1818,
+      "bottom": 2731
+     },
+     "lines": [
+      {
+       "text": "Fazutová na kyslo so zemiakmi a slaninou k",
+       "box": {
+        "left": 904,
+        "top": 2671,
+        "right": 1818,
+        "bottom": 2731
+       },
+       "confidence": 0.81651783
+      }
+     ]
+    },
+    {
+     "text": "3. Zapečené zemiaky pinené bryndzou a cibukou, podávané s kyslou smotanou, slaninou a listami šalátu\n(vege verzia s chrumkavou cibukou)\n740C (7.12) 3009",
+     "box": {
+      "left": 228,
+      "top": 2485,
+      "right": 2470,
+      "bottom": 2671
+     },
+     "lines": [
+      {
+       "text": "3. Zapečené zemiaky pinené bryndzou a cibukou, podávané s kyslou smotanou, slaninou a listami šalátu",
+       "box": {
+        "left": 230,
+        "top": 2491,
+        "right": 2470,
+        "bottom": 2577
+       },
+       "confidence": 0.8270803
+      },
+      {
+       "text": "(vege verzia s chrumkavou cibukou)",
+       "box": {
+        "left": 953,
+        "top": 2553,
+        "right": 1738,
+        "bottom": 2611
+       },
+       "confidence": 0.863151
+      },
+      {
+       "text": "740C (7.12) 3009",
+       "box": {
+        "left": 1190,
+        "top": 2609,
+        "right": 1499,
+        "bottom": 2653
+       },
+       "confidence": 0.625279
+      }
+     ]
+    },
+    {
+     "text": "J0/1,70C (1,7,12)",
+     "box": {
+      "left": 2049,
+      "top": 2698,
+      "right": 2366,
+      "bottom": 2739
+     },
+     "lines": [
+      {
+       "text": "J0/1,70C (1,7,12)",
+       "box": {
+        "left": 2049,
+        "top": 2698,
+        "right": 2366,
+        "bottom": 2739
+       },
+       "confidence": 0.60424805
+      }
+     ]
+    },
+    {
+     "text": "Info o dôchodkoch: 3. 11.",
+     "box": {
+      "left": 1013,
+      "top": 2988,
+      "right": 2382,
+      "bottom": 3097
+     },
+     "lines": [
+      {
+       "text": "Info o dôchodkoch: 3. 11.",
+       "box": {
+        "left": 1013,
+        "top": 2988,
+        "right": 2382,
+        "bottom": 3097
+       },
+       "confidence": 0.8761161
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
