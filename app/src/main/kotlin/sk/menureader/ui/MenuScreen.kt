@@ -35,6 +35,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -77,10 +78,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import androidx.work.WorkInfo
+import androidx.work.WorkManager
+import sk.menureader.MenuReaderApp
 import sk.menureader.R
+import sk.menureader.cloud.CloudUpgradeWorker
 import sk.menureader.core.filter.Query
 import sk.menureader.core.filter.RankedDish
 import sk.menureader.core.filter.RankedSection
@@ -108,8 +115,40 @@ data class MenuUi(
     val tagCounts: Map<DietTag, Int>,
 )
 
-class MenuViewModel(private val repo: Repository, private val profiles: ProfileStore, val id: String) : ViewModel() {
+/** State of the AI upgrade for this menu. */
+sealed interface AiState {
+    data object Idle : AiState
+    data object Waiting : AiState
+    data object Running : AiState
+    data class Failed(val message: String) : AiState
+}
+
+class MenuViewModel(
+    private val repo: Repository,
+    private val profiles: ProfileStore,
+    val id: String,
+    private val app: MenuReaderApp? = null,
+) : ViewModel() {
     val query = MutableStateFlow(Query())
+
+    val ai = (app?.let { WorkManager.getInstance(it).getWorkInfosForUniqueWorkFlow(CloudUpgradeWorker.workName(id)) } ?: flowOf(emptyList()))
+        .map { infos ->
+            val w = infos.lastOrNull() ?: return@map AiState.Idle
+            when (w.state) {
+                WorkInfo.State.ENQUEUED, WorkInfo.State.BLOCKED -> AiState.Waiting
+                WorkInfo.State.RUNNING -> AiState.Running
+                WorkInfo.State.FAILED -> AiState.Failed(w.outputData.getString(CloudUpgradeWorker.KEY_ERROR) ?: "?")
+                else -> AiState.Idle
+            }
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), AiState.Idle)
+
+    /** False when AI reading isn't set up (no provider or no key): the UI points to Settings. */
+    fun readWithAi(): Boolean {
+        val a = app ?: return false
+        if (a.cloud.reader() == null) return false
+        CloudUpgradeWorker.enqueue(a, id)
+        return true
+    }
 
     val ui = combine(repo.observe(id), profiles.profile, query) { stored, profile, q ->
         stored?.let {
@@ -130,8 +169,17 @@ class MenuViewModel(private val repo: Repository, private val profiles: ProfileS
 }
 
 @Composable
-fun MenuScreen(vm: MenuViewModel, profiles: ProfileStore, debugTools: Boolean, back: () -> Unit, openDebug: () -> Unit) {
+fun MenuScreen(
+    vm: MenuViewModel,
+    profiles: ProfileStore,
+    debugTools: Boolean,
+    back: () -> Unit,
+    openDebug: () -> Unit,
+    openSettings: () -> Unit = {},
+) {
     val ui by vm.ui.collectAsState()
+    val ai by vm.ai.collectAsState()
+    var askSetup by remember { mutableStateOf(false) }
     var menuOpen by remember { mutableStateOf(false) }
     var editName by remember { mutableStateOf(false) }
     var confirmDelete by remember { mutableStateOf(false) }
@@ -172,6 +220,10 @@ fun MenuScreen(vm: MenuViewModel, profiles: ProfileStore, debugTools: Boolean, b
                     Box {
                         IconButton(onClick = { menuOpen = true }) { Icon(Icons.Filled.MoreVert, stringResource(R.string.more)) }
                         DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
+                            DropdownMenuItem(
+                                text = { Text("✨ " + stringResource(R.string.read_with_ai)) },
+                                onClick = { menuOpen = false; if (!vm.readWithAi()) askSetup = true },
+                            )
                             DropdownMenuItem(text = { Text(stringResource(R.string.rename)) }, onClick = { menuOpen = false; editName = true })
                             DropdownMenuItem(text = { Text(stringResource(R.string.rerun)) }, onClick = { menuOpen = false; vm.rerun() })
                             if (debugTools) DropdownMenuItem(text = { Text(stringResource(R.string.debug)) }, onClick = { menuOpen = false; openDebug() })
@@ -186,6 +238,7 @@ fun MenuScreen(vm: MenuViewModel, profiles: ProfileStore, debugTools: Boolean, b
         val hasPhotos = u.stored.snapshot.pages.isNotEmpty()
         LazyColumn(contentPadding = PaddingValues(top = pad.calculateTopPadding(), bottom = 32.dp), modifier = Modifier.fillMaxSize()) {
             item { Header(u) { editName = true } }
+            if (ai != AiState.Idle) item { AiStatus(ai) { if (!vm.readWithAi()) askSetup = true } }
             item { FilterRow(u, vm, onEditAvoid = { showAvoid = true }, onPrice = { showPrice = true }) }
             if (u.stored.snapshot.dishes.isEmpty()) {
                 item { Text(stringResource(R.string.no_dishes), Modifier.padding(24.dp), style = MaterialTheme.typography.bodyLarge) }
@@ -224,6 +277,15 @@ fun MenuScreen(vm: MenuViewModel, profiles: ProfileStore, debugTools: Boolean, b
                 dismissButton = { TextButton(onClick = { confirmDelete = false }) { Text(stringResource(R.string.cancel)) } },
             )
         }
+        if (askSetup) {
+            AlertDialog(
+                onDismissRequest = { askSetup = false },
+                title = { Text("✨ " + stringResource(R.string.ai_setup_title)) },
+                text = { Text(stringResource(R.string.ai_setup_body)) },
+                confirmButton = { TextButton(onClick = { askSetup = false; openSettings() }) { Text(stringResource(R.string.settings)) } },
+                dismissButton = { TextButton(onClick = { askSetup = false }) { Text(stringResource(R.string.cancel)) } },
+            )
+        }
         if (showAvoid) AvoidSheet(profiles) { showAvoid = false }
         if (showPrice) {
             val max = u.stored.snapshot.dishes.flatMap { it.prices }.maxOfOrNull { it.amountMinor } ?: 2000
@@ -231,6 +293,30 @@ fun MenuScreen(vm: MenuViewModel, profiles: ProfileStore, debugTools: Boolean, b
         }
         chipInfo?.let { ChipSheet(it) { chipInfo = null } }
         sourceOf?.let { d -> SourceDialog(d, vm) { sourceOf = null } }
+    }
+}
+
+@Composable
+private fun AiStatus(ai: AiState, retry: () -> Unit) {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp),
+    ) {
+        Row(Modifier.padding(horizontal = 16.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+            when (ai) {
+                AiState.Waiting -> Text("📡 " + stringResource(R.string.ai_waiting), Modifier.weight(1f))
+                AiState.Running -> {
+                    CircularProgressIndicator(Modifier.size(18.dp), strokeWidth = 2.dp)
+                    Spacer(Modifier.width(12.dp))
+                    Text(stringResource(R.string.ai_running), Modifier.weight(1f))
+                }
+                is AiState.Failed -> {
+                    Text("😵 " + stringResource(R.string.ai_failed, ai.message), Modifier.weight(1f))
+                    TextButton(onClick = retry) { Text(stringResource(R.string.ai_retry)) }
+                }
+                AiState.Idle -> {}
+            }
+        }
     }
 }
 
@@ -249,7 +335,8 @@ private fun Header(u: MenuUi, onRename: () -> Unit) {
             Icon(Icons.Filled.Edit, stringResource(R.string.rename), Modifier.size(18.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         val date = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(Date(s.capturedAt))
-        val quality = stringResource(if (s.quality == Quality.FULL) R.string.quality_full else R.string.quality_basic)
+        val quality = if (s.quality == Quality.FULL) "✨ " + stringResource(R.string.quality_full) + (s.extraction.model?.let { " ($it)" } ?: "")
+        else stringResource(R.string.quality_basic)
         Text("$date · $quality", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         val all = u.sections.flatMap { it.dishes }
         if (all.isNotEmpty() && (u.profile.avoid.isNotEmpty() || u.profile.avoidTags.isNotEmpty())) {

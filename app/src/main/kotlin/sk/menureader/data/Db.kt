@@ -10,6 +10,8 @@ import androidx.room.PrimaryKey
 import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -26,6 +28,8 @@ data class SnapshotEntity(
     val dishCount: Int,
     val snapshotJson: String,
     val ocrJson: String,
+    /** The offline (BASIC) snapshot, kept for comparison after an AI upgrade replaced it. */
+    val basicSnapshotJson: String? = null,
 )
 
 data class SnapshotRow(
@@ -57,11 +61,19 @@ interface SnapshotDao {
     suspend fun delete(id: String)
 }
 
-@Database(entities = [SnapshotEntity::class], version = 1, exportSchema = true)
+@Database(entities = [SnapshotEntity::class], version = 2, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun snapshots(): SnapshotDao
 
     companion object {
-        fun create(ctx: Context) = Room.databaseBuilder(ctx, AppDatabase::class.java, "menu-reader.db").build()
+        private val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE snapshots ADD COLUMN basicSnapshotJson TEXT")
+            }
+        }
+
+        fun create(ctx: Context) = Room.databaseBuilder(ctx, AppDatabase::class.java, "menu-reader.db")
+            .addMigrations(MIGRATION_1_2)
+            .build()
     }
 }

@@ -1,7 +1,9 @@
 package sk.menureader.data
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Base64
 import android.net.Uri
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +13,13 @@ import sk.menureader.core.LocalExtractor
 import sk.menureader.core.MenuJson
 import sk.menureader.core.model.OcrDocument
 import sk.menureader.core.model.Page
+import sk.menureader.core.model.Quality
 import sk.menureader.core.model.Snapshot
+import sk.menureader.core.cloud.CloudMapper
+import sk.menureader.cloud.CloudException
+import sk.menureader.cloud.CloudImage
+import sk.menureader.cloud.CloudSettings
+import java.io.ByteArrayOutputStream
 import sk.menureader.core.parse.PlainText
 import sk.menureader.ocr.OcrEngine
 import java.io.File
@@ -64,21 +72,63 @@ class Repository(private val ctx: Context, db: AppDatabase) {
         id
     }
 
+    /**
+     * Read the menu again with the chosen cloud model (photos + the phone's OCR text) and replace
+     * the snapshot with the FULL result. Text-only snapshots (shared text) send just the text.
+     */
+    suspend fun upgradeWithAi(id: String, cloud: CloudSettings) = withContext(Dispatchers.IO) {
+        val (provider, reader) = cloud.reader() ?: throw CloudException("AI reading is off or the API key is missing")
+        val e = dao.get(id) ?: return@withContext
+        val current = MenuJson.decodeFromString<Snapshot>(e.snapshotJson)
+        val basicJson = e.basicSnapshotJson ?: e.snapshotJson.takeIf { current.quality == Quality.BASIC }
+        val basic = basicJson?.let { MenuJson.decodeFromString<Snapshot>(it) } ?: current
+        val ocrDoc = runCatching { MenuJson.decodeFromString<OcrDocument>(e.ocrJson) }.getOrNull()
+        val ocrText = ocrDoc?.pages?.flatMap { it.lines }?.joinToString("\n") { it.text }
+        val images = basic.pages.mapNotNull { p -> pageFile(id, p.id).takeIf { it.exists() }?.let(::prepareImage) }
+        if (images.isEmpty() && ocrText.isNullOrBlank()) throw CloudException("Nothing to read")
+
+        val answer = reader.read(images, ocrText)
+        val menu = runCatching { CloudMapper.parse(answer) }.getOrElse { throw CloudException("The AI answer wasn't valid JSON") }
+        val model = cloud.config.value.model(provider)
+        val full = CloudMapper.toSnapshot(menu, basic, ocrDoc, provider.name.lowercase(), model)
+        val name = e.restaurantName ?: menu.restaurantName.trim().ifBlank { null }
+        dao.upsert(
+            e.copy(
+                restaurantName = name, quality = full.quality.name, dishCount = full.dishes.size,
+                snapshotJson = MenuJson.encodeToString(full), basicSnapshotJson = basicJson,
+            )
+        )
+    }
+
+    /** Scale to at most 1568 px on the long edge (enough for menu text, keeps requests small), JPEG 85. */
+    private fun prepareImage(file: File): CloudImage? {
+        val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        BitmapFactory.decodeFile(file.path, bounds)
+        var sample = 1
+        while (maxOf(bounds.outWidth, bounds.outHeight) / (sample * 2) >= 1568) sample *= 2
+        val bmp = BitmapFactory.decodeFile(file.path, BitmapFactory.Options().apply { inSampleSize = sample }) ?: return null
+        val scale = 1568f / maxOf(bmp.width, bmp.height)
+        val sized = if (scale < 1f) Bitmap.createScaledBitmap(bmp, (bmp.width * scale).toInt(), (bmp.height * scale).toInt(), true) else bmp
+        val out = ByteArrayOutputStream()
+        sized.compress(Bitmap.CompressFormat.JPEG, 85, out)
+        return CloudImage(Base64.encodeToString(out.toByteArray(), Base64.NO_WRAP))
+    }
+
     /** Re-run the local extractor on the stored OCR, e.g. after the parser or dictionary improved. */
     suspend fun rerun(id: String) = withContext(Dispatchers.IO) {
         val e = dao.get(id) ?: return@withContext
         val old = MenuJson.decodeFromString<Snapshot>(e.snapshotJson)
         val ocrDoc = MenuJson.decodeFromString<OcrDocument>(e.ocrJson)
         val fresh = extractor.extract(id, ocrDoc, old.pages, old.capturedAt, old.capturedGeo, old.restaurantId)
-        save(fresh, e.restaurantName, e.ocrJson)
+        save(fresh, e.restaurantName, e.ocrJson, basicJson = null)
     }
 
-    private suspend fun save(s: Snapshot, restaurantName: String?, ocrJson: String) {
+    private suspend fun save(s: Snapshot, restaurantName: String?, ocrJson: String, basicJson: String? = null) {
         dao.upsert(
             SnapshotEntity(
                 id = s.id, capturedAt = s.capturedAt, restaurantName = restaurantName,
                 quality = s.quality.name, dishCount = s.dishes.size,
-                snapshotJson = MenuJson.encodeToString(s), ocrJson = ocrJson,
+                snapshotJson = MenuJson.encodeToString(s), ocrJson = ocrJson, basicSnapshotJson = basicJson,
             )
         )
     }

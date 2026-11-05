@@ -14,6 +14,9 @@ mlkitTextRecognition = "16.0.1"
 serialization = "1.12.0"
 coroutines = "1.11.0"
 junit = "4.13.2"
+anthropic = "3.5.0"
+okhttp = "4.12.0"
+securityCrypto = "1.1.0"
 robolectric = "4.17"
 roborazzi = "1.77.0"
 androidxTestCore = "1.7.0"
@@ -40,6 +43,9 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "coroutines" }
 junit = { module = "junit:junit", version.ref = "junit" }
+anthropic-java = { module = "com.anthropic:anthropic-java", version.ref = "anthropic" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+okhttp-mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okhttp" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 roborazzi = { module = "io.github.takahirom.roborazzi:roborazzi", version.ref = "roborazzi" }
 roborazzi-compose = { module = "io.github.takahirom.roborazzi:roborazzi-compose", version.ref = "roborazzi" }

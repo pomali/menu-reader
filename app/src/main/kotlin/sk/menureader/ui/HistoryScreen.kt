@@ -80,7 +80,7 @@ sealed interface ImportState {
     data object NoScanner : ImportState
 }
 
-class HistoryViewModel(private val repo: Repository) : ViewModel() {
+class HistoryViewModel(private val repo: Repository, private val onCreated: (String) -> Unit = {}) : ViewModel() {
     val snapshots = repo.snapshots.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
     val state = MutableStateFlow<ImportState>(ImportState.Idle)
 
@@ -100,7 +100,7 @@ class HistoryViewModel(private val repo: Repository) : ViewModel() {
         state.value = ImportState.Busy
         viewModelScope.launch {
             runCatching { block() }
-                .onSuccess { state.value = ImportState.Idle; onDone(it) }
+                .onSuccess { state.value = ImportState.Idle; onCreated(it); onDone(it) }
                 .onFailure { state.value = ImportState.Failed(it.message ?: it.javaClass.simpleName) }
         }
     }

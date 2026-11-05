@@ -16,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import sk.menureader.MenuReaderApp
+import sk.menureader.cloud.CloudUpgradeWorker
 
 class MainActivity : ComponentActivity() {
     /** Content shared into the app that hasn't been imported yet. */
@@ -44,7 +45,13 @@ private fun AppNav(app: MenuReaderApp, share: SharedContent?, shareHandled: () -
     val nav = rememberNavController()
     NavHost(nav, startDestination = "history") {
         composable("history") {
-            val vm = viewModel { HistoryViewModel(app.repository) }
+            val vm = viewModel {
+                HistoryViewModel(app.repository) { id ->
+                    // Offline result first; the AI upgrade follows when online (if the user set it up).
+                    val c = app.cloud.config.value
+                    if (c.auto && app.cloud.reader() != null) CloudUpgradeWorker.enqueue(app, id)
+                }
+            }
             LaunchedEffect(share) {
                 if (share != null) {
                     shareHandled()
@@ -55,16 +62,19 @@ private fun AppNav(app: MenuReaderApp, share: SharedContent?, shareHandled: () -
         }
         composable("menu/{id}") { entry ->
             val id = entry.arguments?.getString("id") ?: return@composable
-            val vm = viewModel { MenuViewModel(app.repository, app.profiles, id) }
+            val vm = viewModel { MenuViewModel(app.repository, app.profiles, id, app) }
             val debugTools by app.settings.debugTools.collectAsState()
-            MenuScreen(vm, app.profiles, debugTools, back = { nav.popBackStack() }, openDebug = { nav.navigate("debug/$id") })
+            MenuScreen(
+                vm, app.profiles, debugTools, back = { nav.popBackStack() }, openDebug = { nav.navigate("debug/$id") },
+                openSettings = { nav.navigate("settings") },
+            )
         }
         composable("debug/{id}") { entry ->
             val id = entry.arguments?.getString("id") ?: return@composable
-            val vm = viewModel { MenuViewModel(app.repository, app.profiles, id) }
+            val vm = viewModel { MenuViewModel(app.repository, app.profiles, id, app) }
             DebugScreen(vm, app.repository, back = { nav.popBackStack() })
         }
-        composable("settings") { SettingsScreen(app.settings, app.profiles, back = { nav.popBackStack() }) }
+        composable("settings") { SettingsScreen(app.settings, app.profiles, app.cloud, back = { nav.popBackStack() }) }
     }
     // A share that arrives while another screen is open: go back to History, which imports it.
     LaunchedEffect(share) {

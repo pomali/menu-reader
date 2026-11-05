@@ -33,11 +33,12 @@ import androidx.compose.ui.unit.dp
 import sk.menureader.R
 import sk.menureader.core.filter.Strictness
 import sk.menureader.core.model.Allergen
+import sk.menureader.cloud.CloudSettings
 import sk.menureader.data.ProfileStore
 import sk.menureader.data.SettingsStore
 
 @Composable
-fun SettingsScreen(settings: SettingsStore, profiles: ProfileStore, back: () -> Unit) {
+fun SettingsScreen(settings: SettingsStore, profiles: ProfileStore, cloud: CloudSettings? = null, back: () -> Unit) {
     val large by settings.largeText.collectAsState()
     val dynamic by settings.dynamicColor.collectAsState()
     val debug by settings.debugTools.collectAsState()
@@ -76,6 +77,12 @@ fun SettingsScreen(settings: SettingsStore, profiles: ProfileStore, back: () -> 
                 )
             }
             item { HorizontalDivider() }
+
+            if (cloud != null) {
+                item { Group("✨ " + stringResource(R.string.settings_ai)) }
+                item { AiSettings(cloud) }
+                item { HorizontalDivider() }
+            }
 
             item { Group(stringResource(R.string.settings_display)) }
             item { SwitchItem(stringResource(R.string.large_text), stringResource(R.string.large_text_hint), large, settings::setLargeText) }

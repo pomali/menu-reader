@@ -72,5 +72,12 @@ class ScreenshotTest {
         HistoryScreen(HistoryViewModel(app.repository), app.profiles, openSnapshot = {}, openSettings = {})
     }
 
-    @Test fun settings() = shot("settings") { SettingsScreen(app.settings, app.profiles, back = {}) }
+    @Test fun settings() = shot("settings") { SettingsScreen(app.settings, app.profiles, app.cloud, back = {}) }
+
+    @Test fun settingsAi() {
+        app.cloud.update { it.copy(provider = sk.menureader.cloud.Provider.ANTHROPIC) }
+        compose.setContent { MenuTheme { SettingsScreen(app.settings, app.profiles, app.cloud, back = {}) } }
+        compose.waitForIdle()
+        compose.onRoot().captureRoboImage("build/screenshots/settings-ai.png")
+    }
 }

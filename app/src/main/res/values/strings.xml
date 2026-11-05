@@ -120,4 +120,25 @@
     </plurals>
     <string name="summary_none">Tough menu! Nothing here dodges your list 😬</string>
     <string name="summary_all">Party! Nothing from your list spotted 🎉</string>
+    <string name="read_with_ai">Read with AI</string>
+    <string name="ai_setup_title">Let a smart AI read it</string>
+    <string name="ai_setup_body">Pick an AI and add your own API key in Settings. Then I\'ll re-read menus much better: tricky layouts, small print and \"may contain\" hints.</string>
+    <string name="ai_waiting">Waiting for internet to read it with AI…</string>
+    <string name="ai_running">AI is reading the menu… ✨</string>
+    <string name="ai_failed">AI reading failed: %1$s</string>
+    <string name="ai_retry">Retry</string>
+    <string name="settings_ai">AI reading</string>
+    <string name="ai_intro">Offline reading is free and private. An AI reads tricky menus much better, with your own API key (you pay the provider directly).</string>
+    <string name="ai_off">Off (only on this phone)</string>
+    <string name="ai_off_hint">Nothing leaves your phone</string>
+    <string name="ai_nano_hint">Google\'s image model; it reads too, but a normal Gemini model is usually better at menus</string>
+    <string name="ai_model">Model</string>
+    <string name="ai_key">API key</string>
+    <string name="ai_key_saved">Saved ✓ (type to replace)</string>
+    <string name="ai_key_hint">Paste your key</string>
+    <string name="ai_key_remove">Remove</string>
+    <string name="ai_get_key">Get a key</string>
+    <string name="ai_privacy">Menu photos and the read text go to %1$s. Your key is encrypted on this phone and your allergy profile never leaves it.</string>
+    <string name="ai_auto">Read new menus with AI automatically</string>
+    <string name="ai_auto_hint">Right after the offline reading, as soon as you\'re online</string>
 </resources>

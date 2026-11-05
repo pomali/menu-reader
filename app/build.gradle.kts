@@ -64,6 +64,9 @@ dependencies {
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
     implementation(libs.work.runtime.ktx)
+    // Cloud reading (Phase 2): official Anthropic SDK; OpenAI and Gemini over plain OkHttp.
+    implementation(libs.anthropic.java)
+    implementation(libs.okhttp)
 
     implementation(libs.mlkit.document.scanner)
     implementation(libs.mlkit.text.recognition)
@@ -72,6 +75,8 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(libs.robolectric)
+    testImplementation(libs.okhttp.mockwebserver)
+    testImplementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.roborazzi)
     testImplementation(libs.roborazzi.compose)
     testImplementation(libs.androidx.test.core)

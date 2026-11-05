@@ -126,4 +126,25 @@
     </plurals>
     <string name="summary_none">Ťažké menu! Nič sa tvojmu zoznamu nevyhne 😬</string>
     <string name="summary_all">Paráda! Nič z tvojho zoznamu som nenašiel 🎉</string>
+    <string name="read_with_ai">Prečítať s AI</string>
+    <string name="ai_setup_title">Nechaj to prečítať chytrej AI</string>
+    <string name="ai_setup_body">V Nastaveniach vyber AI a pridaj svoj API kľúč. Potom menu prečítam oveľa lepšie: zložité rozloženie, drobné písmo aj tipy \"môže obsahovať\".</string>
+    <string name="ai_waiting">Čakám na internet, potom to prečíta AI…</string>
+    <string name="ai_running">AI číta menu… ✨</string>
+    <string name="ai_failed">AI čítanie zlyhalo: %1$s</string>
+    <string name="ai_retry">Skúsiť znova</string>
+    <string name="settings_ai">AI čítanie</string>
+    <string name="ai_intro">Čítanie offline je zadarmo a súkromné. AI prečíta zložité menu oveľa lepšie, s tvojím vlastným API kľúčom (platíš priamo poskytovateľovi).</string>
+    <string name="ai_off">Vypnuté (len v telefóne)</string>
+    <string name="ai_off_hint">Nič neopustí tvoj telefón</string>
+    <string name="ai_nano_hint">Obrázkový model od Googlu; vie aj čítať, ale bežný Gemini model je na menu zvyčajne lepší</string>
+    <string name="ai_model">Model</string>
+    <string name="ai_key">API kľúč</string>
+    <string name="ai_key_saved">Uložený ✓ (napíš nový na výmenu)</string>
+    <string name="ai_key_hint">Vlož svoj kľúč</string>
+    <string name="ai_key_remove">Odstrániť</string>
+    <string name="ai_get_key">Získať kľúč</string>
+    <string name="ai_privacy">Fotky menu a prečítaný text idú do %1$s. Tvoj kľúč je zašifrovaný v telefóne a tvoj alergický profil ho nikdy neopustí.</string>
+    <string name="ai_auto">Nové menu automaticky prečítať s AI</string>
+    <string name="ai_auto_hint">Hneď po offline čítaní, keď budeš online</string>
 </resources>

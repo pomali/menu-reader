@@ -30,6 +30,17 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
   text under chips: tapping a chip opens `ChipSheet` explaining the layer/evidence. Only avoided things
   are red; flagged cards get a red outline. Sheets in `ui/Sheets.kt`, settings in `ui/SettingsScreen.kt`
   + `data/SettingsStore` (large text, wallpaper colours, debug tools).
+- AI reading (Phase 2 cloud upgrade): Settings → "✨ AI reading" picks Off / Claude / OpenAI / Gemini / Nano Banana
+  (Gemini image model, shares the Gemini key, schema only in the prompt), a model (suggestions + free text) and the
+  user's own API key (`cloud/KeyVault`, AES-GCM with an Android Keystore key). One prompt + JSON schema for all
+  (`core/.../cloud/CloudPrompt.kt`; no nullables: "" = missing). `CloudMapper` maps the answer to a FULL snapshot,
+  re-runs layers A+B locally, the model's `mayContain` = layer C, prices not in the OCR text lower confidence.
+  Claude via the official Anthropic Java SDK (`AnthropicReader`, default `claude-opus-5-5`, effort medium,
+  structured output, server-side fallbacks "default"; SDK 3.x sends the key as `Authorization: Bearer`).
+  OpenAI Responses API and Gemini Interactions API (`Api-Revision: 2026-05-20`) over OkHttp (`HttpReaders.kt`).
+  `CloudUpgradeWorker` (WorkManager, CONNECTED) runs after each new menu if "auto" is on, or from menu ⋮ "Read with AI";
+  the basic snapshot is kept in `basicSnapshotJson` (Room v2 migration). Request shapes are tested against
+  MockWebServer (`CloudReadersTest`); no live API call has been made yet (no keys in the sandbox).
 - Screenshot tests: `app/src/test/.../ScreenshotTest.kt` (Robolectric native graphics + Roborazzi), PNGs in
   `app/build/screenshots/`; copies in `docs/screenshots/`. Locally needs `robolectricRepoUrl` (mirror) in
   `~/.gradle/gradle.properties`. No emulator here (no KVM).
