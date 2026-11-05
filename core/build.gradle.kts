@@ -19,3 +19,9 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(kotlin("test-junit"))
 }
+
+tasks.test {
+    // Phase0ScoreTest reads OCR dumps and hand-labelled truth from samples/.
+    systemProperty("samples.dir", rootProject.file("samples").absolutePath)
+    testLogging { showStandardStreams = true }
+}
