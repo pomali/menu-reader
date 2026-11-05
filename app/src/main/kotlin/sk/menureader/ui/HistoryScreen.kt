@@ -38,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -50,6 +51,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import sk.menureader.R
 import sk.menureader.core.parse.PlainText
+import sk.menureader.data.DisplayStore
 import sk.menureader.data.Repository
 import sk.menureader.data.SnapshotRow
 import java.text.DateFormat
@@ -90,7 +92,8 @@ class HistoryViewModel(private val repo: Repository) : ViewModel() {
 }
 
 @Composable
-fun HistoryScreen(vm: HistoryViewModel, openSnapshot: (String) -> Unit, openProfile: () -> Unit) {
+fun HistoryScreen(vm: HistoryViewModel, display: DisplayStore, openSnapshot: (String) -> Unit, openProfile: () -> Unit) {
+    val large by display.largeText.collectAsState()
     val rows by vm.snapshots.collectAsState()
     val state by vm.state.collectAsState()
     val activity = LocalActivity.current
@@ -123,7 +126,13 @@ fun HistoryScreen(vm: HistoryViewModel, openSnapshot: (String) -> Unit, openProf
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.app_name)) },
-                actions = { TextButton(onClick = openProfile) { Text(stringResource(R.string.profile)) } },
+                actions = {
+                    // Quick switch for big letters + high contrast ("grandpa mode").
+                    TextButton(onClick = { display.setLargeText(!large) }) {
+                        Text(if (large) "aA" else "Aa", fontWeight = FontWeight.Bold)
+                    }
+                    TextButton(onClick = openProfile) { Text(stringResource(R.string.profile)) }
+                },
             )
         },
         bottomBar = {

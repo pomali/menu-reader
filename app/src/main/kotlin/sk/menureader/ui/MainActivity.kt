@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -25,7 +26,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         if (savedInstanceState == null) pendingShare = SharedContent.from(intent)
         val app = application as MenuReaderApp
-        setContent { MenuTheme { AppNav(app, pendingShare) { pendingShare = null } } }
+        setContent {
+            val large by app.display.largeText.collectAsState()
+            MenuTheme(large = large) { AppNav(app, pendingShare) { pendingShare = null } }
+        }
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -46,7 +50,7 @@ private fun AppNav(app: MenuReaderApp, share: SharedContent?, shareHandled: () -
                     vm.importShare(share) { nav.navigate("menu/$it") }
                 }
             }
-            HistoryScreen(vm, openSnapshot = { nav.navigate("menu/$it") }, openProfile = { nav.navigate("profile") })
+            HistoryScreen(vm, app.display, openSnapshot = { nav.navigate("menu/$it") }, openProfile = { nav.navigate("profile") })
         }
         composable("menu/{id}") { entry ->
             val id = entry.arguments?.getString("id") ?: return@composable
@@ -58,7 +62,7 @@ private fun AppNav(app: MenuReaderApp, share: SharedContent?, shareHandled: () -
             val vm = viewModel { MenuViewModel(app.repository, app.profiles, id) }
             DebugScreen(vm, app.repository, back = { nav.popBackStack() })
         }
-        composable("profile") { ProfileScreen(app.profiles, back = { nav.popBackStack() }) }
+        composable("profile") { ProfileScreen(app.profiles, app.display, back = { nav.popBackStack() }) }
     }
     // A share that arrives while another screen is open: go back to History, which imports it.
     LaunchedEffect(share) {

@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Switch
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
@@ -27,13 +29,15 @@ import sk.menureader.R
 import sk.menureader.core.filter.Strictness
 import sk.menureader.core.model.Allergen
 import sk.menureader.core.model.DietTag
+import sk.menureader.data.DisplayStore
 import sk.menureader.data.ProfileStore
 
 private val avoidableTags = listOf(DietTag.PORK, DietTag.BEEF, DietTag.POULTRY, DietTag.ALCOHOL, DietTag.SPICY)
 
 @Composable
-fun ProfileScreen(store: ProfileStore, back: () -> Unit) {
+fun ProfileScreen(store: ProfileStore, display: DisplayStore, back: () -> Unit) {
     val p by store.profile.collectAsState()
+    val large by display.largeText.collectAsState()
     Scaffold(topBar = {
         TopAppBar(
             navigationIcon = { TextButton(onClick = back) { Text("←") } },
@@ -41,6 +45,19 @@ fun ProfileScreen(store: ProfileStore, back: () -> Unit) {
         )
     }) { pad ->
         LazyColumn(Modifier.padding(pad)) {
+            item { Header(stringResource(R.string.display)) }
+            item {
+                Row(
+                    Modifier.fillMaxWidth().clickable { display.setLargeText(!large) }.padding(horizontal = 16.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column(Modifier.weight(1f)) {
+                        Text(stringResource(R.string.large_text))
+                        Text(stringResource(R.string.large_text_hint), style = MaterialTheme.typography.bodySmall)
+                    }
+                    Switch(checked = large, onCheckedChange = display::setLargeText)
+                }
+            }
             item { Header(stringResource(R.string.avoid_allergens)) }
             items(Allergen.entries) { a ->
                 CheckRow(label(a), a in p.avoid) { on -> store.update { it.copy(avoid = if (on) it.avoid + a else it.avoid - a) } }

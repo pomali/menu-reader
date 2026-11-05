@@ -198,13 +198,14 @@ private fun Filters(u: MenuUi, vm: MenuViewModel) {
                 )
             }
         }
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        val search: @Composable (Modifier) -> Unit = { m ->
             OutlinedTextField(
                 value = q.text, onValueChange = { vm.query.value = q.copy(text = it) },
-                label = { Text(stringResource(R.string.search)) }, singleLine = true,
-                modifier = Modifier.weight(2f).padding(end = 8.dp),
+                label = { Text(stringResource(R.string.search)) }, singleLine = true, modifier = m,
             )
-            var priceText by remember { mutableStateOf(q.maxPriceMinor?.let { Price(it, null).format() } ?: "") }
+        }
+        var priceText by remember { mutableStateOf(q.maxPriceMinor?.let { Price(it, null).format() } ?: "") }
+        val price: @Composable (Modifier) -> Unit = { m ->
             OutlinedTextField(
                 value = priceText,
                 onValueChange = { t ->
@@ -212,9 +213,17 @@ private fun Filters(u: MenuUi, vm: MenuViewModel) {
                     vm.query.value = q.copy(maxPriceMinor = parseMinor(t))
                 },
                 label = { Text(stringResource(R.string.max_price)) }, singleLine = true,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-                modifier = Modifier.weight(1f),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal), modifier = m,
             )
+        }
+        if (LocalLargeText.current) {
+            search(Modifier.fillMaxWidth())
+            price(Modifier.fillMaxWidth())
+        } else {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                search(Modifier.weight(2f).padding(end = 8.dp))
+                price(Modifier.weight(1f))
+            }
         }
     }
 }

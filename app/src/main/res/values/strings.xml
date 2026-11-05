@@ -89,4 +89,7 @@
     <string name="share_target">Read menu</string>
     <string name="share_link_only">Only a link was shared. Share a screenshot (a long screenshot works well) or select the menu text and share that.</string>
     <string name="share_hint">Tip: from Wolt or a web page, share a screenshot or selected text to Menu Reader.</string>
+    <string name="display">Display</string>
+    <string name="large_text">Large text and high contrast</string>
+    <string name="large_text_hint">Big letters, bold, black on white. Also the “Aa” button on the main screen.</string>
 </resources>
