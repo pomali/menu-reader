@@ -17,6 +17,7 @@
     <string name="quality_full">read by AI</string>
     <string name="avoid_title">What do you avoid?</string>
     <string name="avoid_allergens">EU allergens</string>
+    <string name="clear">Clear</string>
     <string name="avoid_other">Other stuff</string>
     <string name="avoid_other_hint">I look for words in the dish name, so it\'s a good tip, not a promise.</string>
     <string name="avoid_chip">Avoiding</string>
@@ -28,6 +29,7 @@
     <string name="price_clear">No limit</string>
     <string name="search">Search dishes</string>
     <string name="section_default">Menu</string>
+    <string name="group_by_category">Group by category</string>
     <string name="no_dishes">Hmm, I didn\'t find any dishes 🤔 Try again with more light.</string>
     <string name="show_photo">Show in photo</string>
     <string name="share">Translate / share</string>

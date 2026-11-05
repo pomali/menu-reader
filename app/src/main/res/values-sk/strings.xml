@@ -17,6 +17,7 @@
     <string name="quality_full">prečítané AI</string>
     <string name="avoid_title">Čomu sa vyhýbaš?</string>
     <string name="avoid_allergens">Alergény (EÚ)</string>
+    <string name="clear">Zrušiť výber</string>
     <string name="avoid_other">Ďalšie veci</string>
     <string name="avoid_other_hint">Hľadám slová v názve jedla, takže je to dobrý tip, nie záruka.</string>
     <string name="avoid_chip">Vyhýbam sa</string>
@@ -28,6 +29,7 @@
     <string name="price_clear">Bez limitu</string>
     <string name="search">Hľadať jedlo</string>
     <string name="section_default">Menu</string>
+    <string name="group_by_category">Zoskupiť podľa kategórií</string>
     <string name="no_dishes">Hmm, nenašiel som žiadne jedlá 🤔 Skús to znova pri lepšom svetle.</string>
     <string name="show_photo">Ukáž na fotke</string>
     <string name="share">Preložiť / zdieľať</string>

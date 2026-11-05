@@ -64,9 +64,11 @@ private fun AppNav(app: MenuReaderApp, share: SharedContent?, shareHandled: () -
             val id = entry.arguments?.getString("id") ?: return@composable
             val vm = viewModel { MenuViewModel(app.repository, app.profiles, id, app) }
             val debugTools by app.settings.debugTools.collectAsState()
+            val byCategory by app.settings.byCategory.collectAsState()
             MenuScreen(
                 vm, app.profiles, debugTools, back = { nav.popBackStack() }, openDebug = { nav.navigate("debug/$id") },
                 openSettings = { nav.navigate("settings") },
+                byCategory = byCategory, setByCategory = app.settings::setByCategory,
             )
         }
         composable("debug/{id}") { entry ->

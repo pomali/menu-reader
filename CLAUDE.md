@@ -26,11 +26,13 @@ saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anyt
   avoid-sheet (person icon) + Settings, ExtendedFAB "Scan" (scanner has gallery import; photo picker only
   as fallback). Menu: top bar hides on scroll (search, ⋮ rename/re-run/debug/delete), restaurant name is
   a list item (tap to rename), summary line, filter row = filter icon + only the active filters (avoided
-  items with counts, max price) wrapping; the icon opens one sheet (`AvoidSheet` with counts + price slider).
+  items with counts, max price) wrapping; the icon opens one sheet (`AvoidSheet` with counts + price slider; "Clear" per section when something is on).
   Sticky section headers. Dish card shows every chip, display only (filled = printed, outlined = word on
   the menu, dotted = guess; no "?" text); tapping the card opens `DishSheet` (each chip with its reason,
   likely ingredients, diet hint, low-confidence note, photo, translate/share); card ⋮ has photo + share.
-  Only avoided things are red; flagged cards get a red outline. Settings in `ui/SettingsScreen.kt`
+  Only avoided things are red; flagged cards are muted (alpha 0.45, no outline). Menu ⋮ "Group by category"
+  (`SettingsStore.byCategory`, default on); off = two groups "N for you" / "N better not". History rows have
+  no leading icon. Settings in `ui/SettingsScreen.kt`
   + `data/SettingsStore` (large text, wallpaper colours, debug tools).
 - AI reading (Phase 2 cloud upgrade): Settings → "✨ AI reading" picks Off / Claude / OpenAI / Gemini / Nano Banana
   (Gemini image model, shares the Gemini key, schema only in the prompt), a model (suggestions + free text) and the

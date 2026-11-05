@@ -222,7 +222,6 @@ private fun HistoryRow(row: SnapshotRow, onClick: () -> Unit) {
         val date = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(Date(row.capturedAt))
         ListItem(
             colors = ListItemDefaults.colors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
-            leadingContent = { Text(if (row.dishCount == 0) "🤷" else "📋", fontSize = 28.sp) },
             headlineContent = { Text(row.restaurantName ?: stringResource(R.string.unnamed_restaurant)) },
             supportingContent = { Text("$date · ${pluralStringResource(R.plurals.dish_count, row.dishCount, row.dishCount)}") },
         )

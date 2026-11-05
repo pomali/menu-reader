@@ -62,7 +62,7 @@ fun AvoidSheet(
         Column(Modifier.padding(horizontal = 24.dp).verticalScroll(rememberScrollState()).navigationBarsPadding()) {
             Text(stringResource(if (price != null) R.string.filter_title else R.string.avoid_title), style = MaterialTheme.typography.headlineSmall)
             if (price != null) PriceSection(price)
-            SheetLabel(stringResource(R.string.avoid_allergens))
+            SheetLabel(stringResource(R.string.avoid_allergens), onClear = { store.update { it.copy(avoid = emptySet()) } }.takeIf { p.avoid.isNotEmpty() })
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 for (a in Allergen.entries) {
                     FilterChip(
@@ -72,7 +72,7 @@ fun AvoidSheet(
                     )
                 }
             }
-            SheetLabel(stringResource(R.string.avoid_other))
+            SheetLabel(stringResource(R.string.avoid_other), onClear = { store.update { it.copy(avoidTags = emptySet()) } }.takeIf { p.avoidTags.isNotEmpty() })
             Text(stringResource(R.string.avoid_other_hint), style = MaterialTheme.typography.bodySmall)
             Spacer(Modifier.height(8.dp))
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -110,6 +110,11 @@ private fun PriceSection(price: PriceFilter) {
     )
 }
 
+/** Section title; with [onClear], a "Clear" button on the right (shown only when something is selected). */
 @Composable
-private fun SheetLabel(text: String) =
-    Text(text, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 20.dp, bottom = 8.dp))
+private fun SheetLabel(text: String, onClear: (() -> Unit)? = null) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(top = if (onClear != null) 8.dp else 20.dp, bottom = if (onClear != null) 0.dp else 8.dp)) {
+        Text(text, style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
+        if (onClear != null) TextButton(onClick = onClear) { Text(stringResource(R.string.clear)) }
+    }
+}

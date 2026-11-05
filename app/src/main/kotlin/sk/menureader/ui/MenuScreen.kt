@@ -5,7 +5,6 @@ package sk.menureader.ui
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -27,6 +26,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.MoreVert
@@ -68,6 +68,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -182,6 +183,8 @@ fun MenuScreen(
     back: () -> Unit,
     openDebug: () -> Unit,
     openSettings: () -> Unit = {},
+    byCategory: Boolean = true,
+    setByCategory: (Boolean) -> Unit = {},
 ) {
     val ui by vm.ui.collectAsState()
     val ai by vm.ai.collectAsState()
@@ -229,6 +232,11 @@ fun MenuScreen(
                                 text = { Text("✨ " + stringResource(R.string.read_with_ai)) },
                                 onClick = { menuOpen = false; if (!vm.readWithAi()) askSetup = true },
                             )
+                            DropdownMenuItem(
+                                text = { Text(stringResource(R.string.group_by_category)) },
+                                trailingIcon = { if (byCategory) Icon(Icons.Filled.Check, null) },
+                                onClick = { menuOpen = false; setByCategory(!byCategory) },
+                            )
                             DropdownMenuItem(text = { Text(stringResource(R.string.rename)) }, onClick = { menuOpen = false; editName = true })
                             DropdownMenuItem(text = { Text(stringResource(R.string.rerun)) }, onClick = { menuOpen = false; vm.rerun() })
                             if (debugTools) DropdownMenuItem(text = { Text(stringResource(R.string.debug)) }, onClick = { menuOpen = false; openDebug() })
@@ -248,17 +256,30 @@ fun MenuScreen(
             if (u.stored.snapshot.dishes.isEmpty()) {
                 item { Text(stringResource(R.string.no_dishes), Modifier.padding(24.dp), style = MaterialTheme.typography.bodyLarge) }
             }
-            for (sec in u.sections) {
-                stickyHeader(key = "h-" + sec.section.id) {
+            // By category: the menu's own sections. Otherwise two groups: for you, then better not.
+            val groups: List<Pair<String, List<RankedDish>>> = if (byCategory) {
+                u.sections.map { sec -> ("h-" + sec.section.id) to sec.dishes }
+            } else {
+                val all = u.sections.flatMap { it.dishes }
+                listOf("h-ok" to all.filter { !it.flagged }, "h-flagged" to all.filter { it.flagged })
+                    .filter { it.second.isNotEmpty() }
+            }
+            for ((key, dishes) in groups) {
+                stickyHeader(key = key) {
+                    val title = when (key) {
+                        "h-ok" -> pluralStringResource(R.plurals.summary_ok, dishes.size, dishes.size)
+                        "h-flagged" -> pluralStringResource(R.plurals.summary_flagged, dishes.size, dishes.size)
+                        else -> u.sections.first { "h-" + it.section.id == key }.section.name.ifBlank { stringResource(R.string.section_default) }
+                    }
                     Surface(color = MaterialTheme.colorScheme.background, modifier = Modifier.fillMaxWidth()) {
                         Text(
-                            sec.section.name.ifBlank { stringResource(R.string.section_default) },
+                            title,
                             style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 8.dp),
                         )
                     }
                 }
-                items(sec.dishes, key = { it.dish.id }) { rd ->
+                items(dishes, key = { it.dish.id }) { rd ->
                     DishCard(rd, u.profile, hasPhotos, onPhoto = { sourceOf = rd.dish }, onOpen = { openDish = rd.dish })
                 }
             }
@@ -403,12 +424,13 @@ private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, o
     val d = rd.dish
     val ctx = LocalContext.current
     var menu by remember { mutableStateOf(false) }
-    // Flagged dishes get a red outline; the red chips inside say why.
+    // Flagged dishes are muted (faded, flatter background); the red chips inside still say why.
     Card(
         onClick = onOpen,
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
-        border = if (rd.flagged) BorderStroke(2.dp, MaterialTheme.colorScheme.error) else null,
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 5.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = if (rd.flagged) MaterialTheme.colorScheme.surfaceContainerLow else MaterialTheme.colorScheme.surfaceContainer,
+        ),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 5.dp).alpha(if (rd.flagged) MUTED_ALPHA else 1f),
     ) {
         Column(Modifier.padding(start = 16.dp, top = 12.dp, bottom = 10.dp)) {
             Row(verticalAlignment = Alignment.Top) {
@@ -451,6 +473,9 @@ private fun DishCard(rd: RankedDish, profile: UserProfile, hasPhotos: Boolean, o
         }
     }
 }
+
+/** Opacity of dishes with something you avoid: still readable, clearly in the background. */
+private const val MUTED_ALPHA = 0.45f
 
 /** Vegan/vegetarian hint (one; vegan wins). */
 private fun dietOf(d: Dish) = d.tagClaims.firstOrNull { it.tag == DietTag.VEGAN } ?: d.tagClaims.firstOrNull { it.tag == DietTag.VEGETARIAN }
