@@ -5,29 +5,29 @@ Android app (Kotlin, Jetpack Compose) that scans restaurant menus, extracts dish
 saved snapshots. **`PLAN.md` is the source of truth.** Read it before doing anything.
 
 ## Status (2026-11-05)
-- Planning done, no app code yet. Decisions are in `PLAN.md` §0, architecture in §3, data model in §4.
-- `scripts/fetch_samples.py` downloads freely licensed menu photos from Wikimedia Commons into
-  `samples/images/` (gitignored). It hasn't been run yet because the network was blocked.
+- Gradle project builds: wrapper 9.8.2, AGP 9.5 (built-in Kotlin), Kotlin 2.4.21, compileSdk 37,
+  minSdk 26. Versions are in `gradle/libs.versions.toml`.
+- `:core` (pure Kotlin, JVM tests): model (`model/`), tokenizer + legend + rule parser (`parse/`),
+  lexicon `resources/sk/menureader/core/lexicon.json` + enricher (`allergen/`), ranker (`filter/`),
+  `LocalExtractor`. Run `./gradlew :core:test`.
+- `:app`: Room (snapshot stored as JSON + raw OCR JSON), ML Kit document scanner + bundled Latin OCR,
+  screens: History, Menu, Profile, Debug/OCR export. The user approved the screen list. Nobody has
+  run it on a device yet.
+- CI: `.github/workflows/build.yml` runs the unit tests and uploads `app-debug.apk` as an artifact.
+- Wikimedia Commons gave almost no real menus (and rate-limits this sandbox), so we're waiting for
+  the user's own photos instead. They offered to upload some.
 
-## Environment the next session needs
-Allowed network domains (on top of the package managers):
-- `dl.google.com`: Android SDK (cmdline-tools, platforms, build-tools). Needed to build locally.
-- `maven.google.com`, `services.gradle.org`, `plugins.gradle.org`, `repo.maven.apache.org`: Gradle/AGP/ML Kit.
-- `commons.wikimedia.org`, `upload.wikimedia.org`: sample menu photos.
-- `overpass-api.de`: OSM restaurant lookup (Phase 2, optional for now).
-- `api.anthropic.com`: cloud extraction tests (Phase 2).
-Also set up GitHub Actions to build a debug APK and run the unit tests on every push. The user
-installs the APK from the workflow artifacts.
+## Local build notes (sandbox)
+- Android SDK at `/opt/android-sdk` (`local.properties` is gitignored; recreate with `sdk.dir=/opt/android-sdk`).
+  Needs `platforms;android-37.0`.
+- Maven Central returns 429 here. `~/.gradle/init.d/central-mirror.init.gradle.kts` adds Google's
+  mirror `https://maven-central.storage-download.googleapis.com/maven2/` (local only, not committed).
 
-## Next steps (agreed direction, not yet confirmed to start)
-1. Gradle project skeleton: `minSdk 26`, Compose, Room, ML Kit document scanner + text recognition
-   (Latin, bundled), WorkManager. Plus a GitHub Actions workflow (assembleDebug + unit tests).
-2. Pure-Kotlin `:core` module (JVM unit-testable) with the snapshot model, EU-14 allergen IDs,
-   the sk/cs/en allergen dictionary (layer B), the printed-code + legend parser (layer A), and the
-   rule-based menu parser (PLAN §3.2).
-3. App flow: scan → OCR → parse → enrich → save to Room → menu screen (reorder OK-first per section),
-   allergen profile, facets, history. Debug screen that exports OCR JSON for Phase 0 test fixtures.
-4. Phase 0: run fetch_samples.py, hand-label ground truth in `samples/truth/`, score the parser.
+## Next steps
+1. Phase 0: take the user's photos, run them through the app, export OCR JSON via Debug into
+   `samples/ocr/`, hand-label `samples/truth/`, add a JVM scoring test, then tune the parser.
+2. Phase 1 leftovers: GPS at capture + Restaurant records, export/import all snapshots as JSON.
+3. Phase 2: cloud upgrade (WorkManager + Claude vision, user's own key), OSM suggestions.
 
 ## Open questions for the user
 - Test device / Android version (planned minSdk 26)?
